@@ -1,0 +1,1966 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="LNH가 직접 그리고 만든 회화와 조각, 가구. 공간에 놓아보고 남은 작업만 판매합니다.">
+  <meta name="theme-color" content="#f5f5f2">
+  <title>LNH Edit — 그 집의 물건들</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=IBM+Plex+Sans+KR:wght@300;400;500&amp;family=Nanum+Myeongjo:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#f5f5f2;
+      --paper-deep:#e9e9e6;
+      --ink:#242628;
+      --muted:#606467;
+      --line:#d2d3d1;
+      --clay:#565b60;
+      --olive:#2b2d2f;
+      --serif:"Nanum Myeongjo",serif;
+      --latin:"Cormorant Garamond",serif;
+      --sans:"IBM Plex Sans KR",sans-serif;
+      --pad:clamp(24px,4.5vw,72px);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.75;word-break:keep-all}
+    body.menu-open{overflow:hidden}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    figure{margin:0}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit}
+    ::selection{background:#d2d3d1;color:var(--ink)}
+    .skip{position:fixed;left:16px;top:-80px;z-index:100;padding:10px 14px;background:var(--ink);color:var(--paper)}
+    .skip:focus{top:16px}
+    .eyebrow{margin:0;font-family:var(--latin);font-size:13px;line-height:1.2;letter-spacing:.16em;text-transform:uppercase}
+    .rule-link{display:inline-flex;align-items:center;gap:36px;padding:0 0 8px;border-bottom:1px solid currentColor;font-size:14px;font-weight:400;letter-spacing:.01em}
+    .rule-link span{transition:transform .25s ease}
+    .rule-link:hover span{transform:translateX(5px)}
+    .rule-link:focus-visible,.site-header a:focus-visible,.menu-button:focus-visible{outline:2px solid var(--clay);outline-offset:6px}
+
+    .site-header{position:fixed;inset:0 0 auto;z-index:50;height:82px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,height .3s}
+    .site-header.scrolled{height:66px;background:rgba(245,245,242,.94);border-color:var(--line);backdrop-filter:blur(10px)}
+    .brand{font-family:var(--latin);font-size:25px;font-weight:500;letter-spacing:.33em;line-height:1}
+    .desktop-nav{display:flex;align-items:center;gap:clamp(13px,1.35vw,24px);font-size:11px;letter-spacing:.035em}
+    .desktop-nav a{position:relative}
+    .desktop-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1px;background:var(--ink);transition:right .25s}
+    .desktop-nav a:hover::after{right:0}
+    .desktop-nav .nav-edit{padding:9px 15px;border:1px solid var(--ink)}
+    .desktop-nav .nav-edit::after{display:none}
+    .menu-button{display:none;border:0;background:none;padding:10px 0;letter-spacing:.08em;font-size:12px}
+    .mobile-menu{display:none}
+
+    /* ---------- hero: commerce masthead ---------- */
+    .hero{border-bottom:1px solid var(--ink)}
+    .hero-copy{padding:clamp(128px,17vh,186px) var(--pad) clamp(72px,8vw,110px)}
+    .hero-title{margin:34px 0 30px;max-width:840px;font-family:var(--serif);font-size:clamp(46px,6.4vw,92px);font-weight:400;line-height:1.2;letter-spacing:-.05em}
+    .hero-intro{max-width:600px;margin:0;font-family:var(--latin);font-size:clamp(17px,1.5vw,22px);letter-spacing:.06em;line-height:1.6;color:var(--clay)}
+    .hero-facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(52px,5.5vw,76px);border-top:1px solid var(--ink)}
+    .hero-fact{padding:22px 26px 26px 0;border-right:1px solid var(--line)}
+    .hero-fact:last-child{border-right:0}
+    .hero-fact:not(:first-child){padding-left:26px}
+    .hero-fact dt{font-family:var(--latin);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+    .hero-fact dd{margin:12px 0 0;font-family:var(--serif);font-size:16.5px;line-height:1.62}
+
+    .section{padding:clamp(84px,9vw,124px) var(--pad)}
+    .section-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;margin-bottom:clamp(48px,5.5vw,72px)}
+    .section-head .eyebrow{align-self:flex-start;text-align:left}
+    .section-title{max-width:860px;margin:0;font-family:var(--serif);font-size:clamp(25px,2.6vw,36px);font-weight:400;line-height:1.45;letter-spacing:-.035em}
+    .section-title em{font-family:var(--latin);font-weight:400}
+    .section-lead{max-width:620px;margin:20px auto 0;color:#4f5458;font-size:15.5px;line-height:2}
+
+    /* ---------- shop ---------- */
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(36px,4vw,52px);padding-bottom:26px;border-bottom:1px solid var(--line)}
+    .filter-bar button{display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border:1px solid var(--line);background:none;font-size:13px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+    .filter-bar button:hover{border-color:var(--ink)}
+    .filter-bar button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:clamp(30px,3vw,44px) clamp(20px,2.2vw,32px)}
+    .product{position:relative;display:flex;flex-direction:column}
+    .product-hit{position:absolute;inset:0;z-index:2;border:0;background:none;cursor:pointer;font-size:0}
+    .product-hit:focus-visible{outline:2px solid var(--clay);outline-offset:6px}
+    .product.is-hidden{display:none}
+    .product-photo{position:relative;aspect-ratio:4/5;overflow:hidden;background:#dfe1e1}
+    .product-photo img{transition:transform .7s cubic-bezier(.2,.65,.2,1)}
+    .product:hover .product-photo img{transform:scale(1.03)}
+    .product-brand{margin:16px 0 0;font-family:var(--latin);font-size:12px;line-height:1.3;letter-spacing:.14em;color:var(--ink)}
+    .product-origin{margin:4px 0 0;font-size:11px;line-height:1.4;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+    .product-origin span{margin:0 5px;opacity:.5}
+    .product-name{margin:7px 0 0;font-family:var(--latin);font-size:15px;font-weight:400;line-height:1.32;letter-spacing:.07em;text-transform:uppercase}
+    .product-price{margin:5px 0 0;font-family:var(--latin);font-size:15px;letter-spacing:.03em}
+    .product-price small{font-family:var(--sans);font-size:11.5px;color:var(--muted)}
+
+    .cart-button{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--ink);background:none;font-size:12.5px;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+    .cart-button:hover{background:var(--ink);color:var(--paper)}
+    .btn-solid{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-size:14px;cursor:pointer;transition:background .22s,border-color .22s}
+    .btn-solid:hover{background:#3a3d40;border-color:#3a3d40}
+    .header-right{display:flex;align-items:center;gap:12px}
+    .nav-icons{display:flex;align-items:center;gap:2px;flex:0 0 auto}
+    @media(max-width:1120px){.nav-icons{display:none}}
+    .nav-icon{display:inline-flex;align-items:center;gap:5px;min-height:40px;padding:0 8px;border:0;background:none;color:var(--ink);cursor:pointer;text-decoration:none!important}
+    .nav-icon::after{content:none!important;display:none!important}
+    .nav-icon:hover{opacity:.6}
+    .nav-icon:focus-visible{outline:2px solid var(--clay);outline-offset:4px}
+    .site-header>div .cart-button{display:none}
+    @media(max-width:1120px){.site-header>div .cart-button{display:inline-flex}}
+
+    .overlay{position:fixed;inset:0;z-index:60;background:rgba(20,22,24,.42);opacity:0;visibility:hidden;transition:opacity .28s,visibility .28s}
+    .overlay.open{opacity:1;visibility:visible}
+    .drawer{position:fixed;z-index:61;top:0;right:0;bottom:0;width:min(430px,100vw);display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .32s cubic-bezier(.2,.65,.2,1);visibility:hidden}
+    .drawer.open{transform:none;visibility:visible}
+    .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:26px var(--pad) 20px;border-bottom:1px solid var(--ink)}
+    .drawer-head h2{margin:0;font-family:var(--serif);font-size:21px;font-weight:400}
+    .drawer-close{border:0!important;background:transparent!important;padding:0!important;cursor:pointer;color:var(--ink)!important;box-shadow:none!important;appearance:none;-webkit-appearance:none}
+    .drawer-close:hover,.drawer-close:focus,.drawer-close:active{background:transparent!important;color:var(--ink)!important;box-shadow:none!important;outline:0!important;transform:none!important}
+    .close-x{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:30px!important;height:30px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-family:Arial, Helvetica, sans-serif!important;font-size:30px!important;font-weight:300!important;line-height:1!important;letter-spacing:0!important;color:var(--ink)!important;text-decoration:none!important}
+    .close-x::before,.close-x::after{content:none!important;display:none!important}
+    .drawer-body{flex:1;overflow-y:auto;padding:0 var(--pad)}
+    .drawer-empty{padding:60px 0;color:var(--muted);font-size:14px;line-height:1.9}
+    .cart-line{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+    .cart-thumb{aspect-ratio:4/5;overflow:hidden;background:#dfe1e1}
+    .cart-line h3{margin:0;font-family:var(--serif);font-size:16px;font-weight:400;line-height:1.5}
+    .cart-line .lead{margin:5px 0 0;font-size:11.5px;color:var(--muted)}
+    .cart-line-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+    .qty{display:inline-flex;align-items:center;border:1px solid var(--line)}
+    .qty button{width:30px;height:30px;border:0;background:none;font-size:14px;line-height:1;cursor:pointer;color:var(--muted)}
+    .qty button:hover{color:var(--ink)}
+    .qty span{min-width:26px;text-align:center;font-family:var(--latin);font-size:14px}
+    .cart-line-price{font-family:var(--latin);font-size:15px}
+    .cart-remove{margin-top:8px;border:0;background:none;padding:0;font-size:11.5px;color:var(--muted);text-decoration:underline;cursor:pointer}
+    .drawer-foot{padding:22px var(--pad) 26px;border-top:1px solid var(--ink)}
+    .sum-row{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;color:var(--muted);margin-bottom:9px}
+    .sum-row.total{margin:14px 0 18px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink);font-size:16px}
+    .sum-row.total b{font-family:var(--latin);font-size:21px;font-weight:400}
+    .drawer-foot .btn-solid{width:100%}
+    .drawer-note{margin:14px 0 0;font-size:11.5px;line-height:1.8;color:var(--muted)}
+
+    .modal{position:fixed;z-index:61;inset:auto 0 0;top:50%;left:50%;transform:translate(-50%,-46%);width:min(920px,calc(100vw - 32px));max-height:88vh;overflow-y:auto;background:var(--paper);border:1px solid var(--ink);opacity:0;visibility:hidden;transition:opacity .26s,transform .26s,visibility .26s}
+    .modal.open{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
+    .modal-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+    .modal-photo{aspect-ratio:4/5;background:#dfe1e1;overflow:hidden}
+    .modal-photo img{filter:saturate(.85)}
+    .modal-copy{padding:clamp(28px,3.2vw,44px);display:flex;flex-direction:column}
+    .modal-copy .drawer-close{position:absolute;top:14px;right:16px}
+    .modal-tag{margin:0;font-family:var(--latin);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+    .modal-copy h2{margin:14px 0 8px;font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);font-weight:400;line-height:1.4;letter-spacing:-.03em}
+    .modal-origin{margin:0;font-size:12.5px;color:var(--muted)}
+    .modal-desc{margin:22px 0 0;font-size:14px;line-height:1.95;color:#4f5458}
+    .modal-spec{margin:22px 0 0;border-top:1px solid var(--line)}
+    .modal-spec div{display:grid;grid-template-columns:88px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}
+    .modal-spec dt{font-family:var(--latin);font-size:12px;color:var(--muted)}
+    .modal-spec dd{margin:0;line-height:1.75}
+    .modal-buy{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:auto;padding-top:24px}
+    .modal-buy .product-price{font-size:23px}
+    .modal-buy .btn-solid{min-height:48px;padding:0 24px}
+    .shop-note{margin:clamp(40px,4vw,56px) 0 0;padding-top:26px;border-top:1px solid var(--ink);color:var(--muted);font-size:13px;line-height:1.95;max-width:840px}
+
+    /* ---------- origin ---------- */
+    .origin{background:var(--paper-deep)}
+    .origin-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:clamp(44px,5vw,80px);align-items:start}
+    .origin-copy h2{margin:26px 0 24px;font-family:var(--serif);font-size:clamp(25px,2.6vw,36px);font-weight:400;line-height:1.45;letter-spacing:-.035em}
+    .origin-copy p{max-width:600px;margin:0 0 22px;color:#4f5458;font-size:15.5px;line-height:2}
+    .origin-copy p:last-of-type{margin-bottom:0}
+    .origin-image{aspect-ratio:4/3;overflow:hidden;background:#dfe1e1}
+    .origin-image img{filter:saturate(.8)}
+    .origin-image.director-portrait img{object-position:center 18%;filter:grayscale(1) contrast(.96)}
+    .origin-image.scene-image img{object-position:center center;filter:none}
+    .origin-list{margin:clamp(44px,4.5vw,64px) 0 0;border-top:1px solid var(--ink)}
+    .origin-row{display:grid;grid-template-columns:74px minmax(0,1fr) minmax(240px,1.05fr);gap:26px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
+    .origin-row span{font-family:var(--latin);font-size:14px;color:var(--muted)}
+    .origin-row h3{margin:0;font-family:var(--serif);font-size:clamp(19px,1.85vw,26px);font-weight:400;line-height:1.5;letter-spacing:-.025em}
+    .origin-row p{margin:0;color:#4f5458;font-size:13.5px;line-height:1.9}
+
+    /* ---------- purchase info ---------- */
+    .buy-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+    .buy-cell{padding:26px 26px 30px 0;border-right:1px solid var(--line)}
+    .buy-cell:last-child{border-right:0}
+    .buy-cell:not(:first-child){padding-left:26px}
+    .buy-cell h3{margin:0 0 14px;font-family:var(--latin);font-size:13px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .buy-cell p{margin:0;font-size:13.5px;line-height:1.95}
+    .buy-cell p+p{margin-top:9px;color:var(--muted);font-size:12.5px}
+
+    /* ---------- boundary ---------- */
+    .boundary{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.85fr);gap:clamp(40px,5vw,90px);align-items:end;padding-top:clamp(70px,7vw,100px);padding-bottom:clamp(70px,7vw,100px);border-top:1px solid var(--line)}
+    .boundary h2{margin:26px 0 20px;font-family:var(--serif);font-size:clamp(26px,2.9vw,40px);font-weight:400;line-height:1.45;letter-spacing:-.035em}
+    .boundary p{max-width:620px;margin:0;color:#4f5458;font-size:15px;line-height:2}
+    .boundary-aside{padding:30px 32px;border:1px solid var(--ink)}
+    .boundary-aside small{font-family:var(--latin);font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+    .boundary-aside p{margin:14px 0 22px;font-size:14px;line-height:1.9}
+
+    /* ---------- cta ---------- */
+    .edit-cta{min-height:420px;display:grid;grid-template-columns:1.2fr .8fr;background:var(--olive);color:#f5f5f2}
+    .cta-copy{padding:clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:space-between}
+    .cta-copy h2{max-width:700px;margin:34px 0 30px;font-family:var(--serif);font-size:clamp(30px,3.4vw,46px);font-weight:400;line-height:1.45;letter-spacing:-.04em}
+    .cta-copy p{max-width:540px;margin:0 0 32px;color:#e4e5e4;font-size:15px;line-height:2}
+    .cta-solid{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:1px solid #f5f5f2;background:#f5f5f2;color:var(--olive);font-size:14px;transition:background .22s,border-color .22s}
+    .cta-solid:hover{background:#e9e9e6;border-color:#e9e9e6}
+    .cta-image{min-height:420px}
+    .cta-image img{object-position:60% 45%}
+
+    footer{padding:60px var(--pad) 40px;border-top:1px solid var(--line)}
+    .footer-top{display:flex;justify-content:space-between;gap:50px;margin-bottom:100px}
+    .footer-mark{font-family:var(--latin);font-size:30px;letter-spacing:.27em}
+    .footer-nav{display:grid;grid-template-columns:repeat(4,auto);gap:12px 34px;font-size:12px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:30px;font-size:10px;color:var(--muted);line-height:1.8}
+    .toast{position:fixed;z-index:70;left:50%;bottom:28px;transform:translate(-50%,14px);padding:13px 22px;background:var(--ink);color:var(--paper);font-size:13px;opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s}
+    .toast.show{opacity:1;visibility:visible;transform:translateX(-50%)}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    @media(max-width:1120px){
+      .desktop-nav{display:none}.menu-button{display:block}
+      .mobile-menu{display:flex;position:fixed;z-index:45;inset:0;background:var(--paper);padding:100px var(--pad) 40px;flex-direction:column;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+      .mobile-menu.open{opacity:1;visibility:visible}
+      .mobile-menu nav{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+      .mobile-menu a{padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:23px}
+      .mobile-menu p{margin:auto 0 0;font-family:var(--latin);letter-spacing:.08em}
+      .hero-title{font-size:38px}
+      .hero-facts{grid-template-columns:1fr 1fr}.hero-fact{border-bottom:1px solid var(--line)}.hero-fact:nth-child(2){border-right:0}.hero-fact:nth-child(n+3){border-bottom:0}
+      .section-head{gap:16px}
+      .origin-layout{grid-template-columns:1fr;gap:48px}.origin-row{grid-template-columns:52px 1fr}.origin-row p{grid-column:2}
+      .buy-grid{grid-template-columns:1fr 1fr}.buy-cell{border-bottom:1px solid var(--line)}.buy-cell:nth-child(2){border-right:0}.buy-cell:nth-child(n+3){border-bottom:0}
+      .boundary{grid-template-columns:1fr;gap:44px;align-items:start}
+      .edit-cta{grid-template-columns:1fr 1fr}
+      .modal-grid{grid-template-columns:1fr}.modal-photo{aspect-ratio:16/10}
+    }
+    @media(max-width:680px){
+      :root{--pad:22px}
+      body{line-height:1.7}.site-header{height:64px}.site-header.scrolled{height:58px}.brand{font-size:22px}
+      .hero-copy{padding:104px var(--pad) 52px}.hero-title{margin:22px 0 22px;font-size:clamp(38px,11vw,52px);line-height:1.24}.hero-intro{font-size:18px;line-height:1.5}
+      
+      .hero-facts{grid-template-columns:1fr;margin-top:40px}.hero-fact,.hero-fact:not(:first-child){padding:18px 0;border-right:0;border-bottom:1px solid var(--line)}.hero-fact:last-child{border-bottom:0}.hero-fact dd{margin-top:8px;font-size:15.5px}
+      .section{padding:74px var(--pad)}.section-head{margin-bottom:38px;gap:14px}.section-title{font-size:23px;line-height:1.5}.section-lead{font-size:14.5px}
+      .filter-bar{gap:6px;margin-bottom:32px;padding-bottom:20px}.filter-bar button{min-height:38px;padding:0 13px;font-size:12.5px}
+      .product-grid{grid-template-columns:1fr 1fr;gap:26px 12px}
+      .product-brand{margin-top:13px;font-size:11px}.product-name{font-size:13.5px;letter-spacing:.06em}.product-origin{font-size:10px}.product-price{font-size:14px}
+      .cart-button{padding:0 11px;min-height:36px;font-size:11.5px}
+      .drawer{width:100vw}.cart-line{grid-template-columns:60px 1fr;gap:12px}
+      .modal{width:calc(100vw - 20px);max-height:90vh}.modal-copy{padding:26px 22px 30px}
+      .shop-note{font-size:12.5px}
+      .origin-copy h2{font-size:23px}.origin-copy p{font-size:14.5px}.origin-row{grid-template-columns:34px 1fr;gap:12px;padding:22px 0}.origin-row h3{font-size:18px}.origin-row p{grid-column:2;font-size:13px}
+      .buy-grid{display:block}.buy-cell,.buy-cell:not(:first-child){padding:22px 0;border-right:0;border-bottom:1px solid var(--line)}.buy-cell:last-child{border-bottom:0}
+      .boundary{padding-top:60px;padding-bottom:60px}.boundary h2{font-size:24px}.boundary p{font-size:14px}.boundary-aside{padding:24px}
+      .edit-cta{display:flex;flex-direction:column;min-height:auto}.cta-copy{padding:44px 26px}.cta-copy h2{margin:28px 0 20px;font-size:27px;line-height:1.5}.cta-copy p{font-size:14px}.cta-image{min-height:280px;order:-1}
+      footer{padding-top:45px}.footer-top{display:block;margin-bottom:70px}.footer-mark{margin-bottom:40px}.footer-nav{grid-template-columns:repeat(2,1fr);gap:13px}.footer-bottom{display:block}.footer-bottom p:last-child{margin-top:22px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+  
+    /* ===== Grouped global nav (unified v14) ===== */
+    .desktop-nav{display:flex;align-items:center;gap:clamp(13px,1.35vw,24px);font-size:11px;letter-spacing:0}
+    .nav-group{display:flex;align-items:center;gap:clamp(13px,1.35vw,24px)}
+    .nav-divider{width:1px;height:14px;background:rgba(33,30,25,.38)}
+    .desktop-nav a{position:relative}
+    .desktop-nav a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1px;background:var(--ink);transition:right .25s}
+    .desktop-nav a:hover::after{right:0}
+    .desktop-nav .nav-current::after{right:0!important}
+    .nav-cta{padding:9px 15px;border:1px solid var(--ink);text-decoration:none!important;border-bottom:1px solid var(--ink)!important}
+    .desktop-nav .nav-cta::after,.desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+    .mobile-group{padding:18px 0 8px;border-bottom:1px solid var(--line)}
+    .mobile-group-label{margin:0 0 4px!important;font-family:var(--latin)!important;font-size:12px!important;letter-spacing:.06em;color:var(--muted,#606467)}
+    .mobile-group a:last-child{border-bottom:0}
+    /* Global header and desktop navigation baseline. */
+    .site-header{padding-inline:clamp(24px,4.5vw,72px)}
+    .desktop-nav{display:flex;align-items:center;gap:clamp(9px,.8vw,14px);font-size:12px;line-height:1;letter-spacing:0;white-space:nowrap}
+    .nav-group{display:flex;align-items:center;gap:clamp(9px,.8vw,14px)}
+    .nav-divider{flex:0 0 1px;width:1px;height:14px;margin-inline:2px}
+    .desktop-nav .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-size:12.5px;font-weight:400;line-height:1;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap;transition:background .22s ease,border-color .22s ease,color .22s ease}
+    .desktop-nav .nav-cta:hover,.desktop-nav .nav-cta:focus-visible{background:#274e71!important;border-color:#274e71!important;color:#f5f5f2!important;text-decoration:none!important}
+    .desktop-nav .nav-cta::after,.desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+    @media(max-width:680px){.site-header{padding-inline:22px}}
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=profile-ci-2">
+  <link rel="canonical" href="https://www.lnh-universe.com/edit">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LNH">
+  <meta property="og:title" content="LNH Edit — 그 집의 물건들">
+  <meta property="og:description" content="LNH가 직접 그리고 만든 회화와 조각, 가구. 공간에 놓아보고 남은 작업만 판매합니다.">
+  <meta property="og:url" content="https://www.lnh-universe.com/edit">
+  <meta property="og:image" content="https://www.lnh-universe.com/assets/landing-hero-system-sample.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/brand-publishing-v2.css?v=footer-stack-fix-20260730">
+  <style>
+    /* Header baseline must follow the shared stylesheet. */
+    .site-header{padding-inline:clamp(24px,4.5vw,72px)}
+    .desktop-nav{gap:clamp(9px,.8vw,14px);font-size:12px;line-height:1;letter-spacing:0;white-space:nowrap}
+    .nav-group{gap:clamp(14px,1.5vw,26px)}
+    .nav-divider{flex:0 0 1px;width:1px;height:14px;margin-inline:6px}
+    .desktop-nav .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-size:12.5px;font-weight:400;line-height:1;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap}
+    .desktop-nav .nav-cta:hover,.desktop-nav .nav-cta:focus-visible{background:#274e71!important;border-color:#274e71!important;color:#f5f5f2!important;text-decoration:none!important}
+    .desktop-nav .nav-cta::after,.desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+    @media(max-width:680px){.site-header{padding-inline:22px}}
+  </style>
+  <script src="assets/site-menu.js?v=menu-cross-20260729" defer></script>
+  <style>
+    /* Shared navigation and image-label baseline. */
+    .desktop-nav{font-size:12.5px!important}
+    .desktop-nav .nav-cta{margin-left:clamp(12px,1.3vw,20px);font-family:var(--sans)!important;font-size:13px!important;font-weight:400!important;letter-spacing:0!important}
+    .image-caption{padding:0!important;background:transparent!important}
+  </style>
+
+
+
+  <style>
+    /* Commerce actions live in the former Brief CTA slot; Brief nav/footer system remains the source of truth. */
+    .nav-action-icons{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:clamp(96px,7.5vw,124px);min-height:40px;margin-left:clamp(12px,1.3vw,20px)}
+    .nav-action-icon,.desktop-nav button.nav-action-icon{appearance:none!important;-webkit-appearance:none!important;position:relative!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-width:26px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;background-color:transparent!important;box-shadow:none!important;color:var(--ink)!important;cursor:pointer!important;line-height:1!important;text-decoration:none!important}
+    .nav-action-icon::before,.nav-action-icon::after{content:none!important;display:none!important}
+    .nav-action-icon:hover{opacity:.62;background:transparent!important;background-color:transparent!important;color:var(--ink)!important}
+    .nav-action-icon:focus-visible,.mobile-action-icon:focus-visible{outline:2px solid var(--clay);outline-offset:4px}
+    .mobile-menu-actions{display:flex;align-items:center;gap:12px;padding:24px 0 0}
+    .mobile-action-icon,.mobile-menu button.mobile-action-icon{appearance:none!important;-webkit-appearance:none!important;position:relative;display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:32px;min-height:34px;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;background-color:transparent!important;box-shadow:none!important;color:inherit;cursor:pointer;line-height:1;text-decoration:none}
+    @media(max-width:1120px){.nav-action-icons{display:none}}
+  </style>
+
+    <style>
+      /* Product image visibility safeguard */
+      .product{cursor:pointer}
+      .product:focus-visible{outline:2px solid var(--clay);outline-offset:8px}
+      .product-photo{background:#f1f1ee!important}
+      .product-photo img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:cover!important;opacity:1!important;visibility:visible!important;z-index:1!important}
+      .product-hit{display:none!important;background:transparent!important}
+    </style>
+
+    <style>
+      /* 2026-08-14: soften collection category filters and remove cart count numerals in navigation. */
+      .filter-bar{gap:clamp(16px,2vw,28px)!important}
+      .filter-bar button{min-height:auto!important;padding:0 0 7px!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--muted)!important;font-size:13px!important;box-shadow:none!important}
+      .filter-bar button:hover{color:var(--ink)!important;background:transparent!important}
+      .filter-bar button[aria-pressed="true"]{background:transparent!important;border-color:transparent!important;color:var(--ink)!important;box-shadow:inset 0 -1px 0 var(--ink)!important}
+      .curation-ad{background:#1e1f1f;color:#f5f5f2}
+      .curation-ad .cta-copy p{color:#d9dbd8}
+      .curation-ad .cta-solid{color:#1e1f1f}
+      .curation-ad .cta-image img{object-position:center center;filter:grayscale(1) contrast(1.06)}
+    </style>
+
+    <style>
+      /* 2026-08-14: Curation advertisement copy hierarchy and CTA contrast fix. */
+      .curation-ad .cta-copy{justify-content:center;gap:clamp(38px,5vw,72px)}
+      .curation-ad .cta-copy .eyebrow{color:#d9dbd8!important}
+      .curation-ad .cta-copy h2{max-width:720px;margin:0 0 24px;color:#f8f8f3!important}
+      .curation-ad .cta-subcopy{max-width:520px;margin:0 0 34px!important;color:#d9dbd8!important;font-size:clamp(17px,1.55vw,22px)!important;line-height:1.8!important;letter-spacing:-.02em}
+      .curation-ad .cta-solid,.curation-ad .cta-solid:visited{background:#f5f5f2!important;border-color:#f5f5f2!important;color:#1e1f1f!important;box-shadow:none!important;text-decoration:none!important;font-weight:500!important}
+      .curation-ad .cta-solid:hover{background:#d9dbd8!important;border-color:#d9dbd8!important;color:#1e1f1f!important}
+      .curation-ad .cta-image img{object-position:center center!important;filter:none!important}
+    </style>
+
+    <style>
+      /* 2026-08-14: make Curation ad image unmissable and keep CTA text visible. */
+      .edit-cta.curation-ad{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(360px,.86fr)!important;background:#2b2c2c!important;overflow:hidden!important}
+      .curation-ad .cta-image{display:block!important;position:relative!important;min-height:clamp(480px,42vw,720px)!important;background-image:url("assets/edit-curation-ad-v2-20260814.jpg")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;background-color:#111!important;opacity:1!important;visibility:visible!important}
+      .curation-ad .cta-image img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;object-fit:cover!important;object-position:center center!important;opacity:1!important;visibility:visible!important;filter:none!important;z-index:1!important}
+      .curation-ad .cta-solid,.curation-ad .cta-solid:visited{display:inline-flex!important;background:#f5f5f2!important;border-color:#f5f5f2!important;color:#1e1f1f!important;opacity:1!important;visibility:visible!important;text-decoration:none!important;transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease!important}
+      .curation-ad .cta-solid:hover,.curation-ad .cta-solid:focus-visible{background:transparent!important;border-color:#f5f5f2!important;color:#f5f5f2!important;transform:translateY(-2px)!important}
+      @media(max-width:760px){.edit-cta.curation-ad{display:flex!important;flex-direction:column!important}.curation-ad .cta-image{order:-1!important;min-height:320px!important}}
+    </style>
+
+    <style>
+      /* 2026-08-14: Product image grid — desktop max 4 columns, mobile 1 column. */
+      .product-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:clamp(28px,2.6vw,42px) clamp(18px,2vw,30px)!important}
+      @media(max-width:1180px){.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+      @media(max-width:900px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+      @media(max-width:680px){.product-grid{grid-template-columns:1fr!important;gap:30px!important}}
+    </style>
+
+    <style>
+      /* 2026-08-14: plain visible X close and stronger popup focus overlay. */
+      .overlay.open{background:rgba(20,22,24,.68)!important;backdrop-filter:blur(4px)!important;-webkit-backdrop-filter:blur(4px)!important;opacity:1!important;visibility:visible!important}
+      button.plain-x-close,
+      .plain-x-close,
+      .plain-x-close:hover,
+      .plain-x-close:focus,
+      .plain-x-close:active{
+        appearance:none!important;-webkit-appearance:none!important;
+        display:inline-flex!important;align-items:center!important;justify-content:center!important;
+        width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;
+        margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+        background:none!important;background-color:transparent!important;background-image:none!important;
+        box-shadow:none!important;outline:0!important;transform:none!important;filter:none!important;
+        color:var(--ink)!important;font:300 32px/1 Arial, Helvetica, sans-serif!important;
+        letter-spacing:0!important;text-indent:0!important;text-decoration:none!important;cursor:pointer!important;
+      }
+      .plain-x-close span{display:block!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;color:inherit!important;line-height:1!important}
+      .plain-x-close::before,.plain-x-close::after{content:none!important;display:none!important;background:none!important}
+      .modal-x-close{position:absolute!important;top:18px!important;right:24px!important;z-index:5!important}
+      .drawer-head .plain-x-close{font-size:28px!important}
+    </style>
+  <style id="lnh-brief-hero-tag-sync">
+    .hero .lnh-hero-tag{margin:0!important;font-family:var(--sans)!important;font-size:12px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:.08em!important;color:var(--ink)!important;text-transform:none!important}
+    .hero-copy{padding-top:clamp(132px,17vh,190px)!important}
+    @media(max-width:680px){.hero-copy{padding-top:42px!important}}
+  </style>
+  <style id="edit-mobile-hero-breathing">
+    .mobile-line{display:inline}
+    @media(max-width:680px){
+      .hero-copy{padding:clamp(70px,11vh,92px) var(--pad) clamp(62px,9vh,78px)!important}
+      .hero-title{margin:26px 0 28px!important;letter-spacing:-.035em!important}
+      .hero-intro{line-height:1.65!important}
+      .mobile-line{display:block}
+      .shop{padding-top:clamp(54px,8vh,72px)!important}
+      .shop .section-head{align-items:flex-start!important;text-align:left!important;gap:clamp(28px,7vw,38px)!important;margin-bottom:clamp(48px,10vw,62px)!important}
+      .shop .section-title{font-size:clamp(40px,10.8vw,48px)!important;line-height:1.24!important;letter-spacing:-.02em!important}
+    }
+  </style>
+  <style id="edit-shop-reveal-off">
+    .shop .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  </style>
+
+  <style id="lnh-nav-center-sync">
+    @media(min-width:1121px){
+      .site-header{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+      .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;z-index:2}
+      .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;justify-content:center!important;z-index:1}
+      .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+      .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2}
+    }
+  </style>
+
+<style id="lnh-nav-uniform-final-sync">
+  .site-header{
+    height:82px!important;
+    padding-inline:clamp(24px,4.5vw,72px)!important;
+    display:grid!important;
+    grid-template-columns:1fr auto 1fr!important;
+    align-items:center!important;
+    justify-content:initial!important;
+  }
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    width:auto!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    z-index:2!important;
+  }
+  .site-header .brand img{
+    width:auto!important;
+    height:24px!important;
+    object-fit:contain!important;
+  }
+  .site-header .desktop-nav{
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    justify-self:center!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+    font-family:var(--sans)!important;
+    font-size:12.5px!important;
+    font-weight:300!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    white-space:nowrap!important;
+    z-index:1!important;
+  }
+  .site-header .nav-group{
+    display:flex!important;
+    align-items:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+  }
+  .site-header .nav-divider{
+    flex:0 0 1px!important;
+    width:1px!important;
+    height:14px!important;
+    margin-inline:2px!important;
+    background:rgba(33,30,25,.38)!important;
+  }
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,
+  .site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,
+  .site-header .desktop-nav>.nav-action-icons{
+    position:absolute!important;
+    right:clamp(24px,4.5vw,72px)!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    margin-left:0!important;
+    z-index:2!important;
+  }
+  .site-header .desktop-nav .nav-cta{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:40px!important;
+    padding:0 14px!important;
+    border:1px solid #143758!important;
+    background:#143758!important;
+    color:#f5f5f2!important;
+    font-family:var(--sans)!important;
+    font-size:13px!important;
+    font-weight:400!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    text-decoration:none!important;
+    border-bottom:1px solid #143758!important;
+    white-space:nowrap!important;
+  }
+  .site-header .desktop-nav .nav-cta::after,
+  .site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){
+    .site-header{
+      height:64px!important;
+      padding-inline:22px!important;
+      display:flex!important;
+      justify-content:space-between!important;
+    }
+    .site-header.scrolled{height:58px!important}
+    .site-header .desktop-nav{display:none!important}
+    .site-header .brand img{height:24px!important}
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="LNH 홈"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></a>
+    <nav class="desktop-nav" aria-label="LNH 주요 메뉴">
+      <span class="nav-group" aria-label="Residential services">
+        <a href="brief.html">Brief</a>
+        <a href="direction.html">Direction</a>
+        <a href="build.html">Build</a>
+        <a href="curation.html">Curation</a>
+        <a href="care.html">Care</a>
+      </span>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <span class="nav-group nav-commerce-group" aria-label="Commerce">
+        <a class="nav-current" href="edit.html">Edit</a>
+      </span>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <span class="nav-group" aria-label="Partnership">
+        <a href="partnership.html">Partnership</a>
+      </span>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <span class="nav-group" aria-label="Company">
+        <a href="about.html">About</a>
+        <a href="stories.html">Stories</a>
+      </span>
+      <span class="nav-action-icons" aria-label="Commerce actions">
+        <a class="nav-action-icon" href="#account" aria-label="로그인"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><circle cx="12" cy="8.2" r="3.6"/><path d="M4.8 20c0-3.6 3.2-5.6 7.2-5.6s7.2 2 7.2 5.6"/></svg></a>
+        <button class="nav-action-icon js-cart-open" type="button" aria-controls="cart-drawer" aria-expanded="false" aria-label="장바구니 열기"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M4 7h16l-1.4 11.2A2 2 0 0 1 16.6 20H7.4a2 2 0 0 1-2-1.8L4 7Z"/><path d="M8.6 7V5.6a3.4 3.4 0 0 1 6.8 0V7"/></svg></button>
+      </span>
+    </nav>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="메뉴 열기"><span class="menu-icon" aria-hidden="true"></span></button>
+  </header>
+  <aside class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="모바일 메뉴">
+      <p class="mobile-menu-title">MENU</p>
+      <div class="mobile-group">
+        <a href="brief.html">Brief</a>
+        <a href="direction.html">Direction</a>
+        <a href="build.html">Build</a>
+        <a href="curation.html">Curation</a>
+        <a href="care.html">Care</a>
+      </div>
+      <div class="mobile-group">
+        <a href="edit.html">Edit</a>
+      </div>
+      <div class="mobile-group">
+        <a href="partnership.html">Partnership</a>
+      </div>
+      <div class="mobile-group">
+        <a href="about.html">About</a>
+        <a href="stories.html">Stories</a>
+      </div>
+      <div class="mobile-menu-actions" aria-label="Commerce actions">
+        <a class="mobile-action-icon" href="#account" aria-label="로그인"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><circle cx="12" cy="8.2" r="3.6"/><path d="M4.8 20c0-3.6 3.2-5.6 7.2-5.6s7.2 2 7.2 5.6"/></svg></a>
+        <button class="mobile-action-icon js-cart-open" type="button" aria-controls="cart-drawer" aria-expanded="false" aria-label="장바구니 열기"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><path d="M4 7h16l-1.4 11.2A2 2 0 0 1 16.6 20H7.4a2 2 0 0 1-2-1.8L4 7Z"/><path d="M8.6 7V5.6a3.4 3.4 0 0 1 6.8 0V7"/></svg></button>
+      </div>
+    </nav>
+  </aside>
+  <button class="mobile-menu-scrim" type="button" aria-label="메뉴 닫기"></button>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow lnh-hero-tag">LNH Edit</p>
+        <h1 class="hero-title" id="hero-title"><strong class="text-emphasis">그 집의 물건들.</strong></h1>
+        <p class="hero-intro"><span class="mobile-line">Designed and Selected</span> <span class="mobile-line">by LNH.</span></p>
+      </div>
+    </section>
+
+    <section class="section shop" id="shop" aria-labelledby="shop-title">
+      <header class="section-head reveal">
+        <p class="eyebrow">01 / Collection</p>
+        <div>
+          <h2 class="section-title" id="shop-title"><span class="mobile-line">Discover</span> <span class="mobile-line">Our Pieces</span></h2>
+        </div>
+      </header>
+
+
+      <div class="filter-bar reveal" role="group" aria-label="카테고리">
+        <button type="button" data-filter="all" aria-pressed="true">전체</button>
+        <button type="button" data-filter="painting" aria-pressed="false">회화</button>
+        <button type="button" data-filter="sculpture" aria-pressed="false">조각·오브제</button>
+        <button type="button" data-filter="furniture" aria-pressed="false">가구·오브제</button>
+      </div>
+
+      <div class="product-grid reveal" id="product-grid">
+        <article class="product" data-category="painting" data-id="p1" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p1">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-waters-poetry-final.webp" alt="오크 프레임에 담긴 백색 질감 회화"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Decorative Painting<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Water’s Poetry</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="painting" data-id="p2" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p2">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-black-space-final.webp" alt="거실 벽에 걸린 흑색 회화"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Decorative Painting<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Sense of Black Space</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="painting" data-id="p3" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p3">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-mountain-royal.avif" alt="네 폭으로 나뉜 산 능선 회화"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Decorative Painting<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">The Mountain of Royal</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="painting" data-id="p4" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p4">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-being-painting.avif" alt="아크릴 박스에 담긴 분홍 인물 연작"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Decorative Painting<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Being</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="sculpture" data-id="p5" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p5">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-cross-section-01.avif" alt="금속 프레임에 담긴 원형 목조 부조"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Decorative Sculpture<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Cross-section of Life</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="sculpture" data-id="p6" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p6">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-cross-section-relief-final.webp" alt="나뭇결과 조각 자국이 드러나는 목조 부조"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Decorative Sculpture<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Cross-section of Life</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="sculpture" data-id="p7" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p7">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-being-sculpture-final.webp" alt="유목 받침에 세운 목조 인물 조각"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Decorative Sculpture<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Being</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="furniture" data-id="p8" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p8">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-tapered-stool-final.webp" alt="회화 앞에 놓인 호두나무 스툴"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Furniture & Objects<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Tapered Stool</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="furniture" data-id="p9" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p9">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-s-tray-final.webp" alt="곡선 손잡이가 있는 원목 트레이"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Furniture & Objects<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">S-tray</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+
+        <article class="product" data-category="furniture" data-id="p10" tabindex="0" role="button" aria-label="상세 보기" data-quick-card="p10">
+          <figure class="product-photo"><img loading="eager" src="assets/edit-oval-tray-final.webp" alt="다리가 있는 흑색 타원 트레이"></figure>
+          <p class="product-brand">LNH</p>
+          <p class="product-origin">Furniture & Objects<span aria-hidden="true">ㅣ</span>송파 더 플래티넘</p>
+          <h3 class="product-name">Oval Tray</h3>
+          <p class="product-price">가격 미정</p>
+        </article>
+      </div>
+
+      <p class="shop-note reveal">전 작품 LNH 디자인입니다. 재료의 성질에 따라 개체마다 결과 색이 조금씩 다르며, 온라인에 없는 크기나 색은 상담 후 제작합니다.</p>
+    </section>
+
+    <section class="section origin" id="origin" aria-labelledby="origin-title">
+      <div class="origin-layout">
+        <div class="origin-copy reveal">
+          <p class="eyebrow">02 / 고르는 방법</p>
+          <h2 id="origin-title">그 의자<br>어디 거예요.</h2>
+          <p>집이 완성되고 나면 손님들이 늘 같은 것을 물었습니다. 답하기는 늘 조금 어려웠습니다. 그 의자는 브랜드가 좋아서가 아니라 그 집에 맞아서 거기 있는 것이었기 때문입니다.</p>
+          <p>그래서 직접 그리기 시작했습니다. 여기 있는 작업은 모두 LNH가 그리고 만든 것입니다.</p>
+        </div>
+        <figure class="origin-image reveal scene-image"><img loading="lazy" src="assets/edit-section02-scene-20260814.png" alt="창가와 월넛 벽면, 의자와 작은 오브제가 놓인 LNH Edit 실제 공간 장면"></figure>
+      </div>
+      <div class="origin-list reveal">
+        <div class="origin-row"><span>01</span><h3>어울렸는가.</h3><p>그 공간의 빛과 마감 아래에서.</p></div>
+        <div class="origin-row"><span>02</span><h3>어색해지지 않았는가.</h3><p>몇 해가 지나 살림이 늘어도.</p></div>
+        <div class="origin-row"><span>03</span><h3>다시 넣게 되었는가.</h3><p>다음 집에도, 그다음 집에도.</p></div>
+      </div>
+    </section>
+
+    <section class="edit-cta curation-ad reveal" aria-labelledby="cta-title">
+      <div class="cta-copy">
+        <p class="eyebrow">LNH Curation</p>
+        <div>
+          <h2 id="cta-title">한 점은 Edit,<br>집 전체는 Curation.</h2>
+          <p class="cta-subcopy">이제,<br>당신의 집을 완성하세요.</p>
+          <a class="cta-solid" href="curation.html">Curation 살펴보기</a>
+        </div>
+      </div>
+      <figure class="cta-image"><img loading="lazy" src="assets/edit-curation-ad-v2-20260814.jpg" alt="손으로 나무 오브제를 다듬는 LNH Curation 제작 장면"></figure>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="drawer" id="cart-drawer" aria-label="장바구니" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>장바구니</h2>
+      <button class="plain-x-close" type="button" data-close aria-label="장바구니 닫기"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="drawer-body" id="cart-body"></div>
+    <div class="drawer-foot">
+      <div class="sum-row"><span>상품 금액</span><span id="sum-goods">0원</span></div>
+      <div class="sum-row"><span>배송비</span><span id="sum-ship">수도권 무료</span></div>
+      <div class="sum-row total"><span>결제 예정 금액</span><b id="sum-total">0원</b></div>
+      <a class="btn-solid" href="#" id="checkout">주문서 작성</a>
+      <p class="drawer-note">수도권 외 지역은 주문서에서 권역별 배송비를 확인하실 수 있습니다. 설치가 필요한 품목은 배송 일정을 따로 조율합니다.</p>
+    </div>
+  </aside>
+
+  <div class="modal" id="quickview" role="dialog" aria-modal="true" aria-label="상품 정보" aria-hidden="true">
+    <button class="plain-x-close modal-x-close" type="button" data-close aria-label="상품 팝업 닫기"><span aria-hidden="true">×</span></button>
+    <div class="modal-grid">
+      <figure class="modal-photo"><img id="qv-img" src="" alt=""></figure>
+      <div class="modal-copy">
+        <p class="modal-tag" id="qv-tag"></p>
+        <h2 id="qv-name"></h2>
+        <p class="modal-origin" id="qv-origin"></p>
+        <p class="modal-desc" id="qv-desc"></p>
+        <dl class="modal-spec" id="qv-spec"></dl>
+        <div class="modal-buy">
+          <span class="product-price" id="qv-price"></span>
+          <button class="btn-solid" type="button" id="qv-add">장바구니 담기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-mark"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></div>
+      <nav class="footer-nav" aria-label="하단 메뉴">
+        <a href="index.html">Home</a><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a><a href="edit.html">Edit</a><a href="partnership.html">Partnership</a><a href="about.html">About</a><a href="stories.html">Stories</a>
+      </nav>
+    </div>
+    <div class="footer-bottom"><div class="footer-signature"><img src="assets/LNH-slogan.svg" alt="Lifestyle Advisor · Seoul"><p class="footer-intelligence"><span class="footer-intelligence-mark" aria-hidden="true"></span>Brief Intelligence</p></div><p class="footer-legal"><span>상호명: 엘엔에이치 · 대표: 이승일 · 서울특별시 송파구 잠실로 62</span><span>사업자등록번호: 247-54-00733 · © LNH 2026. All rights reserved.</span></p></div>
+  </footer>
+
+  <script>
+    const header=document.querySelector('.site-header');
+    const menuButton=document.querySelector('.menu-button');
+    const mobileMenu=document.querySelector('.mobile-menu');
+    const mobileMenuScrim=document.querySelector('.mobile-menu-scrim');
+    const setHeader=()=>header.classList.toggle('scrolled',scrollY>20);
+    const closeMenu=()=>{menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','메뉴 열기');mobileMenu.classList.remove('open');mobileMenuScrim?.classList.remove('open');mobileMenu.setAttribute('aria-hidden','true');document.body.classList.remove('menu-open')};
+    addEventListener('scroll',setHeader,{passive:true});setHeader();
+    menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'메뉴 열기':'메뉴 닫기');mobileMenu.classList.toggle('open',!open);mobileMenuScrim?.classList.toggle('open',!open);mobileMenu.setAttribute('aria-hidden',String(open));document.body.classList.toggle('menu-open',!open)});
+    mobileMenuScrim?.addEventListener('click',closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+    document.querySelectorAll('.filter-bar button').forEach(btn=>btn.addEventListener('click',()=>{
+      const key=btn.dataset.filter;
+      document.querySelectorAll('.filter-bar button').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+      document.querySelectorAll('.product').forEach(p=>p.classList.toggle('is-hidden',key!=='all'&&p.dataset.category!==key));
+    }));
+
+    const PRODUCTS={
+  p1:{tag:"Decorative Painting",kind:"LNH",img:"assets/edit-waters-poetry-final.webp",alt:"오크 프레임에 담긴 백색 질감 회화",origin:"송파 더 플래티넘",name:"Water’s Poetry",spec:"캔버스에 혼합재료 · 오크 프레임",price:null,lead:"배송 3주",desc:"붓끝을 반복해 눌러 물의 표면을 쌓아 올린 작업입니다. 흰 벽에서도 묻히지 않도록 요철의 깊이를 조절했습니다.",rows:[["재료","캔버스 · 혼합재료"],["액자","오크 프레임"],["설치","벽면 고정 · 설치 동행"]]},
+  p2:{tag:"Decorative Painting",kind:"LNH",img:"assets/edit-black-space-final.webp",alt:"거실 벽에 걸린 흑색 회화",origin:"송파 더 플래티넘",name:"Sense of Black Space",spec:"캔버스에 혼합재료 · 오크 프레임",price:null,lead:"배송 3주",desc:"검정 위로 빛이 들어오는 자리를 남긴 작업입니다. 조명 각도에 따라 밝은 면이 다르게 읽힙니다.",rows:[["재료","캔버스 · 혼합재료"],["액자","오크 프레임"],["설치","벽면 고정 · 설치 동행"]]},
+  p3:{tag:"Decorative Painting",kind:"LNH",img:"assets/edit-mountain-royal.avif",alt:"네 폭으로 나뉜 산 능선 회화",origin:"송파 더 플래티넘",name:"The Mountain of Royal",spec:"캔버스에 혼합재료 · 4폭 구성",price:null,lead:"주문 제작 6주",desc:"점을 겹쳐 능선의 거리를 만든 작업입니다. 네 폭으로 나눠 벽의 길이에 맞춰 간격을 조절할 수 있습니다.",rows:[["재료","캔버스 · 혼합재료"],["구성","4폭 · 간격 조절 가능"],["치수","벽면 실측 후 확정"]]},
+  p4:{tag:"Decorative Painting",kind:"LNH",img:"assets/edit-being-painting.avif",alt:"아크릴 박스에 담긴 분홍 인물 연작",origin:"송파 더 플래티넘",name:"Being",spec:"혼합재료 · 아크릴 박스 3점 구성",price:null,lead:"배송 3주",desc:"몸을 접은 자세를 세 개의 상자에 나눠 담았습니다. 검게 칠한 바닥 위에서 분홍이 유일한 색으로 남습니다.",rows:[["재료","혼합재료 · 아크릴"],["구성","3점 1세트"],["설치","벽면 고정 · 간격 조절 가능"]]},
+  p5:{tag:"Decorative Sculpture",kind:"LNH",img:"assets/edit-cross-section-01.avif",alt:"금속 프레임에 담긴 원형 목조 부조",origin:"송파 더 플래티넘",name:"Cross-section of Life",spec:"호두나무 · 금속 프레임 · 원형 2점",price:null,lead:"주문 제작 6주",desc:"나무의 결을 따라 파낸 두 개의 원을 겹쳐 단면을 드러냈습니다. 손님이 오래 머무는 벽면을 위해 크기를 키웠습니다.",rows:[["재료","호두나무 · 금속 프레임"],["특성","원목 결에 따라 개체차 있음"],["설치","벽면 고정 · 설치 동행"]]},
+  p6:{tag:"Decorative Sculpture",kind:"LNH",img:"assets/edit-cross-section-relief-final.webp",alt:"나뭇결과 조각 자국이 드러나는 목조 부조",origin:"송파 더 플래티넘",name:"Cross-section of Life",spec:"호두나무 · 목재 프레임 · 부조",price:null,lead:"주문 제작 6주",desc:"같은 연작의 부조입니다. 잎이 겹치는 자리에 구멍을 남겨 벽의 색이 드러나도록 했습니다.",rows:[["재료","호두나무 · 목재 프레임"],["특성","원목 결에 따라 개체차 있음"],["설치","벽면 고정 · 설치 동행"]]},
+  p7:{tag:"Decorative Sculpture",kind:"LNH",img:"assets/edit-being-sculpture-final.webp",alt:"유목 받침에 세운 목조 인물 조각",origin:"송파 더 플래티넘",name:"Being",spec:"원목 · 유목 받침 · 황동 다리",price:null,lead:"배송 3주",desc:"같은 이름의 회화와 짝으로 만든 조각입니다. 다리를 얇게 세워 받침의 결이 그대로 보입니다.",rows:[["재료","원목 · 황동 · 유목 받침"],["특성","개체별 형태 차이 있음"],["용도","콘솔 · 선반 · 책상"]]},
+  p8:{tag:"Furniture & Objects",kind:"LNH",img:"assets/edit-tapered-stool-final.webp",alt:"회화 앞에 놓인 호두나무 스툴",origin:"송파 더 플래티넘",name:"Tapered Stool",spec:"Ø340 × H450 · 호두나무 원목",price:null,lead:"주문 제작 4주",desc:"앉는 자리로도 두는 자리로도 쓰는 높이를 찾았습니다. 손님이 하루 수십 번 앉는 가게에서 세 해째 쓰고 있습니다.",rows:[["재료","호두나무 원목 · 오일 마감"],["관리","반년에 한 번 오일 도포"],["용도","좌석 · 사이드 테이블"]]},
+  p9:{tag:"Furniture & Objects",kind:"LNH",img:"assets/edit-s-tray-final.webp",alt:"곡선 손잡이가 있는 원목 트레이",origin:"송파 더 플래티넘",name:"S-tray",spec:"W420 × D240 · 원목",price:null,lead:"재고 보유 · 1주",desc:"흩어지는 물건을 한자리에 모으려고 만든 트레이입니다. 곡선 하나로 손이 들어가는 자리를 만들었습니다.",rows:[["재료","원목 · 오일 마감"],["관리","물기 닦은 뒤 건조"],["용도","콘솔 · 사이드 테이블 · 주방"]]},
+  p10:{tag:"Furniture & Objects",kind:"LNH",img:"assets/edit-oval-tray-final.webp",alt:"다리가 있는 흑색 타원 트레이",origin:"송파 더 플래티넘",name:"Oval Tray",spec:"W480 × D180 · 원목 · 흑색 마감",price:null,lead:"재고 보유 · 1주",desc:"다리를 붙여 상판에서 살짝 띄웠습니다. 식탁 위에 두면 놓인 것들이 한 덩어리로 정리됩니다.",rows:[["재료","원목 · 흑색 오일 마감"],["관리","물기 닦은 뒤 건조"],["용도","식탁 · 콘솔 · 티 트레이"]]}
+};
+    const won=n=>n.toLocaleString('ko-KR')+'원';
+    const KEY='lnh-edit-cart';
+    let cart={};
+    try{cart=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){cart={}}
+    const overlay=document.getElementById('overlay');
+    const drawer=document.getElementById('cart-drawer');
+    const modal=document.getElementById('quickview');
+    const toast=document.getElementById('toast');
+    let toastTimer;
+
+    const showToast=msg=>{toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)};
+    const closeAll=()=>{drawer.classList.remove('open');modal.classList.remove('open');overlay.classList.remove('open');drawer.setAttribute('aria-hidden','true');modal.setAttribute('aria-hidden','true');document.querySelectorAll('.js-cart-open').forEach(b=>b.setAttribute('aria-expanded','false'));closeMenu()};
+    overlay.addEventListener('click',closeAll);
+    document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeAll));
+    addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+    const render=()=>{
+      const ids=Object.keys(cart);
+      const count=ids.reduce((s,id)=>s+cart[id],0);
+      const body=document.getElementById('cart-body');
+      if(!ids.length){body.innerHTML='<p class="drawer-empty">담긴 물건이 없습니다.<br>마음에 드는 물건을 담아 두시면 여기에 모입니다.</p>'}
+      else{body.innerHTML=ids.map(id=>{const p=PRODUCTS[id];const linePrice=typeof p.price==='number'?won(p.price*cart[id]):'가격 미정';return `<div class="cart-line"><figure class="cart-thumb"><img src="${p.img}" alt=""></figure><div><h3>${p.name}</h3><p class="lead">${p.lead}</p><div class="cart-line-foot"><span class="qty"><button type="button" data-minus="${id}" aria-label="수량 줄이기">−</button><span>${cart[id]}</span><button type="button" data-plus="${id}" aria-label="수량 늘리기">+</button></span><span class="cart-line-price">${linePrice}</span></div><button class="cart-remove" type="button" data-remove="${id}">삭제</button></div></div>`}).join('')}
+      const hasOpenPrice=ids.some(id=>typeof PRODUCTS[id].price!=='number');
+      const goods=ids.reduce((s,id)=>s+(typeof PRODUCTS[id].price==='number'?PRODUCTS[id].price*cart[id]:0),0);
+      document.getElementById('sum-goods').textContent=hasOpenPrice?'상담 문의':won(goods);
+      document.getElementById('sum-total').textContent=hasOpenPrice?'상담 문의':won(goods);
+      localStorage.setItem(KEY,JSON.stringify(cart));
+    };
+    document.getElementById('cart-body').addEventListener('click',e=>{
+      const t=e.target.closest('button');if(!t)return;
+      if(t.dataset.plus)cart[t.dataset.plus]++;
+      if(t.dataset.minus){const id=t.dataset.minus;cart[id]--;if(cart[id]<1)delete cart[id]}
+      if(t.dataset.remove)delete cart[t.dataset.remove];
+      render();
+    });
+    const cartTriggers=document.querySelectorAll('.js-cart-open');
+    const openCart=()=>{closeMenu();render();drawer.classList.add('open');overlay.classList.add('open');drawer.setAttribute('aria-hidden','false');cartTriggers.forEach(b=>b.setAttribute('aria-expanded','true'))};
+    cartTriggers.forEach(b=>b.addEventListener('click',openCart));
+    const add=id=>{cart[id]=(cart[id]||0)+1;render();showToast(PRODUCTS[id].name+' · 장바구니에 담았습니다')};
+    document.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>{add(b.dataset.add);b.textContent='담김';b.classList.add('added');setTimeout(()=>{b.textContent='장바구니 담기';b.classList.remove('added')},1400)}));
+    document.getElementById('checkout').addEventListener('click',e=>{e.preventDefault();if(!Object.keys(cart).length){showToast('장바구니가 비어 있습니다');return}showToast('주문서 페이지는 준비 중입니다')});
+
+    let qvId=null;
+    const openQuick=id=>{
+      const p=PRODUCTS[id];qvId=id;
+      document.getElementById('qv-img').src=p.img;document.getElementById('qv-img').alt=p.alt;
+      document.getElementById('qv-tag').textContent=p.tag;
+      document.getElementById('qv-name').textContent=p.name;
+      document.getElementById('qv-origin').textContent=p.kind+' · '+p.origin+' · '+p.lead;
+      document.getElementById('qv-desc').textContent=p.desc;
+      document.getElementById('qv-spec').innerHTML=[['치수',p.spec]].concat(p.rows).map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('');
+      const buy=document.getElementById('qv-add');
+      document.getElementById('qv-price').textContent=typeof p.price==='number'?won(p.price):'가격 미정';
+      buy.textContent=typeof p.price==='number'?'장바구니 담기':'상담 문의';
+      modal.classList.add('open');overlay.classList.add('open');modal.setAttribute('aria-hidden','false');
+    };
+    document.querySelectorAll('[data-quick-card]').forEach(card=>{
+      card.addEventListener('click',()=>openQuick(card.dataset.quickCard));
+      card.addEventListener('keydown',event=>{
+        if(event.key==='Enter'||event.key===' '){
+          event.preventDefault();
+          openQuick(card.dataset.quickCard);
+        }
+      });
+    });
+    document.getElementById('qv-add').addEventListener('click',()=>{
+      if(!qvId)return;
+      if(typeof PRODUCTS[qvId].price!=='number'){window.open('https://pf.kakao.com/_txjGxln/chat','_blank','noopener');return}
+      add(qvId);closeAll();openCart();
+    });
+    render();
+    if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'))}
+  </script>
+
+<style id="lnh-section-headline-scale-sync">
+  :root{
+    --lnh-section-heading-desktop:clamp(36px,3vw,44px);
+    --lnh-section-heading-mobile:clamp(28px,7.6vw,32px);
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2{
+      font-size:var(--lnh-section-heading-desktop)!important;
+      line-height:1.56!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2{
+      font-size:var(--lnh-section-heading-mobile)!important;
+      line-height:1.66!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-hero-cta-gap-sync">
+  @media(max-width:680px){
+    .hero-copy:has(.hero-bottom),
+    .direction-hero-copy:has(.direction-hero-action),
+    .build-direction-hero-copy:has(.build-direction-hero-action),
+    #build-main-clean .build-direction-hero-copy:has(.build-direction-hero-action){
+      min-height:auto!important;
+      justify-content:flex-start!important;
+      gap:clamp(112px,25vw,150px)!important;
+      padding-bottom:clamp(34px,8vw,46px)!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-bottom,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      margin-top:0!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-action,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      gap:9px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-dark-ad-headline-mobile-sync">
+  @media(max-width:680px){
+    .landing-cta h2,
+    .brief-need-hook > p,
+    .reassurance-copy h2,
+    .final-cta .final-copy h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .bdf-dark-statement h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .ad-section .ad-card h2{
+      font-size:clamp(28px,7vw,31px)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+    .landing-cta h2 span,
+    .landing-cta h2 em,
+    .final-copy h2 span,
+    .final-copy h2 em,
+    .direction-manifesto h2 span,
+    .direction-manifesto h2 em,
+    .direction-brief-cta h2 span,
+    .direction-brief-cta h2 em,
+    .bdf-dark-statement h2 span,
+    .bdf-dark-statement h2 em,
+    .bdf-final h2 span,
+    .bdf-final h2 em,
+    .bdf-final__copy h2 span,
+    .bdf-final__copy h2 em,
+    .cta-copy h2 span,
+    .cta-copy h2 em,
+    .contact .slide-title span,
+    .contact .slide-title em,
+    .ad-section .ad-card h2 span,
+    .ad-section .ad-card h2 em{
+      font-size:inherit!important;
+      font-weight:400!important;
+      line-height:inherit!important;
+      color:inherit!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-ad-cta-scale-sync">
+  @media(max-width:680px){
+    .landing-cta-button,
+    .landing-cta-button.primary,
+    .brief-copy .rule-link,
+    .final-copy .primary-link,
+    .final-copy .rule-link,
+    .direction-brief-cta .rule-link,
+    .bdf-final .bdf-button,
+    .cta-copy .rule-link,
+    .cta-copy .cta-solid,
+    .contact .rule-link{
+      min-height:42px!important;
+      padding:0 18px!important;
+      font-size:13px!important;
+      line-height:1.1!important;
+    }
+    .landing-cta-button.secondary,
+    .brief-copy .rule-link:not(.primary-link),
+    .cta-copy .rule-link{
+      min-height:0!important;
+      padding:8px 0!important;
+      font-size:13px!important;
+      gap:14px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-dark-cta-button-room-sync">
+  @media(max-width:680px){
+    .final-cta .cta-copy .rule-link,
+    .final-cta .final-copy .primary-link,
+    .edit-cta .cta-copy .cta-solid,
+    .bdf-final .bdf-button,
+    .bdf-final__copy .bdf-button,
+    .landing-cta-button.primary,
+    .direction-brief-cta .direction-button,
+    .contact .rule-link,
+    .ad-section .ad-link{
+      min-height:54px!important;
+      padding:0 24px!important;
+      font-size:13px!important;
+      line-height:1.15!important;
+      white-space:nowrap!important;
+    }
+    .final-cta .cta-copy .rule-link span,
+    .landing-cta-button.primary span,
+    .direction-brief-cta .direction-button span,
+    .contact .rule-link span{
+      margin-left:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-legal-sync">
+  @media(max-width:680px){
+    .footer-legal{line-height:1.42!important}
+    .footer-legal span{display:block}
+    .footer-legal span + span{margin-top:0}
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-spacing-sync">
+  @media(max-width:680px){
+    .footer-mark{margin-bottom:clamp(52px,11vw,64px)!important}
+    .footer-signature{gap:clamp(8px,1.8vw,10px)!important}
+    .footer-signature img{margin-bottom:0!important}
+    .footer-intelligence{margin-top:0!important}
+  }
+</style>
+
+
+<style id="lnh-edit-mobile-popup-fit-sync">
+  @media(max-width:900px){
+    body:has(.modal.open){overflow:hidden!important}
+    .modal{
+      inset:auto 10px auto 10px!important;
+      top:50%!important;
+      left:10px!important;
+      right:10px!important;
+      bottom:auto!important;
+      width:auto!important;
+      height:auto!important;
+      max-height:calc(100svh - 20px)!important;
+      display:flex!important;
+      flex-direction:column!important;
+      overflow:hidden!important;
+      transform:translateY(calc(-50% + 8px))!important;
+    }
+    .modal.open{transform:translateY(-50%)!important}
+    .modal-grid{
+      display:grid!important;
+      grid-template-columns:1fr!important;
+      grid-template-rows:auto minmax(0,1fr)!important;
+      width:100%!important;
+      height:auto!important;
+      max-height:calc(100svh - 20px)!important;
+      min-height:0!important;
+      overflow:hidden!important;
+    }
+    .modal-photo{
+      width:100%!important;
+      height:clamp(142px,23svh,190px)!important;
+      aspect-ratio:auto!important;
+      border-bottom:1px solid var(--line)!important;
+    }
+    .modal-photo img{
+      object-fit:cover!important;
+      object-position:center 45%!important;
+    }
+    .modal-copy{
+      min-height:0!important;
+      max-height:calc(100svh - 210px)!important;
+      display:flex!important;
+      flex-direction:column!important;
+      overflow-y:auto!important;
+      padding:24px 22px 0!important;
+      -webkit-overflow-scrolling:touch;
+    }
+    .modal-tag{
+      font-size:10px!important;
+      letter-spacing:.12em!important;
+    }
+    .modal-copy h2{
+      margin:12px 0 7px!important;
+      font-size:clamp(25px,7.2vw,29px)!important;
+      line-height:1.28!important;
+      letter-spacing:-.02em!important;
+    }
+    .modal-origin{
+      font-size:12px!important;
+      line-height:1.55!important;
+    }
+    .modal-desc{
+      margin:16px 0 0!important;
+      font-size:13.5px!important;
+      line-height:1.72!important;
+    }
+    .modal-spec{
+      min-height:0!important;
+      margin:16px 0 0!important;
+    }
+    .modal-spec div{
+      grid-template-columns:68px 1fr!important;
+      gap:12px!important;
+      padding:9px 0!important;
+      font-size:12.5px!important;
+    }
+    .modal-spec dt{font-size:11px!important}
+    .modal-spec dd{line-height:1.55!important}
+    .modal-buy{
+      position:sticky!important;
+      bottom:0!important;
+      z-index:2!important;
+      margin:18px -22px 0!important;
+      padding:13px 22px calc(13px + env(safe-area-inset-bottom))!important;
+      border-top:0!important;
+      background:var(--paper)!important;
+    }
+    .modal-buy .product-price{
+      font-size:clamp(19px,6vw,23px)!important;
+      line-height:1.1!important;
+      white-space:nowrap!important;
+    }
+    .modal-buy .btn-solid{
+      min-height:44px!important;
+      padding:0 18px!important;
+      font-size:13px!important;
+      white-space:nowrap!important;
+    }
+    .modal-x-close{
+      top:12px!important;
+      right:14px!important;
+      z-index:6!important;
+      width:34px!important;
+      height:34px!important;
+      background:rgba(245,245,242,.9)!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-process-number-size-sync">
+  .residential-path-num,
+  .steps .step-num,
+  .process-grid .process-number,
+  .process-list .process-num,
+  .process-row .process-num,
+  #build-main-clean .bdf-process span,
+  .build-process-step .build-index,
+  .process-step span{
+    font-size:18px!important;
+    line-height:1.2!important;
+    letter-spacing:.06em!important;
+  }
+</style>
+
+
+<style id="lnh-footer-signature-gap-desktop-sync">
+  @media(min-width:681px){
+    .footer-signature{
+      gap:0!important;
+    }
+    .footer-signature img{
+      margin-bottom:0!important;
+    }
+    .footer-intelligence{
+      margin-top:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-footer-legal-desktop-line-sync">
+  @media(min-width:681px){
+    .footer-legal{
+      font-size:12px!important;
+      line-height:1.8!important;
+      text-align:left!important;
+    }
+    .footer-legal span{
+      display:block!important;
+    }
+    .footer-legal span{
+      white-space:nowrap!important;
+    }
+  }
+</style>
+
+<style id="lnh-about-headline-size-sync">
+  :root{
+    --lnh-about-headline-desktop:38px;
+    --lnh-about-headline-mobile:28px;
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-desktop)!important;
+      font-weight:400!important;
+      line-height:1.62!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-mobile)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-section-content-hierarchy-sync">
+  :root{
+    --lnh-subhead-desktop:24px;
+    --lnh-subhead-mobile:21px;
+    --lnh-detail-desktop:15px;
+    --lnh-detail-mobile:14px;
+    --lnh-emphasis-detail-desktop:20px;
+    --lnh-emphasis-detail-mobile:17px;
+  }
+  @media(min-width:681px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-desktop)!important;
+      font-weight:400!important;
+      line-height:1.48!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-desktop)!important;
+      font-weight:400!important;
+      line-height:1.78!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-desktop)!important;
+      font-weight:300!important;
+      line-height:1.92!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-mobile)!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-mobile)!important;
+      font-weight:400!important;
+      line-height:1.84!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-mobile)!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-price-info-scale-sync">
+  @media(min-width:681px){
+    .price-amount b{
+      font-size:44px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:24px!important;
+      line-height:1.18!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:12px!important;
+      line-height:1.55!important;
+    }
+  }
+  @media(max-width:680px){
+    .price-amount b{
+      font-size:40px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:22px!important;
+      line-height:1.2!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:11px!important;
+      line-height:1.55!important;
+    }
+  }
+</style>
+
+<style id="lnh-global-section-hierarchy-final-sync">
+  @media(min-width:681px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:24px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:15px!important;
+      font-weight:300!important;
+      line-height:1.9!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:12px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:44px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:21px!important;
+      font-weight:400!important;
+      line-height:1.52!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:14px!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:11px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:40px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-dark-section-spacing-sync">
+  @media(min-width:681px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+</style>
+<style id="lnh-edit-product-card-price-sync">
+  .shop .product-name{
+    margin-top:8px!important;
+    font-size:13px!important;
+    line-height:1.36!important;
+    letter-spacing:.045em!important;
+  }
+  .shop .product-price{
+    margin-top:7px!important;
+    font-family:var(--sans)!important;
+    font-size:12px!important;
+    font-weight:300!important;
+    line-height:1.45!important;
+    letter-spacing:0!important;
+    color:var(--muted)!important;
+  }
+  .modal-buy .product-price{
+    font-family:var(--sans)!important;
+    font-size:14px!important;
+    font-weight:300!important;
+    line-height:1.35!important;
+    letter-spacing:0!important;
+    color:var(--muted)!important;
+  }
+  @media(max-width:680px){
+    .shop .product-name{
+      font-size:12.5px!important;
+      letter-spacing:.04em!important;
+    }
+    .shop .product-price{
+      font-size:12px!important;
+    }
+  }
+</style>
+<style id="lnh-section-eyebrow-size-sync">
+  @media(min-width:681px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:14px!important;
+      line-height:1.5!important;
+    }
+  }
+  @media(max-width:680px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:12px!important;
+      line-height:1.5!important;
+    }
+  }
+</style>
+
+<style id="lnh-nav-uniform-body-final-sync">
+  .site-header{height:82px!important;padding-inline:clamp(24px,4.5vw,72px)!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;display:inline-flex!important;align-items:center!important;width:auto!important;line-height:1!important;letter-spacing:0!important;z-index:2!important}
+  .site-header .brand img{width:auto!important;height:24px!important;object-fit:contain!important}
+  .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:clamp(9px,.8vw,14px)!important;font-family:var(--sans)!important;font-size:12.5px!important;font-weight:300!important;line-height:1!important;letter-spacing:0!important;white-space:nowrap!important;z-index:1!important}
+  .site-header .nav-group{display:flex!important;align-items:center!important;gap:clamp(9px,.8vw,14px)!important}
+  .site-header .nav-divider{flex:0 0 1px!important;width:1px!important;height:14px!important;margin-inline:2px!important;background:rgba(33,30,25,.38)!important}
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2!important}
+  .site-header .desktop-nav .nav-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:0 14px!important;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-family:var(--sans)!important;font-size:13px!important;font-weight:400!important;line-height:1!important;letter-spacing:0!important;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap!important}
+  .site-header .desktop-nav .nav-cta::after,.site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){.site-header{height:64px!important;padding-inline:22px!important;display:flex!important;justify-content:space-between!important}.site-header.scrolled{height:58px!important}.site-header .desktop-nav{display:none!important}.site-header .brand img{height:24px!important}}
+</style>
+</body>
+</html>

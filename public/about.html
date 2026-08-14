@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="LNH는 공간을 넘어 생활의 방향과 선택을 함께 찾는 Lifestyle Advisor입니다. 2001년부터 이어온 Creative Director 이승일의 경험을 바탕으로 집, 브랜드, 조직의 판단을 돕습니다.">
+  <meta name="theme-color" content="#f5f5f2">
+  <title>About LNH - Lifestyle Advisor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=IBM+Plex+Sans+KR:wght@300;400;500&amp;family=Nanum+Myeongjo:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=about-editorial-20260812">
+  <link rel="canonical" href="https://www.lnh-universe.com/about">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LNH">
+  <meta property="og:title" content="About LNH - Lifestyle Advisor">
+  <meta property="og:description" content="우리가 만드는 것은 생활입니다. LNH는 더 나은 생활을 위한 선택을 함께 찾습니다.">
+  <meta property="og:url" content="https://www.lnh-universe.com/about">
+  <meta property="og:image" content="https://www.lnh-universe.com/assets/about-seungil-sketch-20260812.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/brand-publishing-v2.css?v=footer-stack-fix-20260730">
+  <style>
+    :root{
+      --paper:#f5f5f2;
+      --paper-deep:#ecece8;
+      --ink:#242628;
+      --muted:#686b6b;
+      --line:#d6d6d2;
+      --dark:#2b2d2f;
+      --signature:#133250;
+      --serif:"Nanum Myeongjo",serif;
+      --latin:"Cormorant Garamond",serif;
+      --sans:"IBM Plex Sans KR",sans-serif;
+      --pad:clamp(24px,4.5vw,72px);
+      --measure:640px;
+      --image-measure:680px;
+      --ad-measure:1180px;
+      --type-campaign:60px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;letter-spacing:0;word-break:keep-all;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    figure{margin:0}
+    ::selection{background:#dedfdd;color:var(--ink)}
+    .skip{position:fixed;left:16px;top:-80px;z-index:100;padding:10px 14px;background:var(--ink);color:var(--paper)}
+    .skip:focus{top:16px}
+    .site-header{position:fixed;inset:0 0 auto;z-index:50;height:82px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);transition:height .3s ease}
+    .site-header.scrolled{height:66px}
+    .brand{display:inline-flex;align-items:center;line-height:0}
+    .brand img{width:72px;height:25px;object-fit:contain}
+    .desktop-nav{display:flex;align-items:center;gap:clamp(9px,.8vw,14px);font-size:12.5px;line-height:1;white-space:nowrap}
+    .nav-group{display:flex;align-items:center;gap:clamp(9px,.8vw,14px)}
+    .nav-divider{width:1px;height:14px;background:rgba(33,30,25,.38)}
+    .desktop-nav a{position:relative;color:var(--ink)}
+    .desktop-nav a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:currentColor;transition:right .25s ease}
+    .desktop-nav a:hover::after,.desktop-nav .nav-current::after{right:0}
+    .desktop-nav .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:40px;margin-left:clamp(12px,1.3vw,20px);padding:0 14px;border:1px solid var(--signature);background:var(--signature);color:var(--paper);font-size:13px;font-weight:400}
+    .desktop-nav .nav-cta::after{content:none}
+    .menu-button{display:none;border:0!important;background:transparent!important;padding:10px 0;font:400 12px/1 var(--sans);color:var(--ink)!important}
+    .mobile-menu{display:none}
+    .eyebrow{margin:0;font-family:var(--latin)!important;font-size:13px!important;font-weight:400!important;line-height:1.3!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--muted)!important}
+    .kicker{margin:0 0 38px;font-family:var(--sans);font-size:15px;font-weight:300;line-height:1.6;letter-spacing:.26em;color:var(--muted)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    .letter-page{padding-top:82px;background:var(--paper)}
+    .letter-head{max-width:var(--measure);margin:0 auto;padding:clamp(86px,9vw,132px) 0 54px}
+    .letter-head h1{margin:38px 0 42px;font-family:var(--serif);font-size:54px;font-weight:400;line-height:1.45;letter-spacing:0}
+    .letter-lead{max-width:700px;margin:0;font-family:var(--serif);font-size:20px;line-height:2.12;color:#55595a}
+    .signature-line{display:flex;align-items:center;gap:34px;margin-top:66px;padding-top:24px;border-top:1px solid var(--ink);font-family:var(--latin);font-size:15px;letter-spacing:.08em;color:#757979}
+    .signature-line strong{font-family:var(--serif);font-weight:400;letter-spacing:.05em;color:var(--ink)}
+    .portrait{max-width:var(--image-measure);margin:42px auto 0}
+    .portrait-frame{aspect-ratio:4/5;background:#f3f1eb;overflow:hidden}
+    .portrait img{object-position:center center;filter:contrast(.98)}
+    .portrait figcaption{margin-top:16px;font-family:var(--latin);font-size:14px;letter-spacing:.08em;color:#7a7d7d}
+
+    .letter-body{max-width:var(--measure);margin:0 auto;padding:clamp(108px,10vw,164px) 0}
+    .letter-section{padding:0 0 clamp(112px,12vw,176px)}
+    .letter-section:last-child{padding-bottom:0}
+    .letter-section h2{margin:0 0 48px;font-family:var(--serif);font-size:38px;font-weight:400;line-height:1.72;letter-spacing:0}
+    .letter-section p{margin:0 0 30px;font-family:var(--serif);font-size:20px;line-height:2.12;color:#5d6162}
+    .letter-section p.statement{margin:64px 0 56px;font-size:32px;line-height:1.78;color:var(--ink)}
+    .letter-section p.note{font-family:var(--sans);font-size:15px;line-height:1.95;color:#747878}
+    .experience-list{margin-top:74px;border-top:1px solid var(--line)}
+    .experience-item{display:grid;grid-template-columns:140px 1fr;gap:46px;padding:34px 0;border-bottom:1px solid var(--line)}
+    .experience-item time{font-family:var(--latin);font-size:19px;letter-spacing:.04em;color:#777a7a}
+    .experience-item h3{margin:0 0 16px;font-family:var(--serif);font-size:27px;font-weight:400;line-height:1.58;letter-spacing:0}
+    .experience-item p{margin:0;font-family:var(--sans);font-size:15px;line-height:1.95;color:#656969}
+    .quiet-image{width:min(100%,var(--image-measure));margin:0 auto clamp(118px,12vw,180px);padding:0}
+    .quiet-image .image-frame{aspect-ratio:16/10;overflow:hidden;background:var(--paper-deep)}
+    .quiet-image img{object-position:center}
+    .quiet-image figcaption{margin-top:14px;font-family:var(--latin);font-size:13px;letter-spacing:.08em;color:#777a7a}
+
+    .ad-section{margin:0;min-height:620px;padding:0;background:var(--dark);color:var(--paper)}
+    .ad-inner{max-width:none;margin:0}
+    .ad-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .ad-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:620px}
+    .ad-card{padding:90px;display:grid;grid-template-rows:48px 190px 112px 52px;align-content:center;border-top:0;border-right:1px solid rgba(245,245,242,.16)}
+    .ad-card:last-child{border-right:0}
+    .ad-card small{display:block;align-self:start;margin:0;font-family:var(--latin);font-size:15px;font-weight:400;line-height:1.5;letter-spacing:.22em;text-transform:uppercase;color:#dfe1e1}
+    .ad-card h2{align-self:start;max-width:720px;margin:0;font-family:var(--serif);font-size:var(--type-campaign);font-weight:400;line-height:1.5;letter-spacing:0}
+    .ad-card h2 span{font-family:var(--latin);font-weight:400}
+    .ad-card p{align-self:start;max-width:560px;margin:0;font-size:16px;line-height:2;color:#dfe1e1}
+    .ad-link{align-self:start;justify-self:start;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border:1px solid #f5f5f2!important;background:#f5f5f2!important;color:#242628!important;font-size:13px;font-weight:400;line-height:1.2;text-decoration:none!important;transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease}
+    .ad-link:hover{background:transparent!important;color:#f5f5f2!important;border-color:#f5f5f2!important;transform:translateY(-2px)}
+    .ad-link:active{transform:translateY(0)}
+
+    footer{padding:60px var(--pad) 40px;border-top:1px solid var(--line);background:var(--paper)}
+    .footer-top{display:flex;justify-content:space-between;gap:50px;margin-bottom:100px}
+    .footer-mark img{width:72px;height:25px;object-fit:contain}
+    .footer-nav{display:grid;grid-template-columns:repeat(4,auto);gap:12px 34px;font-size:12px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:30px;font-size:10px;color:var(--muted);line-height:1.8}
+    .footer-signature img{width:160px;height:auto;object-fit:contain}
+
+    @media(max-width:1120px){
+      :root{--type-campaign:52px}
+      .desktop-nav{display:none}
+      .menu-button{display:block}
+      .mobile-menu{display:flex;position:fixed;z-index:45;inset:0;background:var(--paper);color:var(--ink);padding:100px var(--pad) 40px;flex-direction:column;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+      .mobile-menu.open{opacity:1;visibility:visible}
+      .mobile-menu nav{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+      .mobile-menu a{padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:23px}
+      .mobile-group{padding:18px 0 8px;border-bottom:1px solid var(--line)}
+      .mobile-group-label{margin:0 0 4px;font-family:var(--latin);font-size:12px;font-style:italic;color:var(--muted)}
+      .mobile-group a:last-child{border-bottom:0}
+      .mobile-menu p:last-child{margin:auto 0 0;font-family:var(--latin);font-style:italic}
+      .letter-head,.letter-body{width:min(calc(100% - 80px),var(--measure))}
+      .portrait{width:min(calc(100% - 80px),var(--image-measure))}
+      .letter-head h1{font-size:48px}
+      .letter-lead{font-size:19px}
+      .letter-section h2{font-size:35px}
+      .letter-section p{font-size:19px}
+      .letter-section p.statement{font-size:29px}
+    }
+    @media(max-width:760px){
+      :root{--pad:22px;--type-campaign:38px}
+      .site-header{height:64px;padding-inline:22px}
+      .site-header.scrolled{height:58px}
+      .letter-page{padding-top:64px}
+      .letter-head,.letter-body,.portrait{width:calc(100% - 44px)}
+      .letter-head{padding-top:70px}
+      .letter-head h1{margin:34px 0 34px;font-size:36px;line-height:1.48}
+      .letter-lead{font-size:17px;line-height:2.05}
+      .signature-line{display:grid;grid-template-columns:1fr;gap:8px;margin-top:48px;font-size:14px}
+      .portrait-frame{aspect-ratio:4/5}
+      .portrait img{object-position:center}
+      .letter-body{padding:96px 0}
+      .letter-section{padding-bottom:104px}
+      .kicker{margin-bottom:34px;font-size:14px;letter-spacing:.22em}
+      .letter-section h2{margin-bottom:42px;font-size:28px;line-height:1.72}
+      .letter-section p{margin-bottom:28px;font-size:16px;line-height:2.05}
+      .letter-section p.statement{margin:54px 0 46px;font-size:23px;line-height:1.8}
+      .experience-list{margin-top:54px}
+      .experience-item{grid-template-columns:1fr;gap:8px;padding:28px 0}
+      .experience-item time{font-size:16px}
+      .experience-item p{font-size:14px;line-height:1.9}
+      .quiet-image{width:calc(100% - 44px);padding:0;margin-bottom:96px}
+      .quiet-image .image-frame{aspect-ratio:4/5}
+      .quiet-image img{object-position:center}
+      .ad-section{min-height:auto;padding:0}
+      .ad-grid{grid-template-columns:1fr;gap:0;min-height:0}
+      .ad-card{padding:76px 20px 72px;display:grid;grid-template-rows:auto auto auto auto;row-gap:0;border-right:0;border-bottom:1px solid rgba(245,245,242,.16)}
+      .ad-card:last-child{border-bottom:0}
+      .ad-card small{margin-bottom:34px;font-size:13px;letter-spacing:.16em}
+      .ad-card h2{margin-bottom:24px;line-height:1.5}
+      .ad-card p{margin-bottom:35px;font-size:14px;line-height:1.9}
+      .ad-link{min-height:52px;padding:0 24px;font-size:13px}
+      footer{padding:45px 22px 36px}
+      .footer-top{display:block;margin-bottom:65px}
+      .footer-nav{margin-top:45px;grid-template-columns:repeat(3,1fr);gap:16px 20px}
+      .footer-bottom{display:block}
+      .footer-bottom p+p{margin-top:24px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .reveal{opacity:1;transform:none;transition:none}
+    }
+  </style>
+  <style id="about-reveal-off">
+    .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  </style>
+  <script src="assets/site-menu.js?v=menu-cross-20260729" defer></script>
+
+  <style id="lnh-nav-center-sync">
+    @media(min-width:1121px){
+      .site-header{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+      .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;z-index:2}
+      .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;justify-content:center!important;z-index:1}
+      .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+      .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2}
+    }
+  </style>
+
+<style id="lnh-nav-uniform-final-sync">
+  .site-header{
+    height:82px!important;
+    padding-inline:clamp(24px,4.5vw,72px)!important;
+    display:grid!important;
+    grid-template-columns:1fr auto 1fr!important;
+    align-items:center!important;
+    justify-content:initial!important;
+  }
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    width:auto!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    z-index:2!important;
+  }
+  .site-header .brand img{
+    width:auto!important;
+    height:24px!important;
+    object-fit:contain!important;
+  }
+  .site-header .desktop-nav{
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    justify-self:center!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+    font-family:var(--sans)!important;
+    font-size:12.5px!important;
+    font-weight:300!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    white-space:nowrap!important;
+    z-index:1!important;
+  }
+  .site-header .nav-group{
+    display:flex!important;
+    align-items:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+  }
+  .site-header .nav-divider{
+    flex:0 0 1px!important;
+    width:1px!important;
+    height:14px!important;
+    margin-inline:2px!important;
+    background:rgba(33,30,25,.38)!important;
+  }
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,
+  .site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,
+  .site-header .desktop-nav>.nav-action-icons{
+    position:absolute!important;
+    right:clamp(24px,4.5vw,72px)!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    margin-left:0!important;
+    z-index:2!important;
+  }
+  .site-header .desktop-nav .nav-cta{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:40px!important;
+    padding:0 14px!important;
+    border:1px solid #143758!important;
+    background:#143758!important;
+    color:#f5f5f2!important;
+    font-family:var(--sans)!important;
+    font-size:13px!important;
+    font-weight:400!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    text-decoration:none!important;
+    border-bottom:1px solid #143758!important;
+    white-space:nowrap!important;
+  }
+  .site-header .desktop-nav .nav-cta::after,
+  .site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){
+    .site-header{
+      height:64px!important;
+      padding-inline:22px!important;
+      display:flex!important;
+      justify-content:space-between!important;
+    }
+    .site-header.scrolled{height:58px!important}
+    .site-header .desktop-nav{display:none!important}
+    .site-header .brand img{height:24px!important}
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="LNH 홈"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></a>
+    <nav class="desktop-nav" aria-label="LNH 주요 메뉴"><span class="nav-group" aria-label="Residential services"><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Commerce"><a href="edit.html">Edit</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Partnership"><a href="partnership.html">Partnership</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Company"><a class="nav-current" href="about.html">About</a><a href="stories.html">Stories</a></span><a class="nav-cta" href="https://pf.kakao.com/_txjGxln/chat">Brief 신청하기</a></nav>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  </header>
+  <aside class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="모바일 메뉴"><div class="mobile-group"><p class="mobile-group-label">Residential</p><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a></div><div class="mobile-group"><p class="mobile-group-label">Commerce</p><a href="edit.html">Edit</a></div><div class="mobile-group"><p class="mobile-group-label">Partnership</p><a href="partnership.html">Partnership</a></div><div class="mobile-group"><p class="mobile-group-label">LNH</p><a href="about.html">About</a><a href="stories.html">Stories</a></div><a href="https://pf.kakao.com/_txjGxln/chat">Brief 신청하기</a></nav>
+    <p>Lifestyle Advisor · Since 2001</p>
+  </aside>
+
+  <main id="main" class="letter-page">
+    <article aria-labelledby="about-title">
+      <header class="letter-head reveal">
+        <p class="eyebrow">About LNH · Lifestyle Advisor</p>
+        <h1 id="about-title">우리가 만드는 것은<br>생활입니다.</h1>
+        <p class="letter-lead">집에서의 생활, 일하는 곳에서의 생활, 물건을 고르는 생활, 쉬고 즐기는 생활, 한 동네에 사는 사람들의 생활. 스물다섯 해 동안 다른 공간은 모두 누군가의 생활이었습니다. 그래서 무엇을 만들지보다, 어떤 생활을 만들지 먼저 정합니다.</p>
+        <div class="signature-line" aria-label="LNH 소개 요약"><strong>이승일 Creative Director</strong><span>Since 2001</span><span>개인 · 기업 · 공공</span></div>
+      </header>
+
+      <figure class="portrait reveal">
+        <div class="portrait-frame"><img src="assets/about-seungil-sketch-20260812.png" alt="이승일 Creative Director의 스케치 초상"></div>
+        <figcaption>Seung-il Lee · Seoul</figcaption>
+      </figure>
+
+      <div class="letter-body">
+        <section class="letter-section reveal" aria-labelledby="why-title">
+          <p class="kicker">왜 이 일을 하는가</p>
+          <h2 id="why-title">공간을 완성해도, 생활이 완성되는 것은 아니었습니다.</h2>
+          <p>오랫동안 공간을 만들며 알게 된 것이 하나 있습니다. 좋은 도면과 좋은 자재를 갖춰도 어긋나는 집이 있었고, 그렇지 않아도 편안한 집이 있었습니다. 처음에 세운 기준이 마지막까지 유지된 집은 예외 없이 좋았습니다.</p>
+          <p class="statement">잘 만드는 일보다,<br>무엇을 만들지 정하는 일이 어렵습니다.</p>
+          <p>그런데 그 판단을 말해주는 곳은 많지 않았습니다. 설계사무소는 도면을, 시공업체는 공사를, 가구점은 가구를 팝니다. 무엇을 어디까지 할지 정하는 일은 늘 쓰는 사람의 몫으로 남았습니다.</p>
+          <p>그 자리를 맡기 위해 LNH를 만들었습니다.</p>
+        </section>
+
+        <section class="letter-section reveal" aria-labelledby="work-title">
+          <p class="kicker">일하는 방식</p>
+          <h2 id="work-title">정답을 대신 정하지는 않습니다.</h2>
+          <p>설계는 직접 하고, 공사는 감리로 참여합니다. 그 앞에 조건과 예산, 이미 가진 것과 앞으로 필요한 것을 먼저 정리합니다. 무엇을 선택할 수 있고 각각이 무엇을 뜻하는지 보이게 만든 뒤, 결정은 쓰는 분이 합니다.</p>
+          <p>대신 그 결정이 끝까지 유지되도록 함께 갑니다. 도면을 그릴 때, 현장에서 바뀔 때, 가구를 고를 때, 몇 해 뒤 다시 손볼 때까지 같은 기준으로 판단합니다.</p>
+        </section>
+      </div>
+
+      <figure class="quiet-image reveal">
+        <div class="image-frame"><img src="assets/house-lnh-03.png" loading="lazy" alt="나무 천장과 빛이 놓인 House of LNH의 공간"></div>
+        <figcaption>House of LNH · A place for decisions</figcaption>
+      </figure>
+
+      <div class="letter-body">
+        <section class="letter-section reveal" aria-labelledby="experience-title">
+          <p class="kicker">지나온 경험</p>
+          <h2 id="experience-title">지나온 공간들이 지금의 판단 기준이 되었습니다.</h2>
+          <div class="experience-list">
+            <article class="experience-item">
+              <time>2001—2012</time>
+              <div>
+                <h3>머무는 기분은 무엇으로 정해지는지</h3>
+                <p>호텔과 리테일, F&amp;B를 포함해 100건이 넘는 상업 공간의 디자인을 맡으며 빛과 소재, 이동의 순서가 사람의 기분을 바꾸는 과정을 익혔습니다.</p>
+              </div>
+            </article>
+            <article class="experience-item">
+              <time>2013—2020</time>
+              <div>
+                <h3>선택받는 공간과 좋은 공간은 다르다는 것</h3>
+                <p>아파트와 오피스 등 주거 상품을 다루며 완성도만이 아니라 어떻게 설명되고 선택되는지까지 판단해야 했습니다. 평균을 맞추는 일과 한 사람에게 맞추는 일이 다르다는 것을 여기서 배웠습니다.</p>
+              </div>
+            </article>
+            <article class="experience-item">
+              <time>2017—2025</time>
+              <div>
+                <h3>공간만으로는 생활이 작동하지 않는다는 것</h3>
+                <p>코리빙과 주거 브랜드를 처음부터 구축하며 공간을 다 만들어도 운영과 관리가 따라오지 않으면 생활이 작동하지 않는다는 것을 확인했습니다.</p>
+              </div>
+            </article>
+            <article class="experience-item">
+              <time>Now</time>
+              <div>
+                <h3>그래서 지금은 판단을 만듭니다</h3>
+                <p>쌓인 경험을 더 큰 프로젝트가 아니라 한 채의 집, 한 번의 결정, 한 조직의 기준이 필요한 순간에 씁니다.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="letter-section reveal" aria-labelledby="closing-title">
+          <p class="kicker">마지막으로</p>
+          <h2 id="closing-title">결국 누군가의 생활에 도움이 되는가.</h2>
+          <p>LNH가 일을 시작하기 전에 가장 먼저 묻는 질문입니다. 집을 바꾸는 일도, 브랜드의 방향을 세우는 일도 보기 좋은 장면을 만드는 데서 끝나지 않아야 합니다.</p>
+          <p>그 선택이 실제 생활 안에서 어떻게 쓰이고, 얼마나 오래 유지될 수 있는지까지 함께 봅니다.</p>
+          <p class="statement">그래서 LNH는 생활의 방향과 선택을 함께 찾습니다.</p>
+        </section>
+      </div>
+    </article>
+
+    <section class="ad-section" aria-labelledby="contact-title">
+      <div class="ad-inner reveal">
+        <p class="ad-label" id="contact-title">문의</p>
+        <div class="ad-grid">
+          <div class="ad-card">
+            <small>For Individuals · B2C</small>
+            <h2>집과 생활을 위한<br><span>Lifestyle Advice</span></h2>
+            <p>집의 분위기, 가구, 소재, 생활의 선택이 흩어져 있을 때 함께 정리합니다.</p>
+            <a class="ad-link" href="brief.html">LNH Brief 살펴보기</a>
+          </div>
+          <div class="ad-card">
+            <small>For Organizations · B2B/B2G</small>
+            <h2>조직을 위한<br><span>Design Partnership</span></h2>
+            <p>브랜드와 공간의 방향을 정해야 할 때, 외부의 디자인 판단 기준으로 함께합니다.</p>
+            <a class="ad-link" href="partnership.html">Partnership 살펴보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-mark"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></div>
+      <nav class="footer-nav" aria-label="하단 메뉴"><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a><a href="edit.html">Edit</a><a href="partnership.html">Partnership</a><a href="about.html">About</a><a href="stories.html">Stories</a></nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-signature"><img src="assets/LNH-slogan.svg" alt="Lifestyle Advisor · Seoul"><p class="footer-intelligence"><span class="footer-intelligence-mark" aria-hidden="true"></span>Brief Intelligence</p></div>
+      <p class="footer-legal"><span>상호명: 엘엔에이치 · 대표: 이승일 · 서울특별시 송파구 잠실로 62</span><span>사업자등록번호: 247-54-00733 · © LNH 2026. All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <script>
+    const header=document.querySelector('.site-header');
+    const menuButton=document.querySelector('.menu-button');
+    const mobileMenu=document.querySelector('.mobile-menu');
+    const setHeader=()=>header.classList.toggle('scrolled',scrollY>20);
+    addEventListener('scroll',setHeader,{passive:true});setHeader();
+    menuButton.addEventListener('click',()=>{const open=!mobileMenu.classList.contains('open');mobileMenu.classList.toggle('open',open);menuButton.textContent=open?'Close':'Menu';menuButton.setAttribute('aria-expanded',open);mobileMenu.setAttribute('aria-hidden',!open);document.body.classList.toggle('menu-open',open)});
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('open');menuButton.textContent='Menu';menuButton.setAttribute('aria-expanded','false');mobileMenu.setAttribute('aria-hidden','true');document.body.classList.remove('menu-open')}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+
+<style id="lnh-mobile-hero-cta-gap-sync">
+  @media(max-width:680px){
+    .hero-copy:has(.hero-bottom),
+    .direction-hero-copy:has(.direction-hero-action),
+    .build-direction-hero-copy:has(.build-direction-hero-action),
+    #build-main-clean .build-direction-hero-copy:has(.build-direction-hero-action){
+      min-height:auto!important;
+      justify-content:flex-start!important;
+      gap:clamp(112px,25vw,150px)!important;
+      padding-bottom:clamp(34px,8vw,46px)!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-bottom,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      margin-top:0!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-action,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      gap:9px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-dark-ad-headline-mobile-sync">
+  @media(max-width:680px){
+    .landing-cta h2,
+    .brief-need-hook > p,
+    .reassurance-copy h2,
+    .final-cta .final-copy h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .bdf-dark-statement h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .ad-section .ad-card h2{
+      font-size:clamp(28px,7vw,31px)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+    .landing-cta h2 span,
+    .landing-cta h2 em,
+    .final-copy h2 span,
+    .final-copy h2 em,
+    .direction-manifesto h2 span,
+    .direction-manifesto h2 em,
+    .direction-brief-cta h2 span,
+    .direction-brief-cta h2 em,
+    .bdf-dark-statement h2 span,
+    .bdf-dark-statement h2 em,
+    .bdf-final h2 span,
+    .bdf-final h2 em,
+    .bdf-final__copy h2 span,
+    .bdf-final__copy h2 em,
+    .cta-copy h2 span,
+    .cta-copy h2 em,
+    .contact .slide-title span,
+    .contact .slide-title em,
+    .ad-section .ad-card h2 span,
+    .ad-section .ad-card h2 em{
+      font-size:inherit!important;
+      font-weight:400!important;
+      line-height:inherit!important;
+      color:inherit!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-dark-cta-button-room-sync">
+  @media(max-width:680px){
+    .final-cta .cta-copy .rule-link,
+    .final-cta .final-copy .primary-link,
+    .edit-cta .cta-copy .cta-solid,
+    .bdf-final .bdf-button,
+    .bdf-final__copy .bdf-button,
+    .landing-cta-button.primary,
+    .direction-brief-cta .direction-button,
+    .contact .rule-link,
+    .ad-section .ad-link{
+      min-height:54px!important;
+      padding:0 24px!important;
+      font-size:13px!important;
+      line-height:1.15!important;
+      white-space:nowrap!important;
+    }
+    .final-cta .cta-copy .rule-link span,
+    .landing-cta-button.primary span,
+    .direction-brief-cta .direction-button span,
+    .contact .rule-link span{
+      margin-left:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-legal-sync">
+  @media(max-width:680px){
+    .footer-legal{line-height:1.42!important}
+    .footer-legal span{display:block}
+    .footer-legal span + span{margin-top:0}
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-spacing-sync">
+  @media(max-width:680px){
+    .footer-mark{margin-bottom:clamp(52px,11vw,64px)!important}
+    .footer-signature{gap:clamp(8px,1.8vw,10px)!important}
+    .footer-signature img{margin-bottom:0!important}
+    .footer-intelligence{margin-top:0!important}
+  }
+</style>
+
+
+<style id="lnh-editorial-hero-tag-sync">
+  .letter-head > .eyebrow{
+    margin:0!important;
+    font-family:var(--sans)!important;
+    font-size:12px!important;
+    font-weight:400!important;
+    line-height:1.5!important;
+    letter-spacing:.08em!important;
+    text-transform:none!important;
+    color:#565b60!important;
+  }
+</style>
+
+
+<style id="lnh-process-number-size-sync">
+  .residential-path-num,
+  .steps .step-num,
+  .process-grid .process-number,
+  .process-list .process-num,
+  .process-row .process-num,
+  #build-main-clean .bdf-process span,
+  .build-process-step .build-index,
+  .process-step span{
+    font-size:18px!important;
+    line-height:1.2!important;
+    letter-spacing:.06em!important;
+  }
+</style>
+
+
+<style id="lnh-footer-signature-gap-desktop-sync">
+  @media(min-width:681px){
+    .footer-signature{
+      gap:0!important;
+    }
+    .footer-signature img{
+      margin-bottom:0!important;
+    }
+    .footer-intelligence{
+      margin-top:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-footer-legal-desktop-line-sync">
+  @media(min-width:681px){
+    .footer-legal{
+      font-size:12px!important;
+      line-height:1.8!important;
+      text-align:left!important;
+    }
+    .footer-legal span{
+      display:block!important;
+    }
+    .footer-legal span{
+      white-space:nowrap!important;
+    }
+  }
+</style>
+
+<style id="lnh-about-headline-size-sync">
+  :root{
+    --lnh-about-headline-desktop:38px;
+    --lnh-about-headline-mobile:28px;
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-desktop)!important;
+      font-weight:400!important;
+      line-height:1.62!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-mobile)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-section-content-hierarchy-sync">
+  :root{
+    --lnh-subhead-desktop:24px;
+    --lnh-subhead-mobile:21px;
+    --lnh-detail-desktop:15px;
+    --lnh-detail-mobile:14px;
+    --lnh-emphasis-detail-desktop:20px;
+    --lnh-emphasis-detail-mobile:17px;
+  }
+  @media(min-width:681px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-desktop)!important;
+      font-weight:400!important;
+      line-height:1.48!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-desktop)!important;
+      font-weight:400!important;
+      line-height:1.78!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-desktop)!important;
+      font-weight:300!important;
+      line-height:1.92!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-mobile)!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-mobile)!important;
+      font-weight:400!important;
+      line-height:1.84!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-mobile)!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-price-info-scale-sync">
+  @media(min-width:681px){
+    .price-amount b{
+      font-size:44px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:24px!important;
+      line-height:1.18!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:12px!important;
+      line-height:1.55!important;
+    }
+  }
+  @media(max-width:680px){
+    .price-amount b{
+      font-size:40px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:22px!important;
+      line-height:1.2!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:11px!important;
+      line-height:1.55!important;
+    }
+  }
+</style>
+
+<style id="lnh-global-section-hierarchy-final-sync">
+  @media(min-width:681px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:24px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:15px!important;
+      font-weight:300!important;
+      line-height:1.9!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:12px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:44px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:21px!important;
+      font-weight:400!important;
+      line-height:1.52!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:14px!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:11px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:40px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-dark-section-spacing-sync">
+  @media(min-width:681px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+</style>
+<style id="lnh-section-eyebrow-size-sync">
+  @media(min-width:681px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:14px!important;
+      line-height:1.5!important;
+    }
+  }
+  @media(max-width:680px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:12px!important;
+      line-height:1.5!important;
+    }
+  }
+</style>
+
+<style id="lnh-nav-uniform-body-final-sync">
+  .site-header{height:82px!important;padding-inline:clamp(24px,4.5vw,72px)!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;display:inline-flex!important;align-items:center!important;width:auto!important;line-height:1!important;letter-spacing:0!important;z-index:2!important}
+  .site-header .brand img{width:auto!important;height:24px!important;object-fit:contain!important}
+  .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:clamp(9px,.8vw,14px)!important;font-family:var(--sans)!important;font-size:12.5px!important;font-weight:300!important;line-height:1!important;letter-spacing:0!important;white-space:nowrap!important;z-index:1!important}
+  .site-header .nav-group{display:flex!important;align-items:center!important;gap:clamp(9px,.8vw,14px)!important}
+  .site-header .nav-divider{flex:0 0 1px!important;width:1px!important;height:14px!important;margin-inline:2px!important;background:rgba(33,30,25,.38)!important}
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2!important}
+  .site-header .desktop-nav .nav-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:0 14px!important;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-family:var(--sans)!important;font-size:13px!important;font-weight:400!important;line-height:1!important;letter-spacing:0!important;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap!important}
+  .site-header .desktop-nav .nav-cta::after,.site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){.site-header{height:64px!important;padding-inline:22px!important;display:flex!important;justify-content:space-between!important}.site-header.scrolled{height:58px!important}.site-header .desktop-nav{display:none!important}.site-header .brand img{height:24px!important}}
+</style>
+</body>
+</html>

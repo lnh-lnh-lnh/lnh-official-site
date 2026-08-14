@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="기업, 공공기관, 지자체를 위한 LNH Partnership. 조직 안에 필요한 외부 디자인 판단 기준을 제공합니다.">
+  <meta name="theme-color" content="#f3f3f0">
+  <title>LNH Partnership — B2B / B2G Design Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@300;400;500&amp;family=Nanum+Myeongjo:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=profile-ci-2">
+  <link rel="canonical" href="https://www.lnh-universe.com/partnership">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LNH">
+  <meta property="og:title" content="LNH Partnership — 조직을 위한 디자인 판단 기준">
+  <meta property="og:description" content="기업, 공공기관, 지자체의 공간 프로젝트에 필요한 외부 디자인 판단 기능.">
+  <meta property="og:url" content="https://www.lnh-universe.com/partnership">
+  <meta property="og:image" content="https://www.lnh-universe.com/assets/landing-hero-system-sample.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/brand-publishing-v2.css?v=footer-stack-fix-20260730">
+  <style>
+    :root{
+      --paper:#f3f3f0;
+      --panel:#e8e8e4;
+      --ink:#292b2c;
+      --soft:#646a6d;
+      --pale:#8b8e8d;
+      --line:#d4d5d1;
+      --dark:#292a2b;
+      --white:#f5f5f2;
+      --serif:"Nanum Myeongjo",serif;
+      --latin:"Cormorant Garamond",serif;
+      --sans:"IBM Plex Sans KR",sans-serif;
+      --pad:clamp(28px,5vw,88px);
+    }
+    *{box-sizing:border-box;letter-spacing:0}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.9;word-break:keep-all}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit;color:inherit}
+    .skip{position:fixed;left:16px;top:-80px;z-index:100;padding:10px 14px;background:var(--ink);color:var(--white)}
+    .skip:focus{top:16px}
+
+    .site-header{position:fixed;inset:0 0 auto;z-index:50;height:76px;padding-inline:clamp(24px,4.5vw,72px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:height .25s ease,background .25s ease,border-color .25s ease}
+    .site-header.scrolled{height:64px;background:rgba(243,243,240,.94);border-color:var(--line);backdrop-filter:blur(10px)}
+    .brand{display:inline-flex;align-items:center;width:78px}
+    .brand img{width:100%;height:auto}
+    .desktop-nav{display:flex;align-items:center;gap:clamp(9px,.8vw,14px);font-size:12.5px;line-height:1;white-space:nowrap}
+    .nav-group{display:flex;align-items:center;gap:clamp(9px,.8vw,14px)}
+    .nav-divider{flex:0 0 1px;width:1px;height:14px;background:rgba(33,30,25,.38);margin-inline:2px}
+    .desktop-nav a{position:relative}
+    .desktop-nav a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--ink);transition:right .25s}
+    .desktop-nav a:hover::after,.desktop-nav .nav-current::after{right:0}
+    .desktop-nav .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:40px;margin-left:clamp(12px,1.3vw,20px);padding:0 14px;border:1px solid #143758;background:#143758;color:var(--white);font-size:13px}
+    .desktop-nav .nav-cta::after{display:none}
+    .menu-button{display:none;border:0;background:none;padding:10px 0;font-size:12px}
+    .mobile-menu{display:none}
+
+    .deck{padding-top:76px}
+    .slide{min-height:auto;padding:clamp(64px,7.2vh,96px) var(--pad);display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid var(--line)}
+    .slide-label{margin:0 0 clamp(28px,3.8vw,54px);font-family:var(--latin);font-size:16px;font-weight:500;line-height:1;color:var(--ink)}
+    .slide-title{margin:0;font-family:var(--serif);font-size:clamp(42px,5.2vw,86px);font-weight:400;line-height:1.42}
+    .slide-title strong{font-weight:700}
+    .slide-copy{max-width:900px;margin:40px 0 0;color:var(--soft);font-size:clamp(16px,1.35vw,24px);line-height:2}
+    .rule-link{display:inline-flex;align-items:center;gap:32px;padding:0 0 8px;border-bottom:1px solid currentColor;font-size:15px;font-weight:400}
+    .rule-link span{transition:transform .24s ease}
+    .rule-link:hover span{transform:translateX(5px)}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    .hero{justify-content:center;min-height:auto;padding-top:clamp(70px,8vh,92px);padding-bottom:clamp(70px,8vh,92px)}
+    .hero .slide-title{max-width:980px}
+    .hero .slide-copy{max-width:1040px}
+    .hero-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:68px;border-top:1px solid var(--ink)}
+    .hero-cell{min-height:152px;padding:30px 38px 24px 0;border-right:1px solid var(--line)}
+    .hero-cell:not(:first-child){padding-left:38px}
+    .hero-cell:last-child{border-right:0}
+    .hero-cell b{display:block;margin-bottom:22px;font-family:var(--latin);font-size:15px;font-weight:500;text-transform:uppercase;color:var(--pale)}
+    .hero-cell p{margin:0;font-family:var(--serif);font-size:clamp(20px,1.7vw,28px);line-height:1.55}
+
+    .proof{background:var(--paper)}
+    .proof-head{display:grid;grid-template-columns:1fr 1.35fr;gap:70px;align-items:start}
+    .proof-head .slide-title{font-size:clamp(38px,4.1vw,70px)}
+    .proof-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:62px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+    .stat{min-height:190px;padding:32px 36px;border-right:1px solid var(--line)}
+    .stat:first-child{padding-left:0}
+    .stat:last-child{border-right:0}
+    .stat strong{display:block;margin-bottom:18px;font-family:var(--latin);font-size:clamp(42px,4vw,68px);font-weight:400;line-height:1;color:var(--ink)}
+    .stat .scope-text{font-family:var(--serif);font-size:clamp(24px,2.35vw,38px);line-height:1.55}
+    .stat p{margin:0;color:var(--soft);font-size:15px;line-height:1.75}
+    .logo-wall{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin-top:42px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+    .logo-item{height:170px;display:flex;align-items:center;justify-content:center;padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;overflow:hidden}
+    .logo-item:nth-child(7n){border-right:0}
+    .logo-item:nth-last-child(-n+7){border-bottom:0}
+    .logo-item img{width:auto;height:auto;max-width:82%;max-height:58px;object-fit:contain;filter:grayscale(1);opacity:.68}
+    .logo-item img.partner-bi{filter:none;opacity:.68}
+    .logo-item img.partner-bi-wide{max-width:92%;max-height:44px}
+    .logo-item img.partner-bi-square{max-width:74%;max-height:74px}
+    .logo-item img.partner-bi-tall{max-width:92%;max-height:68px}
+    .logo-item .fnc-logo{filter:invert(1) grayscale(1);opacity:.68}
+    .logo-text{display:block;color:#5f6363;line-height:1.08;opacity:.82}
+    .logo-shinhan{font-family:var(--sans);font-size:18px;font-weight:700}
+    .logo-shinhan small,.logo-kolon small,.logo-walkerhill small,.logo-atkinsons small,.logo-hyundai small{display:block;margin-top:8px;font-family:var(--sans);font-size:9px;font-weight:500;text-transform:uppercase}
+    .logo-haneul{font-family:var(--sans);font-size:28px;font-weight:500;color:#2d2f30}
+    .logo-atkinsons{font-family:var(--latin);font-size:23px;font-weight:700;font-style:italic}
+    .logo-hyundai,.logo-kolon{font-family:var(--sans);font-size:21px;font-weight:700}
+    .logo-walkerhill{font-family:var(--latin);font-size:22px;font-weight:700}
+    .logo-note{max-width:900px;margin:30px 0 0;color:var(--soft);font-size:14px;line-height:2;text-align:left}
+
+    .needed{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(70px,9vw,150px);align-items:center;background:var(--paper)}
+    .needed .slide-title{font-size:clamp(40px,4.5vw,74px)}
+    .needed-copy{max-width:520px;margin-top:32px;color:var(--soft);font-size:18px;line-height:2}
+    .need-list{border-top:1px solid var(--ink)}
+    .need-row{display:grid;grid-template-columns:70px 1fr;gap:44px;padding:34px 0;border-bottom:1px solid var(--line)}
+    .need-row span{font-family:var(--latin);font-size:17px;color:var(--soft)}
+    .need-row p{margin:0;font-family:var(--serif);font-size:clamp(22px,2.1vw,34px);line-height:1.6}
+
+    .dark{background:var(--dark);color:var(--white)}
+    .dark .slide-label,.dark .need-row span{color:var(--white)}
+    .dark .slide-copy,.dark .role-copy,.dark .boundary p{color:#d6d8d7}
+    .role-slide{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(70px,9vw,150px);align-items:center}
+    .role-slide .slide-title{font-size:clamp(38px,4.3vw,72px)}
+    .role-panel{border-top:1px solid rgba(245,245,242,.55)}
+    .role-copy{margin:0;padding:38px 0;border-bottom:1px solid rgba(245,245,242,.13);font-size:clamp(17px,1.45vw,23px);line-height:2}
+    .boundary{padding-top:34px;border-top:1px solid rgba(245,245,242,.13)}
+    .boundary h3{margin:0 0 18px;font-family:var(--serif);font-size:clamp(23px,2vw,32px);font-weight:400}
+    .boundary p{max-width:980px;margin:0;font-size:15px;line-height:2}
+
+    .service-slide{background:var(--panel)}
+    .service-slide .slide-title{text-align:center;font-size:clamp(36px,4.2vw,72px)}
+    .service-table{margin-top:52px;border-top:1px solid var(--ink)}
+    .table-head,.service-row{display:grid;grid-template-columns:70px 1.1fr 1.55fr .48fr 1.35fr;gap:34px;align-items:start;border-bottom:1px solid var(--line)}
+    .table-head{padding:18px 0;color:var(--pale);font-family:var(--serif);font-size:15px}
+    .service-row{padding:34px 0}
+    .service-num{font-family:var(--latin);font-size:15px;color:var(--soft)}
+    .service-name{margin:0;font-family:var(--latin);font-size:clamp(24px,2.1vw,34px);font-weight:400;line-height:1.25}
+    .service-name span{display:block;margin-top:10px;font-family:var(--sans);font-size:14px;color:var(--soft)}
+    .service-when,.service-period,.service-output{margin:0;color:var(--soft);font-size:15px;line-height:1.9}
+    .service-period{font-family:var(--serif);font-size:19px;color:var(--ink)}
+    .table-note{margin:32px 0 0;color:var(--soft);font-size:13px;line-height:2}
+
+    .process-slide .slide-title{text-align:center;font-size:clamp(36px,4.2vw,72px)}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+    .process-step{min-height:275px;padding:34px 40px 38px 0;border-right:1px solid var(--line)}
+    .process-step:not(:first-child){padding-left:40px}
+    .process-step:last-child{border-right:0}
+    .process-step span{font-family:var(--latin);font-size:15px;color:var(--soft)}
+    .process-step h3{margin:58px 0 20px;font-family:var(--serif);font-size:clamp(23px,1.8vw,30px);font-weight:400}
+    .process-step p{margin:0;color:var(--soft);font-size:15px}
+    .start-note{display:grid;grid-template-columns:1fr 2.4fr;gap:64px;margin-top:46px;padding-top:30px}
+    .start-note b{font-weight:300;color:var(--soft)}
+    .start-note p{margin:0;max-width:900px;color:var(--soft);font-size:17px;line-height:2}
+
+    .contact{display:block;min-height:auto;padding:0;background:var(--dark);color:var(--white);border-bottom:0}
+    .contact-copy{max-width:980px;padding:clamp(58px,6vw,86px) var(--pad);display:flex;flex-direction:column;justify-content:center}
+    .contact .slide-label{margin-bottom:28px}
+    .contact .slide-title{font-size:clamp(40px,4.3vw,72px)}
+    .contact .slide-copy{max-width:720px;margin-top:24px;color:#d6d8d7;font-size:17px}
+    .contact .rule-link{display:inline-flex;align-items:center;justify-content:center;width:max-content;min-height:50px;margin-top:30px;padding:0 22px;border:1px solid var(--white);background:var(--white);color:var(--dark)!important;transition:background .22s ease,color .22s ease,transform .22s ease}
+    .contact .rule-link:link,.contact .rule-link:visited{color:var(--dark)!important}
+    .contact .rule-link:hover,.contact .rule-link:focus-visible{background:transparent;color:var(--white)!important;transform:translateY(-2px)}
+
+    footer{padding:60px var(--pad) 40px;border-top:1px solid var(--line)}
+    .footer-top{display:flex;justify-content:space-between;gap:50px;margin-bottom:100px}
+    .footer-mark{width:78px}
+    .footer-nav{display:grid;grid-template-columns:repeat(4,auto);gap:12px 34px;font-size:12px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:30px;font-size:10px;color:var(--soft);line-height:1.8}
+    .footer-signature img{width:160px;height:auto;margin-bottom:14px}
+
+    @media(max-width:1120px){
+      :root{--pad:40px}
+      .desktop-nav{display:none}
+      .menu-button{display:block}
+      .mobile-menu{display:flex;position:fixed;z-index:45;inset:0;background:var(--paper);padding:98px var(--pad) 40px;flex-direction:column;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+      .mobile-menu.open{opacity:1;visibility:visible}
+      .mobile-menu nav{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+      .mobile-group{padding:18px 0 8px;border-bottom:1px solid var(--line)}
+      .mobile-group-label{margin:0 0 4px;font-family:var(--latin);font-size:12px;font-style:italic;color:var(--soft)}
+      .mobile-menu a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:23px}
+      .mobile-menu a:last-child{border-bottom:0}
+      .mobile-menu>p{margin:auto 0 0;font-family:var(--latin);font-style:italic}
+      .proof-head,.needed,.role-slide,.contact{grid-template-columns:1fr;gap:70px}
+      .proof-stats{grid-template-columns:1fr 1fr}
+      .stat:nth-child(2){border-right:0}
+      .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .logo-wall{grid-template-columns:repeat(4,1fr)}
+      .logo-item,.logo-item:nth-child(7n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+      .logo-item:nth-child(4n){border-right:0}
+      .logo-item:nth-last-child(-n+7){border-bottom:1px solid var(--line)}
+      .logo-item:nth-last-child(-n+2){border-bottom:0}
+      .logo-item:nth-child(13){grid-column:2}
+      .logo-item:nth-child(14){grid-column:3}
+      .table-head{display:none}
+      .service-row{grid-template-columns:50px 1fr;gap:16px 30px}
+      .service-when,.service-period,.service-output{grid-column:2}
+      .process-grid{grid-template-columns:1fr 1fr}
+      .process-step:nth-child(2){border-right:0}
+      .process-step:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    }
+    @media(max-width:680px){
+      :root{--pad:22px}
+      body{line-height:1.75}
+      .site-header{height:64px}
+      .site-header.scrolled{height:58px}
+      .brand{width:70px}
+      .deck{padding-top:64px}
+      .slide{min-height:auto;padding:62px var(--pad)}
+      .slide-label{margin-bottom:26px;font-size:14px}
+      .slide-title{font-size:38px;line-height:1.5}
+      .slide-copy{margin-top:24px;font-size:15px;line-height:1.95}
+      .hero{min-height:auto;padding-top:54px;padding-bottom:54px}
+      .hero-grid{display:block;margin-top:42px;border-bottom:1px solid var(--line)}
+      .hero-cell,.hero-cell:not(:first-child){min-height:auto;padding:22px 0;border-right:0;border-bottom:1px solid var(--line)}
+      .hero-cell:last-child{border-bottom:0}
+      .hero-cell b{margin-bottom:12px}
+      .hero-cell p{font-size:22px}
+      .proof-head{gap:34px}
+      .proof-stats{display:block;margin-top:38px}
+      .stat{min-height:auto;padding:25px 0;border-right:0;border-bottom:1px solid var(--line)}
+      .stat:last-child{border-bottom:0}
+      .stat strong{font-size:44px}
+      .logo-wall{grid-template-columns:1fr 1fr;margin-top:32px}
+      .logo-item,.logo-item:nth-child(4n),.logo-item:nth-child(7n),.logo-item:nth-child(13),.logo-item:nth-child(14){grid-column:auto;height:132px;padding:18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+      .logo-item:nth-child(2n){border-right:0}
+      .logo-item:nth-last-child(-n+2){border-bottom:0}
+      .logo-haneul{font-size:21px}
+      .logo-shinhan,.logo-hyundai,.logo-kolon,.logo-walkerhill{font-size:16px}
+      .logo-atkinsons{font-size:18px}
+      .logo-note{margin-top:22px;font-size:12px}
+      .needed{gap:46px}
+      .needed-copy{margin-top:22px;font-size:14px}
+      .need-row{grid-template-columns:34px 1fr;gap:16px;padding:24px 0}
+      .need-row p{font-size:20px}
+      .role-slide{gap:42px}
+      .role-copy{padding:34px 0;font-size:14px}
+      .boundary{padding-top:34px}
+      .boundary p{font-size:12px}
+      .service-slide .slide-title,.process-slide .slide-title{text-align:left}
+      .service-table{margin-top:34px}
+      .service-row{grid-template-columns:32px 1fr;gap:12px;padding:25px 0}
+      .service-name{font-size:24px}
+      .service-name span,.service-when,.service-period,.service-output{font-size:12px}
+      .service-period{font-size:16px}
+      .process-grid{display:block;margin-top:34px}
+      .process-step,.process-step:not(:first-child){min-height:auto;padding:24px 0;border-right:0;border-bottom:1px solid var(--line)}
+      .process-step:last-child{border-bottom:0}
+      .process-step h3{margin:24px 0 12px}
+      .process-step p{font-size:13px}
+      .start-note{grid-template-columns:1fr;gap:18px;margin-top:32px}
+      .start-note p{font-size:14px}
+      .contact-copy{padding:52px var(--pad)}
+      .contact .slide-copy{font-size:14px}
+      .footer-top,.footer-bottom{display:block}
+      .footer-top{margin-bottom:70px}
+      .footer-mark{margin-bottom:40px}
+      .footer-nav{grid-template-columns:repeat(2,1fr)}
+      .footer-bottom p:last-child{margin-top:22px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+  </style>
+  <script src="assets/site-menu.js?v=menu-cross-20260729" defer></script>
+  <style id="lnh-brief-hero-tag-sync">
+    .deck{padding-top:0!important}
+    .slide.hero{min-height:94svh!important;padding:clamp(132px,17vh,190px) var(--pad) 26px!important;justify-content:flex-start!important}
+    .slide.hero .lnh-hero-tag{margin:0!important;font-family:var(--sans)!important;font-size:12px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:.08em!important;color:var(--ink)!important;text-transform:none!important}
+    .slide.hero .lnh-hero-tag + .slide-title{margin-top:40px}
+    .slide.hero .hero-grid{margin-top:46px!important}
+    .slide.hero .reveal{opacity:1!important;transform:none!important;transition:none!important}
+    @media(max-width:760px){.slide.hero{min-height:auto!important;padding:106px var(--pad) 34px!important}.slide.hero .lnh-hero-tag + .slide-title{margin-top:22px}.slide.hero .hero-grid{margin-top:32px!important}}
+  </style>
+
+  <style id="lnh-nav-center-sync">
+    @media(min-width:1121px){
+      .site-header{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+      .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;z-index:2}
+      .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;justify-content:center!important;z-index:1}
+      .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+      .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2}
+    }
+  </style>
+
+<style id="lnh-nav-uniform-final-sync">
+  .site-header{
+    height:82px!important;
+    padding-inline:clamp(24px,4.5vw,72px)!important;
+    display:grid!important;
+    grid-template-columns:1fr auto 1fr!important;
+    align-items:center!important;
+    justify-content:initial!important;
+  }
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    width:auto!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    z-index:2!important;
+  }
+  .site-header .brand img{
+    width:auto!important;
+    height:24px!important;
+    object-fit:contain!important;
+  }
+  .site-header .desktop-nav{
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    justify-self:center!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+    font-family:var(--sans)!important;
+    font-size:12.5px!important;
+    font-weight:300!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    white-space:nowrap!important;
+    z-index:1!important;
+  }
+  .site-header .nav-group{
+    display:flex!important;
+    align-items:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+  }
+  .site-header .nav-divider{
+    flex:0 0 1px!important;
+    width:1px!important;
+    height:14px!important;
+    margin-inline:2px!important;
+    background:rgba(33,30,25,.38)!important;
+  }
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,
+  .site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,
+  .site-header .desktop-nav>.nav-action-icons{
+    position:absolute!important;
+    right:clamp(24px,4.5vw,72px)!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    margin-left:0!important;
+    z-index:2!important;
+  }
+  .site-header .desktop-nav .nav-cta{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:40px!important;
+    padding:0 14px!important;
+    border:1px solid #143758!important;
+    background:#143758!important;
+    color:#f5f5f2!important;
+    font-family:var(--sans)!important;
+    font-size:13px!important;
+    font-weight:400!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    text-decoration:none!important;
+    border-bottom:1px solid #143758!important;
+    white-space:nowrap!important;
+  }
+  .site-header .desktop-nav .nav-cta::after,
+  .site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){
+    .site-header{
+      height:64px!important;
+      padding-inline:22px!important;
+      display:flex!important;
+      justify-content:space-between!important;
+    }
+    .site-header.scrolled{height:58px!important}
+    .site-header .desktop-nav{display:none!important}
+    .site-header .brand img{height:24px!important}
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="LNH 홈"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></a>
+    <nav class="desktop-nav" aria-label="LNH 주요 메뉴"><span class="nav-group" aria-label="Residential services"><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Commerce"><a href="edit.html">Edit</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Partnership"><a class="nav-current" href="partnership.html">Partnership</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Company"><a href="about.html">About</a><a href="stories.html">Stories</a></span><a class="nav-cta" href="https://pf.kakao.com/_txjGxln/chat">Partnership 문의하기</a></nav>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  </header>
+  <aside class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="모바일 메뉴"><div class="mobile-group"><p class="mobile-group-label">Residential</p><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a></div><div class="mobile-group"><p class="mobile-group-label">Commerce</p><a href="edit.html">Edit</a></div><div class="mobile-group"><p class="mobile-group-label">Partnership</p><a href="partnership.html">Partnership</a></div><div class="mobile-group"><p class="mobile-group-label">LNH</p><a href="about.html">About</a><a href="stories.html">Stories</a></div><a href="https://pf.kakao.com/_txjGxln/chat">Partnership 문의하기</a></nav>
+    <p>For Organizations · B2B / B2G</p>
+  </aside>
+
+  <main id="main" class="deck">
+    <section class="slide hero" aria-labelledby="hero-title">
+      <div>
+        <p class="slide-label lnh-hero-tag">LNH Partnership · B2B / B2G</p>
+        <h1 class="slide-title" id="hero-title">조직 안에<br>디자인 <strong>판단 기준</strong>이 필요할 때.</h1>
+        <p class="slide-copy">디자인 전담 조직 없이 공간 프로젝트를 진행하는 기업과 공공기관의 의사결정에 참여합니다. 외주사 제안을 검토하고, 흩어진 요구를 하나의 기준으로 정리해, 담당자가 내부에서 근거를 들어 설명할 수 있게 만듭니다.</p>
+      </div>
+      <div class="hero-grid" aria-label="Partnership 개요">
+        <div class="hero-cell"><b>For</b><p>기업 · 공공기관 · 개발 및 운영사</p></div>
+        <div class="hero-cell"><b>Scope</b><p>방향 정리 · 제안 검토 · 의사결정 지원</p></div>
+        <div class="hero-cell"><b>Engagement</b><p>단기 Review 2주부터 프로젝트 상시 참여까지</p></div>
+        <div class="hero-cell"><b>Contact</b><p>이메일 접수<br>영업일 2일 내 회신</p></div>
+      </div>
+    </section>
+
+    <section class="slide proof" aria-labelledby="proof-title">
+      <div class="proof-head reveal">
+        <p class="slide-label">01 / 참여 프로젝트</p>
+        <h2 class="slide-title" id="proof-title">판단의 근거는<br>참여한 프로젝트에 있습니다.</h2>
+      </div>
+      <div class="proof-stats reveal" aria-label="참여 경험 요약">
+        <div class="stat"><strong>25</strong><p>년, 공간을 만들고 판단해 온 시간</p></div>
+        <div class="stat"><strong>100+</strong><p>건의 상업 공간<br>호텔 · 오피스 · F&amp;B</p></div>
+        <div class="stat"><strong>1,000+</strong><p>세대 규모의<br>주거 프로젝트</p></div>
+        <div class="stat"><strong class="scope-text">호텔 · 주거 · 리테일 · 공공</strong><p>다뤄온 공간의 범위</p></div>
+      </div>
+      <div class="logo-wall reveal" aria-label="LNH의 경험을 형성한 브랜드">
+        <div class="logo-item"><img loading="lazy" src="assets/partner-logos/w-hotels.svg" alt="W Hotels"></div>
+        <div class="logo-item"><img loading="lazy" src="assets/partner-logos/sk-networks.png" alt="SK networks"></div>
+        <div class="logo-item"><span class="logo-text logo-shinhan">SHINHAN<small>BNP PARIBAS</small></span></div>
+        <div class="logo-item"><img loading="lazy" class="partner-bi partner-bi-tall" src="assets/partner-logos/songpa-gu-clean.png" alt="송파구"></div>
+        <div class="logo-item"><img loading="lazy" class="partner-bi partner-bi-square" src="assets/partner-logos/haneulche-clean.png" alt="코오롱 하늘채"></div>
+        <div class="logo-item"><span class="logo-text logo-atkinsons">Atkinsons<small>Coffee Roasters · 1837</small></span></div>
+        <div class="logo-item"><img loading="lazy" src="assets/partner-logos/commontown.png" alt="COMMONTOWN"></div>
+        <div class="logo-item"><img loading="lazy" src="assets/partner-logos/homes.svg" alt="HOMES"></div>
+        <div class="logo-item"><img loading="lazy" class="partner-bi partner-bi-wide" src="assets/partner-logos/hyundai-haim-clean.png" alt="현대하임자산운용"></div>
+        <div class="logo-item"><img loading="lazy" class="fnc-logo" src="assets/partner-logos/kolon-fnc.svg" alt="코오롱 FnC"></div>
+        <div class="logo-item"><span class="logo-text logo-kolon">KOLON<small>MOBILITY GROUP</small></span></div>
+        <div class="logo-item"><span class="logo-text logo-walkerhill">WALKERHILL<small>Hotels &amp; Resorts</small></span></div>
+        <div class="logo-item"><img loading="lazy" class="partner-bi partner-bi-wide" src="assets/partner-logos/genesis-bbq-clean.png" alt="GENESIS BBQ Group"></div>
+        <div class="logo-item"><img loading="lazy" class="partner-bi partner-bi-tall" src="assets/partner-logos/the-platinum-clean.png" alt="쌍용건설 더 플래티넘"></div>
+      </div>
+      <p class="logo-note reveal">호텔과 주거, 코리빙과 커뮤니티에서 공간의 방향과 실행을 다룬 프로젝트들입니다. 이전 소속에서 참여한 프로젝트를 포함하며, 각 브랜드와의 현재 계약 관계를 뜻하지 않습니다.</p>
+    </section>
+
+    <section class="slide needed" aria-labelledby="needed-title">
+      <div class="reveal">
+        <p class="slide-label">02 / 필요한 순간</p>
+        <h2 class="slide-title" id="needed-title">디자인 부서는 없어도,<br>판단은 계속 필요합니다.</h2>
+        <p class="needed-copy">외주사 선정, 제안 비교, 내부 의견 조율, 실행 우선순위 결정은 모두 조직 안에 남습니다. 이 판단에 책임을 지는 담당자에게 외부의 검토 근거가 필요한 순간이 있습니다.</p>
+      </div>
+      <div class="need-list reveal">
+        <div class="need-row"><span>01</span><p>프로젝트는 있지만 디자인 전담 조직을 두기 어려울 때</p></div>
+        <div class="need-row"><span>02</span><p>외주사의 제안을 받았지만 무엇이 좋은 안인지 판단하기 어려울 때</p></div>
+        <div class="need-row"><span>03</span><p>브랜드·공간·예산·운영의 요구가 서로 다른 방향을 볼 때</p></div>
+        <div class="need-row"><span>04</span><p>내부 승인이나 주민·사용자 설명을 위한 기준이 필요할 때</p></div>
+      </div>
+    </section>
+
+    <section class="slide dark role-slide" aria-labelledby="role-title">
+      <div class="reveal">
+        <p class="slide-label">03 / 역할</p>
+        <h2 class="slide-title" id="role-title">만드는 일을<br>대신하기보다,<br>무엇을 왜 만들지<br>분명하게 합니다.</h2>
+      </div>
+      <div class="role-panel reveal">
+        <p class="role-copy">제작 외주는 주어진 요청을 수행합니다. Partnership은 그 요청이 적절한지부터 검토합니다. 조직의 목표와 사용자 경험이 이어지는지, 다음 결정에 빠진 질문은 없는지, 그대로 진행할 때 어떤 리스크가 남는지를 먼저 봅니다.</p>
+        <div class="boundary">
+          <h3>참여의 경계도 분명히 합니다.</h3>
+          <p>LNH Partnership은 시공사, 법적 감리, 입찰 행정의 역할을 대신하지 않습니다. 조직이 그 파트너들과 더 정확히 대화하고 결정하도록 디자인 관점의 기준을 제공합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide service-slide" aria-labelledby="service-title">
+      <div class="reveal">
+        <p class="slide-label">04 / 참여 방식</p>
+        <h2 class="slide-title" id="service-title">필요한 순간과 깊이에 맞춰<br>참여 방식을 정합니다.</h2>
+      </div>
+      <div class="service-table reveal">
+        <div class="table-head" aria-hidden="true"><span></span><span>참여 방식</span><span>필요한 상황</span><span>기간</span><span>산출물</span></div>
+        <article class="service-row"><span class="service-num">01</span><h3 class="service-name">Design Review<span>짧고 분명한 검토</span></h3><p class="service-when">진행 중인 제안서·설계안·공간 계획을 조직의 목표와 사용자 관점에서 다시 봐야 할 때</p><p class="service-period">2주</p><p class="service-output">검토 리포트 · 핵심 리스크 · 외주사에 물을 질문</p></article>
+        <article class="service-row"><span class="service-num">02</span><h3 class="service-name">Advisory Session<span>하나의 쟁점부터</span></h3><p class="service-when">계약 전, 업체 선정 전, 내부 보고 전처럼 특정 결정에 외부 판단이 필요할 때</p><p class="service-period">1회~</p><p class="service-output">미팅 요약 · 선택 기준 · 다음 단계 권고</p></article>
+        <article class="service-row"><span class="service-num">03</span><h3 class="service-name">Design Recovery<span>막힌 안을 다시 움직이기</span></h3><p class="service-when">내부 승인, 심의, 일정, 이해관계자 의견으로 진행 중인 안의 방향이 흔들릴 때</p><p class="service-period">4~6주</p><p class="service-output">문제 진단 · 개선 우선순위 · 재협의 기준</p></article>
+        <article class="service-row"><span class="service-num">04</span><h3 class="service-name">Design PM<span>비상주 디자인 관리</span></h3><p class="service-when">시작부터 실행까지 내부 담당자와 외주사 사이에서 디자인 기준을 계속 관리해야 할 때</p><p class="service-period">프로젝트 기간</p><p class="service-output">디자인 기준 · 쟁점 로그 · 회의 정리 · 단계별 권고</p></article>
+        <article class="service-row"><span class="service-num">05</span><h3 class="service-name">Public Design Advisory<span>정부 · 지자체 · 공공기관</span></h3><p class="service-when">생활 SOC, 공공 공간, 주민 편의 시설에서 공공성과 실제 사용 경험을 함께 검토해야 할 때</p><p class="service-period">과업 기준</p><p class="service-output">공공성 쟁점 · 사용자 관점 검토 · 주민 설명 기준</p></article>
+      </div>
+      <p class="table-note reveal">기간은 자료가 준비된 경우의 기준이며, 프로젝트 규모와 회의 횟수에 따라 달라집니다. 비용은 참여 범위를 확정한 뒤 산정해 회신합니다. 공공기관은 수의계약과 용역 발주 절차 모두 대응합니다.</p>
+    </section>
+
+    <section class="slide process-slide" aria-labelledby="process-title">
+      <div class="reveal">
+        <p class="slide-label">05 / 진행 절차</p>
+        <h2 class="slide-title" id="process-title">범위와 책임을 먼저 정한 뒤,<br>프로젝트 안으로 들어갑니다.</h2>
+      </div>
+      <div class="process-grid reveal">
+        <article class="process-step"><span>01</span><h3>상황 확인</h3><p>프로젝트 단계, 외주사 유무, 조직의 고민과 의사결정 구조를 듣습니다.</p></article>
+        <article class="process-step"><span>02</span><h3>자료 검토</h3><p>제안서, 도면, 이미지, 일정과 예산 등 현재 판단에 필요한 자료를 봅니다.</p></article>
+        <article class="process-step"><span>03</span><h3>참여 범위 설정</h3><p>다룰 쟁점, 회의 방식, 산출물, 기간과 책임의 경계를 합의합니다.</p></article>
+        <article class="process-step"><span>04</span><h3>판단과 후속 결정</h3><p>검토와 회의를 진행하고, 조직이 바로 사용할 수 있는 기준을 남깁니다.</p></article>
+      </div>
+      <div class="start-note reveal">
+        <b>시작하는 방법</b>
+        <p>처음부터 큰 계약일 필요는 없습니다. 제안서 한 건이나 쟁점 하나를 보는 단기 Review로 시작해 방식이 맞는지 확인한 뒤, 필요할 때 PM형 참여로 전환합니다. 비용과 기간은 참여 범위를 확정한 뒤 산정합니다.</p>
+      </div>
+    </section>
+
+    <section class="contact reveal" id="conversation" aria-labelledby="contact-title">
+      <div class="contact-copy">
+        <p class="slide-label">문의</p>
+        <h2 class="slide-title" id="contact-title">현재 안과,<br>결정하기 어려운 지점부터.</h2>
+        <p class="slide-copy">프로젝트 단계와 외주사 유무, 판단이 필요한 지점, 공유 가능한 자료를 보내주십시오. 영업일 2일 안에 참여 가능한 범위와 예상 기간, 비용 구간을 회신합니다. 자료 검토 전 비밀유지확약서 체결도 가능합니다.</p>
+        <a class="rule-link" href="https://pf.kakao.com/_txjGxln/chat">Partnership 문의하기</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-top"><div class="footer-mark"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></div><nav class="footer-nav" aria-label="하단 메뉴"><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a><a href="edit.html">Edit</a><a href="partnership.html">Partnership</a><a href="about.html">About</a><a href="stories.html">Stories</a></nav></div>
+    <div class="footer-bottom"><div class="footer-signature"><img src="assets/LNH-slogan.svg" alt="Lifestyle Advisor · Seoul"><p class="footer-intelligence"><span class="footer-intelligence-mark" aria-hidden="true"></span>Brief Intelligence</p></div><p class="footer-legal"><span>상호명: 엘엔에이치 · 대표: 이승일 · 서울특별시 송파구 잠실로 62</span><span>사업자등록번호: 247-54-00733 · © LNH 2026. All rights reserved.</span></p></div>
+  </footer>
+  <script>
+    const header=document.querySelector('.site-header');
+    const menuButton=document.querySelector('.menu-button');
+    const mobileMenu=document.querySelector('.mobile-menu');
+    const setHeader=()=>header.classList.toggle('scrolled',scrollY>20);
+    addEventListener('scroll',setHeader,{passive:true});setHeader();
+    menuButton.addEventListener('click',()=>{const open=!mobileMenu.classList.contains('open');mobileMenu.classList.toggle('open',open);menuButton.textContent=open?'Close':'Menu';menuButton.setAttribute('aria-expanded',open);mobileMenu.setAttribute('aria-hidden',!open);document.body.classList.toggle('menu-open',open)});
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('open');menuButton.textContent='Menu';menuButton.setAttribute('aria-expanded','false');mobileMenu.setAttribute('aria-hidden','true');document.body.classList.remove('menu-open')}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+
+<style id="lnh-section-headline-scale-sync">
+  :root{
+    --lnh-section-heading-desktop:clamp(36px,3vw,44px);
+    --lnh-section-heading-mobile:clamp(28px,7.6vw,32px);
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2{
+      font-size:var(--lnh-section-heading-desktop)!important;
+      line-height:1.56!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2{
+      font-size:var(--lnh-section-heading-mobile)!important;
+      line-height:1.66!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-hero-cta-gap-sync">
+  @media(max-width:680px){
+    .hero-copy:has(.hero-bottom),
+    .direction-hero-copy:has(.direction-hero-action),
+    .build-direction-hero-copy:has(.build-direction-hero-action),
+    #build-main-clean .build-direction-hero-copy:has(.build-direction-hero-action){
+      min-height:auto!important;
+      justify-content:flex-start!important;
+      gap:clamp(112px,25vw,150px)!important;
+      padding-bottom:clamp(34px,8vw,46px)!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-bottom,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      margin-top:0!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-action,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      gap:9px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-dark-ad-headline-mobile-sync">
+  @media(max-width:680px){
+    .landing-cta h2,
+    .brief-need-hook > p,
+    .reassurance-copy h2,
+    .final-cta .final-copy h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .bdf-dark-statement h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .ad-section .ad-card h2{
+      font-size:clamp(28px,7vw,31px)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+    .landing-cta h2 span,
+    .landing-cta h2 em,
+    .final-copy h2 span,
+    .final-copy h2 em,
+    .direction-manifesto h2 span,
+    .direction-manifesto h2 em,
+    .direction-brief-cta h2 span,
+    .direction-brief-cta h2 em,
+    .bdf-dark-statement h2 span,
+    .bdf-dark-statement h2 em,
+    .bdf-final h2 span,
+    .bdf-final h2 em,
+    .bdf-final__copy h2 span,
+    .bdf-final__copy h2 em,
+    .cta-copy h2 span,
+    .cta-copy h2 em,
+    .contact .slide-title span,
+    .contact .slide-title em,
+    .ad-section .ad-card h2 span,
+    .ad-section .ad-card h2 em{
+      font-size:inherit!important;
+      font-weight:400!important;
+      line-height:inherit!important;
+      color:inherit!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-ad-cta-scale-sync">
+  @media(max-width:680px){
+    .landing-cta-button,
+    .landing-cta-button.primary,
+    .brief-copy .rule-link,
+    .final-copy .primary-link,
+    .final-copy .rule-link,
+    .direction-brief-cta .rule-link,
+    .bdf-final .bdf-button,
+    .cta-copy .rule-link,
+    .cta-copy .cta-solid,
+    .contact .rule-link{
+      min-height:42px!important;
+      padding:0 18px!important;
+      font-size:13px!important;
+      line-height:1.1!important;
+    }
+    .landing-cta-button.secondary,
+    .brief-copy .rule-link:not(.primary-link),
+    .cta-copy .rule-link{
+      min-height:0!important;
+      padding:8px 0!important;
+      font-size:13px!important;
+      gap:14px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-dark-cta-button-room-sync">
+  @media(max-width:680px){
+    .final-cta .cta-copy .rule-link,
+    .final-cta .final-copy .primary-link,
+    .edit-cta .cta-copy .cta-solid,
+    .bdf-final .bdf-button,
+    .bdf-final__copy .bdf-button,
+    .landing-cta-button.primary,
+    .direction-brief-cta .direction-button,
+    .contact .rule-link,
+    .ad-section .ad-link{
+      min-height:54px!important;
+      padding:0 24px!important;
+      font-size:13px!important;
+      line-height:1.15!important;
+      white-space:nowrap!important;
+    }
+    .final-cta .cta-copy .rule-link span,
+    .landing-cta-button.primary span,
+    .direction-brief-cta .direction-button span,
+    .contact .rule-link span{
+      margin-left:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-legal-sync">
+  @media(max-width:680px){
+    .footer-legal{line-height:1.42!important}
+    .footer-legal span{display:block}
+    .footer-legal span + span{margin-top:0}
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-spacing-sync">
+  @media(max-width:680px){
+    .footer-mark{margin-bottom:clamp(52px,11vw,64px)!important}
+    .footer-signature{gap:clamp(8px,1.8vw,10px)!important}
+    .footer-signature img{margin-bottom:0!important}
+    .footer-intelligence{margin-top:0!important}
+  }
+</style>
+
+
+<style id="lnh-process-number-size-sync">
+  .residential-path-num,
+  .steps .step-num,
+  .process-grid .process-number,
+  .process-list .process-num,
+  .process-row .process-num,
+  #build-main-clean .bdf-process span,
+  .build-process-step .build-index,
+  .process-step span{
+    font-size:18px!important;
+    line-height:1.2!important;
+    letter-spacing:.06em!important;
+  }
+</style>
+
+
+<style id="lnh-footer-signature-gap-desktop-sync">
+  @media(min-width:681px){
+    .footer-signature{
+      gap:0!important;
+    }
+    .footer-signature img{
+      margin-bottom:0!important;
+    }
+    .footer-intelligence{
+      margin-top:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-footer-legal-desktop-line-sync">
+  @media(min-width:681px){
+    .footer-legal{
+      font-size:12px!important;
+      line-height:1.8!important;
+      text-align:left!important;
+    }
+    .footer-legal span{
+      display:block!important;
+    }
+    .footer-legal span{
+      white-space:nowrap!important;
+    }
+  }
+</style>
+
+<style id="lnh-about-headline-size-sync">
+  :root{
+    --lnh-about-headline-desktop:38px;
+    --lnh-about-headline-mobile:28px;
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-desktop)!important;
+      font-weight:400!important;
+      line-height:1.62!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-mobile)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-section-content-hierarchy-sync">
+  :root{
+    --lnh-subhead-desktop:24px;
+    --lnh-subhead-mobile:21px;
+    --lnh-detail-desktop:15px;
+    --lnh-detail-mobile:14px;
+    --lnh-emphasis-detail-desktop:20px;
+    --lnh-emphasis-detail-mobile:17px;
+  }
+  @media(min-width:681px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-desktop)!important;
+      font-weight:400!important;
+      line-height:1.48!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-desktop)!important;
+      font-weight:400!important;
+      line-height:1.78!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-desktop)!important;
+      font-weight:300!important;
+      line-height:1.92!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-mobile)!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-mobile)!important;
+      font-weight:400!important;
+      line-height:1.84!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-mobile)!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-price-info-scale-sync">
+  @media(min-width:681px){
+    .price-amount b{
+      font-size:44px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:24px!important;
+      line-height:1.18!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:12px!important;
+      line-height:1.55!important;
+    }
+  }
+  @media(max-width:680px){
+    .price-amount b{
+      font-size:40px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:22px!important;
+      line-height:1.2!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:11px!important;
+      line-height:1.55!important;
+    }
+  }
+</style>
+
+<style id="lnh-global-section-hierarchy-final-sync">
+  @media(min-width:681px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:24px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:15px!important;
+      font-weight:300!important;
+      line-height:1.9!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:12px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:44px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:21px!important;
+      font-weight:400!important;
+      line-height:1.52!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:14px!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:11px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:40px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-dark-section-spacing-sync">
+  @media(min-width:681px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+</style>
+<style id="lnh-section-eyebrow-size-sync">
+  @media(min-width:681px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:14px!important;
+      line-height:1.5!important;
+    }
+  }
+  @media(max-width:680px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:12px!important;
+      line-height:1.5!important;
+    }
+  }
+</style>
+<style id="lnh-partnership-hero-table-spacing-sync">
+  @media(min-width:761px){
+    .slide.hero{
+      min-height:auto!important;
+      padding-top:clamp(118px,13vh,152px)!important;
+      padding-bottom:clamp(72px,7vh,96px)!important;
+    }
+    .slide.hero .slide-copy{
+      margin-top:42px!important;
+    }
+    .slide.hero .hero-grid{
+      margin-top:72px!important;
+      border-top:1.5px solid rgba(41,43,44,.88)!important;
+      border-bottom:1px solid rgba(41,43,44,.24)!important;
+    }
+    .slide.hero .hero-cell{
+      min-height:132px!important;
+      padding-top:26px!important;
+      padding-bottom:22px!important;
+      border-right-color:rgba(41,43,44,.18)!important;
+    }
+    .slide.hero .hero-cell b{
+      margin-bottom:18px!important;
+    }
+  }
+  @media(max-width:760px){
+    .slide.hero{
+      padding-bottom:48px!important;
+    }
+    .slide.hero .hero-grid{
+      margin-top:42px!important;
+      border-top:1.5px solid rgba(41,43,44,.88)!important;
+      border-bottom:1px solid rgba(41,43,44,.24)!important;
+    }
+  }
+</style>
+
+<style id="lnh-nav-uniform-body-final-sync">
+  .site-header{height:82px!important;padding-inline:clamp(24px,4.5vw,72px)!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;display:inline-flex!important;align-items:center!important;width:auto!important;line-height:1!important;letter-spacing:0!important;z-index:2!important}
+  .site-header .brand img{width:auto!important;height:24px!important;object-fit:contain!important}
+  .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:clamp(9px,.8vw,14px)!important;font-family:var(--sans)!important;font-size:12.5px!important;font-weight:300!important;line-height:1!important;letter-spacing:0!important;white-space:nowrap!important;z-index:1!important}
+  .site-header .nav-group{display:flex!important;align-items:center!important;gap:clamp(9px,.8vw,14px)!important}
+  .site-header .nav-divider{flex:0 0 1px!important;width:1px!important;height:14px!important;margin-inline:2px!important;background:rgba(33,30,25,.38)!important}
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2!important}
+  .site-header .desktop-nav .nav-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:0 14px!important;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-family:var(--sans)!important;font-size:13px!important;font-weight:400!important;line-height:1!important;letter-spacing:0!important;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap!important}
+  .site-header .desktop-nav .nav-cta::after,.site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){.site-header{height:64px!important;padding-inline:22px!important;display:flex!important;justify-content:space-between!important}.site-header.scrolled{height:58px!important}.site-header .desktop-nav{display:none!important}.site-header .brand img{height:24px!important}}
+</style>
+</body>
+</html>

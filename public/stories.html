@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="경험의 기록 — 지나온 공간들이 지금의 판단 기준이 되었습니다. LNH Stories.">
+  <title>경험의 기록 — LNH Stories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Sans+KR:wght@300;400;500&amp;family=Nanum+Myeongjo:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#f5f5f2;
+      --paper-deep:#e9e9e6;
+      --card:#f5f5f2;
+      --ink:#242628;
+      --ink-soft:#4f5458;
+      --ink-faint:#606467;
+      --muted:#606467;
+      --line:#d2d3d1;
+      --clay:#565b60;
+      --olive:#2b2d2f;
+      --serif:'Nanum Myeongjo',serif;
+      --latin:'Cormorant Garamond',serif;
+      --sans:'IBM Plex Sans KR',sans-serif;
+      --pad:clamp(24px,4.5vw,72px);
+      --page:min(1500px,calc(100vw - 64px));
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{color:inherit}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    button{font:inherit;color:inherit}
+    .wrap{width:var(--page);margin-inline:auto}
+    .eyebrow{font-family:var(--latin);font-size:.84rem;font-weight:500;letter-spacing:.23em;text-transform:uppercase;color:var(--clay)}
+    .skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--paper);padding:.7rem 1rem;text-decoration:none}.skip:focus{top:12px}
+
+    .site-header{position:fixed;inset:0 0 auto;z-index:50;height:82px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,height .3s}
+    .site-header.scrolled{height:66px;background:rgba(245,245,242,.94);border-color:var(--line);backdrop-filter:blur(10px)}
+    .brand{font-family:var(--latin);font-size:25px;font-weight:500;letter-spacing:.33em;line-height:1;text-decoration:none}
+    .desktop-nav{display:flex;align-items:center;gap:clamp(13px,1.35vw,24px);font-size:11px;letter-spacing:0}
+    .nav-group{display:flex;align-items:center;gap:clamp(13px,1.35vw,24px)}
+    .nav-divider{width:1px;height:14px;background:rgba(33,30,25,.38)}
+    .desktop-nav a{position:relative;text-decoration:none}
+    .desktop-nav a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1px;background:var(--ink);transition:right .25s}
+    .desktop-nav a:hover::after,.desktop-nav .nav-current::after{right:0}
+    .nav-cta{padding:9px 15px;border:1px solid var(--ink);text-decoration:none!important;border-bottom:1px solid var(--ink)!important}
+    .desktop-nav .nav-cta::after,.desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+    .menu-button{display:none;border:0;background:none;padding:10px 0;letter-spacing:.08em;font-size:12px}
+    .mobile-menu{display:none}
+    .mobile-group{padding:18px 0 8px;border-bottom:1px solid var(--line)}
+    .mobile-group-label{margin:0 0 4px!important;font-family:var(--latin)!important;font-size:12px!important;font-style:italic;color:var(--ink-faint)}
+    .mobile-group a:last-child{border-bottom:0}
+
+    .hero{min-height:auto;padding:132px 0 42px;display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
+    .hero-grid{display:block}
+    .hero-copy{padding:0}
+    .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,8vw,8.2rem);letter-spacing:-.08em;line-height:1;margin:1rem 0 0}
+    .hero h1 em{font-family:var(--latin);font-weight:400;color:inherit}
+    .hero-lead,.hero-index,.hero-collage{display:none}
+    .hero-index{display:none;gap:2rem;margin-top:3.3rem;padding-top:1.1rem;border-top:1px solid var(--line);font-family:var(--latin);color:var(--ink-faint);font-size:.9rem;letter-spacing:.05em}
+    .hero-index strong{font-weight:500;color:var(--ink)}
+    .hero-collage{display:grid;grid-template-columns:1.12fr .88fr;grid-template-rows:1fr .75fr;gap:10px;height:min(76vh,780px)}
+    .hero-collage figure{margin:0;overflow:hidden;background:var(--paper-deep);position:relative}
+    .hero-collage figure:first-child{grid-row:1 / 3}
+    .hero-collage img{filter:saturate(.78);transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .7s}
+    .hero-collage figure:hover img{transform:scale(1.025);filter:saturate(.95)}
+    .hero-note{position:absolute;inset:auto 0 0;padding:3rem 1rem .9rem;color:white;background:linear-gradient(transparent,rgba(24,26,28,.6));font-family:var(--latin);font-size:.8rem;letter-spacing:.08em}
+
+    .statement{padding:6.5rem 0;border-bottom:1px solid var(--line)}
+    .statement-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:clamp(40px,9vw,150px)}
+    .statement h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3.15rem);font-weight:400;line-height:1.52;letter-spacing:-.04em;margin:0}
+    .statement-copy{display:block;padding-top:1rem;border-top:1px solid var(--ink);color:var(--ink-soft);font-size:.93rem}
+    .statement-copy p{max-width:38rem;margin:1.15rem 0 0;line-height:1.9}
+    .statement-copy p:first-child{font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.55rem);line-height:1.8;color:var(--ink)}
+
+    .project-nav{display:none;border-bottom:1px solid var(--line);position:sticky;top:66px;z-index:20;background:rgba(245,245,242,.93);backdrop-filter:blur(12px)}
+    .project-nav .wrap{display:flex;align-items:center;gap:1.7rem;height:54px;overflow-x:auto;scrollbar-width:none}
+    .project-nav .wrap::-webkit-scrollbar{display:none}
+    .project-nav a{font-family:var(--latin);font-size:.79rem;letter-spacing:.07em;text-decoration:none;color:var(--ink-faint);white-space:nowrap}
+    .project-nav a:hover{color:var(--clay)}
+
+    .project{padding:8rem 0;border-bottom:1px solid var(--line);scroll-margin-top:124px}
+    .project .wrap{display:flex;flex-direction:column}
+    .project-head{order:2;display:grid;grid-template-columns:70px minmax(260px,.8fr) minmax(320px,1.2fr);gap:clamp(20px,4vw,64px);align-items:start;margin:1.45rem 0 0}
+    .project-no{font-family:var(--latin);font-size:1.15rem;color:var(--ink-faint)}
+    .project h2{font-family:var(--serif);font-size:clamp(1.55rem,2.4vw,2.45rem);font-weight:400;line-height:1.35;letter-spacing:-.04em;margin:.05rem 0 .35rem}
+    .project-sub{font-family:var(--latin);font-style:italic;font-size:1rem;color:var(--clay)}
+    .problem{font-size:.93rem;line-height:1.85;margin:0 0 .9rem;color:var(--ink-soft);max-width:34rem}
+    .facts{display:flex;flex-wrap:wrap;gap:.45rem .9rem;border-top:0;padding:0;font-family:var(--latin);font-size:.78rem;color:var(--ink-faint);letter-spacing:.04em}
+    .fact{display:inline;padding:0;border:0;color:inherit}
+    .fact b{display:none}
+    .fact:nth-child(4){display:none}
+    .fact:not(:last-child)::after{content:'·';margin-left:.9rem;color:var(--line)}
+    .fact:nth-child(3)::after{content:none}
+
+    .gallery{order:1;display:grid;grid-template-columns:1.45fr .72fr .72fr;gap:10px;height:min(66vw,820px);max-height:820px;transition:height .45s ease}
+    .gallery.two{grid-template-columns:1.4fr .8fr}
+    .gallery.one{grid-template-columns:1fr;height:min(60vw,700px)}
+    .gallery button{appearance:none;border:0;padding:0;margin:0;background:var(--paper-deep);overflow:hidden;cursor:pointer;position:relative;text-align:left}
+    .gallery button img{filter:saturate(.86);transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .7s}
+    .gallery button:hover img{transform:scale(1.018);filter:saturate(1)}
+    .gallery button::after{content:'View';position:absolute;right:13px;bottom:12px;background:rgba(245,245,242,.9);padding:.32rem .58rem;font-family:var(--latin);font-size:.68rem;letter-spacing:.09em;opacity:0;transform:translateY(4px);transition:.25s}
+    .gallery button:hover::after{opacity:1;transform:none}
+    .gallery.has-expanded,.project.feature .gallery.has-expanded{height:auto;max-height:none;grid-template-rows:minmax(420px,72vh) auto}
+    .gallery button.is-expanded{grid-column:1 / -1;cursor:zoom-out}
+    .gallery button.is-expanded img{object-fit:contain;background:var(--paper-deep);transform:none;filter:saturate(.9)}
+    .gallery button.is-expanded::after{content:'Close';opacity:1;transform:none}
+
+    .project.feature{background:var(--paper-deep)}
+    .project.feature .project-head{grid-template-columns:70px minmax(300px,1fr) minmax(340px,.9fr)}
+    .project.feature .gallery{height:min(70vw,860px)}
+
+    .capabilities{padding:7rem 0;background:var(--olive);color:var(--paper)}
+    .cap-head{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;margin-bottom:4rem}
+    .capabilities .eyebrow{color:rgba(245,245,242,.55)}
+    .capabilities h2{font-family:var(--serif);font-size:clamp(2rem,4.3vw,4.3rem);font-weight:400;line-height:1.32;margin:1.2rem 0 0;letter-spacing:-.05em}
+    .cap-head p{color:rgba(245,245,242,.68);margin:0;align-self:end;max-width:36rem}
+    .cap-grid{display:block;border-top:1px solid rgba(245,245,242,.38)}
+    .cap,.cap:nth-child(-n+3),.cap:first-child{display:grid;grid-template-columns:70px 1fr;gap:32px;padding:1.25rem 0;border-right:0;border-bottom:1px solid rgba(245,245,242,.22)}
+    .cap .n{font-family:var(--latin);color:rgba(245,245,242,.45);margin:0}
+    .cap h3{font-family:var(--serif);font-size:1.08rem;font-weight:400;margin:0}
+    .cap p{display:none}
+
+    .feed-intro{display:none;padding:7rem 0 2.4rem;border-bottom:1px solid var(--line)}
+    .feed-intro .wrap{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(32px,7vw,100px);align-items:end}
+    .feed-intro h2{font-family:var(--serif);font-size:clamp(2.1rem,4.6vw,4.8rem);font-weight:400;line-height:1.22;letter-spacing:-.06em;margin:1rem 0 0}
+    .feed-intro p{margin:0;color:var(--ink-soft);max-width:31rem;line-height:1.85}
+    .story-filters{padding:0 0 1.9rem;display:flex;align-items:center;gap:clamp(18px,2.4vw,36px);overflow-x:auto;scrollbar-width:none;color:var(--ink-faint);font-size:.82rem}
+    .story-filters::-webkit-scrollbar{display:none}
+    .story-filters button{appearance:none;border:0;border-bottom:1px solid transparent!important;background:transparent!important;padding:0 0 .28rem;white-space:nowrap;color:inherit;font-family:var(--sans);font-size:.82rem;font-weight:400;letter-spacing:-.01em;cursor:pointer;border-radius:0;box-shadow:none!important}
+    .story-filters button.is-active{color:var(--ink);border-bottom-color:var(--ink)!important}
+    .story-filters button.is-active::before{content:none}
+    .story-filters button.is-active::after{content:none}
+    .story-filters button:focus-visible{outline:0;border-bottom-color:var(--ink)!important;color:var(--ink)}
+    .stories-feed{padding:0 0 8rem;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:auto;gap:42px 18px}
+    .feed-card{appearance:none;border:0;padding:0;margin:0;background:transparent;position:relative;overflow:visible;cursor:pointer;text-align:left;color:var(--ink)!important;min-height:0}
+    .feed-card::before{display:none}
+    .feed-card img{position:static;inset:auto;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:var(--paper-deep)}
+    .feed-card img{filter:saturate(.92);transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .7s}
+    .feed-card:hover img{transform:scale(1.012);filter:saturate(1.02)}
+    .feed-card span{display:block!important;background:#f5f5f2!important;padding:1.05rem .42rem .18rem;color:#242628!important;font-family:var(--sans);font-size:.76rem;font-weight:400;line-height:1.55;letter-spacing:-.01em}
+    .feed-card span em{display:block;margin:0 0 .24rem;color:#6f716f!important;font-family:var(--sans);font-style:normal;font-size:.68rem;font-weight:500;line-height:1.35;letter-spacing:.08em;text-transform:uppercase}
+    .feed-card span strong{display:block;margin:0 0 .2rem;color:#1f2123!important;font-family:var(--sans);font-weight:400;font-size:clamp(13px,1vw,15px);line-height:1.4;letter-spacing:0}
+    .feed-card span small{display:block;color:#626562!important;font-family:var(--sans);font-size:.74rem;font-weight:400;letter-spacing:-.01em;line-height:1.4}
+    .feed-card:hover span{opacity:1;transform:none}
+    .feed-card.is-hidden{display:none}
+    .feed-card.wide,.feed-card.tall{grid-column:auto;grid-row:auto}
+    .feed-card.is-expanded{position:fixed;z-index:100;inset:5vh 5vw;background:rgba(24,26,28,.92);display:flex;align-items:center;justify-content:center}
+    .feed-card.is-expanded::before{display:none}
+    .feed-card.is-expanded img{position:static;width:100%;height:100%;object-fit:contain;transform:none;filter:saturate(1)}
+    .feed-card.is-expanded span{display:none}
+
+
+    .story-card{cursor:default}
+    .story-slider{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#f5f5f2;isolation:isolate}
+    .story-slider .story-slide{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background:#f5f5f2;filter:saturate(.94);opacity:0;transition:opacity 1.6s ease,transform 1.2s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+    .story-slider .story-slide.is-active{opacity:1;z-index:1}
+    .story-card:hover .story-slide.is-active{transform:scale(1.006);filter:saturate(1.01)}
+
+    .archive{padding:8.5rem 0;border-bottom:1px solid var(--line);scroll-margin-top:124px}
+    .archive-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:5rem;margin-bottom:3.5rem}
+    .archive h2{font-family:var(--serif);font-size:clamp(1.9rem,3.4vw,3rem);font-weight:400;letter-spacing:-.04em;margin:1rem 0 0}
+    .archive-head p{align-self:end;color:var(--ink-soft);max-width:40rem;margin:0}
+    details{border-top:1px solid var(--line)}
+    details:last-of-type{border-bottom:1px solid var(--line)}
+    summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 110px 30px;align-items:center;padding:1.5rem 0;font-family:var(--serif);font-size:1.08rem}
+    summary::-webkit-details-marker{display:none}
+    summary .years{font-family:var(--latin);font-size:.86rem;color:var(--ink-faint)}
+    summary .plus{font-family:var(--latin);font-size:1.3rem;color:var(--clay);transition:.25s}
+    details[open] summary .plus{transform:rotate(45deg)}
+    .archive-list{padding:0 0 2rem 0;display:grid;grid-template-columns:repeat(2,1fr);column-gap:4rem}
+    .archive-item{display:grid;grid-template-columns:62px 1fr;gap:1rem;border-top:1px solid rgba(216,206,189,.65);padding:.85rem 0;font-size:.82rem;color:var(--ink-soft)}
+    .archive-item time{font-family:var(--latin);color:var(--ink-faint)}
+
+    footer{border-top:1px solid var(--line);padding:2.8rem 0;color:var(--ink-faint);font-size:.73rem}
+    .footer-grid{display:flex;justify-content:space-between;gap:3rem}
+    .footer-mark{font-family:var(--latin);letter-spacing:.12em;color:var(--ink-soft)}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.in{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none}.hero-collage img,.gallery button img,.story-slider .story-slide{transition:none}}
+
+    @media(max-width:1120px){
+      .desktop-nav{display:none}
+      .menu-button{display:block}
+      .mobile-menu{display:flex;position:fixed;z-index:45;inset:0;background:var(--paper);padding:100px var(--pad) 40px;flex-direction:column;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+      .mobile-menu.open{opacity:1;visibility:visible}
+      .mobile-menu nav{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+      .mobile-menu a{padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:23px;text-decoration:none}
+      .mobile-menu p:last-child{margin:auto 0 0;font-family:var(--latin);font-style:italic}
+    }
+    @media(max-width:980px){
+      :root{--page:calc(100vw - 44px)}
+      .hero{min-height:auto;padding-top:110px}
+      .hero-grid{grid-template-columns:1fr;gap:2rem}
+      .hero-copy{padding:1rem 0 2rem}
+      .hero-collage{height:68vw;min-height:430px}
+      .statement-grid,.archive-head,.cap-head{grid-template-columns:1fr;gap:2.5rem}
+      .feed-intro .wrap{grid-template-columns:1fr;gap:1.4rem}
+      .stories-feed{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+      .project-head,.project.feature .project-head{grid-template-columns:70px 1fr}
+      .project-head>div:last-child{grid-column:2}
+      .gallery{height:66vw}
+      .gallery.has-expanded,.project.feature .gallery.has-expanded{height:auto;grid-template-rows:minmax(360px,72vh) auto}
+      .cap-grid{grid-template-columns:1fr 1fr}
+      .cap:nth-child(-n+3){border-right:0;padding-left:0}
+      .cap:nth-child(odd){border-right:1px solid rgba(245,245,242,.22);padding-right:2rem}
+      .cap:nth-child(even){padding-left:2rem}
+    }
+    @media(max-width:680px){
+      :root{--page:calc(100vw - 36px);--pad:22px}
+      .site-header{height:64px}.site-header.scrolled{height:58px}
+      .project-nav{top:58px}.project-nav .wrap{height:48px}
+      .hero{padding:88px 0 24px}
+      .hero h1{font-size:2.65rem}
+      .hero-index{gap:1rem;flex-direction:column}
+      .hero-collage{height:105vw;min-height:440px;grid-template-columns:1.1fr .9fr;gap:6px}
+      .hero-note{font-size:.67rem}
+      .statement{padding:5.5rem 0}
+      .statement-copy{grid-template-columns:1fr;gap:1.2rem}
+      .feed-intro{padding:5.2rem 0 1.4rem}
+      .stories-feed{padding:6px 0 5.5rem;grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:28px 6px}
+      .story-filters{padding-bottom:1.2rem;gap:18px;font-size:.76rem}
+      .story-filters button{font-size:.76rem;font-weight:400;background:transparent!important;box-shadow:none!important}
+      .feed-card.wide,.feed-card.tall{grid-column:auto;grid-row:auto}
+      .feed-card span{padding:.78rem .28rem .1rem;font-size:.68rem;line-height:1.45}
+      .feed-card span em{color:#6f716f!important;font-size:.66rem!important;font-weight:500!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+      .feed-card span strong{font-size:13px;font-weight:400;color:#1f2123!important}
+      .feed-card span small{font-size:.68rem;font-weight:400;color:#626562!important}
+      .feed-card.is-expanded{inset:4vh 4vw}
+      .project{padding:6rem 0;scroll-margin-top:108px}
+      .project-head,.project.feature .project-head{grid-template-columns:42px 1fr;gap:1rem;margin-bottom:2rem}
+      .project-no{font-size:.92rem}
+      .fact{grid-template-columns:78px 1fr;gap:12px}
+      .gallery,.project.feature .gallery,.gallery.two{grid-template-columns:1fr 1fr;grid-template-rows:1.25fr .75fr;height:122vw;gap:6px}
+      .gallery button:first-child{grid-column:1 / 3}
+      .gallery.two button:nth-child(2){grid-column:1 / 3}
+      .gallery.one{grid-template-columns:1fr;grid-template-rows:1fr;height:95vw}.gallery.one button:first-child{grid-column:auto}
+      .gallery.has-expanded,.project.feature .gallery.has-expanded{grid-template-columns:1fr;grid-template-rows:minmax(68vw,78vh) auto;height:auto}
+      .gallery.has-expanded button.is-expanded{grid-column:1 / -1;min-height:68vw}
+      .capabilities,.archive{padding:5.5rem 0}
+      .cap,.cap:nth-child(-n+3),.cap:first-child{grid-template-columns:34px 1fr;gap:12px;padding:1.35rem 0}
+      .cap p{grid-column:2}
+
+            .archive-list{grid-template-columns:1fr}
+      summary{grid-template-columns:1fr 72px 24px;font-size:1rem}
+      .footer-grid{display:block}.footer-grid div+div{margin-top:.8rem}
+    }
+    /* Global header and desktop navigation baseline. */
+    .site-header{padding-inline:clamp(24px,4.5vw,72px)}
+    .desktop-nav{display:flex;align-items:center;gap:clamp(9px,.8vw,14px);font-size:12px;line-height:1;letter-spacing:0;white-space:nowrap}
+    .nav-group{display:flex;align-items:center;gap:clamp(9px,.8vw,14px)}
+    .nav-divider{flex:0 0 1px;width:1px;height:14px;margin-inline:2px}
+    .desktop-nav .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-size:12.5px;font-weight:400;line-height:1;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap;transition:background .22s ease,border-color .22s ease,color .22s ease}
+    .desktop-nav .nav-cta:hover,.desktop-nav .nav-cta:focus-visible{background:#274e71!important;border-color:#274e71!important;color:#f5f5f2!important;text-decoration:none!important}
+    .desktop-nav .nav-cta::after,.desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+    @media(max-width:680px){.site-header{padding-inline:22px}}
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=profile-ci-2">
+  <link rel="canonical" href="https://www.lnh-universe.com/stories">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LNH">
+  <meta property="og:title" content="경험의 기록 — LNH Stories">
+  <meta property="og:description" content="지나온 공간들이 지금의 판단 기준이 되었습니다.">
+  <meta property="og:url" content="https://www.lnh-universe.com/stories">
+  <meta property="og:image" content="https://www.lnh-universe.com/assets/landing-hero-system-sample.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/brand-publishing-v2.css?v=footer-stack-fix-20260730">
+  <style>
+    /* Header baseline must follow the shared stylesheet. */
+    .site-header{padding-inline:clamp(24px,4.5vw,72px)}
+    .desktop-nav{gap:clamp(9px,.8vw,14px);font-size:12px;line-height:1;letter-spacing:0;white-space:nowrap}
+    .nav-group{gap:clamp(9px,.8vw,14px)}
+    .nav-divider{flex:0 0 1px;width:1px;height:14px;margin-inline:2px}
+    .desktop-nav .nav-cta{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-size:12.5px;font-weight:400;line-height:1;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap}
+    .desktop-nav .nav-cta:hover,.desktop-nav .nav-cta:focus-visible{background:#274e71!important;border-color:#274e71!important;color:#f5f5f2!important;text-decoration:none!important}
+    .desktop-nav .nav-cta::after,.desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+    @media(max-width:680px){.site-header{padding-inline:22px}}
+  </style>
+  <script src="assets/site-menu.js?v=menu-cross-20260729" defer></script>
+  <style>
+    /* Shared navigation and image-label baseline. */
+    .desktop-nav{font-size:12.5px!important}
+    .desktop-nav .nav-cta{margin-left:clamp(12px,1.3vw,20px);font-family:var(--sans)!important;font-size:13px!important;font-weight:400!important;letter-spacing:0!important}
+    .image-caption{padding:0!important;background:transparent!important}
+    .gallery button::after{padding:0!important;background:transparent!important;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.42)}
+    .hero{min-height:auto!important;padding:clamp(168px,16vw,236px) 0 68px!important;border-bottom:0}
+    .hero-grid{display:block!important;width:min(calc(100% - 80px),640px)!important;max-width:640px!important;margin:0 auto!important}
+    .hero-copy{padding:0!important;display:block!important}
+    .hero h1{max-width:none;margin:38px 0 42px!important;font-family:var(--serif);font-size:clamp(3rem,4.7vw,4.1rem)!important;font-weight:400!important;line-height:1.45!important;letter-spacing:0!important}
+    .hero-lead{display:block!important;max-width:700px;margin:0!important;color:#55595a;font-family:var(--serif);font-size:20px;line-height:2.12;text-align:left}
+    .hero-media{display:none!important}
+    .story-signature{display:flex;align-items:center;gap:34px;margin-top:66px;padding-top:24px;border-top:1px solid var(--ink);font-family:var(--latin);font-size:15px;letter-spacing:.08em;color:#757979}
+    .story-signature strong{font-family:var(--serif);font-weight:400;letter-spacing:.05em;color:var(--ink)}
+    .story-filters{padding:4.2rem 0 2.2rem!important;display:flex!important;align-items:center;gap:clamp(20px,2.5vw,40px)!important;overflow-x:auto;scrollbar-width:none;background:transparent!important;border:0!important;color:var(--ink-faint)!important}
+    .story-filters button,.story-filters button[type="button"]{appearance:none!important;-webkit-appearance:none!important;background:transparent!important;background-color:transparent!important;color:var(--ink-faint)!important;border:0!important;border-bottom:1px solid transparent!important;border-radius:0!important;box-shadow:none!important;padding:0 0 .34rem!important;margin:0!important;font-family:var(--sans)!important;font-size:.84rem!important;font-weight:400!important;line-height:1.2!important;letter-spacing:-.01em!important}
+    .story-filters button.is-active,.story-filters button[type="button"].is-active{background:transparent!important;background-color:transparent!important;color:var(--ink)!important;border-bottom-color:var(--ink)!important}
+    .story-filters button::before,.story-filters button::after{content:none!important;display:none!important}
+    .story-filters button:hover{color:var(--ink)!important;background:transparent!important;background-color:transparent!important}
+    .reveal{opacity:1!important;transform:none!important;transition:none!important}
+    footer{padding:60px var(--pad) 40px;border-top:1px solid var(--line)}
+    .footer-top{display:flex;justify-content:space-between;gap:50px;margin-bottom:90px}
+    .footer-mark{display:inline-flex;align-items:center}
+    .footer-mark img{display:block;width:auto;height:30px;object-fit:contain}
+    .footer-nav{display:grid;grid-template-columns:repeat(5,auto);gap:12px 34px;font-size:12px}
+    .footer-nav a{text-decoration:none!important;border-bottom:0!important;color:inherit}
+    .footer-nav a::after{content:none!important;display:none!important}
+    .footer-nav a:hover{color:var(--ink);text-decoration:none!important}
+    .footer-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;font-size:12px;color:var(--muted);line-height:1.8}
+    .footer-signature{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+    .footer-signature img{display:block;width:auto;height:22px}
+    .footer-intelligence{display:inline-flex;align-items:center;gap:8px;margin:0;color:var(--ink);font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+    .footer-intelligence-mark{position:relative;display:block;width:12px;height:12px;border:1px solid currentColor;border-radius:50%}
+    .footer-intelligence-mark::after{content:"";position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;background:currentColor;transform:translate(-50%,-50%)}
+    @media(max-width:680px){
+      .hero{padding:134px 0 48px!important}
+      .hero-grid{width:calc(100% - 44px)!important}
+      .hero h1{margin:34px 0 34px!important;font-size:36px!important;line-height:1.48!important}
+      .hero-lead{font-size:17px;line-height:2.05}
+      .story-signature{display:grid;grid-template-columns:1fr;gap:8px;margin-top:54px;padding-top:20px;font-size:13px}
+      .story-filters{padding:3rem 0 1.5rem!important;gap:18px!important}
+      .story-filters button,.story-filters button[type="button"]{font-size:.76rem!important}
+      .footer-top{display:block;margin-bottom:70px}
+      .footer-mark{margin-bottom:40px}
+      .footer-nav{grid-template-columns:repeat(2,1fr);gap:13px}
+      .footer-bottom{display:block}
+      .footer-bottom p:last-child{margin-top:22px}
+    }
+  </style>
+
+  <style id="lnh-nav-center-sync">
+    @media(min-width:1121px){
+      .site-header{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+      .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;z-index:2}
+      .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;justify-content:center!important;z-index:1}
+      .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+      .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2}
+    }
+</style>
+
+<style id="lnh-stories-project-title-index-match-sync">
+  .stories-feed .feed-card span strong{
+    font-family:var(--sans)!important;
+    font-size:clamp(13px,1vw,15px)!important;
+    font-weight:400!important;
+    line-height:1.4!important;
+    letter-spacing:0!important;
+    color:#1f2123!important;
+  }
+  @media(max-width:680px){
+    .stories-feed .feed-card span strong{
+      font-size:13px!important;
+      font-weight:400!important;
+    }
+  }
+</style>
+
+<style id="lnh-nav-uniform-final-sync">
+  .site-header{
+    height:82px!important;
+    padding-inline:clamp(24px,4.5vw,72px)!important;
+    display:grid!important;
+    grid-template-columns:1fr auto 1fr!important;
+    align-items:center!important;
+    justify-content:initial!important;
+  }
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    width:auto!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    z-index:2!important;
+  }
+  .site-header .brand img{
+    width:auto!important;
+    height:24px!important;
+    object-fit:contain!important;
+  }
+  .site-header .desktop-nav{
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    justify-self:center!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+    font-family:var(--sans)!important;
+    font-size:12.5px!important;
+    font-weight:300!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    white-space:nowrap!important;
+    z-index:1!important;
+  }
+  .site-header .nav-group{
+    display:flex!important;
+    align-items:center!important;
+    gap:clamp(9px,.8vw,14px)!important;
+  }
+  .site-header .nav-divider{
+    flex:0 0 1px!important;
+    width:1px!important;
+    height:14px!important;
+    margin-inline:2px!important;
+    background:rgba(33,30,25,.38)!important;
+  }
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,
+  .site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,
+  .site-header .desktop-nav>.nav-action-icons{
+    position:absolute!important;
+    right:clamp(24px,4.5vw,72px)!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    margin-left:0!important;
+    z-index:2!important;
+  }
+  .site-header .desktop-nav .nav-cta{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:40px!important;
+    padding:0 14px!important;
+    border:1px solid #143758!important;
+    background:#143758!important;
+    color:#f5f5f2!important;
+    font-family:var(--sans)!important;
+    font-size:13px!important;
+    font-weight:400!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    text-decoration:none!important;
+    border-bottom:1px solid #143758!important;
+    white-space:nowrap!important;
+  }
+  .site-header .desktop-nav .nav-cta::after,
+  .site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){
+    .site-header{
+      height:64px!important;
+      padding-inline:22px!important;
+      display:flex!important;
+      justify-content:space-between!important;
+    }
+    .site-header.scrolled{height:58px!important}
+    .site-header .desktop-nav{display:none!important}
+    .site-header .brand img{height:24px!important}
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="LNH 홈"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></a>
+    <nav class="desktop-nav" aria-label="LNH 주요 메뉴"><span class="nav-group" aria-label="Residential services"><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Commerce"><a href="edit.html">Edit</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Partnership"><a href="partnership.html">Partnership</a></span><span class="nav-divider" aria-hidden="true"></span><span class="nav-group" aria-label="Company"><a href="about.html">About</a><a class="nav-current" href="stories.html" aria-current="page">Stories</a></span><a class="nav-cta" href="https://pf.kakao.com/_txjGxln/chat">Brief 신청하기</a></nav>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  </header>
+  <aside class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="모바일 메뉴"><div class="mobile-group"><p class="mobile-group-label">Residential</p><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a></div><div class="mobile-group"><p class="mobile-group-label">Commerce</p><a href="edit.html">Edit</a></div><div class="mobile-group"><p class="mobile-group-label">Partnership</p><a href="partnership.html">Partnership</a></div><div class="mobile-group"><p class="mobile-group-label">LNH</p><a href="about.html">About</a><a class="nav-current" href="stories.html" aria-current="page">Stories</a></div><a href="https://pf.kakao.com/_txjGxln/chat">Brief 신청하기</a></nav>
+    <p>Lifestyle Advisor · Since 2001</p>
+  </aside>
+
+  <main id="main">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Stories · Since 2001</div>
+          <h1>경험의 기록</h1>
+          <p class="hero-lead">지나온 공간들이 지금의 판단 기준이 되었습니다.</p>
+          <div class="story-signature" aria-label="LNH Stories 요약"><strong>LNH Stories</strong><span>Since 2001</span><span>Selected Records</span></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="project-nav" id="selected" aria-label="Stories 보기">
+      <div class="wrap">
+        <a href="#feed">Image Feed</a><a href="#archive">Archive</a>
+      </div>
+    </div>
+
+    <section class="feed-intro" id="feed">
+      <div class="wrap reveal">
+        <div class="eyebrow">Image Feed</div>
+        <h2>설명보다 먼저,<br>장면이 쌓이게.</h2>
+        <p>프로젝트를 하나씩 설명하지 않고 이미지의 리듬으로 보여줍니다. 필요한 기록은 캡션에만 작게 남겼습니다.</p>
+      </div>
+    </section>
+
+    <div class="story-filters wrap reveal" aria-label="프로젝트 필터">
+      <button class="is-active" type="button" data-filter="all">전체</button>
+      <button type="button" data-filter="residential">주거 · 코리빙</button>
+      <button type="button" data-filter="brand">브랜드</button>
+      <button type="button" data-filter="workplace">오피스</button>
+      <button type="button" data-filter="hospitality">호텔</button>
+      <button type="button" data-filter="public">공공</button>
+    </div>
+
+    <section class="stories-feed wrap reveal" aria-label="LNH 프로젝트 이미지 피드">
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-002-KjX5MokPHxlAWug1spm0CG20DU.jpg" alt="홈즈 안암 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-003-1CFu0p8XJbSjcnzYR8EzdfHG4.jpg" alt="홈즈 안암 이미지 2">
+        </div>
+        <span><em>CO-LIVING</em><strong>홈즈 안암</strong><small>LNH · HOMES</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-004-BRXj5Pu0dBeXYzB9qGf6a1sk.png" alt="송파 더 플래티넘 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-005-mtH4VrUjVEROhzEuxvQsC63K5w.png" alt="송파 더 플래티넘 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-006-9LcmbZYWVVr68iHMjeVFHCZRRg.png" alt="송파 더 플래티넘 이미지 3">
+        </div>
+        <span><em>RESIDENTIAL</em><strong>송파 더 플래티넘</strong><small>LNH</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-025-vVZHfSo4F9xxk40gHRbcFmjAWU.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-026-BWh2CB1ziEdk8Zh2NSIR3ApiggI.png" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-027-WvBKRHjT32HBWQNDBW5HB8Ec.png" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-007-jhYr4g9yvQDrTT5m1OE23ctUkJ8.png" alt="송파 더 플래티넘 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-008-44Nhg6D58SE9ynKlW9GQ6IAsZzY.png" alt="송파 더 플래티넘 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-009-NRVRssslTdXmxdHX3OqAQ7GGCc.png" alt="송파 더 플래티넘 이미지 3">
+        </div>
+        <span><em>RESIDENTIAL</em><strong>송파 더 플래티넘</strong><small>LNH</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-028-MGnE34W7rRmJvzbetCZeL7XjgiY.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-029-axym4PBvE2qzscqdWCaUDQq9g.png" alt="커먼타운 이미지 2">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-010-6KYrtUngQzabYr45Yd6KRlPcwas.png" alt="송파 더 플래티넘 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-011-p8kmRlfzAkSQljOlnrkSDvCroQ.png" alt="송파 더 플래티넘 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-012-U1KvF3d6PxRR7B7GjlnjkJDUoas.png" alt="송파 더 플래티넘 이미지 3">
+        </div>
+        <span><em>RESIDENTIAL</em><strong>송파 더 플래티넘</strong><small>LNH</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-042-KfWRMgUKpybXN08h2kROpOyryw.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-043-2NBlQbLuZxECu6ZFvcyBIFzKXMM.png" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-044-ITDI37b7PvP23l38bjhwsXow.png" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-017-bK2pdASAlermxAK3wvfOFEoopA.png" alt="송파 더 플래티넘 이미지 1">
+        </div>
+        <span><em>RESIDENTIAL</em><strong>송파 더 플래티넘</strong><small>LNH · SSANGYONG</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-045-xEORmibxX7VZHztap9FzEcYarw.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-046-vo21U1avRGSmMu8HuWJEkHyN1U.png" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-047-IHPuJOLIsZoNAMulPbJqyBcwM.png" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-021-GIVFmIm6zjlm7KAEcd3nkbXGqBg.png" alt="하늘채 Signage 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-022-Ux1s9l0KEOiZR9gG3msPphUrs.png" alt="하늘채 Signage 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-023-lrJmFigE9cxGgkJPtLENBgfahs.png" alt="하늘채 Signage 이미지 3">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Signage</strong><small>LNH · atelier dongha · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-048-j2VKMI4UpywSH52H7UxxnCWAWzk.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-049-ae18bvnv7sERSvriQfB88wmviY4.png" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-050-S7N8CXy2IcR16r9QyIxLkW5kN0.png" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-031-eA9FFTYwwWw5LjTLqFTfGTM0Kx8.png" alt="Community House 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-032-7skl2KNTZco5muuVaOJsC4dWyM.png" alt="Community House 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-033-nfaWYer9t0hG1l5WLk7HOB8svBA.png" alt="Community House 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Community House</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-051-SlLjScAJEuKcYCuFgbHYobhR5Z4.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-052-zagSTUrlN70x7424j8jxaUES4E.png" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-053-NAgrIRx60ViXvkRtBFb9dHcSNP4.png" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-072-a7Wlyxh2peXjrwBB55fbwTmPqM.png" alt="Work &amp; Stay Center 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-073-WHf7DwcKwyEpQY2KyZmbBs3MCk.png" alt="Work &amp; Stay Center 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-074-g5w7FOLn82V7WUq2XvOchho0x4.png" alt="Work &amp; Stay Center 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Work &amp; Stay Center</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-054-J4CQEVQoKlkONkRhtBieSaTkuEA.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-055-Lf9nN97xlEBnv2cuosW73ou5l8s.png" alt="커먼타운 이미지 2">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-018-kHgU6YurgFWzriAaFGJln89bM1Y.png" alt="송파 더 플래티넘 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-019-4kTFIxbA2IJzH9eRpm2tg6IaQnM.png" alt="송파 더 플래티넘 이미지 2">
+        </div>
+        <span><em>RESIDENTIAL</em><strong>송파 더 플래티넘</strong><small>LNH · SSANGYONG</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-056-b4jv9V6bvmp6AkELNdpqBY6Zyw.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-057-F50tQ3G1YuNA4uL3HDlEmiNmNI.jpg" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-058-zoWgQBrKsGIU4Kf0oTdHNNjuQc.jpg" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · Z-LAB · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="workplace" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-013-NMEz8yDTHnS4FM9at6245UWBchE.png" alt="코오롱 FNC 오피스 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-014-EjGUze83zzatcHF7no7hBI8TPk.png" alt="코오롱 FNC 오피스 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-015-rHnRoZEiz6PcurTZtbHMdP0pIdM.png" alt="코오롱 FNC 오피스 이미지 3">
+        </div>
+        <span><em>OFFICE</em><strong>코오롱 FNC 오피스</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-059-BZ7z2Biagn3jrqBnLTpidQjYq6I.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-060-D5VJJ2xvlR3WfLB3hm9LaP8cpQ.jpg" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-061-fp9BfIVYXoEunL0jIvqRahass.png" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · Z-LAB · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-024-5OxbqktpnlM7hYPBhDrIkWw6xE.png" alt="하늘채 Signage 이미지 1">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Signage</strong><small>LNH · atelier dongha · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-062-9HBVOI37lduWN8htmvTeo1oRZk.png" alt="커먼타운 이미지 1">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · Z-LAB · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-034-4fj7JdqcraIH0pA9782qBLifcA.png" alt="Community House 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-035-2eLCn7k3AVTUkRjigOlfUKk3Nbo.png" alt="Community House 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-036-QH2r1kbIk9ZBto5uQ6J389wDq8k.png" alt="Community House 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Community House</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-063-9iUUFACRt9fjOZH7rtUsQeGC8c.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-064-hvdZtBDEQij34xNXbFm13jZtJM.png" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-065-WddMfiazuuSlD6ZxS5xKnjF27D0.png" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-075-fNDW7UNKaqd4YGT4Y2kKUOfsQ.png" alt="Work &amp; Stay Center 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-076-7IBg4TV1s4g1I2LXrUj2jgPO24.png" alt="Work &amp; Stay Center 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-077-k7XqiNQ1oKujOGW8Vh5pO4Sng.png" alt="Work &amp; Stay Center 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Work &amp; Stay Center</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-066-RXwJQkhAs7uc70dLnW4tzeNMLs4.png" alt="커먼타운 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-067-v91E0FdNzG28NoZL46bNvhmJ6w.jpg" alt="커먼타운 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-068-KTdvWet1BHblRqSG4n2hsHQrxLY.jpg" alt="커먼타운 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-088-ULIq9C5udSG5qY1Nh7ocg3TV6o.png" alt="Roundabout Community Center 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-089-pV07eFCILirm13BCaGV3EkegPQ.png" alt="Roundabout Community Center 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-090-gQ4gnes6YqrtEHnFKKGpCSaQOKo.png" alt="Roundabout Community Center 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Roundabout Community Center</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-093-vGs3L9d05xFSF2zZCFVs2GcHR60.png" alt="Roundabout Branding 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-094-75fkQM2lgU4KvHrBTCCxzZ3IvhI.png" alt="Roundabout Branding 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-095-fui9pCP6rDZ1Xl7dBFHjmoFkJQY.png" alt="Roundabout Branding 이미지 3">
+        </div>
+        <span><em>BRAND</em><strong>Roundabout Branding</strong><small>LNH · PUBLIC GRAPHIC · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-097-0FhOyyMMcK7k0ROP3KEekbRs2M.png" alt="Libeto Branding 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-098-ift3wxgsnClXB7xNIUlsBauaAiA.png" alt="Libeto Branding 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-099-5jJMThqOC4gVnmArWpqVcSxpjs.png" alt="Libeto Branding 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Libeto Branding</strong><small>LNH · PUBLIC GRAPHIC · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-102-gs7bWCst8eUXbHtci5g3XUnfC8.png" alt="하늘채 Branding: Sai 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-103-Bjwm7om95DxIYsQrgM4oT8KaxZw.png" alt="하늘채 Branding: Sai 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-104-1BuuqbJ6TVAfZ5qsYx5scDAZAAw.png" alt="하늘채 Branding: Sai 이미지 3">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Branding: Sai</strong><small>LNH · PUBLIC GRAPHIC · MOONHOON · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-109-tpoJS79aPGpclG9VYN9u3Sc1JY.png" alt="하늘채 Outdoor 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-110-21oWl2D9Iay6oA1PYOvxubbGrY.png" alt="하늘채 Outdoor 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-111-gKcQb3TcjAXS9rxHZBMTi4CIOoc.png" alt="하늘채 Outdoor 이미지 3">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Outdoor</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-114-dFDBgoZ6sCcVQioOmDK6VOGNk.png" alt="Customer Experience Design 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-115-GPyRQq9Qz3gZmypGc18ePbyzUI.png" alt="Customer Experience Design 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-116-Fcl4AAr186l66aq8wjfkTZ1GI.png" alt="Customer Experience Design 이미지 3">
+        </div>
+        <span><em>BRAND</em><strong>Customer Experience Design</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-130-aPPGsdnRNq1jZsCr01XwMbZTCg.png" alt="Slowwalk Cafe 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-131-Jk6jpYc07b9SYvSWA2X05TdFQw.png" alt="Slowwalk Cafe 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-132-gm3svL70flYlNEwiyN5GvcUsHA.png" alt="Slowwalk Cafe 이미지 3">
+        </div>
+        <span><em>HOTEL</em><strong>Slowwalk Cafe</strong><small>LNH · NEED21 · MODELLINE</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-139-AHFBS13KpTK0V49RpJwLF7l9zso.png" alt="Oriental Clinic 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-140-h88S1ETsA9h2IbO8dPZWbkDoo.png" alt="Oriental Clinic 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-141-27bl4qJ4g0OY5HOZv4DmoeaHJA.png" alt="Oriental Clinic 이미지 3">
+        </div>
+        <span><em>HOTEL</em><strong>Oriental Clinic</strong><small>LNH · NEED21</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-146-v7zWJYTiZVm3ibYgvhKVGEj9ViQ.png" alt="Leechard Hair 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-147-0aJnkyki5HcjF0XfTUaOuHTOQ.png" alt="Leechard Hair 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-148-2oLY8WT6tKlt525VdIg0GaY0dJE.png" alt="Leechard Hair 이미지 3">
+        </div>
+        <span><em>HOTEL</em><strong>Leechard Hair</strong><small>LNH · NEED21 · LEECHARD HAIR</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-020-pjOxqkWhRSxOgriXOKo9PAEbaM.png" alt="송파 더 플래티넘 이미지 1">
+        </div>
+        <span><em>RESIDENTIAL</em><strong>송파 더 플래티넘</strong><small>LNH · SSANGYONG</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="workplace" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-040-xJ24mz2BA7ntzWNzY2yJpgwQpw.png" alt="코오롱 FNC 오피스 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-041-mCoNreCxP0rzJpzV3TY3Y5LhGA.png" alt="코오롱 FNC 오피스 이미지 2">
+        </div>
+        <span><em>OFFICE</em><strong>코오롱 FNC 오피스</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-016-IT9TGUqBqKbGn7IfFJBSks0bqns.png" alt="하늘채 Branding 이미지 1">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Branding</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-070-j3DzIHycimxmrvoK5fpBME6bOdQ.png" alt="하늘채 Signage 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-071-eGwYtLakltlTu0oanzL4M84.png" alt="하늘채 Signage 이미지 2">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Signage</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-069-mmADWOD43qCq1F4tsl7ElHmIaw.jpg" alt="커먼타운 이미지 1">
+        </div>
+        <span><em>CO-LIVING</em><strong>커먼타운</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="workplace" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-030-j49O4Mt7fD8XtAywhbQwQLNnPCU.png" alt="코오롱 C.level Office 이미지 1">
+        </div>
+        <span><em>OFFICE</em><strong>코오롱 C.level Office</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-037-7o2atRfLBJDDYpaL7iTdrms6R88.png" alt="Community House 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-038-1cIa9ZLnI8FyWxkwU4SdztruA.png" alt="Community House 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-039-YMZnydu0GuufkMVZOAWmncBHc0.png" alt="Community House 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Community House</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-078-cYAqT9y4obMSHJdkfVREwLXXnWQ.png" alt="Work &amp; Stay Center 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-079-v20LC13YwaeeVbmuxxVnOI3GSk.png" alt="Work &amp; Stay Center 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-080-OzAvks44YXdf3NvejYwle7Mj6o.png" alt="Work &amp; Stay Center 이미지 3">
+        </div>
+        <span><em>CO-LIVING</em><strong>Work &amp; Stay Center</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-081-vED1BKSycsmsDUbJgpP3FXIItw.png" alt="Urban Convenience Store 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-082-bNr2KycHfkLL3PBmGqmVo0jgg.png" alt="Urban Convenience Store 이미지 2">
+        </div>
+        <span><em>CO-LIVING</em><strong>Urban Convenience Store</strong><small>LNH · Z-LAB · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-083-RO5wYBletNynDifpzBMMUb9tLVc.png" alt="Itaewon Rooftop 이미지 1">
+        </div>
+        <span><em>CO-LIVING</em><strong>Itaewon Rooftop</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-084-DL7ZXxq08kYG4ZbSMHGOaptcHO8.png" alt="Kolon Mobility 이미지 1">
+        </div>
+        <span><em>BRAND</em><strong>Kolon Mobility</strong><small>LNH · PUBLIC GRAPHIC · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-085-IdM5xD8hUf9SC1rkvDWoYIh03MA.png" alt="COMMONTOWN Branding 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-086-yybMkzTI8CMBWWhGLyepNvbQaGg.png" alt="COMMONTOWN Branding 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-087-oWEUMErNjt6BG5zq9h6mxDBl5nM.png" alt="COMMONTOWN Branding 이미지 3">
+        </div>
+        <span><em>BRAND</em><strong>COMMONTOWN Branding</strong><small>LNH · PUBLIC GRAPHIC · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-091-pAETuDDrjgpYMsNj0vWkPkcsaqY.png" alt="Roundabout Community Center 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-092-mvMgWCg34bxPeB1RatsTEzx08c.png" alt="Roundabout Community Center 이미지 2">
+        </div>
+        <span><em>CO-LIVING</em><strong>Roundabout Community Center</strong><small>LNH · LIBETO</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-096-a49wkG7DFUJYmo0PXkZJjveFM.png" alt="Roundabout Branding 이미지 1">
+        </div>
+        <span><em>BRAND</em><strong>Roundabout Branding</strong><small>LNH · PUBLIC GRAPHIC · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="coliving residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-100-QRebpYH39Z6bMgY8cyhoQj8PMXc.png" alt="Libeto Branding 이미지 1">
+        </div>
+        <span><em>CO-LIVING</em><strong>Libeto Branding</strong><small>LNH · PUBLIC GRAPHIC · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-101-egvM6D8NryOKkonppj3B4JEE.png" alt="하늘채 Facade 이미지 1">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Facade</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-105-X4F311iO8GJq9QFUVbA1kisBY.png" alt="하늘채 Branding: Sai 이미지 1">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Branding: Sai</strong><small>LNH · PUBLIC GRAPHIC · MOONHOON · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-106-HUf5LqTeER511YJhypZ8I9zX6fw.png" alt="하늘채 Branding: Outdoor 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-107-3G9lR1qZRSept8Iuu2ssB5F6BE.png" alt="하늘채 Branding: Outdoor 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-108-hl87C1hPLnrGIX7if3c2fiPHUDw.png" alt="하늘채 Branding: Outdoor 이미지 3">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Branding: Outdoor</strong><small>LNH · PUBLIC GRAPHIC · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-112-D72a7GT1VX0mW2PL6SLQ6tlOVo.png" alt="하늘채 Outdoor 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-113-aVBgsAt6uikYTsXFxXOXclFuJY4.png" alt="하늘채 Outdoor 이미지 2">
+        </div>
+        <span><em>BRAND</em><strong>하늘채 Outdoor</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="brand residential" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-117-yLu0JnaPsZgYVkWG9ZD8QYXYj0.png" alt="Customer Experience Design 이미지 1">
+        </div>
+        <span><em>BRAND</em><strong>Customer Experience Design</strong><small>LNH · KOLON</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-118-mMkML8hZGwHnsLBNIBFUS5nWw.png" alt="U9 Fusion Restaurant 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-119-ozaNCawFQNBTjwogmyLFBweCLSk.png" alt="U9 Fusion Restaurant 이미지 2">
+        </div>
+        <span><em>HOTEL</em><strong>U9 Fusion Restaurant</strong><small>LNH · BBQ GENESIS</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="workplace" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-120-FxQ04vssfdOPXlfdjRBFPFutND4.png" alt="State Tower Namsan 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-121-PfcmTLyrULKKKYUnKESTA86AhDA.png" alt="State Tower Namsan 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-122-lvv3DKcaZwDfezHXlNQG5vrywyc.png" alt="State Tower Namsan 이미지 3">
+        </div>
+        <span><em>OFFICE</em><strong>State Tower Namsan</strong><small>LNH · PARASCOPE · SHINHAN BNP</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-123-EUlZD22ZzMYRy5NGyHzYQAqlE4I.png" alt="W Hotel · Woo Bar 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-124-ac4iJyFfxNbfZnSCTKeDGCDWt94.png" alt="W Hotel · Woo Bar 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-125-n0Goz314Bp2gdhwgmxr7PHnSMBU.png" alt="W Hotel · Woo Bar 이미지 3">
+        </div>
+        <span><em>HOTEL</em><strong>W Hotel · Woo Bar</strong><small>LNH · PARASCOPE · SK</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-126-43meqtJj7Al7c7p0qxMDjhEG2Q.png" alt="Atkinsons Coffee Service Design 이미지 1">
+        </div>
+        <span><em>HOTEL</em><strong>Atkinsons Coffee Service Design</strong><small>LNH · ATKINSONS COFFEE</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="workplace" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-127-QsCGBGB4nIPCTPLU6Y2R59zH0.png" alt="Center Point Tower 이미지 1">
+        </div>
+        <span><em>OFFICE</em><strong>Center Point Tower</strong><small>LNH · PARASCOPE · SHINHAN BNP</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-128-NB7vaOPb39Ljjw0ppWDUyBKYo5k.png" alt="Clock16 Walkerhill 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-129-48lbXcofGm0kcevl7VsxDsLBaI.png" alt="Clock16 Walkerhill 이미지 2">
+        </div>
+        <span><em>HOTEL</em><strong>Clock16 Walkerhill</strong><small>LNH · PARASCOPE · SK</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-133-RhYAYbeDleXJnq8SEuBDGFnQ0E.png" alt="Slowwalk Cafe 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-134-T1YXVTKEgLIYtidsJHzvqtixk.png" alt="Slowwalk Cafe 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-135-ufeo2Fj3jYxeNHhdauMsft0BU.png" alt="Slowwalk Cafe 이미지 3">
+        </div>
+        <span><em>HOTEL</em><strong>Slowwalk Cafe</strong><small>LNH · NEED21 · MODELLINE</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-136-siWzb3ZaowCsw697oQdKkqUyZ7U.png" alt="Walkerhill Duty Free 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-137-8FJZFFxrPL9NQdLIskgzS95hAw.png" alt="Walkerhill Duty Free 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-138-0tya7guD9HpeaV8hUqnKBGLKCTM.png" alt="Walkerhill Duty Free 이미지 3">
+        </div>
+        <span><em>HOTEL</em><strong>Walkerhill Duty Free</strong><small>LNH · PARASCOPE · SK</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-142-xtb202ps1sSAoCQaau6EymDPDU.png" alt="Oriental Clinic 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-143-OaWMcTpQE8Rqrxv88m1MEf3roJY.png" alt="Oriental Clinic 이미지 2">
+        </div>
+        <span><em>HOTEL</em><strong>Oriental Clinic</strong><small>LNH · NEED21</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-144-S1BPJMbQZZKpY3mZQglqpjTJs7M.png" alt="Walkerhill Hotel Restaurant 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-145-momhbXZzvLUdjVZgqTmtAWqdd4.png" alt="Walkerhill Hotel Restaurant 이미지 2">
+        </div>
+        <span><em>HOTEL</em><strong>Walkerhill Hotel Restaurant</strong><small>LNH · PARASCOPE · SK</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-149-l60x2xGrhvtdLuXCujsS47WNluY.png" alt="Leechard Hair 이미지 1">
+        </div>
+        <span><em>HOTEL</em><strong>Leechard Hair</strong><small>LNH · NEED21 · LEECHARD HAIR</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="workplace" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-150-o7ERSDEWhKZDdKnIszVQtaPuryU.png" alt="Building Sales Showroom 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-151-mAyGmVrE1cTrXl5f6AWn5oBMvw.png" alt="Building Sales Showroom 이미지 2">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-152-EkiOFIGv31oOraaE5PCJbmNp6EU.png" alt="Building Sales Showroom 이미지 3">
+        </div>
+        <span><em>OFFICE</em><strong>Building Sales Showroom</strong><small>LNH · PARASCOPE · CENTER1</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-153-NW4CqwqtzAoPSJTInoocIbsCPsE.png" alt="Italian Restaurant 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-154-sNFK0PgBgU5qpFXhww2ntpeiL0.png" alt="Italian Restaurant 이미지 2">
+        </div>
+        <span><em>HOTEL</em><strong>Italian Restaurant</strong><small>LNH · NEED21</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-155-A3ok61mKRVQLjKx6vunwLqC4TT0.png" alt="Hello Sushi 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-156-19UxkS9rEheNd4TvAF0BvVXlqs.png" alt="Hello Sushi 이미지 2">
+        </div>
+        <span><em>HOTEL</em><strong>Hello Sushi</strong><small>LNH · NEED21</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="hospitality" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-157-2r9vCK1xCItk0O7xUmVZHXmGmc.png" alt="Yeadang Korean F&amp;B 이미지 1">
+          <img class="story-slide" loading="lazy" src="assets/stories-public/public-158-WsVKrcFiLdX4H3FQxj75TQIeY.png" alt="Yeadang Korean F&amp;B 이미지 2">
+        </div>
+        <span><em>HOTEL</em><strong>Yeadang Korean F&amp;B</strong><small>LNH · NEED21</small></span>
+      </article>
+      <article class="feed-card story-card" data-category="public" data-slider>
+        <div class="story-slider" data-index="0">
+          <img class="story-slide is-active" loading="lazy" src="assets/stories-public/public-159-q8qZhDUVgnjyKWv142CmsxWjQ.png" alt="송파구청 이미지 1">
+        </div>
+        <span><em>PUBLIC</em><strong>송파구청</strong><small>LNH · JEON ASSOCIATE</small></span>
+      </article>
+    </section>
+
+    <section class="archive" id="archive">
+      <div class="wrap">
+        <header class="archive-head reveal"><div><div class="eyebrow">Project Archive</div><h2>작게 남겨둔 기록</h2></div><p>대표 이미지로 다 담지 못한 작업은 Archive에 정리했습니다.</p></header>
+        <div class="reveal">
+          <details open><summary><span>Housing · Brand · Experience</span><span class="years">2014—2025</span><span class="plus">+</span></summary><div class="archive-list"><div class="archive-item"><time>2025</time><span>HOMES Anam Co.living · HOMES</span></div><div class="archive-item"><time>2024</time><span>송파 더 플래티넘 · LNH</span></div><div class="archive-item"><time>2023</time><span>송파 더 플래티넘 Upgrade · SSANGYONG</span></div><div class="archive-item"><time>2021</time><span>송파 더 플래티넘 Upgrade · SSANGYONG</span></div><div class="archive-item"><time>2022</time><span>하늘채 Signage · atelier dongha · KOLON</span></div><div class="archive-item"><time>2021</time><span>하늘채 Branding · KOLON</span></div><div class="archive-item"><time>2021</time><span>하늘채 Signage · KOLON</span></div><div class="archive-item"><time>2015</time><span>하늘채 Branding: Sai · PUBLIC GRAPHIC · MOONHOON · KOLON</span></div><div class="archive-item"><time>2014</time><span>하늘채 Facade · KOLON</span></div><div class="archive-item"><time>2014</time><span>하늘채 Branding: Outdoor · PUBLIC GRAPHIC · KOLON</span></div><div class="archive-item"><time>2014</time><span>하늘채 Outdoor · KOLON</span></div><div class="archive-item"><time>2014</time><span>Customer Experience Design · KOLON</span></div></div></details>
+          <details><summary><span>Co-living · Community</span><span class="years">2017—2018</span><span class="plus">+</span></summary><div class="archive-list"><div class="archive-item"><time>2018</time><span>Commontown Co.living · Z-LAB · LIBETO</span></div><div class="archive-item"><time>2018</time><span>Commontown Co.living · LIBETO</span></div><div class="archive-item"><time>2017</time><span>Commontown Co.living · LIBETO</span></div><div class="archive-item"><time>2018</time><span>Community House · LIBETO</span></div><div class="archive-item"><time>2018</time><span>Work & Stay Center · LIBETO</span></div><div class="archive-item"><time>2018</time><span>Urban Convenience Store · Z-LAB · LIBETO</span></div><div class="archive-item"><time>2018</time><span>Itaewon Rooftop · LIBETO</span></div><div class="archive-item"><time>2018</time><span>Libeto Branding · PUBLIC GRAPHIC · KOLON</span></div><div class="archive-item"><time>2017</time><span>COMMONTOWN Branding · PUBLIC GRAPHIC · KOLON</span></div><div class="archive-item"><time>2017</time><span>Roundabout Community Center · LIBETO</span></div><div class="archive-item"><time>2017</time><span>Roundabout Branding · PUBLIC GRAPHIC · KOLON</span></div></div></details>
+          <details><summary><span>Workplace · Mobility · Public</span><span class="years">2009—2020</span><span class="plus">+</span></summary><div class="archive-list"><div class="archive-item"><time>2020</time><span>Kolon C.level Office · KOLON</span></div><div class="archive-item"><time>2019</time><span>Kolon fnc Office · KOLON</span></div><div class="archive-item"><time>2017</time><span>Kolon Mobility · PUBLIC GRAPHIC · KOLON</span></div><div class="archive-item"><time>2010</time><span>Songpa Borough Office · JEON ASSOCIATE</span></div><div class="archive-item"><time>2009</time><span>The State Tower: Namsan · PARASCOPE · SHINHAN BNP</span></div><div class="archive-item"><time>2009</time><span>Center Point Tower · PARASCOPE · SHINHAN BNP</span></div><div class="archive-item"><time>2009</time><span>Building Sales Showroom · PARASCOPE · CENTER1</span></div></div></details>
+          <details><summary><span>Hospitality · Retail · F&amp;B</span><span class="years">2003—2013</span><span class="plus">+</span></summary><div class="archive-list"><div class="archive-item"><time>2013</time><span>U9 Fusion Restaurant · BBQ GENESIS</span></div><div class="archive-item"><time>2012</time><span>Atkinsons Coffee Service Design · ATKINSONS COFFEE</span></div><div class="archive-item"><time>2009</time><span>Walkerhill Duty Free · PARASCOPE · SK</span></div><div class="archive-item"><time>2009</time><span>Clock16 Walkerhill · PARASCOPE · SK</span></div><div class="archive-item"><time>2008</time><span>W Hotel: Woo Bar · PARASCOPE · SK</span></div><div class="archive-item"><time>2008</time><span>Walkerhill Hotel Restaurant · PARASCOPE · SK</span></div><div class="archive-item"><time>2007</time><span>Slowwalk Cafe · NEED21 · MODELLINE</span></div><div class="archive-item"><time>2005</time><span>Leechard Hair · NEED21 · LEECHARD HAIR</span></div><div class="archive-item"><time>2005</time><span>Hello Sushi · NEED21</span></div><div class="archive-item"><time>2004</time><span>Oriental Clinic · NEED21</span></div><div class="archive-item"><time>2003</time><span>Italian Restaurant · NEED21</span></div><div class="archive-item"><time>2003</time><span>Yeadang Korean F&amp;B · NEED21</span></div></div></details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-mark"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></div>
+      <nav class="footer-nav" aria-label="하단 메뉴">
+        <a href="index.html">Home</a><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a><a href="edit.html">Edit</a><a href="partnership.html">Partnership</a><a href="about.html">About</a><a href="stories.html">Stories</a>
+      </nav>
+    </div>
+    <div class="footer-bottom"><div class="footer-signature"><img src="assets/LNH-slogan.svg" alt="Lifestyle Advisor · Seoul"><p class="footer-intelligence"><span class="footer-intelligence-mark" aria-hidden="true"></span>Brief Intelligence</p></div><p class="footer-legal"><span>상호명: 엘엔에이치 · 대표: 이승일 · 서울특별시 송파구 잠실로 62</span><span>사업자등록번호: 247-54-00733 · © LNH 2026. All rights reserved.</span></p></div>
+  </footer>
+
+  <script>
+    const header=document.querySelector('.site-header');
+    const menuButton=document.querySelector('.menu-button');
+    const mobileMenu=document.querySelector('.mobile-menu');
+    const onScroll=()=>header.classList.toggle('scrolled',scrollY>24);
+    addEventListener('scroll',onScroll,{passive:true});onScroll();
+    menuButton.addEventListener('click',()=>{const open=!mobileMenu.classList.contains('open');mobileMenu.classList.toggle('open',open);menuButton.textContent=open?'Close':'Menu';menuButton.setAttribute('aria-expanded',open);mobileMenu.setAttribute('aria-hidden',!open);document.body.classList.toggle('menu-open',open)});
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('open');menuButton.textContent='Menu';menuButton.setAttribute('aria-expanded','false');mobileMenu.setAttribute('aria-hidden','true');document.body.classList.remove('menu-open')}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    const filterButtons=document.querySelectorAll('[data-filter]');
+    const feedCards=document.querySelectorAll('.feed-card');
+    filterButtons.forEach(button=>{
+      button.addEventListener('click',()=>{
+        const filter=button.dataset.filter;
+        filterButtons.forEach(item=>item.classList.toggle('is-active',item===button));
+        feedCards.forEach(card=>{
+          const categories=(card.dataset.category||'').split(' ');
+          card.classList.toggle('is-hidden',filter!=='all'&&!categories.includes(filter));
+        });
+      });
+    });
+
+    document.querySelectorAll('[data-slider]').forEach((card,cardIndex)=>{
+      const slider=card.querySelector('.story-slider');
+      const slides=[...card.querySelectorAll('.story-slide')];
+      if(!slider||slides.length<2)return;
+      const motionOK=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let current=Math.floor(Math.random()*slides.length);
+      const setSlide=(next)=>{
+        current=(next+slides.length)%slides.length;
+        slider.dataset.index=current;
+        slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===current));
+      };
+      const nextRandom=()=>{
+        if(slides.length<2)return current;
+        let next=current;
+        while(next===current)next=Math.floor(Math.random()*slides.length);
+        return next;
+      };
+      setSlide(current);
+      if(motionOK){
+        setTimeout(()=>{
+          setSlide(nextRandom());
+          setInterval(()=>setSlide(nextRandom()),6200+(cardIndex%5)*600);
+        },1400+(cardIndex%7)*520);
+      }
+    });
+    document.querySelectorAll('[data-lightbox]').forEach(btn=>{
+      btn.setAttribute('aria-expanded','false');
+      btn.addEventListener('click',()=>{
+        const gallery=btn.closest('.gallery');
+        const wasExpanded=btn.classList.contains('is-expanded');
+        document.querySelectorAll('[data-lightbox].is-expanded').forEach(item=>{
+          item.classList.remove('is-expanded');
+          item.setAttribute('aria-expanded','false');
+          item.closest('.gallery')?.classList.remove('has-expanded');
+        });
+        if(!wasExpanded){
+          btn.classList.add('is-expanded');
+          btn.setAttribute('aria-expanded','true');
+          gallery?.classList.add('has-expanded');
+          requestAnimationFrame(()=>btn.scrollIntoView({behavior:'smooth',block:'center'}));
+        }
+      });
+    });
+  </script>
+
+<style id="lnh-section-headline-scale-sync">
+  :root{
+    --lnh-section-heading-desktop:clamp(36px,3vw,44px);
+    --lnh-section-heading-mobile:clamp(28px,7.6vw,32px);
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2{
+      font-size:var(--lnh-section-heading-desktop)!important;
+      line-height:1.56!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2{
+      font-size:var(--lnh-section-heading-mobile)!important;
+      line-height:1.66!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-hero-cta-gap-sync">
+  @media(max-width:680px){
+    .hero-copy:has(.hero-bottom),
+    .direction-hero-copy:has(.direction-hero-action),
+    .build-direction-hero-copy:has(.build-direction-hero-action),
+    #build-main-clean .build-direction-hero-copy:has(.build-direction-hero-action){
+      min-height:auto!important;
+      justify-content:flex-start!important;
+      gap:clamp(112px,25vw,150px)!important;
+      padding-bottom:clamp(34px,8vw,46px)!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-bottom,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      margin-top:0!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-action,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      gap:9px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-dark-ad-headline-mobile-sync">
+  @media(max-width:680px){
+    .landing-cta h2,
+    .brief-need-hook > p,
+    .reassurance-copy h2,
+    .final-cta .final-copy h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .bdf-dark-statement h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .ad-section .ad-card h2{
+      font-size:clamp(28px,7vw,31px)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+    .landing-cta h2 span,
+    .landing-cta h2 em,
+    .final-copy h2 span,
+    .final-copy h2 em,
+    .direction-manifesto h2 span,
+    .direction-manifesto h2 em,
+    .direction-brief-cta h2 span,
+    .direction-brief-cta h2 em,
+    .bdf-dark-statement h2 span,
+    .bdf-dark-statement h2 em,
+    .bdf-final h2 span,
+    .bdf-final h2 em,
+    .bdf-final__copy h2 span,
+    .bdf-final__copy h2 em,
+    .cta-copy h2 span,
+    .cta-copy h2 em,
+    .contact .slide-title span,
+    .contact .slide-title em,
+    .ad-section .ad-card h2 span,
+    .ad-section .ad-card h2 em{
+      font-size:inherit!important;
+      font-weight:400!important;
+      line-height:inherit!important;
+      color:inherit!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-ad-cta-scale-sync">
+  @media(max-width:680px){
+    .landing-cta-button,
+    .landing-cta-button.primary,
+    .brief-copy .rule-link,
+    .final-copy .primary-link,
+    .final-copy .rule-link,
+    .direction-brief-cta .rule-link,
+    .bdf-final .bdf-button,
+    .cta-copy .rule-link,
+    .cta-copy .cta-solid,
+    .contact .rule-link{
+      min-height:42px!important;
+      padding:0 18px!important;
+      font-size:13px!important;
+      line-height:1.1!important;
+    }
+    .landing-cta-button.secondary,
+    .brief-copy .rule-link:not(.primary-link),
+    .cta-copy .rule-link{
+      min-height:0!important;
+      padding:8px 0!important;
+      font-size:13px!important;
+      gap:14px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-dark-cta-button-room-sync">
+  @media(max-width:680px){
+    .final-cta .cta-copy .rule-link,
+    .final-cta .final-copy .primary-link,
+    .edit-cta .cta-copy .cta-solid,
+    .bdf-final .bdf-button,
+    .bdf-final__copy .bdf-button,
+    .landing-cta-button.primary,
+    .direction-brief-cta .direction-button,
+    .contact .rule-link,
+    .ad-section .ad-link{
+      min-height:54px!important;
+      padding:0 24px!important;
+      font-size:13px!important;
+      line-height:1.15!important;
+      white-space:nowrap!important;
+    }
+    .final-cta .cta-copy .rule-link span,
+    .landing-cta-button.primary span,
+    .direction-brief-cta .direction-button span,
+    .contact .rule-link span{
+      margin-left:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-legal-sync">
+  @media(max-width:680px){
+    .footer-legal{line-height:1.42!important}
+    .footer-legal span{display:block}
+    .footer-legal span + span{margin-top:0}
+  }
+</style>
+
+
+<style id="lnh-mobile-footer-spacing-sync">
+  @media(max-width:680px){
+    .footer-mark{margin-bottom:clamp(52px,11vw,64px)!important}
+    .footer-signature{gap:clamp(8px,1.8vw,10px)!important}
+    .footer-signature img{margin-bottom:0!important}
+    .footer-intelligence{margin-top:0!important}
+  }
+</style>
+
+
+<style id="lnh-editorial-hero-tag-sync">
+  .hero .hero-copy > .eyebrow{
+    margin:0!important;
+    font-family:var(--sans)!important;
+    font-size:12px!important;
+    font-weight:400!important;
+    line-height:1.5!important;
+    letter-spacing:.08em!important;
+    text-transform:none!important;
+    color:#565b60!important;
+  }
+</style>
+
+
+<style id="lnh-stories-mobile-feed-single-column-sync">
+  @media(max-width:680px){
+    .stories-feed{
+      grid-template-columns:1fr!important;
+      gap:42px!important;
+    }
+    .feed-card.wide,
+    .feed-card.tall{
+      grid-column:auto!important;
+      grid-row:auto!important;
+    }
+    .feed-card span{
+      padding:1rem 0 .1rem!important;
+      font-size:.76rem!important;
+      line-height:1.55!important;
+    }
+    .feed-card span strong{
+      margin-bottom:.82rem!important;
+      font-family:var(--sans)!important;
+      font-size:clamp(13px,1vw,15px)!important;
+      font-weight:400!important;
+      line-height:1.4!important;
+      letter-spacing:0!important;
+    }
+    .feed-card span small{
+      display:block!important;
+      margin-top:.28rem!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-process-number-size-sync">
+  .residential-path-num,
+  .steps .step-num,
+  .process-grid .process-number,
+  .process-list .process-num,
+  .process-row .process-num,
+  #build-main-clean .bdf-process span,
+  .build-process-step .build-index,
+  .process-step span{
+    font-size:18px!important;
+    line-height:1.2!important;
+    letter-spacing:.06em!important;
+  }
+</style>
+
+<style id="lnh-stories-card-caption-index-flow-sync">
+  .stories-feed .feed-card span{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    align-items:baseline!important;
+    column-gap:12px!important;
+    row-gap:0!important;
+    margin-top:13px!important;
+    padding:13px 0 .1rem!important;
+    border-top:1px solid var(--ink)!important;
+    background:transparent!important;
+    color:var(--ink)!important;
+  }
+  .stories-feed .feed-card span strong{
+    grid-column:1!important;
+    grid-row:1!important;
+    margin:0!important;
+    font-family:var(--sans)!important;
+    font-size:clamp(13px,1vw,15px)!important;
+    font-weight:400!important;
+    line-height:1.4!important;
+    letter-spacing:0!important;
+    color:#1f2123!important;
+  }
+  .stories-feed .feed-card span em{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:end!important;
+    margin:0!important;
+    white-space:nowrap!important;
+    color:var(--muted)!important;
+    font-family:var(--sans)!important;
+    font-size:10px!important;
+    font-style:normal!important;
+    font-weight:500!important;
+    line-height:1.3!important;
+    letter-spacing:.08em!important;
+    text-transform:uppercase!important;
+  }
+  .stories-feed .feed-card span small{
+    grid-column:1 / -1!important;
+    grid-row:2!important;
+    display:block!important;
+    margin-top:.62rem!important;
+    color:#626562!important;
+    font-family:var(--sans)!important;
+    font-size:.74rem!important;
+    font-weight:400!important;
+    line-height:1.4!important;
+    letter-spacing:-.01em!important;
+  }
+  @media(max-width:680px){
+    .stories-feed .feed-card span{
+      column-gap:10px!important;
+      margin-top:13px!important;
+      padding-top:13px!important;
+    }
+    .stories-feed .feed-card span strong{
+      font-size:13px!important;
+    }
+    .stories-feed .feed-card span em{
+      font-size:9px!important;
+    }
+    .stories-feed .feed-card span small{
+      margin-top:.72rem!important;
+      font-size:.68rem!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-footer-signature-gap-desktop-sync">
+  @media(min-width:681px){
+    .footer-signature{
+      gap:0!important;
+    }
+    .footer-signature img{
+      margin-bottom:0!important;
+    }
+    .footer-intelligence{
+      margin-top:8px!important;
+    }
+  }
+</style>
+
+
+<style id="lnh-footer-legal-desktop-line-sync">
+  @media(min-width:681px){
+    .footer-legal{
+      font-size:12px!important;
+      line-height:1.8!important;
+      text-align:left!important;
+    }
+    .footer-legal span{
+      display:block!important;
+    }
+    .footer-legal span{
+      white-space:nowrap!important;
+    }
+  }
+</style>
+
+<style id="lnh-about-headline-size-sync">
+  :root{
+    --lnh-about-headline-desktop:38px;
+    --lnh-about-headline-mobile:28px;
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-desktop)!important;
+      font-weight:400!important;
+      line-height:1.62!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-mobile)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-section-content-hierarchy-sync">
+  :root{
+    --lnh-subhead-desktop:24px;
+    --lnh-subhead-mobile:21px;
+    --lnh-detail-desktop:15px;
+    --lnh-detail-mobile:14px;
+    --lnh-emphasis-detail-desktop:20px;
+    --lnh-emphasis-detail-mobile:17px;
+  }
+  @media(min-width:681px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-desktop)!important;
+      font-weight:400!important;
+      line-height:1.48!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-desktop)!important;
+      font-weight:400!important;
+      line-height:1.78!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-desktop)!important;
+      font-weight:300!important;
+      line-height:1.92!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-mobile)!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-mobile)!important;
+      font-weight:400!important;
+      line-height:1.84!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-mobile)!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-price-info-scale-sync">
+  @media(min-width:681px){
+    .price-amount b{
+      font-size:44px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:24px!important;
+      line-height:1.18!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:12px!important;
+      line-height:1.55!important;
+    }
+  }
+  @media(max-width:680px){
+    .price-amount b{
+      font-size:40px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:22px!important;
+      line-height:1.2!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:11px!important;
+      line-height:1.55!important;
+    }
+  }
+</style>
+
+<style id="lnh-global-section-hierarchy-final-sync">
+  @media(min-width:681px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:24px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:15px!important;
+      font-weight:300!important;
+      line-height:1.9!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:12px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:44px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:21px!important;
+      font-weight:400!important;
+      line-height:1.52!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:14px!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:11px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:40px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-dark-section-spacing-sync">
+  @media(min-width:681px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+</style>
+<style id="lnh-section-eyebrow-size-sync">
+  @media(min-width:681px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:14px!important;
+      line-height:1.5!important;
+    }
+  }
+  @media(max-width:680px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:12px!important;
+      line-height:1.5!important;
+    }
+  }
+</style>
+
+<style id="lnh-nav-uniform-body-final-sync">
+  .site-header{height:82px!important;padding-inline:clamp(24px,4.5vw,72px)!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;display:inline-flex!important;align-items:center!important;width:auto!important;line-height:1!important;letter-spacing:0!important;z-index:2!important}
+  .site-header .brand img{width:auto!important;height:24px!important;object-fit:contain!important}
+  .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:clamp(9px,.8vw,14px)!important;font-family:var(--sans)!important;font-size:12.5px!important;font-weight:300!important;line-height:1!important;letter-spacing:0!important;white-space:nowrap!important;z-index:1!important}
+  .site-header .nav-group{display:flex!important;align-items:center!important;gap:clamp(9px,.8vw,14px)!important}
+  .site-header .nav-divider{flex:0 0 1px!important;width:1px!important;height:14px!important;margin-inline:2px!important;background:rgba(33,30,25,.38)!important}
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2!important}
+  .site-header .desktop-nav .nav-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:0 14px!important;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-family:var(--sans)!important;font-size:13px!important;font-weight:400!important;line-height:1!important;letter-spacing:0!important;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap!important}
+  .site-header .desktop-nav .nav-cta::after,.site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){.site-header{height:64px!important;padding-inline:22px!important;display:flex!important;justify-content:space-between!important}.site-header.scrolled{height:58px!important}.site-header .desktop-nav{display:none!important}.site-header .brand img{height:24px!important}}
+</style>
+</body>
+</html>
