@@ -191,7 +191,7 @@
     .video-section{padding:120px var(--pad);display:grid;grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);gap:72px;align-items:center;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .video-frame{position:relative;min-height:600px;overflow:hidden;background:#dfe1e1;color:#f5f5f2}
     .video-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,38,40,.42) 0%,rgba(36,38,40,.14) 38%,transparent 68%);pointer-events:none}
-    .video-frame img{opacity:1;filter:saturate(.78) contrast(.97);object-position:center}
+    .video-frame img{opacity:1;filter:grayscale(1) contrast(.98);object-position:center}
     .play-mark{position:absolute;left:42px;bottom:42px;width:72px;height:72px;border:1px solid rgba(245,240,231,.78);border-radius:50%;display:grid;place-items:center;font-family:var(--latin);font-size:28px}
     .video-caption{position:absolute;left:42px;right:42px;top:42px}
     .video-caption h2{max-width:520px;margin:28px 0 0;font-family:var(--serif);font-size:45px;font-weight:400;line-height:1.55;letter-spacing:0}
@@ -670,7 +670,7 @@
     .desktop-nav .nav-cta::after,.desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
     @media(max-width:680px){.site-header{padding-inline:22px}}
   </style>
-  <link rel="stylesheet" href="assets/brand-publishing-v2.css?v=footer-stack-fix-20260730">
+  <link rel="stylesheet" href="assets/brand-publishing-v2.css?v=type-contract-20260823">
   <style>
     /* Header baseline must follow the shared stylesheet. */
     .site-header{padding-inline:clamp(24px,4.5vw,72px)}
@@ -840,7 +840,7 @@
     color:#fff!important;
     font-family:var(--sans)!important;
     font-size:13px!important;
-    font-weight:600!important;
+    font-weight:400!important;
     line-height:1!important;
     letter-spacing:0!important;
     text-decoration:none!important;
@@ -861,6 +861,7 @@
     .site-header .brand img{height:24px!important}
   }
 </style>
+  <link rel="stylesheet" href="assets/lnh-desktop-refinement-20260815.css?v=ad-center-20260822">
 </head>
 <body>
   <a class="skip" href="#main">본문으로</a>
@@ -1080,7 +1081,7 @@
       </figure>
       <div class="video-copy reveal">
         <p class="eyebrow">05 / LNH Advisor</p>
-        <h2 id="video-title">아파트를 상품으로 만들던 사람이,<br>이제 당신의 집을 봅니다.</h2>
+        <h2 id="video-title">아파트 생활을 기획해 온 사람이,<br>이제 당신의 집을 함께 고민합니다.</h2>
         <p class="video-lead">무엇을 지키고 무엇을 조정할지 함께 정합니다.</p>
         <p class="video-advisor-meta">LNH Advisor · 이승일</p>
         <p class="video-advisor-note">공간, 브랜드, 주거 상품을 다뤄온 경험으로 한 사람의 생활을 봅니다.</p>
@@ -1570,7 +1571,7 @@
       padding:0 12px!important;
       justify-content:center!important;
       font-size:12px!important;
-      font-weight:500!important;
+      font-weight:400!important;
       white-space:nowrap!important;
     }
     .price-actions .sample-trigger{
@@ -2500,7 +2501,7 @@
       stroke-linecap:round;
       stroke-linejoin:round;
     }
-    .first-judgment .question-row h3{
+    body main > section.first-judgment:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .question-row h3{
       max-width:1100px!important;
       font-size:16px!important;
       font-weight:300!important;
@@ -2541,7 +2542,7 @@
       stroke-linecap:round;
       stroke-linejoin:round;
     }
-    .first-judgment .question-row h3{
+    #main .first-judgment .question-row h3{
       font-size:15px!important;
       font-weight:300!important;
       line-height:1.9!important;
@@ -2552,42 +2553,50 @@
 <style id="lnh-brief-need-hook-headline-fix">
   @media(min-width:681px){
     body main .brief-need-hook > h2#brief-need-hook-title{
+      width:min(100%,980px)!important;
       max-width:980px!important;
-      margin:0!important;
+      margin:0 auto!important;
       font-family:var(--serif)!important;
       font-size:38px!important;
       font-weight:400!important;
       line-height:1.62!important;
       letter-spacing:0!important;
+      text-align:center!important;
       color:#f5f5f2!important;
     }
     body main .brief-need-hook > h2#brief-need-hook-title span{
       display:block!important;
-      margin-top:24px!important;
+      width:100%!important;
+      margin:24px auto 0!important;
       font-family:var(--sans)!important;
       font-size:18px!important;
       font-weight:400!important;
       line-height:1.8!important;
+      text-align:center!important;
       color:#d9d2c4!important;
     }
   }
   @media(max-width:680px){
     body main .brief-need-hook > h2#brief-need-hook-title{
-      margin:0!important;
+      width:100%!important;
+      margin:0 auto!important;
       font-family:var(--serif)!important;
       font-size:28px!important;
       font-weight:400!important;
       line-height:1.68!important;
       letter-spacing:0!important;
+      text-align:center!important;
       color:#f5f5f2!important;
     }
     body main .brief-need-hook > h2#brief-need-hook-title span{
       display:block!important;
-      margin-top:20px!important;
+      width:100%!important;
+      margin:20px auto 0!important;
       font-family:var(--sans)!important;
       font-size:15px!important;
       font-weight:400!important;
       line-height:1.8!important;
+      text-align:center!important;
       color:#d9d2c4!important;
     }
   }
@@ -2628,7 +2637,7 @@
     color:#fff!important;
     font-family:var(--sans)!important;
     font-size:15px!important;
-    font-weight:600!important;
+    font-weight:400!important;
     line-height:1!important;
     letter-spacing:0!important;
     text-decoration:none!important;
@@ -2715,5 +2724,422 @@
   .site-header .desktop-nav .nav-cta::after,.site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
   @media(max-width:1120px){.site-header{height:64px!important;padding-inline:22px!important;display:flex!important;justify-content:space-between!important}.site-header.scrolled{height:58px!important}.site-header .desktop-nav{display:none!important}.site-header .brand img{height:24px!important}}
 </style>
+<style id="lnh-ad-cta-center-second-release">
+  :is(.ad-section .ad-card,
+      .direction-brief-cta,
+      .landing-cta .landing-cta-inner,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .final-copy,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .cta-copy){
+    align-items:center!important;
+    justify-items:center!important;
+    text-align:center!important;
+  }
+  :is(.ad-section .ad-card,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .final-copy,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .cta-copy)>div{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  :is(.ad-section .ad-card small,
+      .ad-section .ad-card h2,
+      .ad-section .ad-card p,
+      .ad-section .ad-label,
+      .direction-brief-cta .eyebrow,
+      .direction-brief-cta h2,
+      .direction-brief-cta p,
+      .landing-cta h2,
+      .landing-cta p,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .eyebrow,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) h2,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) p){
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  :is(.ad-section .ad-link,
+      .direction-brief-cta a,
+      .landing-cta .landing-cta-actions,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) a){
+    align-self:center!important;
+    justify-self:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  :is(.final-cta:has(.final-image) .final-copy,
+      .final-cta:has(.cta-image) .cta-copy,
+      .edit-cta:has(.cta-image) .cta-copy,
+      .curation-ad:has(.cta-image) .cta-copy){
+    align-items:flex-start!important;
+    justify-items:start!important;
+    text-align:left!important;
+  }
+  :is(.final-cta:has(.final-image) .final-copy,
+      .final-cta:has(.cta-image) .cta-copy,
+      .edit-cta:has(.cta-image) .cta-copy,
+      .curation-ad:has(.cta-image) .cta-copy)>div{
+    margin-left:0!important;
+    margin-right:auto!important;
+    text-align:left!important;
+  }
+  :is(.final-cta:has(.final-image) .eyebrow,
+      .final-cta:has(.final-image) h2,
+      .final-cta:has(.final-image) p,
+      .final-cta:has(.cta-image) .eyebrow,
+      .final-cta:has(.cta-image) h2,
+      .final-cta:has(.cta-image) p,
+      .edit-cta:has(.cta-image) .eyebrow,
+      .edit-cta:has(.cta-image) h2,
+      .edit-cta:has(.cta-image) p,
+      .curation-ad:has(.cta-image) .eyebrow,
+      .curation-ad:has(.cta-image) h2,
+      .curation-ad:has(.cta-image) p){
+    margin-left:0!important;
+    margin-right:auto!important;
+    text-align:left!important;
+  }
+  :is(.final-cta:has(.final-image) a,
+      .final-cta:has(.cta-image) a,
+      .edit-cta:has(.cta-image) a,
+      .curation-ad:has(.cta-image) a){
+    align-self:flex-start!important;
+    justify-self:start!important;
+    margin-left:0!important;
+    margin-right:auto!important;
+  }
+  .landing-cta .landing-cta-actions{justify-content:center!important;}
+</style>
+<style id="lnh-contact-ad-center-second-release">
+  .contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])){
+    align-items:center!important;
+    justify-items:center!important;
+    text-align:center!important;
+  }
+  .contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])) .contact-copy{
+    align-items:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  .contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])) :is(.slide-label,.slide-title,.slide-copy,p,h2,a){
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+</style>
+<style id="lnh-dark-statement-center-second-release">
+  :is(.brief-need-hook,
+      .reassurance,
+      .direction-manifesto,
+      .bdf-dark-statement,
+      #build-main-clean .bdf-dark-statement,
+      .build-dark-statement){
+    text-align:center!important;
+  }
+  :is(.brief-need-hook,
+      .reassurance,
+      .direction-manifesto,
+      .bdf-dark-statement,
+      #build-main-clean .bdf-dark-statement,
+      .build-dark-statement) :is(h2,p,span){
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  .reassurance-copy,
+  .bdf-dark-statement .bdf-shell,
+  #build-main-clean .bdf-dark-statement .bdf-shell,
+  .build-dark-statement>*{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+</style>
+<style id="lnh-dark-statement-width-center-second-release">
+  .brief-need-hook h2{width:min(100%,980px)!important;}
+  .brief-need-hook h2 span{display:block!important;width:100%!important;}
+  .reassurance-copy h2{width:min(100%,1240px)!important;}
+  .reassurance-copy p{width:min(100%,780px)!important;}
+  .direction-manifesto h2{width:min(100%,880px)!important;}
+  .direction-manifesto p{width:min(100%,720px)!important;}
+  .bdf-dark-statement h2,
+  #build-main-clean .bdf-dark-statement h2,
+  .build-dark-statement h2{width:min(100%,980px)!important;}
+  .bdf-dark-statement p,
+  #build-main-clean .bdf-dark-statement p,
+  .build-dark-statement p{width:min(100%,720px)!important;}
+</style>
+<style id="lnh-hero-headline-54px-second-release">
+  @media (min-width:681px){
+    body main :is(
+      .landing-hero h1,
+      .hero h1,
+      .hero-title,
+      .about-hero h1,
+      .direction-hero h1,
+      .build-direction-hero h1,
+      #build-main-clean .build-direction-hero h1,
+      .story-hero h1,
+      .stories-hero h1,
+      .edit-hero h1,
+      .partnership-hero h1,
+      .slide.hero h1,
+      section.hero h1
+    ){
+      font-size:54px!important;
+      font-weight:400!important;
+    }
+    body main :is(
+      .landing-hero h1,
+      .hero h1,
+      .hero-title,
+      .about-hero h1,
+      .direction-hero h1,
+      .build-direction-hero h1,
+      #build-main-clean .build-direction-hero h1,
+      .story-hero h1,
+      .stories-hero h1,
+      .edit-hero h1,
+      .partnership-hero h1,
+      .slide.hero h1,
+      section.hero h1
+    ) :is(strong,b,em,span){
+      color:inherit!important;
+      font-weight:400!important;
+    }
+  }
+</style>
+<style id="lnh-service-hero-height-sync-second-release">
+  @media (min-width: 681px) {
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero {
+      min-height: max(789px, 94svh) !important;
+      height: max(789px, 94svh) !important;
+      max-height: none !important;
+      overflow: hidden !important;
+    }
+
+    body main > section.hero:has(> .hero-visual) {
+      display: grid !important;
+      grid-template-columns: minmax(0,45fr) minmax(420px,55fr) !important;
+      align-items: stretch !important;
+      border-bottom: 1px solid var(--line) !important;
+    }
+
+    body main > section.hero > .hero-copy,
+    body main > section.direction-hero > .direction-hero-copy,
+    body main > section.build-direction-hero > .build-direction-hero-copy,
+    body #build-main-clean > section.build-direction-hero > .build-direction-hero-copy {
+      min-height: 0 !important;
+      height: 100% !important;
+    }
+
+    body main > section.hero > .hero-visual,
+    body main > section.direction-hero > .direction-hero-visual,
+    body main > section.build-direction-hero > .build-direction-hero-visual,
+    body #build-main-clean > section.build-direction-hero > .build-direction-hero-visual {
+      min-height: 0 !important;
+      height: 100% !important;
+      max-height: none !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+    }
+
+    body main > section.hero > .hero-visual img,
+    body main > section.direction-hero > .direction-hero-visual img,
+    body main > section.build-direction-hero > .build-direction-hero-visual img,
+    body #build-main-clean > section.build-direction-hero > .build-direction-hero-visual img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+  }
+</style>
+<style id="lnh-cta-button-font-weight-reset-second-release">
+  :is(.nav-cta,
+      .nav-brief,
+      .primary-cta,
+      .secondary-cta,
+      .primary-link,
+      .solid-link,
+      .rule-link,
+      .direction-button,
+      .build-direction-button,
+      .build-line-cta,
+      .care-button,
+      .bdf-button,
+      .landing-cta-button,
+      .cta-solid,
+      .sample-trigger,
+      .button):not(.nav-current),
+  :is(.nav-cta,
+      .nav-brief,
+      .primary-cta,
+      .secondary-cta,
+      .primary-link,
+      .solid-link,
+      .rule-link,
+      .direction-button,
+      .build-direction-button,
+      .build-line-cta,
+      .care-button,
+      .bdf-button,
+      .landing-cta-button,
+      .cta-solid,
+      .sample-trigger,
+      .button):not(.nav-current) * {
+    font-weight: 400 !important;
+  }
+</style>
+<style id="lnh-brief-question-hierarchy-refine">
+  /* Keep the moments reflective and editorial; reserve the stronger weight for the conclusion. */
+  @media (min-width:681px){
+    #main .first-judgment .question-row h3{
+      font-family:var(--serif)!important;
+      font-size:19px!important;
+      font-weight:400!important;
+      line-height:1.78!important;
+      letter-spacing:0!important;
+    }
+    #main .first-judgment .question-closing p,
+    #main .first-judgment .question-closing p + p{
+      font-family:var(--sans)!important;
+      font-size:21px!important;
+      font-weight:400!important;
+      line-height:1.72!important;
+    }
+  }
+  @media (max-width:680px){
+    #main .first-judgment .question-row h3{
+      font-family:var(--serif)!important;
+      font-size:17px!important;
+      font-weight:400!important;
+      line-height:1.82!important;
+    }
+    #main .first-judgment .question-closing p,
+    #main .first-judgment .question-closing p + p{
+      font-size:18px!important;
+      font-weight:400!important;
+      line-height:1.78!important;
+    }
+  }
+</style>
+<style id="lnh-brief-scope-headline-scale-sync">
+  @media (min-width:681px){
+    #main .scope-head .section-title{
+      font-size:var(--lnh-section-heading-desktop)!important;
+      line-height:1.56!important;
+    }
+  }
+  @media (max-width:680px){
+    #main .scope-head .section-title{
+      font-size:var(--lnh-section-heading-mobile)!important;
+      line-height:1.66!important;
+    }
+  }
+</style>
+<style id="lnh-brief-scope-eyebrow-sync">
+  #main .scope-head .eyebrow{
+    font-family:var(--sans)!important;
+    font-size:14px!important;
+    font-weight:400!important;
+    line-height:1.5!important;
+    letter-spacing:.04em!important;
+    color:var(--muted)!important;
+  }
+  @media (max-width:680px){
+    #main .scope-head .eyebrow{
+      font-size:12px!important;
+    }
+  }
+</style>
+<style id="lnh-brief-contained-cta-surface">
+  @media (min-width:681px){
+    #main > .brief-need-hook{
+      width:100%!important;
+      margin:0!important;
+      padding:clamp(72px,5vw,88px) clamp(36px,5vw,72px)!important;
+    }
+  }
+  @media (max-width:680px){
+    #main > .brief-need-hook{
+      width:100%!important;
+      margin:0!important;
+      padding:64px 24px!important;
+    }
+  }
+</style>
+<style id="lnh-brief-section-surface-rhythm">
+  /* Section changes are carried by quiet tonal shifts, not full-width rules. */
+  #main > section{
+    border-top:0!important;
+    border-bottom:0!important;
+  }
+  #main > .hero{
+    border-bottom:1px solid var(--line)!important;
+  }
+
+  #main > #brief{background:#f5f5f2!important;}
+  #main > #urgent{background:#ebece7!important;}
+  #main > #check{background:#f7f6f2!important;}
+  #main > .scope-section{background:#f1f0eb!important;}
+  #main > .process{background:#e6e7e2!important;}
+  #main > .video-section{background:#f5f3ee!important;}
+  #main > .price-section{background:#efebe3!important;}
+  #main > .faq{background:#eeefea!important;}
+  /* Keep the advisor still locked to the video frame: it must never leave a blank strip below. */
+  #main#main > section.video-section > figure.video-frame > img{
+    position:absolute!important;
+    inset:0!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    object-fit:cover!important;
+  }
+  @media(min-width:681px){
+    /* Keep the written introduction on the left and the advisor image on the right. */
+    #main#main > section.video-section{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    }
+    #main#main > section.video-section > figure.video-frame{
+      grid-column:2!important;
+      grid-row:1!important;
+      align-self:start!important;
+      min-height:0!important;
+      aspect-ratio:793 / 496!important;
+    }
+    #main#main > section.video-section > .video-copy{
+      grid-column:1!important;
+      grid-row:1!important;
+      align-self:stretch!important;
+      min-height:0!important;
+      display:block!important;
+    }
+    #main#main > section.video-section > .video-copy .eyebrow{
+      margin-top:0!important;
+    }
+    #main#main > section.video-section > .video-copy .video-advisor-meta{
+      margin:36px 0 0!important;
+      padding-top:0!important;
+    }
+    #main#main > section.video-section > .video-copy .video-advisor-note{
+      margin:10px 0 0!important;
+    }
+  }
+  #main .scope-section .brief-work-grid{
+    gap:12px!important;
+    background:transparent!important;
+    border:0!important;
+  }
+  #main .scope-section .brief-work-item{
+    border:0!important;
+    background:#e6e5de!important;
+  }
+</style>
+<link rel="stylesheet" href="assets/lnh-typography-system.css?v=vol02-stable-20260823">
 </body>
 </html>
