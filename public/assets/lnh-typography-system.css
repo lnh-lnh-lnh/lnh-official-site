@@ -1,0 +1,176 @@
+/* LNH typography contract — release lock for vol.02. */
+:root {
+  --lnh-type-section-desktop: clamp(36px, 3vw, 44px);
+  --lnh-type-section-mobile: clamp(28px, 7.6vw, 32px);
+  --lnh-type-statement-desktop: 38px;
+  --lnh-type-statement-mobile: 28px;
+  --lnh-type-eyebrow-desktop: 14px;
+  --lnh-type-eyebrow-mobile: 12px;
+}
+
+@media (min-width: 681px) {
+  /* Standard section titles: every regular content section shares this scale. */
+  #main#main :is(
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2
+    , .slide:not(.hero) .slide-title
+  ) {
+    font-family: var(--serif, "Nanum Myeongjo", Georgia, serif) !important;
+    font-size: var(--lnh-type-section-desktop) !important;
+    font-weight: 400 !important;
+    line-height: 1.56 !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Promotional and dark-surface statements are a deliberate, separate role. */
+  #main#main :is(
+    .brief-need-hook > h2,
+    .reassurance-copy h2,
+    .direction-manifesto h2,
+    .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .ad-section .ad-card h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .final-cta .final-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2
+  ) {
+    font-family: var(--serif, "Nanum Myeongjo", Georgia, serif) !important;
+    font-size: var(--lnh-type-statement-desktop) !important;
+    font-weight: 400 !important;
+    line-height: 1.62 !important;
+    letter-spacing: 0 !important;
+  }
+
+  #main#main :is(.eyebrow, .build-eyebrow, .bdf-eyebrow, .bdf-section-label, .slide-label, .kicker, .compare-kicker, .scope-tag, .process-num, .rhythm-entry-kicker, .scope-card-kicker, .pricing-label, .report-sheet-label, .overview-label, .process-number, .step-num, .output-num, .build-index):not(.lnh-hero-tag) {
+    font-family: var(--sans, "IBM Plex Sans KR", system-ui, sans-serif) !important;
+    font-size: var(--lnh-type-eyebrow-desktop) !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    letter-spacing: .04em !important;
+  }
+}
+
+@media (max-width: 680px) {
+  #main#main :is(
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2
+  ) {
+    font-family: var(--serif, "Nanum Myeongjo", Georgia, serif) !important;
+    font-size: var(--lnh-type-section-mobile) !important;
+    font-weight: 400 !important;
+    line-height: 1.66 !important;
+    letter-spacing: 0 !important;
+  }
+
+  #main#main :is(
+    .brief-need-hook > h2,
+    .reassurance-copy h2,
+    .direction-manifesto h2,
+    .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .ad-section .ad-card h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .final-cta .final-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2
+  ) {
+    font-family: var(--serif, "Nanum Myeongjo", Georgia, serif) !important;
+    font-size: var(--lnh-type-statement-mobile) !important;
+    font-weight: 400 !important;
+    line-height: 1.68 !important;
+    letter-spacing: 0 !important;
+  }
+
+  #main#main :is(.eyebrow, .build-eyebrow, .bdf-eyebrow, .bdf-section-label, .slide-label, .kicker, .compare-kicker, .scope-tag, .process-num, .rhythm-entry-kicker, .scope-card-kicker, .pricing-label, .report-sheet-label, .overview-label, .process-number, .step-num, .output-num, .build-index):not(.lnh-hero-tag) {
+    font-family: var(--sans, "IBM Plex Sans KR", system-ui, sans-serif) !important;
+    font-size: var(--lnh-type-eyebrow-mobile) !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    letter-spacing: .04em !important;
+  }
+}

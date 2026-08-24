@@ -1,0 +1,65 @@
+/* Section rhythm contract — tonal surfaces replace full-width divider rules. */
+body.lnh-surface-page main > section {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+/* The hero is the one deliberate page-level division. */
+body.lnh-surface-page #main > .hero,
+body.lnh-surface-page #main > .direction-hero,
+body.lnh-surface-page #build-main-clean > .build-direction-hero,
+body.lnh-surface-page #main.deck > .slide.hero {
+  border-bottom: 1px solid var(--line) !important;
+}
+
+/* Direction */
+body.lnh-direction .direction-deliverables { background: #f5f5f2 !important; }
+body.lnh-direction .direction-compare { background: #e9eae6 !important; }
+body.lnh-direction .direction-process { background: #f2f0eb !important; }
+body.lnh-direction .direction-faq { background: #e8e9e5 !important; }
+
+/* Build */
+body.lnh-build .bdf-what { background: #f4f4f1 !important; }
+body.lnh-build .bdf-contrast { background: #e9eae6 !important; }
+body.lnh-build .bdf-process-section { background: #f1efe9 !important; }
+body.lnh-build .bdf-faq { background: #e7e8e4 !important; }
+body.lnh-build #build-main-clean#build-main-clean .bdf-dark-statement h2 { font-size: 38px !important; line-height: 1.62 !important; }
+
+/* Curation */
+body.lnh-curation .curate { background: #f5f5f2 !important; }
+body.lnh-curation .scope { background: #ecece8 !important; }
+body.lnh-curation .process { background: #e4e5e0 !important; }
+body.lnh-curation .fee-section { background: #f1eee7 !important; }
+body.lnh-curation .faq { background: #eceeea !important; }
+
+/* Care */
+body.lnh-care .aftercare { background: #f4f3ef !important; }
+body.lnh-care .care-loop { background: #ebece7 !important; }
+body.lnh-care .report-section { background: #f1f1ef !important; }
+body.lnh-care .rhythm { background: #e7e8e4 !important; }
+body.lnh-care .pricing { background: #f1f1ef !important; }
+body.lnh-care .faq { background: #ebede8 !important; }
+/* The report was originally a dark panel. On its new light surface, restore a readable ink hierarchy. */
+body.lnh-care .report-section { color: #242628 !important; }
+body.lnh-care .report-section .eyebrow { color: #606467 !important; }
+body.lnh-care .report-section .report-copy h2 { color: #242628 !important; }
+body.lnh-care .report-section .report-copy p:not(.eyebrow),
+body.lnh-care .report-section .report-copy .report-note { color: #55595b !important; }
+
+/* Edit */
+body.lnh-edit .shop { background: #f5f5f2 !important; }
+body.lnh-edit .origin { background: #e8e9e4 !important; }
+
+/* Partnership */
+body.lnh-partnership .proof { background: #f5f5f2 !important; }
+body.lnh-partnership .needed { background: #e9eae6 !important; }
+body.lnh-partnership .service-slide { background: #f2f0eb !important; }
+body.lnh-partnership .process-slide { background: #e7e8e3 !important; }
+body.lnh-partnership #main#main .role-slide .slide-title,
+body.lnh-partnership #main#main .contact .slide-title { font-size: 38px !important; line-height: 1.62 !important; }
+
+@media (max-width: 680px) {
+  body.lnh-build #build-main-clean#build-main-clean .bdf-dark-statement h2,
+  body.lnh-partnership #main#main .role-slide .slide-title,
+  body.lnh-partnership #main#main .contact .slide-title { font-size: 28px !important; line-height: 1.62 !important; }
+}

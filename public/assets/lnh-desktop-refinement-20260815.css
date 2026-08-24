@@ -1,0 +1,324 @@
+/* LNH desktop refinement — 2026-08-15
+   Loaded from <head> so it consistently wins over page-level typography rules. */
+
+@media (min-width: 901px) {
+  /* A restrained, shared lift for section headlines and supporting copy. */
+  #main :is(.section-head, .section-header, .section-intro, .split-intro, .module-head, .text-panel, .copy-block, .panel-copy) h2,
+  #main section > h2 {
+    font-size: clamp(46px, 3.6vw, 68px) !important;
+    line-height: 1.18 !important;
+  }
+
+  #main :is(.section-head, .section-header, .section-intro, .split-intro, .module-head, .text-panel, .copy-block, .panel-copy) p,
+  #main :is(.section-copy, .section-lead, .section-desc, .section-description, .intro-copy, .body-copy, .lead) {
+    font-size: clamp(17px, 1.05vw, 20px) !important;
+    line-height: 1.75 !important;
+  }
+
+  /* The compact editorial section patterns used across the service pages. */
+  #main :is(.judgment-lead, .crisis-copy, .brief-need-hook, .direction-heading, .bdf-section-head, .bdf-shell, .aftercare-copy, .scope-copy, .report-copy, .origin-copy) h2,
+  #build-main-clean :is(.bdf-section-head, .bdf-shell) h2,
+  #main .slide-title,
+  #main .archive h2 {
+    font-size: clamp(40px, 2.9vw, 44px) !important;
+    line-height: 1.32 !important;
+  }
+
+  #main :is(.judgment-lead, .crisis-copy, .brief-need-hook, .direction-heading, .bdf-section-head, .bdf-shell, .aftercare-copy, .scope-copy, .report-copy, .origin-copy, .archive) p:not(.eyebrow),
+  #build-main-clean :is(.bdf-section-head, .bdf-shell) p:not(.eyebrow),
+  #main .slide p:not(.eyebrow) {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+  }
+
+  /* Residential Journey: one stable row and continuous, aligned dividers. */
+  #main .residential-path-list {
+    grid-auto-rows: minmax(clamp(360px, 25vw, 420px), auto) !important;
+    align-items: stretch !important;
+  }
+
+  #main .residential-path-list li {
+    min-height: 0 !important;
+    display: flex !important;
+    border-right-color: rgba(36, 38, 40, .28) !important;
+  }
+
+  #main .residential-path-list a {
+    display: grid !important;
+    grid-template-rows: auto 1fr auto auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: clamp(36px, 2.9vw, 48px) clamp(22px, 2.1vw, 34px) !important;
+  }
+
+  #main .residential-path-num {
+    grid-row: 1 !important;
+    align-self: start !important;
+    margin-left: 0 !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+  }
+
+  #main .residential-path-list h3 {
+    grid-row: 3 !important;
+    align-self: end !important;
+    margin: 0 0 clamp(20px, 1.5vw, 26px) !important;
+    font-size: clamp(48px, 3.6vw, 64px) !important;
+    line-height: .98 !important;
+    letter-spacing: -.055em !important;
+    white-space: nowrap !important;
+  }
+
+  #main .residential-path-list p {
+    grid-row: 4 !important;
+    max-width: 230px !important;
+    min-height: calc(1.68em * 3) !important;
+    margin: 0 !important;
+    font-size: 16px !important;
+    line-height: 1.68 !important;
+  }
+
+  /* Project experience: the figures lead; labels remain secondary. */
+  #main .company-proof .proof-cell {
+    min-height: clamp(280px, 20vw, 350px) !important;
+    gap: clamp(24px, 2.4vw, 38px) !important;
+    padding-top: clamp(64px, 5.2vw, 90px) !important;
+    padding-bottom: clamp(58px, 4.8vw, 84px) !important;
+  }
+
+  #main .company-proof .proof-cell .proof-value,
+  #main .company-proof .proof-cell:not(:last-child) .proof-value {
+    font-size: clamp(92px, 7.2vw, 144px) !important;
+    line-height: .9 !important;
+  }
+
+  #main .company-proof .proof-label {
+    font-size: clamp(15px, 1.05vw, 17px) !important;
+    line-height: 1.6 !important;
+  }
+
+  #main .proof-about-role {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media (max-width: 680px) {
+  /* Keep the approved mobile rhythm while restoring a clear numeric hierarchy. */
+  #main .company-proof .proof-cell .proof-value,
+  #main .company-proof .proof-cell:not(:last-child) .proof-value {
+    font-size: clamp(62px, 16vw, 82px) !important;
+    line-height: .94 !important;
+  }
+}
+
+@media (min-width: 1121px) {
+  :root {
+    --lnh-wide-rail: 1520px;
+    --lnh-wide-pad: max(var(--pad, clamp(24px, 4.5vw, 72px)), calc((100vw - var(--lnh-wide-rail)) / 2));
+  }
+
+  body main > section:not([class*="hero"]) {
+    padding-left: var(--lnh-wide-pad) !important;
+    padding-right: var(--lnh-wide-pad) !important;
+  }
+
+  body footer {
+    padding-left: var(--lnh-wide-pad) !important;
+    padding-right: var(--lnh-wide-pad) !important;
+  }
+
+  body main > section.stories-feed.wrap {
+    width: min(var(--lnh-wide-rail), calc(100vw - (var(--pad, clamp(24px, 4.5vw, 72px)) * 2))) !important;
+    margin-inline: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  body .story-filters.wrap {
+    width: min(var(--lnh-wide-rail), calc(100vw - (var(--pad, clamp(24px, 4.5vw, 72px)) * 2))) !important;
+    margin-inline: auto !important;
+  }
+}
+
+:is(.ad-section .ad-card,
+    .direction-brief-cta,
+    .landing-cta .landing-cta-inner,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .final-copy,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .cta-copy) {
+  align-items: center !important;
+  justify-items: center !important;
+  text-align: center !important;
+}
+
+:is(.ad-section .ad-card,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .final-copy,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .cta-copy) > div {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+:is(.ad-section .ad-card small,
+    .ad-section .ad-card h2,
+    .ad-section .ad-card p,
+    .ad-section .ad-label,
+    .direction-brief-cta .eyebrow,
+    .direction-brief-cta h2,
+    .direction-brief-cta p,
+    .landing-cta h2,
+    .landing-cta p,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .eyebrow,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) h2,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) p) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+:is(.ad-section .ad-link,
+    .direction-brief-cta a,
+    .landing-cta .landing-cta-actions,
+    .final-cta:not(:has(.final-image)):not(:has(.cta-image)) a) {
+  align-self: center !important;
+  justify-self: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+:is(.final-cta:has(.final-image) .final-copy,
+    .final-cta:has(.cta-image) .cta-copy,
+    .edit-cta:has(.cta-image) .cta-copy,
+    .curation-ad:has(.cta-image) .cta-copy) {
+  align-items: flex-start !important;
+  justify-items: start !important;
+  text-align: left !important;
+}
+
+:is(.final-cta:has(.final-image) .final-copy,
+    .final-cta:has(.cta-image) .cta-copy,
+    .edit-cta:has(.cta-image) .cta-copy,
+    .curation-ad:has(.cta-image) .cta-copy) > div {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+
+:is(.final-cta:has(.final-image) .eyebrow,
+    .final-cta:has(.final-image) h2,
+    .final-cta:has(.final-image) p,
+    .final-cta:has(.cta-image) .eyebrow,
+    .final-cta:has(.cta-image) h2,
+    .final-cta:has(.cta-image) p,
+    .edit-cta:has(.cta-image) .eyebrow,
+    .edit-cta:has(.cta-image) h2,
+    .edit-cta:has(.cta-image) p,
+    .curation-ad:has(.cta-image) .eyebrow,
+    .curation-ad:has(.cta-image) h2,
+    .curation-ad:has(.cta-image) p) {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+
+:is(.final-cta:has(.final-image) a,
+    .final-cta:has(.cta-image) a,
+    .edit-cta:has(.cta-image) a,
+    .curation-ad:has(.cta-image) a) {
+  align-self: flex-start !important;
+  justify-self: start !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.landing-cta .landing-cta-actions {
+  justify-content: center !important;
+}
+
+
+.contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])) {
+  align-items: center !important;
+  justify-items: center !important;
+  text-align: center !important;
+}
+
+.contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])) .contact-copy {
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])) :is(.slide-label, .slide-title, .slide-copy, p, h2, a) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+
+:is(.brief-need-hook,
+    .reassurance,
+    .direction-manifesto,
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement) {
+  text-align: center !important;
+}
+
+:is(.brief-need-hook,
+    .reassurance,
+    .direction-manifesto,
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement) :is(h2, p, span) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.reassurance-copy,
+.bdf-dark-statement .bdf-shell,
+#build-main-clean .bdf-dark-statement .bdf-shell,
+.build-dark-statement > * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+
+.brief-need-hook h2 {
+  width: min(100%, 980px) !important;
+}
+
+.brief-need-hook h2 span {
+  display: block !important;
+  width: 100% !important;
+}
+
+.reassurance-copy h2 {
+  width: min(100%, 1240px) !important;
+}
+
+.reassurance-copy p {
+  width: min(100%, 780px) !important;
+}
+
+.direction-manifesto h2 {
+  width: min(100%, 880px) !important;
+}
+
+.direction-manifesto p {
+  width: min(100%, 720px) !important;
+}
+
+.bdf-dark-statement h2,
+#build-main-clean .bdf-dark-statement h2,
+.build-dark-statement h2 {
+  width: min(100%, 980px) !important;
+}
+
+.bdf-dark-statement p,
+#build-main-clean .bdf-dark-statement p,
+.build-dark-statement p {
+  width: min(100%, 720px) !important;
+}
