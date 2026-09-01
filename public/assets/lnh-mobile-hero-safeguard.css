@@ -1,0 +1,70 @@
+/*
+  Mobile service-hero safeguard
+  iOS Safari's dynamic browser chrome can make svh-based media frames much
+  shorter than intended. All service pages share this width-led media frame so
+  the image and its caption remain visible on every iPhone viewport.
+*/
+@media (max-width: 680px) {
+  :root {
+    --lnh-mobile-hero-media-ratio: 1 / 1;
+    --lnh-mobile-caption-inset: 12px;
+  }
+
+  body main > section.hero:not(.edit-commerce-hero) .hero-visual,
+  body main > section.direction-hero .direction-hero-visual,
+  body #build-main-clean > section.build-direction-hero .build-direction-hero-visual,
+  body main.deck > section.partnership-hero .hero-visual {
+    position: relative !important;
+    display: block !important;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: var(--lnh-mobile-hero-media-ratio) !important;
+    margin: 0 var(--pad) !important;
+    overflow: hidden !important;
+    background: #dfe1e1 !important;
+  }
+
+  body main > section.hero:not(.edit-commerce-hero) .hero-visual > img,
+  body main > section.direction-hero .direction-hero-visual > img,
+  body #build-main-clean > section.build-direction-hero .build-direction-hero-visual > img,
+  body main.deck > section.partnership-hero .hero-visual > img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    transform: none !important;
+  }
+
+  body main > section.hero:not(.edit-commerce-hero) .image-caption,
+  body #build-main-clean > section.build-direction-hero .image-caption,
+  body main.deck > section.partnership-hero .image-caption,
+  body main > section.edit-commerce-hero .image-caption {
+    display: block !important;
+    position: absolute !important;
+    z-index: 3 !important;
+    right: var(--lnh-mobile-caption-inset) !important;
+    bottom: var(--lnh-mobile-caption-inset) !important;
+    left: auto !important;
+    max-width: calc(100% - (var(--lnh-mobile-caption-inset) * 2)) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: rgba(24, 26, 27, .94) !important;
+    font-size: 9px !important;
+    line-height: 1.4 !important;
+    text-shadow: none !important;
+  }
+
+  /* Edit is a full-bleed photo hero, so its label needs a dark-photo contrast treatment. */
+  body main > section.edit-commerce-hero .image-caption {
+    left: var(--lnh-mobile-caption-inset) !important;
+    right: auto !important;
+    color: rgba(245, 245, 242, .92) !important;
+    text-shadow: none !important;
+  }
+
+  body #build-main-clean > section.build-direction-hero .image-caption {
+    color: rgba(245, 245, 242, .64) !important;
+  }
+}
