@@ -584,12 +584,11 @@
     <section class="hero edit-commerce-hero" aria-labelledby="hero-title">
       <figure class="hero-visual edit-commerce-hero-visual">
         <img src="assets/edit-commerce-hero-wood-detail-20260822.jpg" alt="부드럽게 둥근 모서리와 결이 드러나는 원목 오브제 디테일">
-        <figcaption class="image-caption">LNH Edit · Wood Object Detail</figcaption>
       </figure>
       <div class="hero-copy">
         <p class="eyebrow lnh-hero-tag">LNH Edit</p>
         <h1 class="hero-title" id="hero-title"><strong class="text-emphasis">그 집의 물건들.</strong></h1>
-        <p class="hero-intro"><span class="mobile-line">Designed and Selected</span> <span class="mobile-line">by LNH.</span></p>
+        <p class="hero-intro">Designed &amp; Curated by LNH.</p>
       </div>
     </section>
 
@@ -2421,8 +2420,10 @@
       line-height: 1.34 !important;
     }
     body main > section.edit-commerce-hero .hero-intro {
+      color: var(--ink) !important;
       font-size: 16px !important;
       line-height: 1.45 !important;
+      letter-spacing: .075em !important;
     }
     body main > section.edit-commerce-hero .image-caption {
       display: none !important;
@@ -2474,5 +2475,7 @@
   }
 </style>
 <link rel="stylesheet" href="assets/lnh-typography-system.css?v=vol02-stable-20260823">
+<link rel="stylesheet" href="assets/lnh-mobile-hero-safeguard.css?v=20260901a">
+<style id="lnh-mobile-hero-framing">@media(max-width:680px){body main>section.edit-commerce-hero .image-caption{display:block!important;left:12px!important;right:auto!important;bottom:12px!important;color:rgba(245,245,242,.64)!important;text-shadow:none!important}}</style>
 </body>
 </html>

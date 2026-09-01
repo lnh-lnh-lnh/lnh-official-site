@@ -439,7 +439,7 @@
       </div>
       <figure class="hero-visual">
         <img src="assets/care-house-01.png" alt="햇빛과 생활의 흔적이 머무는 송파 아파트 거실">
-        <figcaption class="image-caption">Songpa Apartment · Lived in since 2024</figcaption>
+        <figcaption class="image-caption">Songpa Apartment</figcaption>
       </figure>
     </section>
 
@@ -1968,5 +1968,14 @@
   }
 </style>
 <link rel="stylesheet" href="assets/lnh-typography-system.css?v=vol02-stable-20260823">
+<link rel="stylesheet" href="assets/lnh-mobile-hero-safeguard.css?v=20260901a">
+<style id="lnh-mobile-hero-framing">@media(max-width:680px){body main>section.hero:not(.edit-commerce-hero) .image-caption{color:rgba(31,35,36,.64)!important;text-shadow:none!important}}</style>
+<style id="lnh-care-mobile-first-section-rhythm">
+  @media(max-width:680px){
+    /* The hero already introduces the space; a second image before section 01 reads as a duplicate on mobile. */
+    #main .aftercare-image{display:none!important}
+    #main .aftercare-grid{display:block!important}
+  }
+</style>
 </body>
 </html>
