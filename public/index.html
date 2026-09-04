@@ -36,7 +36,7 @@
     button{font:inherit;color:inherit}
     ::selection{background:#d2d3d1;color:var(--ink)}
     .skip{position:fixed;left:16px;top:-80px;z-index:100;padding:10px 14px;background:var(--ink);color:var(--paper)}
-    .skip:focus{top:16px}
+    .skip:focus-visible{top:16px}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     .eyebrow{margin:0;font-family:var(--sans);font-size:12px;font-weight:400;line-height:1.5;letter-spacing:.08em}
     .eyebrow.brand-signature{font-family:var(--latin);font-size:13px;line-height:1.2;letter-spacing:.16em;text-transform:uppercase}
@@ -317,11 +317,13 @@
     .residential-path-list li:last-child{border-right:0}
     .residential-path-list a{height:100%;padding:clamp(22px,2.5vw,38px) clamp(16px,2vw,30px);display:flex;flex-direction:column;align-items:flex-start;color:inherit;text-decoration:none;transition:background-color .25s ease,color .25s ease}
     .residential-path-list a:hover,.residential-path-list a:focus-visible{background:var(--navy);color:var(--paper);outline:0}
+    .residential-path-list li.is-start>a{background:var(--navy);color:var(--paper)}
     .residential-path-list a:active{background:#0c2942}
     .residential-path-num{margin-left:18px;font-family:var(--latin);font-size:12px;letter-spacing:.06em;color:var(--muted)}
     .residential-path-list h3{margin:auto 0 15px;font-family:var(--latin);font-size:clamp(28px,3vw,46px);font-weight:400;line-height:1;letter-spacing:-.05em}
     .residential-path-list p{max-width:170px;margin:0;color:#555a5b;font-size:14px;line-height:1.65}
     .residential-path-list a:hover .residential-path-num,.residential-path-list a:focus-visible .residential-path-num,.residential-path-list a:hover p,.residential-path-list a:focus-visible p{color:rgba(250,249,246,.7)}
+    .residential-path-list li.is-start .residential-path-num,.residential-path-list li.is-start p{color:rgba(250,249,246,.7)}
     .residential-path-closing{max-width:1320px;margin:clamp(32px,4vw,52px) auto 0;text-align:left;font-family:var(--latin);font-size:clamp(15px,1.1vw,18px);line-height:1.5;letter-spacing:-.02em}
 
     .journey-section{padding:clamp(104px,13vw,190px) var(--pad);background:var(--paper)}
@@ -554,15 +556,15 @@
       <nav class="journey-index-list reveal" aria-label="LNH 서비스">
         <a class="journey-index-link is-brief" href="brief.html">
           <span class="journey-card-copy"><span class="journey-card-tag">주거 인테리어</span><strong>Brief</strong><p>내 집 인테리어를 시작하기 전, 생활과 공간, 예산의 기준을 먼저 정리합니다.</p><span class="journey-card-cta">Brief 살펴보기 <span aria-hidden="true">→</span></span></span>
-          <span class="journey-card-media"><img src="assets/direction-board-v1.png" loading="lazy" alt="주거 공간의 방향을 정리한 보드"></span>
+          <span class="journey-card-media"><img src="assets/brief-hero-entry.jpg" loading="lazy" alt="우드 천장과 자연광이 어우러진 LNH의 주거 공간 입구"></span>
         </a>
         <a class="journey-index-link is-edit" href="edit.html">
           <span class="journey-card-copy"><span class="journey-card-tag">리빙 셀렉트</span><strong>Edit</strong><p>LNH가 직접 써보고 오래 곁에 남은 것만 소개합니다. 가구와 조명, 매일 쓰는 생활 도구까지.</p><span class="journey-card-cta">Edit 살펴보기 <span aria-hidden="true">→</span></span></span>
-          <span class="journey-card-media"><img src="assets/edit-house-01.png" loading="lazy" alt="LNH가 고른 제품과 주거 공간"></span>
+          <span class="journey-card-media"><img src="assets/edit-commerce-hero-wood-detail-20260822.jpg" loading="lazy" alt="부드럽게 둥근 모서리와 결이 드러나는 원목 오브제 디테일"></span>
         </a>
         <a class="journey-index-link is-partnership" href="partnership.html">
           <span class="journey-card-copy"><span class="journey-card-tag">기업 · 공공 공간</span><strong>Partnership</strong><p>기업과 브랜드, 공공기관의 공간 과제를 함께 풀어갑니다. 상품 기획, 브랜드 · 공간 전략, 운영 · 공공 공간까지.</p><span class="journey-card-cta">Partnership 살펴보기 <span aria-hidden="true">→</span></span></span>
-          <span class="journey-card-media"><img src="assets/lnh-partnership-hero.png" loading="lazy" alt="LNH가 함께 만든 브랜드 공간"></span>
+          <span class="journey-card-media"><img src="assets/stories-public/public-084-DL7ZXxq08kYG4ZbSMHGOaptcHO8.png" loading="lazy" alt="코오롱모빌리티 프로젝트 이미지"></span>
         </a>
       </nav>
     </section>
@@ -574,7 +576,7 @@
         <p>Brief에서 세운 기준이 설계와 시공, 가구/조명/집기 스타일링과 입주 후 관리까지 하나의 흐름으로 이어집니다.</p>
       </div>
       <ol class="residential-path-list">
-        <li><a href="brief.html"><span class="residential-path-num">01</span><h3>Brief</h3><p>내 집의 조건, 예산, 우선순위를 정해 판단 기준을 세웁니다.</p></a></li>
+        <li class="is-start"><a href="brief.html"><span class="residential-path-num">01</span><h3>Brief</h3><p>내 집의 조건, 예산, 우선순위를 정해 판단 기준을 세웁니다.</p></a></li>
         <li><a href="direction.html"><span class="residential-path-num">02</span><h3>Direction</h3><p>하나의 공간 방향과 계획으로 인테리어 설계를 구체화합니다.</p></a></li>
         <li><a href="build.html"><span class="residential-path-num">03</span><h3>Build</h3><p>정한 기준이 흔들리지 않도록 공사 과정에서 디자인 품질을 지킵니다.</p></a></li>
         <li><a href="curation.html"><span class="residential-path-num">04</span><h3>Curation</h3><p>가구와 조명, 생활 물건을 공간에 맞게 연결합니다.</p></a></li>
