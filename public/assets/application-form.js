@@ -26,6 +26,7 @@
     form.hidden = true;
     document.querySelector('.form-progress').hidden = true;
     document.querySelector('.application-guides').hidden = true;
+    document.querySelector('.application-intro').hidden = true;
     success.hidden = false;
     success.querySelector('[data-reference]').textContent = 'LNH-PREVIEW';
     return;
@@ -93,6 +94,7 @@
       form.hidden = true;
       document.querySelector('.form-progress').hidden = true;
       document.querySelector('.application-guides').hidden = true;
+      document.querySelector('.application-intro').hidden = true;
       success.hidden = false;
       success.querySelector('[data-reference]').textContent = result.reference;
       window.LNHAnalytics?.track('form_submit', { service: payload.service });
