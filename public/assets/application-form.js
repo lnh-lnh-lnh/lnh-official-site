@@ -3,6 +3,7 @@
   if (!form) return;
   const steps = [...form.querySelectorAll('.form-step')];
   const progress = [...document.querySelectorAll('.form-progress li')];
+  const guides = [...document.querySelectorAll('[data-guide]')];
   const message = document.querySelector('#form-message');
   const success = document.querySelector('#application-success');
   const params = new URLSearchParams(location.search);
@@ -30,6 +31,7 @@
   const showStep = next => {
     step = Math.max(0, Math.min(next, steps.length - 1));
     steps.forEach((item, index) => { item.hidden = index !== step; });
+    guides.forEach((item, index) => { item.hidden = index !== step; });
     progress.forEach((item, index) => item.classList.toggle('is-active', index <= step));
     message.textContent = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -81,6 +83,7 @@
       if (!response.ok) throw new Error(result.error || '접수하지 못했습니다.');
       form.hidden = true;
       document.querySelector('.form-progress').hidden = true;
+      document.querySelector('.application-guides').hidden = true;
       success.hidden = false;
       success.querySelector('[data-reference]').textContent = result.reference;
       window.LNHAnalytics?.track('form_submit', { service: payload.service });
