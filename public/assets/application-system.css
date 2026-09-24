@@ -91,10 +91,11 @@ button{cursor:pointer}
 .survey-question textarea{min-height:130px;padding:15px;border:1px solid var(--line);background:rgba(255,255,255,.42);resize:vertical;outline:0;line-height:1.75}
 .survey-question textarea:focus{border-color:var(--ink)}
 .admin-body{background:#ececea}
-.admin-header{position:sticky;top:0;z-index:10;height:70px;padding:0 clamp(20px,3vw,48px);display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:var(--paper)}
-.admin-header strong{font-family:var(--latin);font-size:26px;font-weight:400}
-.admin-header span{font-size:12px;color:rgba(245,245,242,.65)}
-.admin-header button{min-height:34px;padding:0 12px;border:1px solid rgba(245,245,242,.45);background:transparent;color:var(--paper);font-size:12px}
+.admin-header{position:sticky;top:0;z-index:10;height:70px;padding:0 clamp(20px,3vw,48px);display:flex;align-items:center;justify-content:space-between;background:var(--paper);border-bottom:1px solid var(--line);color:var(--navy)}
+.admin-brand{display:inline-flex;align-items:center;height:100%}.admin-brand img{display:block;width:auto;height:25px}
+.admin-header span{font-size:12px;color:var(--muted)}
+.admin-header button{min-height:34px;padding:0 12px;border:1px solid var(--navy);background:transparent;color:var(--navy);font-size:12px}
+.admin-header button:hover{background:var(--navy);color:var(--paper)}
 .admin-pending-auth .admin-shell{visibility:hidden}
 .admin-login-body{min-height:100vh;display:grid;place-items:center;padding:24px;background:#ececea}
 .admin-login-card{width:min(460px,100%);padding:clamp(32px,6vw,58px);background:#fff;border:1px solid #dededb}
