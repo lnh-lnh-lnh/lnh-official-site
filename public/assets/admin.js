@@ -52,6 +52,7 @@
     });
     detail.querySelector('#create-survey')?.addEventListener('click', () => createSurvey(item));
     detail.querySelector('#delete-application').addEventListener('click', () => deleteApplication(item));
+    window.LNHSelects?.enhance(detail);
   };
   const saveApplication = async item => {
     const response = await fetch('/api/admin/applications',{method:'PATCH',headers:{'content-type':'application/json'},body:JSON.stringify({id:item.id,status:detail.querySelector('#detail-status').value,adminNote:detail.querySelector('#detail-note').value})});
