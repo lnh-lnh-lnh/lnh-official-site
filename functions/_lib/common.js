@@ -20,7 +20,7 @@ export const sameOrigin = request => {
 };
 export const requireAdmin = (request, env) => {
   const email = clean(request.headers.get('Cf-Access-Authenticated-User-Email'), 254).toLowerCase();
-  const allowed = clean(env.ADMIN_EMAILS, 2000)
+  const allowed = clean(env.ADMIN_EMAILS || 'info@lnh-universe.com', 2000)
     .split(',')
     .map(item => item.trim().toLowerCase())
     .filter(Boolean);
