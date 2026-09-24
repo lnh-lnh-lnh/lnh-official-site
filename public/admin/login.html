@@ -15,7 +15,7 @@
     <p>관리자 전용 화면입니다. 비밀번호는 안전하게 보관되며, 로그인 시도와 관리 작업은 기록됩니다.</p>
     <form id="admin-login-form" novalidate>
       <label for="admin-password">관리자 비밀번호</label>
-      <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+      <input id="admin-password" name="password" type="password" inputmode="text" autocomplete="current-password" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="영문·숫자·기호를 입력하세요" required>
       <button class="form-button" type="submit">로그인</button>
       <p class="form-message" id="admin-login-message" aria-live="polite"></p>
     </form>
