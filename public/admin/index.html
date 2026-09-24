@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><title>LNH Applications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/application-system.css?v=20260923b">
+</head>
+<body class="admin-body">
+  <header class="admin-header"><strong>LNH Applications</strong><span>Cloudflare Access protected</span></header>
+  <main class="admin-shell">
+    <section class="admin-overview" aria-label="최근 30일 요약">
+      <article class="metric-card"><span>방문자</span><strong data-metric="visitors">–</strong></article>
+      <article class="metric-card"><span>페이지뷰</span><strong data-metric="pageViews">–</strong></article>
+      <article class="metric-card"><span>평균 체류</span><strong data-metric="avgSeconds">–</strong></article>
+      <article class="metric-card"><span>CTA 클릭</span><strong data-metric="ctaClicks">–</strong></article>
+      <article class="metric-card"><span>신청 시작</span><strong data-metric="formStarts">–</strong></article>
+      <article class="metric-card"><span>신청 제출</span><strong data-metric="submits">–</strong></article>
+    </section>
+    <div class="admin-toolbar">
+      <input id="admin-search" type="search" placeholder="이름·연락처·회사·접수번호 검색">
+      <select id="admin-service"><option value="">모든 서비스</option><option value="brief">Brief</option><option value="curation">Curation</option><option value="care">Care</option><option value="partnership">Partnership</option></select>
+      <select id="admin-status"><option value="">모든 상태</option><option value="new">신규</option><option value="contacted">연락 완료</option><option value="consultation">상담 예정</option><option value="survey_sent">설문 발송</option><option value="survey_completed">설문 완료</option><option value="proposal">제안</option><option value="contracted">계약</option><option value="closed">종료</option></select>
+      <button class="admin-export" id="export-applications" type="button">CSV 내보내기</button>
+    </div>
+    <section class="admin-grid">
+      <div class="admin-panel"><table class="application-list"><thead><tr><th>접수</th><th>신청자</th><th>연락처</th><th>서비스</th><th>상태</th></tr></thead><tbody id="application-list"><tr><td colspan="5">신청 목록을 불러오는 중입니다.</td></tr></tbody></table></div>
+      <aside class="admin-panel admin-detail" id="application-detail"><p>신청자를 선택하면 상세 내용이 표시됩니다.</p></aside>
+    </section>
+    <section class="analytics-panel">
+      <h2>최근 30일 이용 흐름</h2>
+      <div class="analytics-lists"><div><strong>많이 본 페이지</strong><ol id="analytics-paths"></ol></div><div><strong>주요 페이지 이동</strong><ol id="analytics-transitions"></ol></div><div><strong>주요 유입 경로</strong><ol id="analytics-referrers"></ol></div></div>
+    </section>
+  </main>
+  <script src="../assets/admin.js?v=20260923b" defer></script>
+</body>
+</html>

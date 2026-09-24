@@ -11,3 +11,20 @@
 
 /
   Cache-Control: public, max-age=0, must-revalidate
+
+/admin/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+
+/apply.html
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+
+/brief-survey.html
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
+
+/api/*
+  Cache-Control: no-store
+  X-Content-Type-Options: nosniff

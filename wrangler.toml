@@ -1,3 +1,7 @@
 name = "lnh-web"
 pages_build_output_dir = "public"
 compatibility_date = "2026-08-14"
+
+[vars]
+ADMIN_EMAILS = "info@lnh-universe.com"
+PUBLIC_SITE_URL = "https://www.lnh-universe.com"
