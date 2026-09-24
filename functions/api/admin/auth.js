@@ -5,6 +5,15 @@ const MAX_FAILURES = 5;
 const LOCK_WINDOW_MS = 15 * 60 * 1000;
 const SESSION_MS = 8 * 60 * 60 * 1000;
 
+const ensureAdminTables = env => env.DB.batch([
+  env.DB.prepare('CREATE TABLE IF NOT EXISTS admin_sessions (id TEXT PRIMARY KEY, token_hash TEXT NOT NULL UNIQUE, created_at TEXT NOT NULL, expires_at TEXT NOT NULL, last_seen_at TEXT NOT NULL)'),
+  env.DB.prepare('CREATE INDEX IF NOT EXISTS idx_admin_sessions_expires_at ON admin_sessions(expires_at)'),
+  env.DB.prepare('CREATE TABLE IF NOT EXISTS admin_login_attempts (id TEXT PRIMARY KEY, attempt_key_hash TEXT NOT NULL, result TEXT NOT NULL, created_at TEXT NOT NULL)'),
+  env.DB.prepare('CREATE INDEX IF NOT EXISTS idx_admin_login_attempts_key_created ON admin_login_attempts(attempt_key_hash, created_at DESC)'),
+  env.DB.prepare('CREATE TABLE IF NOT EXISTS admin_access_logs (id TEXT PRIMARY KEY, session_id TEXT NOT NULL, method TEXT NOT NULL, event_name TEXT NOT NULL, target_id TEXT, created_at TEXT NOT NULL)'),
+  env.DB.prepare('CREATE INDEX IF NOT EXISTS idx_admin_access_logs_created_at ON admin_access_logs(created_at DESC)')
+]);
+
 const cookie = (value, seconds) => `${SESSION_COOKIE}=${encodeURIComponent(value)}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${seconds}`;
 
 const loginAttemptKey = async (request, env) => {
@@ -28,6 +37,12 @@ export async function onRequestPost({ request, env }) {
   if (!env.DB) return json({ error: '데이터베이스 연결이 필요합니다.' }, 503);
   if (!env.ADMIN_PASSWORD_HASH || !env.ADMIN_PASSWORD_SALT) {
     return json({ error: '관리자 비밀번호 설정이 아직 완료되지 않았습니다.' }, 503);
+  }
+
+  try {
+    await ensureAdminTables(env);
+  } catch {
+    return json({ error: '관리자 로그인 준비에 문제가 있습니다. 잠시 후 다시 시도해 주세요.' }, 503);
   }
 
   let payload;
