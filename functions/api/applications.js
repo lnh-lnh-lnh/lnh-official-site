@@ -25,8 +25,12 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const email = clean(payload.email, 180).toLowerCase();
   const spaceType = clean(payload.spaceType, 120);
   const location = clean(payload.location, 160);
+  const buildingName = clean(payload.buildingName, 160);
+  const buildingAge = clean(payload.buildingAge, 80);
   const budget = clean(payload.budget, 120);
   const desiredStart = clean(payload.desiredStart, 120);
+  const contactTime = clean(payload.contactTime, 80);
+  const discoverySource = clean(payload.discoverySource, 80);
   const concern = clean(payload.concern, 2000);
 
   if (!SERVICES.has(service) || !name || !phone || !email || !spaceType || !concern || payload.consent !== true) {
@@ -41,13 +45,13 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   await env.DB.prepare(`
     INSERT INTO applications (
-      id, reference_code, service, name, company, phone, email, space_type, location,
-      budget, desired_start, concern, status, source_path, referrer, utm_source,
+      id, reference_code, service, name, company, phone, email, space_type, location, building_name,
+      building_age, budget, desired_start, contact_time, discovery_source, concern, status, source_path, referrer, utm_source,
       utm_medium, utm_campaign, consent_at, created_at, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
-    id, reference, service, name, company, phone, email, spaceType, location,
-    budget, desiredStart, concern, clean(payload.sourcePath || url.pathname, 300),
+    id, reference, service, name, company, phone, email, spaceType, location, buildingName,
+    buildingAge, budget, desiredStart, contactTime, discoverySource, concern, clean(payload.sourcePath || url.pathname, 300),
     clean(payload.referrer, 500), clean(payload.utmSource, 180), clean(payload.utmMedium, 180),
     clean(payload.utmCampaign, 180), now, now, now
   ).run();

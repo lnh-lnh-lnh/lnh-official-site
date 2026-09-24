@@ -6,79 +6,48 @@
   <meta name="description" content="LNH 서비스 사전 신청. 공간과 현재 고민을 간단히 알려주세요.">
   <meta name="robots" content="noindex,follow">
   <title>서비스 신청 — LNH</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=profile-ci-2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/application-system.css?v=20260923b">
+  <link rel="stylesheet" href="assets/application-system.css?v=20260924b">
 </head>
 <body>
   <header class="form-header">
-    <a class="form-brand" href="index.html" aria-label="LNH 홈">LNH</a>
+    <a class="form-brand form-brand-mark" href="index.html" aria-label="LNH 홈"><img src="assets/favicon.svg" alt=""></a>
     <a class="form-close" href="index.html"><span>신청 닫기</span><b aria-hidden="true">×</b></a>
   </header>
   <main class="application-shell">
-    <div class="application-intro">
-      <div>
-        <p class="application-kicker">LNH APPLICATION</p>
-        <h1>먼저,<br>지금의 조건을<br>알려주세요.</h1>
-        <p class="application-intro-copy">이 신청은 상담을 확정하는 단계가 아닙니다. 공간의 종류와 현재 고민을 간단히 확인한 뒤, 다음 대화를 안내드립니다. Brief 신청자는 접수 확인 후 상세 설문을 받게 됩니다.</p>
-      </div>
-      <div>
-        <ol class="form-progress" aria-label="신청 단계">
-          <li class="is-active">01 서비스</li>
-          <li>02 공간</li>
-          <li>03 연락처</li>
-        </ol>
-        <form id="application-form" class="form-card" novalidate>
-          <section class="form-step">
-            <h2>어떤 도움이 필요하신가요?</h2>
-            <p class="form-step-lead">가장 가까운 항목 하나를 선택해 주세요.</p>
-            <div class="service-options">
-              <label class="service-option"><input type="radio" name="service" value="brief" required><span><strong>Brief</strong><small>인테리어 전 조건·예산·우선순위 정리</small></span></label>
-              <label class="service-option"><input type="radio" name="service" value="curation" required><span><strong>Curation</strong><small>가구·조명·생활 물건의 선택과 연결</small></span></label>
-              <label class="service-option"><input type="radio" name="service" value="care" required><span><strong>Care</strong><small>입주 후 공간 상태 점검과 조정</small></span></label>
-              <label class="service-option"><input type="radio" name="service" value="partnership" required><span><strong>Partnership</strong><small>기업·브랜드·공공기관 공간 프로젝트</small></span></label>
-            </div>
-            <div class="form-actions"><span></span><button class="form-button" type="button" data-next>다음</button></div>
-          </section>
-          <section class="form-step" hidden>
-            <h2>공간과 현재 상황을 알려주세요.</h2>
-            <p class="form-step-lead">정확한 견적보다 지금 알고 있는 범위면 충분합니다.</p>
-            <div class="field-grid">
-              <div class="field"><label for="space-type">공간 유형 *</label><select id="space-type" name="spaceType" required><option value="">선택해 주세요</option><option>아파트·주택</option><option>오피스</option><option>상업·F&amp;B</option><option>호텔·숙박</option><option>공공 공간</option><option>기타</option></select></div>
-              <div class="field"><label for="location">지역</label><input id="location" name="location" autocomplete="address-level1" placeholder="예: 서울 송파구"></div>
-              <div class="field"><label for="budget">예상 예산 범위</label><select id="budget" name="budget"><option value="">아직 정하지 못함</option><option>1천만 원 미만</option><option>1천만–3천만 원</option><option>3천만–7천만 원</option><option>7천만–1억 5천만 원</option><option>1억 5천만 원 이상</option><option>협의 필요</option></select></div>
-              <div class="field"><label for="desired-start">희망 시작 시기</label><select id="desired-start" name="desiredStart"><option value="">아직 정하지 못함</option><option>1개월 이내</option><option>1–3개월</option><option>3–6개월</option><option>6개월 이후</option></select></div>
-              <div class="field full"><label for="concern">현재 가장 큰 고민 *</label><textarea id="concern" name="concern" required maxlength="2000" placeholder="지금 공간에서 무엇이 어렵고, 이번에 무엇을 결정하고 싶은지 적어주세요."></textarea></div>
-            </div>
-            <div class="form-actions"><button class="form-button secondary" type="button" data-back>이전</button><button class="form-button" type="button" data-next>다음</button></div>
-          </section>
-          <section class="form-step" hidden>
-            <h2>연락받을 정보를 남겨주세요.</h2>
-            <p class="form-step-lead">신청 확인과 다음 단계 안내에만 사용합니다.</p>
-            <div class="field-grid">
-              <div class="field"><label for="name">이름 *</label><input id="name" name="name" autocomplete="name" required maxlength="80"></div>
-              <div class="field"><label for="company">회사·기관명</label><input id="company" name="company" autocomplete="organization" maxlength="120"></div>
-              <div class="field"><label for="phone">연락처 *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="010-0000-0000"></div>
-              <div class="field"><label for="email">이메일 *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
-              <div class="field honeypot" aria-hidden="true"><label for="website">웹사이트</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-            </div>
-            <div class="consent-box"><label><input type="checkbox" name="consent" required><span>신청 확인과 상담 안내를 위해 입력한 개인정보를 처리하는 것에 동의합니다. 수집 항목과 보유기간은 <a href="privacy.html" target="_blank" rel="noopener">개인정보 처리방침</a>에서 확인할 수 있습니다.</span></label></div>
-            <div class="form-actions"><button class="form-button secondary" type="button" data-back>이전</button><button class="form-button" type="submit">신청 접수하기</button></div>
-          </section>
-          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-        </form>
-        <section class="success-panel" id="application-success" hidden>
-          <p class="application-kicker">APPLICATION RECEIVED</p>
-          <h2>신청이 접수되었습니다.</h2>
-          <p>내용을 확인한 뒤 입력하신 연락처로 다음 단계를 안내드리겠습니다. Brief 신청자는 상세 설문 링크를 별도로 받게 됩니다.</p>
-          <span class="reference-code" data-reference></span><br>
-          <a class="form-button" href="index.html">LNH 홈으로</a>
-        </section>
-      </div>
-    </div>
+    <p class="application-kicker">LNH APPLICATION</p>
+    <ol class="form-progress" aria-label="신청 단계">
+      <li class="is-active">01 서비스</li>
+      <li>02 주거 형태</li>
+      <li>03 연락처</li>
+    </ol>
+    <form id="application-form" class="form-card" novalidate>
+      <section class="form-step">
+        <div class="application-step-layout">
+          <div class="form-step-copy"><h1>먼저, 무엇이<br>필요하신지<br>알려주세요.</h1><div><p>어떤 공간을 어떤 단계에서 다루고 계신지 확인한 뒤, <strong>가장 알맞은 다음 대화를 안내드립니다.</strong></p><p>어느 쪽인지 애매하시면 가장 가까운 것을 고르셔도 됩니다. 연락드릴 때 함께 정리해 드립니다.</p><p>세 단계, 1분이면 충분합니다. 지금 결정하시는 것은 없습니다.</p><p>Brief를 선택하신 경우 진행 방식과 비용을 먼저 안내드리고, 결정하시면 상세 설문을 보내드립니다.</p></div></div>
+          <div class="form-step-fields"><fieldset class="service-options"><legend class="sr-only">서비스 선택</legend><label class="service-option"><input type="radio" name="service" value="brief" required><span><strong>Brief</strong></span></label><label class="service-option"><input type="radio" name="service" value="curation" required><span><strong>Curation</strong></span></label><label class="service-option"><input type="radio" name="service" value="care" required><span><strong>Care</strong></span></label><label class="service-option"><input type="radio" name="service" value="partnership" required><span><strong>Partnership</strong></span></label></fieldset><div class="form-actions"><span></span><button class="form-button" type="button" data-next>다음</button></div></div>
+        </div>
+      </section>
+      <section class="form-step" hidden>
+        <div class="application-step-layout">
+          <div class="form-step-copy"><h1>어떤 집인지<br>알려주세요.</h1><div><p>지역과 건물명을 주시면 <strong>연락드리기 전에 평면을 먼저 확인합니다.</strong> 같은 평형이라도 창의 위치와 확장 여부에 따라 판단이 달라집니다.</p><p>지어진 지 30년이 넘으면 창호·난방·배관이 선택이 아니라 <strong>기본 공사</strong>가 됩니다. 예산의 출발점이 달라지기 때문에 함께 여쭙습니다.</p><p>지금 알고 계신 만큼이면 충분합니다. 정하지 못한 항목은 비워두셔도 됩니다.</p></div></div>
+          <div class="form-step-fields"><div class="field-grid"><div class="field"><label for="space-type">주거 형태 *</label><select id="space-type" name="spaceType" required><option value="">선택해 주세요</option><option>아파트</option><option>단독·다가구 주택</option><option>빌라·연립</option><option>오피스텔</option><option>상가·사무공간</option><option>기타</option></select></div><div class="field"><label for="location">지역</label><input id="location" name="location" autocomplete="address-level1" placeholder="예: 서울 송파구"></div><div class="field"><label for="building-name">건물명·단지명</label><input id="building-name" name="buildingName" maxlength="160" placeholder="예: 헬리오시티"></div><div class="field"><label for="building-age">준공 시기</label><select id="building-age" name="buildingAge"><option value="">잘 모르겠음</option><option>30년 이상</option><option>20–30년</option><option>10–20년</option><option>10년 미만</option></select></div><div class="field"><label for="budget">예상 예산 범위</label><select id="budget" name="budget"><option value="">아직 정하지 못함</option><option>1천만 원 미만</option><option>1천만–3천만 원</option><option>3천만–7천만 원</option><option>7천만–1억 5천만 원</option><option>1억 5천만 원 이상</option><option>협의 필요</option></select></div><div class="field"><label for="desired-start">희망 시작 시기</label><select id="desired-start" name="desiredStart"><option value="">아직 정하지 못함</option><option>1개월 이내</option><option>1–3개월</option><option>3–6개월</option><option>6개월 이후</option></select></div><div class="field full"><label for="concern">현재 가장 큰 고민 *</label><textarea id="concern" name="concern" required maxlength="2000" placeholder="지금 공간에서 무엇이 어렵고, 이번에 무엇을 결정하고 싶은지 적어주세요."></textarea></div></div><div class="form-actions"><button class="form-button secondary" type="button" data-back>이전</button><button class="form-button" type="button" data-next>다음</button></div></div>
+        </div>
+      </section>
+      <section class="form-step" hidden>
+        <div class="application-step-layout">
+          <div class="form-step-copy"><h1>마지막으로,<br>어디로 연락드릴까요.</h1><div><p>신청을 확인하는 대로 <strong>이승일이 직접 연락드립니다.</strong> 상담원이나 영업 담당이 아니라, 실제로 판단을 맡을 사람입니다.</p><p>Brief로 이어지는 경우 <strong>설문과 리포트는 이메일로</strong> 오갑니다.</p><p>받은 정보는 이 상담에만 씁니다. 광고 메시지는 보내지 않습니다.</p></div></div>
+          <div class="form-step-fields"><div class="field-grid"><div class="field"><label for="name">이름 *</label><input id="name" name="name" autocomplete="name" required maxlength="80"></div><div class="field"><label for="phone">연락처 *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="010-0000-0000"></div><div class="field"><label for="email">이메일 *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="180"></div><div class="field"><label for="contact-time">연락 편한 시간대</label><select id="contact-time" name="contactTime"><option value="">언제든 괜찮습니다</option><option>오전 9시–12시</option><option>오후 12시–3시</option><option>오후 3시–6시</option><option>오후 6시 이후</option></select></div><div class="field"><label for="discovery-source">LNH를 알게 된 곳</label><select id="discovery-source" name="discoverySource"><option value="">선택해 주세요</option><option>검색</option><option>인스타그램</option><option>유튜브</option><option>소개</option><option>기타</option></select></div><div class="field"><label for="company">회사·기관명</label><input id="company" name="company" autocomplete="organization" maxlength="120" placeholder="기업·기관 문의인 경우"></div><div class="field honeypot" aria-hidden="true"><label for="website">웹사이트</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div></div><div class="consent-box"><label><input type="checkbox" name="consent" required><span>신청 확인과 상담 안내를 위해 입력한 개인정보를 처리하는 것에 동의합니다. 수집 항목과 보유기간은 <a href="privacy.html" target="_blank" rel="noopener">개인정보 처리방침</a>에서 확인할 수 있습니다.</span></label></div><div class="form-actions"><button class="form-button secondary" type="button" data-back>이전</button><button class="form-button" type="submit">신청 접수하기</button></div></div>
+        </div>
+      </section>
+      <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+    </form>
+    <section class="success-panel" id="application-success" hidden><p class="application-kicker">APPLICATION RECEIVED</p><h2>신청이 접수되었습니다.</h2><p>내용을 확인한 뒤 입력하신 연락처로 다음 단계를 안내드리겠습니다. Brief 신청자는 상세 설문 링크를 별도로 받게 됩니다.</p><span class="reference-code" data-reference></span><br><a class="form-button" href="index.html">LNH 홈으로</a></section>
   </main>
-  <script src="assets/site-analytics.js?v=20260923b" defer></script>
-  <script src="assets/application-form.js?v=20260923b" defer></script>
+  <script src="assets/site-analytics.js?v=20260924b" defer></script>
+  <script src="assets/application-form.js?v=20260924b" defer></script>
 </body>
 </html>

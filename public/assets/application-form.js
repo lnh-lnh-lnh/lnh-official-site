@@ -68,7 +68,8 @@
     const payload = {
       service: data.get('service'), name: data.get('name'), company: data.get('company'),
       phone: data.get('phone'), email: data.get('email'), spaceType: data.get('spaceType'),
-      location: data.get('location'), budget: data.get('budget'), desiredStart: data.get('desiredStart'),
+      location: data.get('location'), buildingName: data.get('buildingName'), buildingAge: data.get('buildingAge'),
+      budget: data.get('budget'), desiredStart: data.get('desiredStart'), contactTime: data.get('contactTime'), discoverySource: data.get('discoverySource'),
       concern: data.get('concern'), website: data.get('website'), consent: data.get('consent') === 'on',
       sourcePath: safeReferrer ? new URL(safeReferrer).pathname : location.pathname, referrer: safeReferrer,
       utmSource: query.get('utm_source') || '', utmMedium: query.get('utm_medium') || '',

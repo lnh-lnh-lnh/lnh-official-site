@@ -18,28 +18,33 @@ button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 .form-header{height:82px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(255,255,255,.9)}
 .form-brand{display:inline-flex;text-decoration:none;font-family:var(--latin);font-size:38px;font-weight:500;letter-spacing:.04em;color:var(--navy)}
+.form-brand-mark{width:42px;height:42px;align-items:center;justify-content:center}
+.form-brand-mark img{display:block;width:42px;height:42px}
 .form-close{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;color:var(--muted)}
-.application-shell{width:min(1180px,calc(100% - 2 * var(--pad)));margin:0 auto;padding:clamp(58px,7vw,96px) 0 110px}
-.application-intro{display:grid;grid-template-columns:minmax(0,.8fr) minmax(400px,1.2fr);gap:clamp(56px,8vw,120px);align-items:start}
-.application-kicker{margin:0 0 26px;font-size:12px;font-weight:500;letter-spacing:.1em}
-.application-intro h1{margin:0;font-family:var(--serif);font-size:clamp(43px,5.3vw,76px);font-weight:400;line-height:1.28;letter-spacing:-.055em}
-.application-intro-copy{max-width:480px;margin:32px 0 0;color:var(--muted);font-size:15px;line-height:1.9}
+.application-shell{width:min(1420px,calc(100% - 2 * var(--pad)));margin:0 auto;padding:clamp(58px,7vw,100px) 0 120px}
+.application-kicker{margin:0 0 28px;font-size:12px;font-weight:500;letter-spacing:.1em}
 .form-card{border-top:1px solid var(--ink)}
-.form-progress{display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 42px;padding:0;list-style:none}
+.form-progress{display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 42px;padding:0;list-style:none;border-top:1px solid var(--line)}
 .form-progress li{padding:13px 0 12px;border-bottom:1px solid var(--line);color:#a0a3a3;font-size:12px}
 .form-progress li.is-active{border-color:var(--ink);color:var(--ink);font-weight:500}
 .form-step[hidden]{display:none}
-.form-step h2{margin:0 0 9px;font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.45;letter-spacing:-.04em}
-.form-step-lead{margin:0 0 34px;color:var(--muted);font-size:13px}
-.service-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.application-step-layout{display:grid;grid-template-columns:minmax(260px,.84fr) minmax(420px,1.16fr);gap:clamp(72px,10vw,170px);padding:clamp(10px,1vw,18px) 0 0}
+.form-step-copy{min-height:540px;padding:clamp(24px,3vw,44px) 0;display:flex;flex-direction:column;justify-content:space-between}
+.form-step-copy h1{max-width:520px;margin:0;font-family:var(--serif);font-size:clamp(42px,4.35vw,70px);font-weight:400;line-height:1.37;letter-spacing:-.06em}
+.form-step-copy>div{max-width:500px;margin-top:48px;color:var(--muted);font-size:14px;line-height:1.95}
+.form-step-copy p{margin:0 0 16px}
+.form-step-copy p:last-child{margin-bottom:0}
+.form-step-copy strong{font-weight:500;color:var(--ink)}
+.form-step-fields{padding:clamp(24px,3vw,44px) 0}
+.service-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0;padding:0;border:0}
 .service-option{position:relative;display:block}
 .service-option input{position:absolute;opacity:0;pointer-events:none}
-.service-option span{display:flex;min-height:112px;padding:20px;border:1px solid var(--line);flex-direction:column;justify-content:space-between;background:rgba(255,255,255,.36);transition:.2s ease}
-.service-option strong{font-family:var(--latin);font-size:27px;font-weight:400;line-height:1}
+.service-option span{display:flex;min-height:146px;padding:24px;border:1px solid var(--line);align-items:flex-start;justify-content:flex-end;background:rgba(255,255,255,.36);transition:.2s ease}
+.service-option strong{font-family:var(--latin);font-size:clamp(27px,2.2vw,35px);font-weight:400;line-height:1}
 .service-option small{color:var(--muted);font-size:12px;line-height:1.55}
 .service-option input:checked+span{border-color:var(--navy);background:var(--navy);color:var(--paper)}
 .service-option input:checked+span small{color:rgba(245,245,242,.72)}
-.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
 .field{display:grid;gap:8px}
 .field.full{grid-column:1/-1}
 .field label,.field-label{font-size:12px;font-weight:500;letter-spacing:.02em}
@@ -122,10 +127,12 @@ button{cursor:pointer}
 .analytics-lists ol{margin:0;padding-left:20px;font-size:12px}
 .analytics-lists li{padding:5px 0}
 @media(max-width:800px){
-  .form-header{height:68px}.form-brand{font-size:32px}.form-close span{display:none}
+  .form-header{height:68px}.form-brand{font-size:32px}.form-brand-mark,.form-brand-mark img{width:34px;height:34px}.form-close span{display:none}
   .application-shell{width:calc(100% - 44px);padding-top:48px}
-  .application-intro{grid-template-columns:1fr;gap:44px}.application-intro h1{font-size:43px}
+  .form-progress{margin-bottom:26px}.form-progress li{font-size:10px}
+  .application-step-layout{grid-template-columns:1fr;gap:4px;padding:0}.form-step-copy{min-height:0;padding:20px 0 30px}.form-step-copy h1{font-size:43px}.form-step-copy>div{margin-top:28px;font-size:13px;line-height:1.85}.form-step-fields{padding:0 0 24px}
   .service-options,.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+  .service-option span{min-height:88px;padding:19px}.service-option strong{font-size:30px}
   .admin-overview{grid-template-columns:repeat(2,1fr)}.admin-grid{grid-template-columns:1fr}.admin-detail{position:static}
   .admin-toolbar{display:grid;grid-template-columns:1fr 1fr}.admin-toolbar input{grid-column:1/-1}.admin-export{grid-column:1/-1}
   .application-list th:nth-child(3),.application-list td:nth-child(3),.application-list th:nth-child(5),.application-list td:nth-child(5){display:none}
