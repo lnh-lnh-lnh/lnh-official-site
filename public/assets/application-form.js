@@ -7,6 +7,7 @@
   const message = document.querySelector('#form-message');
   const success = document.querySelector('#application-success');
   const params = new URLSearchParams(location.search);
+  const previewComplete = params.get('preview') === 'complete';
   const safeReferrer = (() => {
     if (!document.referrer) return '';
     try {
@@ -20,6 +21,14 @@
   if (service && form.elements.service) {
     const option = form.querySelector(`input[name="service"][value="${CSS.escape(service)}"]`);
     if (option) option.checked = true;
+  }
+  if (previewComplete) {
+    form.hidden = true;
+    document.querySelector('.form-progress').hidden = true;
+    document.querySelector('.application-guides').hidden = true;
+    success.hidden = false;
+    success.querySelector('[data-reference]').textContent = 'LNH-PREVIEW';
+    return;
   }
   let step = 0;
   let started = false;
