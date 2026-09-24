@@ -89,7 +89,7 @@ export async function onRequestPost({ request, env }) {
     return response;
   } catch (error) {
     console.error('Admin login error', stage, error);
-    return json({ error: `관리자 로그인 처리 중 문제가 생겼습니다: ${stage}.` }, 503);
+    return json({ error: `관리자 로그인 처리 중 문제가 생겼습니다: ${stage}.`, issue: clean(error?.name || 'unknown', 64) }, 503);
   }
 }
 
