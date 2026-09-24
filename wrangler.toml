@@ -2,6 +2,11 @@ name = "lnh-web"
 pages_build_output_dir = "public"
 compatibility_date = "2026-08-14"
 
+[[d1_databases]]
+binding = "DB"
+database_name = "lnh-applications"
+database_id = "6a07b807-64fa-4117-82da-31b93287ec5b"
+
 [vars]
 ADMIN_EMAILS = "info@lnh-universe.com"
 PUBLIC_SITE_URL = "https://www.lnh-universe.com"
