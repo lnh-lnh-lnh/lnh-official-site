@@ -1,7 +1,8 @@
-import { json, requireAdmin } from '../../_lib/common.js';
+import { json, recordAdminActivity, requireAdmin } from '../../_lib/common.js';
 
 export async function onRequestGet({ request, env }) {
-  if (!requireAdmin(request, env)) return json({ error: '관리자 인증이 필요합니다.' }, 401);
+  const admin = await requireAdmin(request, env);
+  if (!admin) return json({ error: '관리자 인증이 필요합니다.' }, 401);
   if (!env.DB) return json({ error: '데이터베이스 연결이 필요합니다.' }, 503);
 
   const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
@@ -25,5 +26,6 @@ export async function onRequestGet({ request, env }) {
       LIMIT 10
     `).bind(since).all()
   ]);
+  await recordAdminActivity(env, admin, 'analytics_view');
   return json({ overview, paths: paths.results, funnels: funnels.results, referrers: referrers.results, transitions: transitions.results });
 }

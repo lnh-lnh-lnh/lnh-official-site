@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><title>LNH 관리자 로그인</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/application-system.css?v=20260924a">
+</head>
+<body class="admin-login-body">
+  <main class="admin-login-card">
+    <a class="form-brand" href="../index.html" aria-label="LNH 홈">LNH</a>
+    <p class="application-kicker">PRIVATE ADMIN</p>
+    <h1>신청자 관리</h1>
+    <p>관리자 전용 화면입니다. 비밀번호는 안전하게 보관되며, 로그인 시도와 관리 작업은 기록됩니다.</p>
+    <form id="admin-login-form" novalidate>
+      <label for="admin-password">관리자 비밀번호</label>
+      <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+      <button class="form-button" type="submit">로그인</button>
+      <p class="form-message" id="admin-login-message" aria-live="polite"></p>
+    </form>
+  </main>
+  <script src="../assets/admin-login.js?v=20260924a" defer></script>
+</body>
+</html>

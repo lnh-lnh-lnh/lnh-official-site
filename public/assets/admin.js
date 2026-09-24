@@ -5,6 +5,7 @@
   const service = document.querySelector('#admin-service');
   const status = document.querySelector('#admin-status');
   const exportButton = document.querySelector('#export-applications');
+  const logoutButton = document.querySelector('#admin-logout');
   const labels = {
     new:'신규', contacted:'연락 완료', consultation:'상담 예정', survey_sent:'설문 발송',
     survey_completed:'설문 완료', proposal:'제안', contracted:'계약', closed:'종료'
@@ -112,10 +113,26 @@
       document.querySelector('#analytics-referrers').innerHTML=(data.referrers||[]).map(item=>`<li>${escape(item.referrer)} — ${item.visits}</li>`).join('')||'<li>데이터 없음</li>';
     } catch {}
   };
+  const confirmAuthentication = async () => {
+    try {
+      const response = await fetch('/api/admin/auth', { credentials: 'same-origin' });
+      const result = await response.json();
+      if (!response.ok || !result.authenticated) throw new Error('unauthenticated');
+      document.body.classList.remove('admin-pending-auth');
+      return true;
+    } catch {
+      window.location.replace('./login.html');
+      return false;
+    }
+  };
   listBody.addEventListener('click',event=>{const row=event.target.closest('[data-id]');if(!row)return;const item=applications.find(entry=>entry.id===row.dataset.id);if(item)renderDetail(item)});
   let timer;
   search.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(loadApplications,250)});
   service.addEventListener('change',loadApplications);status.addEventListener('change',loadApplications);
   exportButton.addEventListener('click',exportApplications);
-  loadApplications();loadAnalytics();
+  logoutButton.addEventListener('click', async () => {
+    await fetch('/api/admin/auth', { method: 'DELETE', credentials: 'same-origin' });
+    window.location.replace('./login.html');
+  });
+  confirmAuthentication().then(allowed => { if (allowed) { loadApplications(); loadAnalytics(); } });
 })();
