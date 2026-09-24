@@ -22,13 +22,20 @@
     const option = form.querySelector(`input[name="service"][value="${CSS.escape(service)}"]`);
     if (option) option.checked = true;
   }
+  const renderSuccess = selectedService => {
+    const message = success.querySelector('[data-success-message]');
+    const isPartnership = selectedService === 'partnership';
+    const isBrief = selectedService === 'brief';
+    message.innerHTML = `보내주신 내용을 확인한 뒤, <strong>1영업일 안에</strong> ${isPartnership ? '회신드리겠습니다.' : '연락드리겠습니다.'}`;
+    success.querySelector('[data-brief-followup]').hidden = !isBrief;
+  };
   if (previewComplete) {
     form.hidden = true;
     document.querySelector('.form-progress').hidden = true;
     document.querySelector('.application-guides').hidden = true;
     document.querySelector('.application-intro').hidden = true;
     success.hidden = false;
-    success.querySelector('[data-reference]').textContent = 'LNH-PREVIEW';
+    renderSuccess(form.elements.service?.value || 'brief');
     return;
   }
   let step = 0;
@@ -96,7 +103,7 @@
       document.querySelector('.application-guides').hidden = true;
       document.querySelector('.application-intro').hidden = true;
       success.hidden = false;
-      success.querySelector('[data-reference]').textContent = result.reference;
+      renderSuccess(payload.service);
       window.LNHAnalytics?.track('form_submit', { service: payload.service });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {

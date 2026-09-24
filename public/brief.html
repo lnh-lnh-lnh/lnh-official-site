@@ -1383,6 +1383,11 @@
       setSampleToggleState(true);
     });
     sampleCloseButton?.addEventListener('click',closeSampleReport);
+    if(location.hash==='#report'&&samplePanel){
+      samplePanel.removeAttribute('hidden');
+      setSampleToggleState(true);
+      requestAnimationFrame(()=>samplePanel.scrollIntoView({behavior:'smooth',block:'start'}));
+    }
 
     const checkRoot=document.querySelector('[data-brief-check]');
     if(checkRoot){

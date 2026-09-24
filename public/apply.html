@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/application-system.css?v=20260924j">
+  <link rel="stylesheet" href="assets/application-system.css?v=20260924k">
 </head>
 <body>
   <header class="form-header">
@@ -30,10 +30,10 @@
         <section class="form-step" hidden><div class="field-grid"><div class="field"><label for="name">이름 *</label><input id="name" name="name" autocomplete="name" required maxlength="80"></div><div class="field"><label for="phone">연락처 *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="010-0000-0000"></div><div class="field"><label for="email">이메일 *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="180"></div><div class="field"><label for="contact-time">연락 편한 시간대</label><select id="contact-time" name="contactTime"><option value="">언제든 괜찮습니다</option><option>오전 9시–12시</option><option>오후 12시–3시</option><option>오후 3시–6시</option><option>오후 6시 이후</option></select></div><div class="field"><label for="discovery-source">LNH를 알게 된 경로</label><select id="discovery-source" name="discoverySource"><option value="">선택해 주세요</option><option>검색</option><option>인스타그램</option><option>유튜브</option><option>소개</option><option>기타</option></select></div><div class="field"><label for="company">회사·기관명</label><input id="company" name="company" autocomplete="organization" maxlength="120" placeholder="기업·기관 문의인 경우"></div><div class="field honeypot" aria-hidden="true"><label for="website">웹사이트</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div></div><div class="consent-box"><label><input type="checkbox" name="consent" required><span>신청 확인과 상담 안내를 위해 입력한 개인정보를 처리하는 것에 동의합니다. 수집 항목과 보유기간은 <a href="privacy.html" target="_blank" rel="noopener">개인정보 처리방침</a>에서 확인할 수 있습니다.</span></label></div><div class="form-actions"><button class="form-button secondary" type="button" data-back>이전</button><button class="form-button" type="submit">신청 접수하기</button></div></section>
         <p class="form-message" id="form-message" role="status" aria-live="polite"></p></form></div>
     </div>
-    <section class="success-panel" id="application-success" hidden><p class="application-kicker">APPLICATION RECEIVED</p><h2>신청이 접수되었습니다.</h2><p class="success-message">내용을 확인한 뒤 입력하신 연락처로 다음 단계를 안내드리겠습니다.<br>Brief 신청자는 상세 설문 링크를 별도로 받게 됩니다.</p><p class="reference-code">접수번호 <span data-reference></span></p><a class="success-home-cta" href="index.html">LNH 홈으로</a></section>
+    <section class="success-panel" id="application-success" hidden><div class="success-block"><p class="application-kicker">APPLICATION RECEIVED</p><h2>잘 받았습니다.</h2><p class="success-message" data-success-message>보내주신 내용을 확인한 뒤, <strong>1영업일 안에</strong> 연락드리겠습니다.</p><div class="brief-followup" data-brief-followup hidden><ol><li><span class="brief-step-number">01</span><div><h3>리포트 샘플을 보내드립니다</h3><p>실제로 작성한 Brief 리포트 전체입니다. 통화 전에 보시면 이야기가 훨씬 빨라집니다.</p><a href="brief.html#report">리포트 샘플 보기</a><small>지금</small></div></li><li><span class="brief-step-number">02</span><div><h3>Brief가 필요한 단계인지 확인합니다</h3><p>통화로 함께 확인합니다. 지금 필요하지 않다고 보이면 그렇게 말씀드립니다.</p><small>1영업일 안</small></div></li><li><span class="brief-step-number">03</span><div><h3>결제하시면 설문을 보내드립니다</h3><p>LNH Brief 250만원 · VAT 포함. 설문을 받은 날로부터 약 2주 안에 초안 · 세션 · 최종본으로 이어집니다.</p><small>결정하신 뒤</small></div></li></ol></div><a class="success-home-cta" href="index.html">LNH 홈으로</a></div></section>
   </main>
   <script src="assets/site-analytics.js?v=20260924c" defer></script>
   <script src="assets/lnh-select.js?v=20260924a" defer></script>
-  <script src="assets/application-form.js?v=20260924e" defer></script>
+  <script src="assets/application-form.js?v=20260924f" defer></script>
 </body>
 </html>
