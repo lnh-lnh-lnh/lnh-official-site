@@ -11,6 +11,7 @@
   --pad:clamp(24px,4.5vw,72px);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;word-break:keep-all}
 a{color:inherit}
