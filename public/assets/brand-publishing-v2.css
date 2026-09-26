@@ -513,25 +513,28 @@ footer .footer-intelligence {
   text-transform: uppercase;
 }
 
+.decision-intelligence-mark,
 footer .footer-intelligence-mark {
   position: relative;
   display: block;
-  width: 12px;
-  height: 12px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 0;
+  background: currentColor;
+  -webkit-mask: url("brief-intelligence-symbol.png") center / contain no-repeat;
+  mask: url("brief-intelligence-symbol.png") center / contain no-repeat;
 }
 
+.decision-intelligence-mark {
+  width: 16px;
+  height: 16px;
+}
+
+.decision-intelligence-mark::after,
 footer .footer-intelligence-mark::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: currentColor;
-  transform: translate(-50%, -50%);
+  content: none;
 }
 
 footer .footer-bottom,
