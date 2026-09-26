@@ -542,8 +542,11 @@
   </aside>
 
   <main id="main">
-    <section class="landing-hero" aria-labelledby="hero-title">
-      <figure class="landing-hero-media" aria-hidden="true"><img src="assets/landing-hero-decision-sample.png" alt="" fetchpriority="high"></figure>
+    <section class="landing-hero landing-hero--film" data-film-layout="wide" aria-labelledby="hero-title">
+      <figure class="landing-hero-media landing-film" aria-hidden="true">
+        <div class="landing-film-pane"><img class="landing-film-left" src="assets/lnh-film-wide-couple-20260926.webp" data-shot="4" alt="" width="1672" height="941" fetchpriority="high"></div>
+        <div class="landing-film-pane"><img class="landing-film-right" src="assets/lnh-film-corridor-20260926.webp?v=20260926c" alt="" width="941" height="1672"></div>
+      </figure>
       <div class="landing-hero-scrim" aria-hidden="true"></div>
       <div class="landing-hero-content">
         <h1 class="landing-title" id="hero-title">최적의 공간을 위한<br>결정을 돕습니다.</h1>
@@ -2288,6 +2291,9 @@
   }
 </style>
 <link rel="stylesheet" href="assets/lnh-typography-system.css?v=vol02-stable-20260823">
+<link rel="stylesheet" href="assets/lnh-index-editorial-hero.css?v=20260925a">
+<link rel="stylesheet" href="assets/lnh-index-film.css?v=20260926e">
+<script src="assets/lnh-index-film.js?v=20260926e" defer></script>
   <script src="assets/site-analytics.js?v=20260923b" defer></script>
 </body>
 </html>
