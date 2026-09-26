@@ -1,0 +1,24 @@
+/* Static navy artwork; the lifestyle-film study remains on hold. */
+.landing-hero--wave { background: #061f3b; }
+.landing-hero--wave .landing-hero-media img {
+  object-position: 50% 50% !important;
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+.landing-hero--wave .landing-hero-scrim { background: rgba(0, 10, 28, .06) !important; }
+.landing-hero--wave #hero-title.landing-title { color: #fff !important; font-size: 44px !important; }
+.landing-hero--wave .landing-definition { color: #fff !important; }
+@media (min-width: 1121px) and (max-width: 1440px) {
+  .landing-hero--wave #hero-title.landing-title { font-size: 38px !important; }
+}
+@media (min-width: 681px) and (max-width: 1120px) {
+  .landing-hero--wave { margin-top: 64px !important; }
+  .landing-hero--wave #hero-title.landing-title { font-size: 34px !important; }
+}
+@media (max-width: 680px) {
+  .landing-hero--wave .landing-hero-media img { object-position: 65% 50% !important; }
+  .landing-hero--wave #hero-title.landing-title { font-size: 28px !important; line-height: 1.4 !important; }
+  .landing-hero--wave .landing-definition { margin-top: 22px !important; }
+  .landing-hero--wave .landing-slogan { margin-top: 32px !important; }
+}
