@@ -1100,10 +1100,9 @@
         <div class="price-detail reveal">
           <div class="price-amount"><span>LNH Brief</span><b>2,500,000원</b><small>VAT 포함</small></div>
           <div class="price-meta">
-            <div class="price-meta-item"><span>Scope</span><b>전용 132㎡(50평) 미만 기준</b></div>
-            <div class="price-meta-item"><span>Output</span><b>초안 · 1:1 세션 · 최종본</b></div>
-            <div class="price-meta-item"><span>Delivery</span><b>설문 회수 후 약 2주</b></div>
-            <div class="price-meta-item"><span>Aftercare</span><b>최종본 후 메일 질문 1회</b></div>
+            <div class="price-meta-item"><span>대상</span><b>전용 132㎡(50평) 미만 기준</b></div>
+            <div class="price-meta-item"><span>구성</span><b>초안 리포트<br>1:1 세션<br>최종본 리포트</b></div>
+            <div class="price-meta-item"><span>소요 기간</span><b>설문 후 약 2주</b></div>
           </div>
           <div class="price-actions">
             <a class="solid-link" href="apply.html?service=brief" data-track="brief_apply">Brief 신청하기</a>
@@ -3154,6 +3153,15 @@
 <link rel="stylesheet" href="assets/lnh-typography-system.css?v=vol02-stable-20260823">
 <link rel="stylesheet" href="assets/lnh-mobile-hero-safeguard.css?v=20260901a">
 <style id="lnh-mobile-hero-framing">@media(max-width:680px){body main>section.hero:not(.edit-commerce-hero) .image-caption{color:rgba(245,245,242,.64)!important;text-shadow:none!important}}</style>
+<style id="lnh-brief-price-meta-refinement">
+  @media(min-width:681px){
+    .price-meta{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important}
+    .price-meta b{font-size:18px!important;line-height:1.55!important}
+  }
+  @media(max-width:680px){
+    .price-meta b{font-size:16px!important;line-height:1.55!important}
+  }
+</style>
   <script src="assets/site-analytics.js?v=20260923b" defer></script>
 </body>
 </html>
