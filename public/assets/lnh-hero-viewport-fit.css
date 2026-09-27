@@ -1,0 +1,194 @@
+/*
+  First-screen contract
+  The fixed header intentionally overlaps the first hero.  This keeps the
+  visible bottom rule at the visual viewport edge on every screen height.
+*/
+:root {
+  --lnh-hero-viewport: 100svh;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --lnh-hero-viewport: 100dvh;
+  }
+}
+
+/* All pages that have a first-screen hero share one bottom-edge rule. */
+:is(
+  body main > section.landing-hero,
+  body main > section.hero,
+  body main > section.direction-hero,
+  body main > section.build-direction-hero,
+  body #build-main-clean > section.build-direction-hero,
+  body main.deck > section.slide.hero
+) {
+  block-size: var(--lnh-hero-viewport) !important;
+  height: var(--lnh-hero-viewport) !important;
+  min-block-size: 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin-top: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Desktop and tablet: copy and visual always occupy the same first screen. */
+@media (min-width: 681px) {
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) {
+    align-items: stretch !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy, .hero-visual, .direction-hero-visual, .build-direction-hero-visual) {
+    min-block-size: 0 !important;
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) {
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) > img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
+
+/*
+  Mobile uses a bounded copy-and-image stack.  The header overlays the top
+  edge; spacing reduces with viewport height instead of pushing the rule down.
+*/
+@media (max-width: 680px) {
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ):has(> :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy)):has(> :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual)) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: minmax(0, 1fr) clamp(128px, 18dvh, 208px) !important;
+    padding-top: 64px !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
+    min-block-size: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: clamp(68px, 9dvh, 88px) var(--pad, 22px) 12px !important;
+    overflow: hidden !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) {
+    min-block-size: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) > img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) :is(h1, .hero-title, .direction-hero-title, .build-direction-hero-title) {
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.24 !important;
+  }
+
+  :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) :is(.hero-intro, .direction-hero-intro, .build-direction-hero-intro) {
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+  }
+
+  :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) :is(.hero-bottom, .direction-hero-action, .build-direction-hero-action) {
+    margin-top: 14px !important;
+  }
+}
+
+/* Short phones retain the full copy by reducing rhythm before image height. */
+@media (max-width: 680px) and (max-height: 720px) {
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ):has(> :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy)):has(> :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual)) {
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
+    padding-top: 68px !important;
+    padding-bottom: 14px !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) {
+    display: none !important;
+  }
+
+  :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) :is(h1, .hero-title, .direction-hero-title, .build-direction-hero-title) {
+    font-size: clamp(27px, 7.5vw, 30px) !important;
+    line-height: 1.2 !important;
+    margin-top: 14px !important;
+    margin-bottom: 14px !important;
+  }
+
+  :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) :is(.hero-intro, .direction-hero-intro, .build-direction-hero-intro) {
+    font-size: 11.5px !important;
+    line-height: 1.55 !important;
+  }
+}
+
+/* The landing hero is image-led rather than a copy/image stack. */
+@media (max-width: 680px) {
+  body main > section.landing-hero {
+    margin-top: 0 !important;
+  }
+}
