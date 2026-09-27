@@ -2342,6 +2342,29 @@
   #build-main-clean .bdf-dark-statement p,
   .build-dark-statement p{width:min(100%,720px)!important;}
 </style>
+<style id="lnh-stories-editorial-measure-sync">
+  /* The project navigation and feed share the About page's 640px editorial measure. */
+  .story-filters.wrap,
+  .stories-feed.wrap{
+    width:min(calc(100% - 80px), 640px)!important;
+    max-width:640px!important;
+    margin-inline:auto!important;
+  }
+  .stories-feed{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:42px 18px!important;
+  }
+  @media(max-width:680px){
+    .story-filters.wrap,
+    .stories-feed.wrap{
+      width:calc(100% - 44px)!important;
+    }
+    .stories-feed{
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      gap:28px 12px!important;
+    }
+  }
+</style>
 <style id="lnh-hero-headline-54px-second-release">
   @media (min-width:681px){
     body main :is(

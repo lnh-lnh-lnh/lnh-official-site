@@ -714,8 +714,8 @@
       <div class="cta-copy">
         <p class="eyebrow">LNH Curation</p>
         <div>
-          <h2 id="cta-title">한 점은 Edit,<br>집 전체는 Curation.</h2>
-          <p class="cta-subcopy">이제,<br>당신의 집을 완성하세요.</p>
+          <h2 id="cta-title">하나의 상품은 Edit,<br>집 전체는 Curation.</h2>
+          <p class="cta-subcopy">지금, 당신의 집을 완성하세요.</p>
           <a class="cta-solid" href="curation.html">Curation 살펴보기</a>
         </div>
       </div>
@@ -2477,7 +2477,24 @@
 <link rel="stylesheet" href="assets/lnh-typography-system.css?v=vol02-stable-20260823">
 <link rel="stylesheet" href="assets/lnh-mobile-hero-safeguard.css?v=20260901a">
 <style id="lnh-mobile-hero-framing">@media(max-width:680px){body main>section.edit-commerce-hero .image-caption{display:block!important;left:12px!important;right:auto!important;bottom:12px!important;color:rgba(245,245,242,.64)!important;text-shadow:none!important}}</style>
-<link rel="stylesheet" href="assets/lnh-hero-viewport-fit.css?v=20260927a">
+<link rel="stylesheet" href="assets/lnh-hero-viewport-fit.css?v=20260927i">
+<style id="lnh-edit-hero-copy-layer-final">
+  @media(min-width:681px){
+    body main > section.hero.edit-commerce-hero:has(> .hero-visual) > .hero-copy{
+      position:absolute!important;
+      top:calc(100% - clamp(270px,30vh,400px))!important;
+      right:auto!important;
+      bottom:auto!important;
+      left:var(--lnh-wide-pad,var(--pad))!important;
+      width:min(480px,calc(100vw - var(--pad) * 2))!important;
+      height:auto!important;
+      min-height:0!important;
+      max-height:none!important;
+      overflow:visible!important;
+      z-index:3!important;
+    }
+  }
+</style>
 <script src="assets/site-analytics.js?v=20260923b" defer></script>
 </body>
 </html>

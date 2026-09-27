@@ -140,7 +140,7 @@
   }
 }
 
-/* Short phones retain the full copy by reducing rhythm before image height. */
+/* Short phones retain the full copy and keep the supporting image in the flow. */
 @media (max-width: 680px) and (max-height: 720px) {
   :is(
     body main > section.hero,
@@ -149,7 +149,7 @@
     body #build-main-clean > section.build-direction-hero,
     body main.deck > section.slide.hero
   ):has(> :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy)):has(> :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual)) {
-    grid-template-rows: minmax(0, 1fr) !important;
+    grid-template-rows: auto clamp(152px, 42vw, 208px) !important;
   }
 
   :is(
@@ -170,7 +170,7 @@
     body #build-main-clean > section.build-direction-hero,
     body main.deck > section.slide.hero
   ) > :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) {
-    display: none !important;
+    display: block !important;
   }
 
   :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) :is(h1, .hero-title, .direction-hero-title, .build-direction-hero-title) {
@@ -186,9 +186,194 @@
   }
 }
 
-/* The landing hero is image-led rather than a copy/image stack. */
+/*
+  On phones, editorial copy must never compete with a fixed viewport height.
+  A supporting image follows the complete copy, even when it starts below the
+  first screen; this prevents both clipping and disappearing media.
+*/
 @media (max-width: 680px) {
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) {
+    block-size: auto !important;
+    height: auto !important;
+    min-height: 100svh !important;
+    overflow: visible !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ):has(> :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy)):has(> :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual)) {
+    /* The image is a full-bleed square. Its lower edge is the hero rule. */
+    grid-template-rows: auto 100vw !important;
+    padding-top: 64px !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    align-content: start !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
+    padding: clamp(48px, 7vh, 64px) var(--pad, 22px) clamp(44px, 8vw, 60px) !important;
+    overflow: visible !important;
+  }
+
+  /* Keep the information hierarchy airy while bringing the full copy block
+     closer to the top edge of a mobile hero. */
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) .lnh-hero-tag {
+    margin: 0 0 clamp(32px, 8vw, 40px) !important;
+  }
+
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) :is(h1, .hero-title, .direction-hero-title, .build-direction-hero-title) {
+    margin: 0 0 clamp(28px, 7vw, 36px) !important;
+  }
+
+  /* Keep the visual inside its grid row.  Some page-local mobile styles give
+     it a viewport height, which otherwise lets the image spill over the
+     following section. */
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) > :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) {
+    width: 100% !important;
+    height: 100% !important;
+    align-self: stretch !important;
+  }
+
+  /* Hero actions share the compact scale used by in-page actions. */
+  :is(
+    body main > section.hero,
+    body main > section.direction-hero,
+    body main > section.build-direction-hero,
+    body #build-main-clean > section.build-direction-hero,
+    body main.deck > section.slide.hero
+  ) :is(.primary-cta, .primary-link, .solid-link, .rule-link, .direction-button, .build-direction-button) {
+    min-height: 42px !important;
+    padding: 0 16px !important;
+    font-size: 12px !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Edit uses its own photographic composition, so it is reset explicitly. */
+  body main > section.hero.edit-commerce-hero:has(> .hero-visual) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto 100vw !important;
+    min-height: 0 !important;
+    padding-top: 64px !important;
+    padding-bottom: 0 !important;
+    background: var(--paper, #f5f5f2) !important;
+    overflow: hidden !important;
+  }
+
+  body main > section.hero.edit-commerce-hero:has(> .hero-visual) .hero-copy {
+    position: relative !important;
+    inset: auto !important;
+    order: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: clamp(48px, 7vh, 64px) var(--pad, 22px) clamp(44px, 8vw, 60px) !important;
+    color: var(--ink, #292b2c) !important;
+    overflow: visible !important;
+    z-index: 2 !important;
+  }
+
+  /* Edit follows the same mobile type scale as every service hero. */
+  body main > section.hero.edit-commerce-hero .lnh-hero-tag {
+    font-family: var(--sans, system-ui, sans-serif) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    letter-spacing: .08em !important;
+  }
+
+  body main > section.hero.edit-commerce-hero .hero-title {
+    font-family: var(--serif, serif) !important;
+    font-size: clamp(29px, 8vw, 34px) !important;
+    font-weight: 400 !important;
+    line-height: 1.24 !important;
+    letter-spacing: 0 !important;
+  }
+
+  body main > section.hero.edit-commerce-hero .hero-intro {
+    font-family: var(--sans, system-ui, sans-serif) !important;
+    font-size: 12px !important;
+    font-weight: 300 !important;
+    line-height: 1.65 !important;
+    letter-spacing: 0 !important;
+  }
+
+  body main > section.hero.edit-commerce-hero:has(> .hero-visual) .hero-visual {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    order: 2 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    background: #d5c2a9 !important;
+    z-index: 0 !important;
+  }
+
+  body main > section.hero.edit-commerce-hero:has(> .hero-visual)::after {
+    display: none !important;
+  }
+
+  body main > section.hero.edit-commerce-hero:has(> .hero-visual) .hero-visual img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 62% 38% !important;
+    /* Edit retains its desktop object-photograph composition. */
+    transform: none !important;
+    transform-origin: center !important;
+    filter: none !important;
+  }
+
   body main > section.landing-hero {
     margin-top: 0 !important;
+  }
+}
+
+/* The Edit copy is an absolutely placed layer on larger screens. */
+@media (min-width: 681px) {
+  body main > section.hero.edit-commerce-hero:has(> .hero-visual) > .hero-copy {
+    position: absolute !important;
+    inset: auto auto clamp(62px, 8vw, 112px) var(--lnh-wide-pad, var(--pad)) !important;
+    width: min(480px, calc(100vw - var(--pad) * 2)) !important;
+    height: fit-content !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    z-index: 3 !important;
   }
 }
