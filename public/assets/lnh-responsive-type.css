@@ -92,7 +92,8 @@
   width: calc(100% - var(--lnh-nav-pad) * 2) !important;
   justify-self: start !important;
   max-width: none !important;
-  padding-bottom: clamp(80px, 17dvh, 200px) !important;
+  /* Move the complete Index statement down by half of its former bottom gap. */
+  padding-bottom: clamp(40px, 8.5dvh, 100px) !important;
 }
 #main#main .landing-title { flex: 0 0 auto; margin: 0 !important; }
 #main#main .landing-definition { flex: 0 0 auto; margin-top: 28px !important; }
@@ -128,6 +129,13 @@ body footer .footer-legal, body footer .footer-legal span {
     margin: 0 0 42px -.05em !important;
   }
 }
+/* On desktop, halve the space between the fixed navigation rule and the
+   service-hero copy block. Internal tag/title/body rhythm stays unchanged. */
+@media (min-width: 1121px) {
+  :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero):not(.edit-commerce-hero) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
+    padding-top: clamp(125px, calc(82px + 4.5vw), 148px) !important;
+  }
+}
 :is(#main#main, #build-main-clean#build-main-clean) :is(.hero-bottom, .direction-hero-action, .build-direction-hero-action) { margin-top: 32px !important; }
 @media (max-width: 1120px) and (min-width: 681px) {
   :root { --lnh-type-hero: clamp(36px, 4.1vw, 46px); }
@@ -147,7 +155,7 @@ body footer .footer-legal, body footer .footer-legal span {
   }
   #main#main .landing-hero-content {
     padding-top: 112px !important;
-    padding-bottom: clamp(96px, 20svh, 176px) !important;
+    padding-bottom: clamp(48px, 10svh, 88px) !important;
   }
   #main#main .landing-definition { max-width: 100% !important; }
   #main#main .landing-slogan {
