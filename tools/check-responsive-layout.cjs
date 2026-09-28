@@ -66,7 +66,12 @@ const servicePages = ['brief','direction','build','curation','care','edit','part
               assert(layout.tag.y - layout.nav.bottom >= 55, 'desktop hero copy clears navigation');
               assert(layout.title.y - layout.tag.bottom >= 34, 'tag/title spacing');
               assert(layout.intro.y - layout.title.bottom >= 30, 'title/description spacing');
-              assert(Math.abs(layout.tag.x - layout.title.x) <= 1 && Math.abs(layout.title.x - layout.intro.x) <= 1, 'hero text start lines align');
+              assert(
+                Math.abs(layout.tag.x - layout.intro.x) <= 1 &&
+                layout.title.x <= layout.tag.x &&
+                layout.tag.x - layout.title.x <= 4,
+                'hero text optical start lines align'
+              );
             }
             if (width <= 680) {
               assert(Math.abs(layout.visual.width - layout.visual.height) <= 1, 'square mobile image');

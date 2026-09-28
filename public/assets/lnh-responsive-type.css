@@ -51,6 +51,10 @@
   line-height: 1.5 !important;
   letter-spacing: .04em !important;
 }
+/* Hero tags use the same quiet tone as About's editorial eyebrow. */
+:is(#main#main, #build-main-clean#build-main-clean) .lnh-hero-tag {
+  color: var(--muted, #6f7473) !important;
+}
 :is(#main#main, #build-main-clean#build-main-clean) :is(
   .landing-definition, .hero-intro, .direction-hero-intro, .build-direction-hero-intro,
   .hero-lead, .letter-lead, .section-copy, .section-lead, .section-desc,
@@ -111,15 +115,17 @@ body footer .footer-legal, body footer .footer-legal span {
    inset of their own. */
 @media (min-width: 681px) {
   :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero):not(.edit-commerce-hero) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
-    padding-top: clamp(144px, 18dvh, 196px) !important;
+    /* About starts at 82px navigation + clamp(86px, 9vw, 132px). */
+    padding-top: clamp(168px, calc(82px + 9vw), 214px) !important;
     padding-bottom: 36px !important;
     padding-inline: var(--lnh-nav-pad) !important;
   }
   :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero):not(.edit-commerce-hero) .lnh-hero-tag {
-    margin: 0 0 36px !important;
+    margin: 0 0 38px !important;
   }
   :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero):not(.edit-commerce-hero) h1 {
-    margin: 0 0 32px !important;
+    /* Counter the serif glyph side-bearing so the visible strokes share one axis. */
+    margin: 0 0 42px -.05em !important;
   }
 }
 :is(#main#main, #build-main-clean#build-main-clean) :is(.hero-bottom, .direction-hero-action, .build-direction-hero-action) { margin-top: 32px !important; }
@@ -144,6 +150,10 @@ body footer .footer-legal, body footer .footer-legal span {
     padding-bottom: clamp(96px, 20svh, 176px) !important;
   }
   #main#main .landing-definition { max-width: 100% !important; }
+  #main#main .landing-slogan {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
   #main#main .archive summary { grid-template-columns: minmax(0, 1fr) 72px 24px; gap: 8px; }
   :is(#main#main, #build-main-clean#build-main-clean) > section > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
     row-gap: 0 !important;
