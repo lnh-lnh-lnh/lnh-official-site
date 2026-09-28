@@ -4,6 +4,14 @@
 
   if (!menuButton || !mobileMenu) return;
 
+  // Utility pages share the public header's compact scrolled state.
+  if (document.body.matches('.privacy-page, .admin-body, .admin-login-body')) {
+    const header = document.querySelector('.site-header');
+    const syncHeader = () => header?.classList.toggle('scrolled', window.scrollY > 20);
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    syncHeader();
+  }
+
   if (!menuButton.querySelector(".menu-icon")) {
     const menuIcon = document.createElement("span");
     menuIcon.className = "menu-icon";
@@ -15,12 +23,18 @@
   if (!menuBar) {
     menuBar = document.createElement("div");
     menuBar.className = "mobile-menu-bar";
-    menuBar.innerHTML = `
-      <a class="mobile-menu-brand" href="index.html" aria-label="LNH 홈">
-        <img src="assets/LNH-header-logo.svg" alt="LNH">
-      </a>
-      <button class="mobile-menu-close" type="button" aria-label="메뉴 닫기"></button>
-    `;
+    // Reuse the original header asset/link, including on nested /admin pages.
+    const headerBrand = document.querySelector('.site-header .brand');
+    if (headerBrand) {
+      const brand = headerBrand.cloneNode(true);
+      brand.className = 'mobile-menu-brand';
+      menuBar.append(brand);
+    }
+    const close = document.createElement('button');
+    close.className = 'mobile-menu-close';
+    close.type = 'button';
+    close.setAttribute('aria-label', '메뉴 닫기');
+    menuBar.append(close);
     mobileMenu.prepend(menuBar);
   }
 

@@ -1,0 +1,12 @@
+/* A legal reading surface, deliberately separate from marketing/form typography. */
+body.privacy-page { background: #fff; color: #272b30; font-family: "IBM Plex Sans KR", sans-serif; font-weight: 400; }
+.privacy-document { width: min(760px, calc(100% - 48px)); margin: 0 auto; padding: 154px 0 96px; }
+.privacy-document .document-heading { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid #454b50; }
+.privacy-document h1 { margin: 0 0 20px; font: 500 clamp(26px, 3vw, 32px)/1.4 "IBM Plex Sans KR", sans-serif; letter-spacing: -.035em; }
+.privacy-document .document-meta { margin: 0; font-size: 13px; line-height: 1.9; color: #60676e; }
+.privacy-document section { margin: 0 0 32px; }
+.privacy-document h2 { margin: 0 0 12px; font: 500 17px/1.55 "IBM Plex Sans KR", sans-serif; }
+.privacy-document section p { margin: 0; font-size: 15px; line-height: 1.95; overflow-wrap: anywhere; }
+.privacy-document .document-note { margin-top: 40px; padding-top: 20px; border-top: 1px solid #d7dadd; font-size: 13px; line-height: 1.9; color: #62696f; }
+@media(max-width:680px) { .privacy-document { width: calc(100% - 44px); padding: 112px 0 64px; } .privacy-document section p { font-size: 14px; } }
+@media print { .site-header, .mobile-menu { display: none !important; } .privacy-document { width: auto; padding: 0; } .privacy-document section { break-inside: avoid; } }
