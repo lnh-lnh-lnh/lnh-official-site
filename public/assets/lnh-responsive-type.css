@@ -36,6 +36,14 @@
   line-height: 1.45 !important;
   letter-spacing: -.02em !important;
 }
+/* This is a catalogue label, not a section headline. */
+#main#main .stories-preview-head h2 {
+  font-family: var(--sans, "IBM Plex Sans KR", sans-serif) !important;
+  font-size: var(--lnh-type-label) !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: .04em !important;
+}
 :is(#main#main, #build-main-clean#build-main-clean) :is(.lnh-hero-tag, .eyebrow, .kicker, .bdf-section-label, .journey-card-tag) {
   font-family: var(--sans, "IBM Plex Sans KR", sans-serif) !important;
   font-size: var(--lnh-type-label) !important;
@@ -97,16 +105,21 @@ body footer .footer-legal, body footer .footer-legal span {
 #main#main .archive summary { grid-template-columns: minmax(0, 1fr) 100px 30px; gap: 12px; }
 #main#main .archive summary > span { min-width: 0; overflow-wrap: anywhere; }
 
-/* Preserve the viewport bottom rule; compact spacing, never the body text. */
+/* Preserve the viewport bottom rule while giving the desktop opening copy air
+   below the fixed 82px navigation. Edit keeps its deliberately reversed,
+   image-led composition; About and Stories already use a deeper editorial
+   inset of their own. */
 @media (min-width: 681px) {
-  :is(#main#main, #build-main-clean#build-main-clean) > section:not(.edit-commerce-hero) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
-    padding-top: clamp(112px, 14dvh, 176px) !important;
+  :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero):not(.edit-commerce-hero) > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
+    padding-top: clamp(144px, 18dvh, 196px) !important;
     padding-bottom: 36px !important;
     padding-inline: var(--lnh-nav-pad) !important;
   }
-  :is(#main#main, #build-main-clean#build-main-clean) > section:not(.edit-commerce-hero) h1 {
-    margin-top: 28px !important;
-    margin-bottom: 24px !important;
+  :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero):not(.edit-commerce-hero) .lnh-hero-tag {
+    margin: 0 0 36px !important;
+  }
+  :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero):not(.edit-commerce-hero) h1 {
+    margin: 0 0 32px !important;
   }
 }
 :is(#main#main, #build-main-clean#build-main-clean) :is(.hero-bottom, .direction-hero-action, .build-direction-hero-action) { margin-top: 32px !important; }
@@ -134,6 +147,9 @@ body footer .footer-legal, body footer .footer-legal span {
   #main#main .archive summary { grid-template-columns: minmax(0, 1fr) 72px 24px; gap: 8px; }
   :is(#main#main, #build-main-clean#build-main-clean) > section > :is(.hero-copy, .direction-hero-copy, .build-direction-hero-copy) {
     row-gap: 0 !important;
+  }
+  :is(#main#main, #build-main-clean#build-main-clean) > section:is(.hero, .direction-hero, .build-direction-hero) :is(.hero-bottom, .direction-hero-action, .build-direction-hero-action) {
+    margin-top: 48px !important;
   }
   :is(#main#main, #build-main-clean#build-main-clean) > section > :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) {
     max-height: none !important;

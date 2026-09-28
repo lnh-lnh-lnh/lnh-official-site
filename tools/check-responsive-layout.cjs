@@ -34,28 +34,51 @@ const servicePages = ['brief','direction','build','curation','care','edit','part
           const hero = h1?.closest('section');
           const visual = hero?.querySelector('.hero-visual,.direction-hero-visual,.build-direction-hero-visual');
           const action = hero?.querySelector('.hero-bottom,.direction-hero-action,.build-direction-hero-action');
+          const tag = hero?.querySelector('.lnh-hero-tag,.eyebrow');
+          const intro = hero?.querySelector('.hero-intro,.direction-hero-intro,.build-direction-hero-intro,.hero-lead');
+          const storiesFeed = document.querySelector('.stories-feed');
           const box = e => e?.getBoundingClientRect().toJSON();
           return {
             overflow: document.documentElement.scrollWidth > innerWidth + 1,
+            nav: box(document.querySelector('.site-header')),
             logo: box(document.querySelector('.site-header .brand img')),
             h1: h1 && parseFloat(getComputedStyle(h1).fontSize),
             h2: h2 && parseFloat(getComputedStyle(h2).fontSize),
-            hero: box(hero), visual: box(visual), action: box(action),
-            indexTag: document.querySelector('.landing-hero .lnh-hero-tag')?.getBoundingClientRect().height || 0
+            hero: box(hero), visual: box(visual), action: box(action), tag: box(tag), intro: box(intro), title: box(h1),
+            indexTag: document.querySelector('.landing-hero .lnh-hero-tag')?.getBoundingClientRect().height || 0,
+            storiesPreviewLabel: document.querySelector('#stories-preview-title') && parseFloat(getComputedStyle(document.querySelector('#stories-preview-title')).fontSize),
+            storiesColumns: storiesFeed ? getComputedStyle(storiesFeed).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
+            policySections: document.querySelectorAll('.privacy-document .document-body > section').length,
+            hasPrivateDraftNote: document.body.textContent.includes('실제 운영 시작 전') || document.body.textContent.includes('운영 환경이 확정된 후')
           };
         });
         try {
           assert(!layout.overflow, 'horizontal overflow');
           assert.equal(layout.logo?.height, 24, 'original logo height');
           if (layout.h1 && layout.h2 && name !== 'privacy') assert(layout.h1 > layout.h2, 'hero/section hierarchy');
-          if (name === 'index') assert.equal(layout.indexTag, 0, 'index has no tag');
+          if (name === 'index') {
+            assert.equal(layout.indexTag, 0, 'index has no tag');
+            assert(layout.storiesPreviewLabel <= 13, 'index Stories heading uses label scale');
+          }
           if (servicePages.includes(name)) {
             assert(layout.visual?.height > 0, 'visible hero image');
+            if (width > 680 && name !== 'edit') {
+              assert(layout.tag.y - layout.nav.bottom >= 55, 'desktop hero copy clears navigation');
+              assert(layout.title.y - layout.tag.bottom >= 34, 'tag/title spacing');
+              assert(layout.intro.y - layout.title.bottom >= 30, 'title/description spacing');
+              assert(Math.abs(layout.tag.x - layout.title.x) <= 1 && Math.abs(layout.title.x - layout.intro.x) <= 1, 'hero text start lines align');
+            }
             if (width <= 680) {
               assert(Math.abs(layout.visual.width - layout.visual.height) <= 1, 'square mobile image');
               assert(Math.abs(layout.visual.bottom - layout.hero.bottom) <= 2, 'image meets hero rule');
+              if (layout.action) assert(layout.action.y - layout.intro.bottom >= 46, 'mobile CTA breathing room');
             }
             if (layout.action) assert(layout.action.bottom <= layout.hero.bottom + 1, 'CTA is not clipped');
+          }
+          if (name === 'stories' && width <= 680) assert.equal(layout.storiesColumns, 1, 'one Stories project per mobile row');
+          if (name === 'privacy') {
+            assert(layout.policySections >= 12, 'complete privacy policy sections');
+            assert(!layout.hasPrivateDraftNote, 'no internal draft note');
           }
           if (width === 393) {
             await page.locator('.menu-button').click();

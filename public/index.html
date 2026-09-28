@@ -1939,10 +1939,14 @@
     line-height:1.25!important;
   }
   #main .stories-preview-head h2{
-    font-size:14px!important;
+    font-family:var(--sans)!important;
+    font-size:var(--lnh-type-label,13px)!important;
     font-weight:400!important;
     line-height:1.5!important;
     letter-spacing:.04em!important;
+  }
+  @media(max-width:680px){
+    #main .stories-preview-head h2{font-size:12px!important}
   }
   #main .stories-preview .story-preview-title{
     font-size:16px!important;
