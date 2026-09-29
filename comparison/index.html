@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LNH Impeccable Pilot Comparison</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #0a3161;
+      --ink: #222629;
+      --muted: #606467;
+      --line: #d8d9d5;
+      --paper: #f5f5f2;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      letter-spacing: 0;
+    }
+    header, main { width: min(1440px, calc(100% - 48px)); margin: 0 auto; }
+    header { padding: 56px 0 36px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 16px; color: var(--navy); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(36px, 5vw, 72px); font-weight: 400; line-height: 1.04; }
+    .lead { max-width: 760px; margin: 22px 0 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .status { display: inline-flex; margin-top: 24px; padding: 9px 12px; color: var(--navy); border: 1px solid var(--navy); font-size: 12px; font-weight: 700; }
+    main { padding: 32px 0 72px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); background: var(--white); }
+    .metric { min-height: 124px; padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .metric strong { display: block; margin-bottom: 12px; color: var(--navy); font-family: Georgia, "Times New Roman", serif; font-size: 30px; font-weight: 400; }
+    .metric span { color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 40px 0 18px; }
+    label { display: grid; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 700; }
+    select { min-width: 180px; min-height: 44px; padding: 0 40px 0 12px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 0; font: inherit; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; overflow: hidden; background: var(--line); border: 1px solid var(--line); }
+    figure { margin: 0; background: var(--white); }
+    figcaption { display: flex; justify-content: space-between; gap: 16px; padding: 13px 16px; color: var(--muted); border-bottom: 1px solid var(--line); font-size: 12px; }
+    figcaption strong { color: var(--ink); }
+    .frame { display: grid; place-items: start center; min-height: 360px; padding: 20px; overflow: auto; background: #ececea; }
+    .frame img { display: block; max-width: 100%; height: auto; box-shadow: 0 1px 6px rgb(0 0 0 / 8%); }
+    .options { margin-top: 40px; border-top: 1px solid var(--line); }
+    .option { display: grid; grid-template-columns: 90px 1fr auto; gap: 24px; align-items: center; min-height: 96px; border-bottom: 1px solid var(--line); }
+    .option b { color: var(--navy); font-family: Georgia, "Times New Roman", serif; font-size: 26px; font-weight: 400; }
+    .option h2 { margin: 0 0 7px; font-size: 16px; }
+    .option p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    code { color: var(--muted); font-size: 12px; }
+    @media (max-width: 760px) {
+      header, main { width: min(100% - 28px, 1440px); }
+      header { padding-top: 36px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .pair { grid-template-columns: 1fr; }
+      .frame { min-height: 220px; padding: 10px; }
+      .option { grid-template-columns: 48px 1fr; gap: 12px; padding: 18px 0; }
+      .option code { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">LNH / Impeccable Pilot / 2026.09.29</p>
+    <h1>현재 발행본과 격리 개선본 비교</h1>
+    <p class="lead">브랜드 문구와 화면 구조는 유지하고, 조작성·모션 접근성·초기 이미지 용량만 개선했습니다. 운영 사이트에는 반영되지 않았습니다.</p>
+    <span class="status">PRODUCTION UNCHANGED</span>
+  </header>
+
+  <main>
+    <section class="metrics" aria-label="측정 결과">
+      <div class="metric"><strong>0</strong><span>130개 반응형 검사 실패</span></div>
+      <div class="metric"><strong>6 → 0</strong><span>감축 모드에서 실행되는 애니메이션</span></div>
+      <div class="metric"><strong>−81%</strong><span>Direction 첫 이미지 전송량</span></div>
+      <div class="metric"><strong>−84%</strong><span>Edit 모바일 초기 이미지 전송량</span></div>
+    </section>
+
+    <div class="toolbar">
+      <label>화면
+        <select id="route">
+          <option value="home">Home</option>
+          <option value="brief">Brief</option>
+          <option value="direction">Direction</option>
+          <option value="build">Build</option>
+          <option value="stories">Stories</option>
+          <option value="edit">Edit</option>
+        </select>
+      </label>
+      <label>기기
+        <select id="viewport">
+          <option value="desktop-1440">Desktop 1440×900</option>
+          <option value="laptop-1280">Laptop 1280×800</option>
+          <option value="mobile-393" selected>Mobile 393×852</option>
+        </select>
+      </label>
+    </div>
+
+    <section class="pair" aria-label="전후 화면 비교">
+      <figure>
+        <figcaption><strong>현재 발행본</strong><span>e1f523a</span></figcaption>
+        <div class="frame"><img id="before" alt="현재 발행본 화면"></div>
+      </figure>
+      <figure>
+        <figcaption><strong>Impeccable 실험본</strong><span>A+B+C</span></figcaption>
+        <div class="frame"><img id="after" alt="Impeccable 실험본 화면"></div>
+      </figure>
+    </section>
+
+    <section class="options" aria-label="선택 가능한 개선 항목">
+      <article class="option"><b>A</b><div><h2>조작성과 명도</h2><p>주요 컨트롤 44px 확보, 낮은 명도의 보조 텍스트 보정</p></div><code>e4fb5a0</code></article>
+      <article class="option"><b>B</b><div><h2>감축 모드</h2><p>사용자가 움직임 감소를 선택한 경우 서비스 히어로 애니메이션 정지</p></div><code>bcf4d27</code></article>
+      <article class="option"><b>C</b><div><h2>이미지 성능</h2><p>주요 대형 이미지 최적화, Edit 화면의 화면 밖 이미지 지연 로딩</p></div><code>06c8af5</code></article>
+    </section>
+  </main>
+
+  <script>
+    const route = document.querySelector('#route');
+    const viewport = document.querySelector('#viewport');
+    const before = document.querySelector('#before');
+    const after = document.querySelector('#after');
+
+    function render() {
+      const filename = `${route.value}-${viewport.value}.png`;
+      before.src = `../../../baselines/lnh-production-20260929/captures/${filename}`;
+      after.src = `./captures/${filename}`;
+    }
+
+    route.addEventListener('change', render);
+    viewport.addEventListener('change', render);
+    render();
+  </script>
+</body>
+</html>
