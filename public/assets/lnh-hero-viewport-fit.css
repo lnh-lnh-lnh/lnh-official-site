@@ -73,6 +73,16 @@
   }
 }
 
+/* Preserve the final composition without the spatial entrance when the
+   visitor has requested reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  :is(.hero-visual, .direction-hero-visual, .build-direction-hero-visual) > img,
+  #build-main-clean .build-direction-hero-visual > img {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /*
   Mobile uses a bounded copy-and-image stack.  The header overlays the top
   edge; spacing reduces with viewport height instead of pushing the rule down.
