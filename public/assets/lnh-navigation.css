@@ -37,6 +37,7 @@ body .site-header .nav-cta, body .site-header > .header-action {
 }
 body .site-header .menu-button { display: none; }
 body .site-header .desktop-nav .nav-cta { background: var(--lnh-navy) !important; border-color: var(--lnh-navy) !important; color: #fff !important; }
+body .site-header .desktop-nav .nav-cta { min-height: 44px !important; }
 .mobile-menu, .mobile-menu-scrim { display: none; }
 .site-header a:focus-visible, .site-header button:focus-visible, .mobile-menu a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
 body .site-header.admin-header { background: var(--lnh-navy) !important; color: #fff; border-color: rgba(255,255,255,.2); }
@@ -54,9 +55,9 @@ body.menu-open { overflow: hidden; }
   body .site-header.scrolled { height: 58px !important; }
   body.menu-open .site-header { height: 64px !important; }
   body .site-header .desktop-nav { display: none !important; }
-  body .site-header > .header-action { right: 80px; min-height: 36px; font-size: 12px; padding-inline: 10px; }
+  body .site-header > .header-action { right: 80px; min-height: 44px; font-size: 12px; padding-inline: 10px; }
   body .site-header .menu-button {
-    display: block; width: 42px; height: 42px; padding: 0 !important;
+    display: block; width: 44px; height: 44px; padding: 0 !important;
     border: 0 !important; background: transparent !important; color: inherit !important;
     font-size: 0 !important; cursor: pointer;
   }
