@@ -104,7 +104,7 @@
 </head>
 <body>
   <header class="wrap topbar">
-    <a class="wordmark" href="../public/index.html" aria-label="LNH 실험본 열기">LNH</a>
+    <a class="wordmark" href="http://127.0.0.1:4175/index.html" aria-label="LNH 실험본 열기">LNH</a>
     <span class="topbar-meta">IMPECCABLE REVIEW · PRIVATE PREVIEW · 2026.10.02</span>
   </header>
   <main>
@@ -129,7 +129,7 @@
         </div>
       </div>
       <div class="pair" aria-label="운영본과 개선본 화면 비교">
-        <figure><figcaption><strong>현재 운영본</strong><span>e1f523a · 보존</span></figcaption><div class="frame"><img id="before" src="../../../baselines/lnh-production-20260929/captures/stories-desktop-1440.png" alt="현재 운영본 화면"></div></figure>
+        <figure><figcaption><strong>현재 운영본</strong><span>e1f523a · 보존</span></figcaption><div class="frame"><img id="before" src="./baseline/stories-desktop-1440.png" alt="현재 운영본 화면"></div></figure>
         <figure><figcaption><strong>Impeccable 20/20 실험본</strong><span>로컬 전용</span></figcaption><div class="frame"><img id="after" src="./impeccable20-final/stories-desktop-1440.png" alt="Impeccable 개선 화면"></div></figure>
       </div>
       <a class="open-preview" id="live-preview" href="../public/stories.html">실험본 전체 화면 열기</a>
@@ -152,9 +152,9 @@
     const routeFiles = { home: 'index', brief: 'brief', direction: 'direction', build: 'build', stories: 'stories', edit: 'edit' };
     function render() {
       const filename = `${route.value}-${viewport.value}.png`;
-      before.src = `../../../baselines/lnh-production-20260929/captures/${filename}`;
+      before.src = `./baseline/${filename}`;
       after.src = `./impeccable20-final/${filename}`;
-      livePreview.href = `../public/${routeFiles[route.value]}.html`;
+      livePreview.href = `http://127.0.0.1:4175/${routeFiles[route.value]}.html`;
     }
     route.addEventListener('change', render);
     viewport.addEventListener('change', render);
