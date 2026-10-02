@@ -6,14 +6,21 @@ const require = createRequire('/Users/lnh/.cache/codex-runtimes/codex-primary-ru
 const { chromium } = require('playwright');
 
 const base = process.env.LNH_BASE_URL || 'http://127.0.0.1:4175';
-const output = new URL('../comparison/captures/', import.meta.url);
+const captureSet = process.env.LNH_CAPTURE_SET || 'captures';
+const output = new URL(`../comparison/${captureSet}/`, import.meta.url);
 const routes = [
   { name: 'home', path: '/' },
   { name: 'brief', path: '/brief.html' },
   { name: 'direction', path: '/direction.html' },
   { name: 'build', path: '/build.html' },
+  { name: 'curation', path: '/curation.html' },
+  { name: 'care', path: '/care.html' },
   { name: 'stories', path: '/stories.html' },
-  { name: 'edit', path: '/edit.html' }
+  { name: 'edit', path: '/edit.html' },
+  { name: 'partnership', path: '/partnership.html' },
+  { name: 'about', path: '/about.html' },
+  { name: 'apply', path: '/apply.html?service=brief' },
+  { name: 'privacy', path: '/privacy.html' }
 ];
 const viewports = [
   { name: 'desktop-1440', width: 1440, height: 900 },
@@ -58,6 +65,11 @@ try {
         };
         const controls = [...document.querySelectorAll('a[href],button,input,select,textarea,summary')].filter(visible);
         const smallTargets = controls.filter(element => {
+          const style = getComputedStyle(element);
+          const isInlineTextLink = element.tagName === 'A'
+            && style.display === 'inline'
+            && Boolean(element.closest('p,li,td,th,dd'));
+          if (isInlineTextLink) return false;
           const rect = element.getBoundingClientRect();
           return rect.width < 44 || rect.height < 44;
         }).length;

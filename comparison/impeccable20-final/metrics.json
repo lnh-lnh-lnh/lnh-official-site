@@ -1,0 +1,654 @@
+{
+  "capturedAt": "2026-10-02T01:08:57.286Z",
+  "base": "http://127.0.0.1:4175",
+  "results": [
+    {
+      "route": "/",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH — Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 21,
+      "transferSize": 779750,
+      "imageTransferSize": 266264
+    },
+    {
+      "route": "/brief.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Brief — 공사 전 방향부터 정하는 2시간",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 18,
+      "transferSize": 471290,
+      "imageTransferSize": 147308
+    },
+    {
+      "route": "/direction.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Direction — 공사 전, 공간의 기준을 세우는 단계",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 19,
+      "transferSize": 823872,
+      "imageTransferSize": 496339
+    },
+    {
+      "route": "/build.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Build — 정한 방향을 실제 공간의 완성으로",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 829564,
+      "imageTransferSize": 255704
+    },
+    {
+      "route": "/curation.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Curation — 생활이 제자리를 찾도록",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 25,
+      "transferSize": 1990124,
+      "imageTransferSize": 1662591
+    },
+    {
+      "route": "/care.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Care — 완성 뒤의 하루까지",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 852396,
+      "imageTransferSize": 524959
+    },
+    {
+      "route": "/stories.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "경험의 기록 — LNH Stories",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 26,
+      "transferSize": 874989,
+      "imageTransferSize": 568091
+    },
+    {
+      "route": "/edit.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Edit — 그 집의 물건들",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 28,
+      "transferSize": 2373731,
+      "imageTransferSize": 2046198
+    },
+    {
+      "route": "/partnership.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Partnership — B2B / B2G Design Advisory",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 31,
+      "transferSize": 879016,
+      "imageTransferSize": 551579
+    },
+    {
+      "route": "/about.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "About LNH - Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 16,
+      "transferSize": 809696,
+      "imageTransferSize": 502797
+    },
+    {
+      "route": "/apply.html?service=brief",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "서비스 신청 — LNH",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 9,
+      "transferSize": 132494,
+      "imageTransferSize": 2110
+    },
+    {
+      "route": "/privacy.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "개인정보 처리방침 — LNH",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 8,
+      "transferSize": 130211,
+      "imageTransferSize": 2110
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH — Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 21,
+      "transferSize": 779750,
+      "imageTransferSize": 266264
+    },
+    {
+      "route": "/brief.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Brief — 공사 전 방향부터 정하는 2시간",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 18,
+      "transferSize": 471290,
+      "imageTransferSize": 147308
+    },
+    {
+      "route": "/direction.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Direction — 공사 전, 공간의 기준을 세우는 단계",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 19,
+      "transferSize": 823872,
+      "imageTransferSize": 496339
+    },
+    {
+      "route": "/build.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Build — 정한 방향을 실제 공간의 완성으로",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 829564,
+      "imageTransferSize": 255704
+    },
+    {
+      "route": "/curation.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Curation — 생활이 제자리를 찾도록",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 25,
+      "transferSize": 1990124,
+      "imageTransferSize": 1662591
+    },
+    {
+      "route": "/care.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Care — 완성 뒤의 하루까지",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 852396,
+      "imageTransferSize": 524959
+    },
+    {
+      "route": "/stories.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "경험의 기록 — LNH Stories",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 23,
+      "transferSize": 733079,
+      "imageTransferSize": 426181
+    },
+    {
+      "route": "/edit.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Edit — 그 집의 물건들",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 28,
+      "transferSize": 2373731,
+      "imageTransferSize": 2046198
+    },
+    {
+      "route": "/partnership.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Partnership — B2B / B2G Design Advisory",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 31,
+      "transferSize": 879016,
+      "imageTransferSize": 551579
+    },
+    {
+      "route": "/about.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "About LNH - Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 16,
+      "transferSize": 809696,
+      "imageTransferSize": 502797
+    },
+    {
+      "route": "/apply.html?service=brief",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "서비스 신청 — LNH",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 9,
+      "transferSize": 132494,
+      "imageTransferSize": 2110
+    },
+    {
+      "route": "/privacy.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "개인정보 처리방침 — LNH",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 8,
+      "transferSize": 130211,
+      "imageTransferSize": 2110
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH — Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 21,
+      "transferSize": 779750,
+      "imageTransferSize": 266264
+    },
+    {
+      "route": "/brief.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Brief — 공사 전 방향부터 정하는 2시간",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 18,
+      "transferSize": 471290,
+      "imageTransferSize": 147308
+    },
+    {
+      "route": "/direction.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Direction — 공사 전, 공간의 기준을 세우는 단계",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 19,
+      "transferSize": 823872,
+      "imageTransferSize": 496339
+    },
+    {
+      "route": "/build.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Build — 정한 방향을 실제 공간의 완성으로",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 829564,
+      "imageTransferSize": 255704
+    },
+    {
+      "route": "/curation.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Curation — 생활이 제자리를 찾도록",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 21,
+      "transferSize": 1011344,
+      "imageTransferSize": 683809
+    },
+    {
+      "route": "/care.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Care — 완성 뒤의 하루까지",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 852396,
+      "imageTransferSize": 524959
+    },
+    {
+      "route": "/stories.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "경험의 기록 — LNH Stories",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 26,
+      "transferSize": 1107285,
+      "imageTransferSize": 800387
+    },
+    {
+      "route": "/edit.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Edit — 그 집의 물건들",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 22,
+      "transferSize": 940274,
+      "imageTransferSize": 612739
+    },
+    {
+      "route": "/partnership.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Partnership — B2B / B2G Design Advisory",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 22,
+      "transferSize": 744500,
+      "imageTransferSize": 417062
+    },
+    {
+      "route": "/about.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "About LNH - Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 16,
+      "transferSize": 809696,
+      "imageTransferSize": 502797
+    },
+    {
+      "route": "/apply.html?service=brief",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "서비스 신청 — LNH",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 9,
+      "transferSize": 132495,
+      "imageTransferSize": 2110
+    },
+    {
+      "route": "/privacy.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "개인정보 처리방침 — LNH",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 0,
+      "runningAnimations": 0,
+      "resourceCount": 8,
+      "transferSize": 130211,
+      "imageTransferSize": 2110
+    }
+  ]
+}

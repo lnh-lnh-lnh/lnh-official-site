@@ -132,7 +132,7 @@ body {
   justify-content: space-between;
   height: 82px;
   padding: 0 var(--pad, clamp(24px, 4.5vw, 72px));
-  transition: background 0.3s, border-color 0.3s, height 0.3s;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .site-header.scrolled {

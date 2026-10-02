@@ -1,0 +1,330 @@
+{
+  "capturedAt": "2026-09-29T08:21:01.274Z",
+  "base": "http://127.0.0.1:4175",
+  "results": [
+    {
+      "route": "/",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH — Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 726237,
+      "imageTransferSize": 266264
+    },
+    {
+      "route": "/brief.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Brief — 공사 전 방향부터 정하는 2시간",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 17,
+      "transferSize": 417777,
+      "imageTransferSize": 147308
+    },
+    {
+      "route": "/direction.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Direction — 공사 전, 공간의 기준을 세우는 단계",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 18,
+      "transferSize": 770359,
+      "imageTransferSize": 496339
+    },
+    {
+      "route": "/build.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Build — 정한 방향을 실제 공간의 완성으로",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 19,
+      "transferSize": 776051,
+      "imageTransferSize": 255704
+    },
+    {
+      "route": "/stories.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "경험의 기록 — LNH Stories",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 23,
+      "runningAnimations": 0,
+      "resourceCount": 30,
+      "transferSize": 2733467,
+      "imageTransferSize": 2480082
+    },
+    {
+      "route": "/edit.html",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Edit — 그 집의 물건들",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 22,
+      "runningAnimations": 0,
+      "resourceCount": 27,
+      "transferSize": 2320218,
+      "imageTransferSize": 2046198
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH — Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 726237,
+      "imageTransferSize": 266264
+    },
+    {
+      "route": "/brief.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Brief — 공사 전 방향부터 정하는 2시간",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 17,
+      "transferSize": 417777,
+      "imageTransferSize": 147308
+    },
+    {
+      "route": "/direction.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Direction — 공사 전, 공간의 기준을 세우는 단계",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 18,
+      "transferSize": 770359,
+      "imageTransferSize": 496339
+    },
+    {
+      "route": "/build.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Build — 정한 방향을 실제 공간의 완성으로",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 18,
+      "runningAnimations": 0,
+      "resourceCount": 19,
+      "transferSize": 776051,
+      "imageTransferSize": 255704
+    },
+    {
+      "route": "/stories.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "경험의 기록 — LNH Stories",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 23,
+      "runningAnimations": 0,
+      "resourceCount": 30,
+      "transferSize": 2733472,
+      "imageTransferSize": 2480082
+    },
+    {
+      "route": "/edit.html",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Edit — 그 집의 물건들",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 22,
+      "runningAnimations": 0,
+      "resourceCount": 27,
+      "transferSize": 2320218,
+      "imageTransferSize": 2046198
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH — Lifestyle Advisor",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 12,
+      "runningAnimations": 0,
+      "resourceCount": 20,
+      "transferSize": 726239,
+      "imageTransferSize": 266264
+    },
+    {
+      "route": "/brief.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Brief — 공사 전 방향부터 정하는 2시간",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 13,
+      "runningAnimations": 0,
+      "resourceCount": 17,
+      "transferSize": 417844,
+      "imageTransferSize": 147308
+    },
+    {
+      "route": "/direction.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Direction — 공사 전, 공간의 기준을 세우는 단계",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 13,
+      "runningAnimations": 0,
+      "resourceCount": 18,
+      "transferSize": 770359,
+      "imageTransferSize": 496339
+    },
+    {
+      "route": "/build.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Build — 정한 방향을 실제 공간의 완성으로",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 13,
+      "runningAnimations": 0,
+      "resourceCount": 19,
+      "transferSize": 776051,
+      "imageTransferSize": 255704
+    },
+    {
+      "route": "/stories.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "경험의 기록 — LNH Stories",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 17,
+      "runningAnimations": 0,
+      "resourceCount": 34,
+      "transferSize": 4067851,
+      "imageTransferSize": 3814466
+    },
+    {
+      "route": "/edit.html",
+      "viewport": {
+        "name": "mobile-393",
+        "width": 393,
+        "height": 852
+      },
+      "status": 200,
+      "errors": [],
+      "title": "LNH Edit — 그 집의 물건들",
+      "h1": 1,
+      "overflow": false,
+      "smallTargets": 14,
+      "runningAnimations": 0,
+      "resourceCount": 21,
+      "transferSize": 886759,
+      "imageTransferSize": 612739
+    }
+  ]
+}
