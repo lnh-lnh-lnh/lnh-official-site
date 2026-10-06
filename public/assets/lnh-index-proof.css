@@ -1,0 +1,79 @@
+#main .company-proof {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(12px, 1.5vw, 20px) !important;
+  width: min(100%, calc(1320px + (var(--pad) * 2))) !important;
+  margin: 0 auto !important;
+  padding: clamp(44px, 5vw, 72px) var(--pad) !important;
+  border: 0 !important;
+  background: var(--paper) !important;
+}
+
+#main .company-proof .proof-cell {
+  min-height: clamp(230px, 20vw, 300px) !important;
+  padding: clamp(30px, 3.4vw, 52px) !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: clamp(18px, 2vw, 28px) !important;
+  text-align: left !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background: var(--paper-deep) !important;
+}
+
+#main .company-proof .proof-cell .proof-value,
+#main .company-proof .proof-cell:not(:last-child) .proof-value {
+  margin: 0 !important;
+  color: var(--ink) !important;
+  font-family: var(--serif) !important;
+  font-size: clamp(52px, 5vw, 72px) !important;
+  font-weight: 400 !important;
+  line-height: 0.95 !important;
+}
+
+#main .company-proof .proof-unit {
+  display: inline-block;
+  margin-left: 0.32em;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1;
+  vertical-align: 0.14em;
+}
+
+#main .company-proof .proof-label {
+  max-width: 280px !important;
+  margin: 0 !important;
+  color: var(--muted) !important;
+  font-family: var(--sans) !important;
+  font-size: clamp(13px, 1.05vw, 16px) !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+@media (max-width: 680px) {
+  #main .company-proof {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding: 34px var(--pad) 26px !important;
+  }
+
+  #main .company-proof .proof-cell {
+    min-height: 190px !important;
+    padding: 30px 28px !important;
+    gap: 18px !important;
+  }
+
+  #main .company-proof .proof-cell .proof-value,
+  #main .company-proof .proof-cell:not(:last-child) .proof-value {
+    font-size: 34px !important;
+  }
+
+  #main .company-proof .proof-label {
+    max-width: none !important;
+    font-size: 14px !important;
+  }
+}

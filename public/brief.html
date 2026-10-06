@@ -35,7 +35,7 @@
       --price-ink:#25292b;
       --price-muted:#6f7473;
       --price-line:rgba(37,41,43,.16);
-      --price-accent:#75604f;
+      --price-accent:#8a6f5a;
       --serif:"Nanum Myeongjo",Georgia,serif;
       --latin:"Cormorant Garamond",Georgia,serif;
       --sans:"IBM Plex Sans KR",system-ui,sans-serif;
@@ -74,7 +74,7 @@
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
     .reveal.in{opacity:1;transform:none}
 
-    .site-header{position:fixed;inset:0 0 auto;z-index:50;height:82px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+    .site-header{position:fixed;inset:0 0 auto;z-index:50;height:82px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,height .3s}
     .site-header.scrolled{height:66px;background:rgba(245,245,242,.94);border-color:var(--line);backdrop-filter:blur(10px)}
     .brand{display:inline-flex;align-items:center;line-height:1}
     .brand img{display:block;width:auto;height:24px;object-fit:contain}
@@ -377,7 +377,7 @@
     .scope-sheet > div:nth-child(4n){border-right:0}
     .scope-sheet .scope-head{background:#ebe6dd;color:var(--price-ink);font-size:10px}
     .scope-sheet .scope-name{color:var(--price-ink);font-family:var(--serif);font-size:18px}
-    .scope-sheet .keep{color:#49705c}.scope-sheet .later{color:#6f6250}.scope-sheet .no{color:#9b6055}
+    .scope-sheet .keep{color:#49705c}.scope-sheet .later{color:#807259}.scope-sheet .no{color:#9b6055}
     .question-sheet-report{padding:25px 30px;background:#f7f3eb}
     .question-sheet-report li{display:grid;grid-template-columns:26px 1fr;gap:12px;margin:0;padding:12px 0;border-bottom:1px solid var(--price-line);color:var(--price-ink);font-size:12px;line-height:1.55;list-style:none}
     .question-sheet-report li:last-child{border-bottom:0}
@@ -863,7 +863,7 @@
 </style>
   <link rel="stylesheet" href="assets/lnh-desktop-refinement-20260815.css?v=ad-center-20260822">
 </head>
-<body class="impeccable-20 page-brief">
+<body>
   <a class="skip" href="#main">본문으로</a>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="LNH 홈"><img src="assets/LNH-header-logo.svg?v=profile-ci-2" alt="LNH"></a>
@@ -1083,10 +1083,9 @@
       </figure>
       <div class="video-copy reveal">
         <p class="eyebrow">05 / LNH Advisor</p>
-        <h2 id="video-title">아파트 생활을 기획해 온 사람이,<br>이제 당신의 집을 함께 고민합니다.</h2>
+        <h2 id="video-title">아파트 생활을 <span class="video-title-mobile-break"><br></span>기획해 온 사람이,<br>이제 당신의 집을 <span class="video-title-mobile-break"><br></span>함께 고민합니다.</h2>
         <p class="video-lead">무엇을 지키고 무엇을 조정할지 함께 정합니다.</p>
         <p class="video-advisor-meta">LNH Advisor · 이승일</p>
-        <p class="video-advisor-note">공간, 브랜드, 주거 상품을 다뤄온 경험으로 한 사람의 생활을 봅니다.</p>
       </div>
     </section>
 
@@ -1098,19 +1097,161 @@
           <p>무엇에 쓰고, 무엇을 남기고, 어떤 팀과 일할지 먼저 정리합니다.</p>
         </div>
         <div class="price-detail reveal">
-          <div class="price-amount"><span>LNH Brief</span><b>2,500,000원</b><small>VAT 포함</small></div>
+          <div class="price-amount"><span>LNH Brief</span><b>2,500,000원</b><small>(VAT 포함)</small></div>
           <div class="price-meta">
-            <div class="price-meta-item"><span>대상</span><b>전용 132㎡(50평) 미만 기준</b></div>
+            <div class="price-meta-item"><span>대상</span><div class="price-meta-value"><b>공급면적<br>165m² 미만</b></div></div>
             <div class="price-meta-item"><span>구성</span><b>초안 리포트<br>1:1 세션<br>최종본 리포트</b></div>
-            <div class="price-meta-item"><span>소요 시간</span><b>설문 후 약 2주</b></div>
+            <div class="price-meta-item"><span>소요 시간</span><b>설문 후<span class="price-mobile-break"><br></span> 약 2주</b></div>
           </div>
           <div class="price-actions">
             <a class="solid-link" href="apply.html?service=brief" data-track="brief_apply">Brief 신청하기</a>
             <button class="expand-trigger sample-trigger secondary" type="button" data-sample-toggle aria-expanded="false" aria-controls="report"><span>Brief Report 미리보기</span><span class="trigger-icon" data-trigger-icon aria-hidden="true">+</span></button>
           </div>
-          <div class="price-action"><small>신청 뒤 리포트 샘플을 먼저 보내드립니다. 통화로 Brief가 필요한 단계인지 확인한 뒤, 진행을 결정하시면 상세 설문을 안내드립니다. Direction으로 이어지시면 Brief 비용 125만원이 차감됩니다.</small></div>
+          <div class="price-action"><small>Direction 진행 시 Brief 비용 중 125만원 차감</small></div>
         </div>
         <div class="sample-report-panel" id="report" hidden>
+          <div class="brief-sample-v2" aria-label="송파더플래티넘 Brief Report 샘플">
+            <header class="brief-sample-intro">
+              <div>
+                <p class="brief-sample-eyebrow">SAMPLE BRIEF</p>
+                <h3>두 분이 한 말이,<br>이런 판단이 되었습니다.</h3>
+              </div>
+              <div class="brief-sample-intro-copy">
+                <p>실제 진행한 리포트에서 세 장면을 골랐습니다. 들은 말, 그 말에서 읽은 것, 그래서 내린 판단을 그대로 옮겼습니다.</p>
+                <ul class="brief-sample-case" aria-label="샘플 프로젝트 정보">
+                  <li>송파더플래티넘</li><li>27평</li><li>두 사람</li><li>전체 리모델링을 마친 집</li>
+                </ul>
+              </div>
+            </header>
+
+            <div class="brief-sample-scenes">
+              <article class="brief-sample-scene">
+                <div class="brief-sample-heard">
+                  <p class="brief-sample-label">들은 말</p>
+                  <blockquote>호텔 같은 집이면 좋겠어요.</blockquote>
+                  <div class="brief-sample-reading"><span>LNH가 읽은 것</span>화려한 마감이나 로비의 크기가 아니었습니다. 문을 열었을 때 환영받고, 서두르지 않아도 되는 생활이었습니다.</div>
+                </div>
+                <div class="brief-sample-decision">
+                  <p class="brief-sample-label">판단</p>
+                  <h4>개방감과 수납을<br>나누어 해결합니다.</h4>
+                  <p>주방과 거실, 작업하는 자리는 시선이 이어지게 열고, 옷과 생활 재고는 한 방에 모아 문을 닫습니다. 모든 벽에 장을 늘리면 원하시는 여유가 먼저 사라집니다.</p>
+                </div>
+                <button class="brief-sample-page" type="button" data-brief-sample-src="assets/brief-sample/brief-sample-p04.jpg" aria-label="Brief Report 4쪽 확대해서 보기">
+                  <img src="assets/brief-sample/brief-sample-p04.jpg" loading="lazy" alt="호텔 같은 집에 대한 판단을 담은 Brief Report 4쪽">
+                </button>
+              </article>
+
+              <article class="brief-sample-scene">
+                <div class="brief-sample-heard">
+                  <p class="brief-sample-label">들은 말</p>
+                  <blockquote>상부장은 싫어요. 주방에서 쉬고, 공부도 하고 싶어요.</blockquote>
+                  <div class="brief-sample-reading"><span>LNH가 읽은 것</span>두 분에게 필요한 건 주방이 아니라, 거실이 이어지는 또 하나의 자리였습니다.</div>
+                </div>
+                <div class="brief-sample-decision">
+                  <p class="brief-sample-label">판단</p>
+                  <h4>조리하는 면과<br>머무는 면을 나눕니다.</h4>
+                  <ul>
+                    <li><b>상부장을 비우는 대신</b> 하부는 문보다 서랍 중심으로 더 정확히 씁니다</li>
+                    <li><b>가전은 한 구역에</b> 모아 주요 시선에서 비켜 둡니다</li>
+                    <li><b>통로가 부족하면</b> 아일랜드도 두지 않습니다</li>
+                  </ul>
+                </div>
+                <button class="brief-sample-page" type="button" data-brief-sample-src="assets/brief-sample/brief-sample-p10.jpg" aria-label="Brief Report 10쪽 확대해서 보기">
+                  <img src="assets/brief-sample/brief-sample-p10.jpg" loading="lazy" alt="주방에 대한 판단을 담은 Brief Report 10쪽">
+                </button>
+              </article>
+
+              <article class="brief-sample-scene">
+                <div class="brief-sample-heard">
+                  <p class="brief-sample-label">들은 말</p>
+                  <blockquote>욕실은 늘 빨리 나오는 곳이었어요.</blockquote>
+                  <div class="brief-sample-reading"><span>LNH가 읽은 것</span>욕실을 넓히고 싶은 게 아니라, 몸을 두고 머물 수 있는 자리가 없었던 것입니다.</div>
+                </div>
+                <div class="brief-sample-decision">
+                  <p class="brief-sample-label">판단</p>
+                  <h4>두 욕실을 같은 깊이로<br>고칠 필요는 없습니다.</h4>
+                  <p>욕조가 있는 공용 욕실은 머무는 곳으로, 안방 욕실은 일상 세면과 샤워가 편한 곳으로. 큰 타일이나 고급 수전보다 물 처리 · 환기 · 눈부심 조절이 먼저입니다.</p>
+                </div>
+                <button class="brief-sample-page" type="button" data-brief-sample-src="assets/brief-sample/brief-sample-p12.jpg" aria-label="Brief Report 12쪽 확대해서 보기">
+                  <img src="assets/brief-sample/brief-sample-p12.jpg" loading="lazy" alt="욕실에 대한 판단을 담은 Brief Report 12쪽">
+                </button>
+              </article>
+            </div>
+
+            <section class="brief-sample-split brief-sample-not-doing" aria-labelledby="brief-sample-not-doing-title">
+              <div>
+                <p class="brief-sample-eyebrow">NOT DOING</p>
+                <h4 id="brief-sample-not-doing-title">하지 않기로 한 것이<br>더 많은 리포트입니다.</h4>
+                <p>무엇을 더할지보다, 무엇에 돈을 쓰지 않을지가 먼저 정해집니다.</p>
+              </div>
+              <ul>
+                <li><del>주방 상부장 신규 설치</del><span>벽은 시선과 활동에 돌려드립니다</span></li>
+                <li><del>옷방의 고가 맞춤 붙박이장</del><span>조절식 행거와 선반으로 같은 양을 담습니다</span></li>
+                <li><del>발코니 최대 확장 자체를 목표로</del><span>구역별로 얻는 것과 연결 비용을 비교합니다</span></li>
+                <li><del>물이 닿는 곳의 장식적 목재</del><span>젖는 구역은 관리할 수 있는 마감으로</span></li>
+              </ul>
+            </section>
+
+            <section class="brief-sample-split brief-sample-budget" aria-labelledby="brief-sample-budget-title">
+              <div>
+                <p class="brief-sample-eyebrow">BUDGET</p>
+                <h4 id="brief-sample-budget-title">1억 3,400<small>만원</small></h4>
+                <p>기본 공사를 먼저 확보하면, 생활이 달라질 곳에 쓸 수 있는 돈이 정해집니다.</p>
+              </div>
+              <div class="brief-sample-budget-detail">
+                <div class="brief-sample-budget-bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                <dl>
+                  <div><dt>기본 공사</dt><dd>37.4%</dd></div>
+                  <div><dt>시공사 관리비 · 이윤</dt><dd>13.9%</dd></div>
+                  <div><dt>예비비</dt><dd>14.7%</dd></div>
+                  <div><dt>LNH Brief</dt><dd>1.9%</dd></div>
+                  <div class="brief-sample-budget-focus"><dt>생활이 달라질 곳에 쓰는 돈</dt><dd>약 4,300만원</dd></div>
+                </dl>
+              </div>
+            </section>
+
+            <section class="brief-sample-split brief-sample-before" aria-labelledby="brief-sample-before-title">
+              <div>
+                <p class="brief-sample-eyebrow">BEFORE YOU MEET</p>
+                <h4 id="brief-sample-before-title">업체를 만나기 전에<br>확인할 네 가지.</h4>
+                <p>같은 금액의 견적도 포함 범위는 다를 수 있습니다. 이 집에서 견적서와 함께 물어야 할 질문입니다.</p>
+              </div>
+              <div>
+                <article class="brief-sample-risk">
+                  <span>01</span>
+                  <h5>인덕션과 전기 · 배기 연결</h5>
+                  <p><b>왜 달라지는지</b>선정할 인덕션의 전력 · 배기 조건이 기존 설비와 맞지 않으면 회로 · 분전반 보완이나 덕트 작업이 추가될 수 있습니다.</p>
+                  <p><b>견적서에서 확인할 것</b>전용 회로와 배기 방식의 포함 범위. 미확정 부분은 확인 시점과 추가비 산정 기준을 함께 적어 달라고 요청하세요.</p>
+                </article>
+                <ol class="brief-sample-risk-list" start="2">
+                  <li>철거 뒤 드러나는 바탕 상태</li>
+                  <li>발코니 확장과 연결 공사</li>
+                  <li>기존 가전의 재설치</li>
+                </ol>
+              </div>
+            </section>
+
+            <section class="brief-sample-split brief-sample-end" aria-labelledby="brief-sample-end-title">
+              <div>
+                <p class="brief-sample-eyebrow">THE FULL BRIEF</p>
+                <h4 id="brief-sample-end-title">여기 보인 것은<br>일부입니다.</h4>
+                <div class="brief-sample-cta">
+                  <a class="solid-link" href="apply.html?service=brief" data-track="brief_apply">Brief 신청하기</a>
+                  <p>전체 리포트는 신청하시면<br>바로 보내드립니다.</p>
+                </div>
+              </div>
+              <ol class="brief-sample-toc">
+                <li>생활 지도</li><li class="is-shown">에디터 노트</li><li>공간의 방향 · 빛</li><li>저장 이미지와 선호</li><li>거실</li><li class="is-shown">주방</li><li class="is-shown">욕실</li><li>수납 · 현관 · 침실 · 작업</li><li class="is-shown">예산의 현실</li><li class="is-shown">결론과 실행 범위</li><li class="is-shown">비용이 달라지는 지점</li><li>업체 선정</li><li>실행 경로</li><li>다음 담당자에게 넘기는 기준</li><li>다음 걸음</li>
+              </ol>
+            </section>
+
+            <button class="expand-close secondary brief-sample-collapse" type="button" data-sample-close aria-label="샘플 리포트 접기"><span aria-hidden="true">-</span></button>
+
+            <div class="brief-sample-lightbox" data-brief-sample-lightbox hidden role="dialog" aria-modal="true" aria-label="Brief Report 페이지 확대 보기">
+              <button type="button" data-brief-sample-lightbox-close aria-label="확대 보기 닫기">×</button>
+              <img alt="">
+            </div>
+          </div>
           <div class="sample-report-head centered">
             <p class="eyebrow">Sample Brief Report</p>
             <h3>잠실 트리지움 아파트</h3>
@@ -1223,7 +1364,7 @@
     <section class="reassurance" aria-labelledby="reassurance-title">
       <div class="reassurance-copy reveal">
         <div>
-          <h2 id="reassurance-title">당신 손에 기준이 남습니다.<br>이제 어떤 견적을 받아도 흔들리지 않습니다.</h2>
+          <h2 id="reassurance-title">당신 손에 <span class="reassurance-title-mobile-break"><br></span>기준이 남습니다.<br>이제 어떤 견적을 받아도 <span class="reassurance-title-mobile-break"><br></span>흔들리지 않습니다.</h2>
           <p>Brief Report는 당신 집의 기준으로 남습니다.</p>
         </div>
       </div>
@@ -1242,7 +1383,7 @@
           <details><summary>이미 업체를 정했어도 받을 수 있나요?</summary><p>이미 받은 제안과 견적을 어떤 기준으로 확인할지 정리합니다.</p></details>
           <details><summary>업체와 문제가 생긴 뒤에도 받을 수 있나요?</summary><p>현재 상황과 대화에서 막힌 지점을 정리해, 더 큰 손실 전에 다음 판단 기준을 만듭니다.</p></details>
           <details><summary>결제는 언제 하나요?</summary><p>신청 뒤 리포트 샘플을 먼저 보내드리고, 통화로 Brief가 필요한 단계인지 함께 확인합니다. 진행을 결정하시면 결제와 상세 설문을 안내드립니다.</p></details>
-          <details><summary>어떤 규모의 집까지 가능한가요?</summary><p>전용 132㎡(50평) 미만을 기준으로 합니다. 그 이상 규모는 현재 조건을 확인한 뒤 별도로 안내드립니다.</p></details>
+          <details><summary>어떤 규모의 집까지 가능한가요?</summary><p>공급면적 165㎡(50평형) 미만을 기준으로 합니다. 그 이상 규모는 현재 조건을 확인한 뒤 별도로 상담합니다.</p></details>
           <details><summary>최종본을 받은 뒤에도 질문할 수 있나요?</summary><p>최종본 전달 뒤 2주 안에 메일 질문 1회가 포함됩니다.</p></details>
           <details><summary>Brief만 받고 다른 업체와 진행해도 되나요?</summary><p>네. Brief Report는 LNH와 계속 진행하지 않아도 가족 합의와 업체 상담에 사용할 수 있는 독립적인 판단 문서입니다.</p></details>
         </div>
@@ -1270,7 +1411,7 @@
         <a href="index.html">Home</a><a href="brief.html">Brief</a><a href="direction.html">Direction</a><a href="build.html">Build</a><a href="curation.html">Curation</a><a href="care.html">Care</a><a href="edit.html">Edit</a><a href="partnership.html">Partnership</a><a href="about.html">About</a><a href="stories.html">Stories</a>
       </nav>
     </div>
-    <div class="footer-bottom"><div class="footer-signature"><img src="assets/LNH-slogan.svg" alt="Lifestyle Advisor · Seoul"><p class="footer-intelligence"><span class="footer-intelligence-mark" aria-hidden="true"></span>Brief Intelligence</p></div><p class="footer-legal"><span>상호명: 엘엔에이치 · 대표: 이승일 · 서울특별시 송파구 잠실로 62</span><span>사업자등록번호: 247-54-00733 · <a href="privacy.html">개인정보 처리방침</a> · © LNH 2026. All rights reserved.</span></p></div>
+    <div class="footer-bottom"><div class="footer-signature"><img src="assets/LNH-slogan.svg" alt="Lifestyle Advisor · Seoul"><p class="footer-intelligence"><span class="footer-intelligence-mark" aria-hidden="true"></span>Brief Intelligence</p></div><p class="footer-legal"><span class="footer-legal-company">상호명: 엘엔에이치 · 대표: 이승일 · 서울특별시 송파구 잠실로 62</span><span class="footer-legal-registration">사업자등록번호: 247-54-00733 · <a href="privacy.html">개인정보 처리방침</a></span><span class="footer-legal-separator" aria-hidden="true"> · </span><span class="footer-legal-copyright">© 2026 LNH. All rights reserved.</span></p></div>
   </footer>
 
   <script>
@@ -1393,6 +1534,32 @@
       setSampleToggleState(true);
       requestAnimationFrame(()=>samplePanel.scrollIntoView({behavior:'smooth',block:'start'}));
     }
+
+    const sampleLightbox=document.querySelector('[data-brief-sample-lightbox]');
+    const sampleLightboxImage=sampleLightbox?.querySelector('img');
+    const closeSampleLightbox=()=>{
+      if(!sampleLightbox) return;
+      sampleLightbox.setAttribute('hidden','');
+      if(sampleLightboxImage) sampleLightboxImage.removeAttribute('src');
+      document.body.classList.remove('brief-sample-lightbox-open');
+    };
+    document.querySelectorAll('[data-brief-sample-src]').forEach(button=>{
+      button.addEventListener('click',()=>{
+        if(!sampleLightbox||!sampleLightboxImage) return;
+        sampleLightboxImage.src=button.getAttribute('data-brief-sample-src')||'';
+        sampleLightboxImage.alt=button.querySelector('img')?.alt||'Brief Report 페이지';
+        sampleLightbox.removeAttribute('hidden');
+        document.body.classList.add('brief-sample-lightbox-open');
+        sampleLightbox.querySelector('button')?.focus();
+      });
+    });
+    sampleLightbox?.addEventListener('click',event=>{
+      if(event.target===sampleLightbox) closeSampleLightbox();
+    });
+    document.querySelector('[data-brief-sample-lightbox-close]')?.addEventListener('click',closeSampleLightbox);
+    addEventListener('keydown',event=>{
+      if(event.key==='Escape'&&!sampleLightbox?.hasAttribute('hidden')) closeSampleLightbox();
+    });
 
     const checkRoot=document.querySelector('[data-brief-check]');
     if(checkRoot){
@@ -1665,6 +1832,80 @@
     .question-closing p + p{margin-top:8px!important}
   }
 </style>
+<style id="lnh-mobile-hero-cta-gap-sync">
+  @media(max-width:680px){
+    .hero-copy:has(.hero-bottom),
+    .direction-hero-copy:has(.direction-hero-action),
+    .build-direction-hero-copy:has(.build-direction-hero-action),
+    #build-main-clean .build-direction-hero-copy:has(.build-direction-hero-action){
+      min-height:auto!important;
+      justify-content:flex-start!important;
+      gap:clamp(112px,25vw,150px)!important;
+      padding-bottom:clamp(34px,8vw,46px)!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-bottom,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      margin-top:0!important;
+    }
+    .hero-copy:has(.hero-bottom) .hero-action,
+    .direction-hero-action,
+    .build-direction-hero-action,
+    #build-main-clean .build-direction-hero-action{
+      gap:9px!important;
+    }
+  }
+</style>
+
+<style id="lnh-dark-ad-headline-mobile-sync">
+  @media(max-width:680px){
+    .landing-cta h2,
+    .brief-need-hook > p,
+    .reassurance-copy h2,
+    .final-cta .final-copy h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .bdf-dark-statement h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .ad-section .ad-card h2{
+      font-size:clamp(28px,7vw,31px)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+    .landing-cta h2 span,
+    .landing-cta h2 em,
+    .final-copy h2 span,
+    .final-copy h2 em,
+    .direction-manifesto h2 span,
+    .direction-manifesto h2 em,
+    .direction-brief-cta h2 span,
+    .direction-brief-cta h2 em,
+    .bdf-dark-statement h2 span,
+    .bdf-dark-statement h2 em,
+    .bdf-final h2 span,
+    .bdf-final h2 em,
+    .bdf-final__copy h2 span,
+    .bdf-final__copy h2 em,
+    .cta-copy h2 span,
+    .cta-copy h2 em,
+    .contact .slide-title span,
+    .contact .slide-title em,
+    .ad-section .ad-card h2 span,
+    .ad-section .ad-card h2 em{
+      font-size:inherit!important;
+      font-weight:400!important;
+      line-height:inherit!important;
+      color:inherit!important;
+    }
+  }
+</style>
+
 <style id="lnh-ad-cta-scale-sync">
   @media(max-width:680px){
     .landing-cta-button,
@@ -1692,6 +1933,100 @@
     }
   }
 </style>
+<style id="lnh-mobile-dark-cta-button-room-sync">
+  @media(max-width:680px){
+    .final-cta .cta-copy .rule-link,
+    .final-cta .final-copy .primary-link,
+    .edit-cta .cta-copy .cta-solid,
+    .bdf-final .bdf-button,
+    .bdf-final__copy .bdf-button,
+    .landing-cta-button.primary,
+    .direction-brief-cta .direction-button,
+    .contact .rule-link,
+    .ad-section .ad-link{
+      min-height:54px!important;
+      padding:0 24px!important;
+      font-size:13px!important;
+      line-height:1.15!important;
+      white-space:nowrap!important;
+    }
+    .final-cta .cta-copy .rule-link span,
+    .landing-cta-button.primary span,
+    .direction-brief-cta .direction-button span,
+    .contact .rule-link span{
+      margin-left:8px!important;
+    }
+  }
+</style>
+
+<style id="lnh-mobile-footer-legal-sync">
+  @media(max-width:680px){
+    .footer-legal{line-height:1.42!important}
+    .footer-legal span{display:block}
+    .footer-legal span + span{margin-top:0}
+    .footer-legal .footer-legal-separator{display:none!important}
+  }
+</style>
+
+<style id="lnh-mobile-footer-spacing-sync">
+  @media(max-width:680px){
+    .footer-mark{margin-bottom:clamp(52px,11vw,64px)!important}
+    .footer-signature{gap:clamp(8px,1.8vw,10px)!important}
+    .footer-signature img{margin-bottom:0!important}
+    .footer-intelligence{margin-top:0!important}
+  }
+</style>
+
+<style id="lnh-process-number-size-sync">
+  .residential-path-num,
+  .steps .step-num,
+  .process-grid .process-number,
+  .process-list .process-num,
+  .process-row .process-num,
+  #build-main-clean .bdf-process span,
+  .build-process-step .build-index,
+  .process-step span{
+    font-size:18px!important;
+    line-height:1.2!important;
+    letter-spacing:.06em!important;
+  }
+</style>
+
+<style id="lnh-footer-signature-gap-desktop-sync">
+  @media(min-width:681px){
+    .footer-signature{
+      gap:0!important;
+    }
+    .footer-signature img{
+      margin-bottom:0!important;
+    }
+    .footer-intelligence{
+      margin-top:8px!important;
+    }
+  }
+</style>
+
+<style id="lnh-footer-legal-desktop-line-sync">
+  @media(min-width:681px){
+    .footer-legal{
+      font-size:12px!important;
+      line-height:1.8!important;
+      text-align:left!important;
+    }
+    .footer-legal .footer-legal-company{
+      display:block!important;
+    }
+    .footer-legal .footer-legal-registration,
+    .footer-legal .footer-legal-separator,
+    .footer-legal .footer-legal-copyright{
+      display:inline!important;
+    }
+    .footer-legal span{
+      white-space:nowrap!important;
+    }
+  }
+</style>
+
 <style id="lnh-brief-reassurance-left-align-sync">
   @media(min-width:681px){
     .reassurance-copy{
@@ -1707,6 +2042,604 @@
     }
   }
 </style>
+<style id="lnh-about-headline-size-sync">
+  :root{
+    --lnh-about-headline-desktop:38px;
+    --lnh-about-headline-mobile:28px;
+  }
+  @media(min-width:681px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-desktop)!important;
+      font-weight:400!important;
+      line-height:1.62!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .section-title,
+    .section-head h2,
+    .letter-section h2,
+    .brief-focus h2,
+    .brief-compact h2,
+    .heritage-copy h2,
+    .decision-section-intro h2,
+    .journey-index h2,
+    .residential-path-head h2,
+    .service-section-head .service-description,
+    .judgment-lead h2,
+    .process-copy h2,
+    .deliverable-copy h2,
+    .crisis-copy h2,
+    .check-copy h2,
+    .video-copy h2,
+    .reassurance-copy h2,
+    .price-copy h2,
+    .faq-title h2,
+    .sample-report-head h3,
+    .premise h2,
+    .proof-copy h2,
+    .completion h2,
+    .direction-heading h2,
+    .process-heading-copy h2,
+    .faq-layout h2,
+    .build-section-heading h2,
+    .bdf-section h2,
+    .bdf-section-head h2,
+    .bdf-dark-statement h2,
+    .direction-manifesto h2,
+    .meaning-title,
+    .timing h2,
+    .faq h2,
+    .aftercare-copy h2,
+    .scope-copy h2,
+    .report-copy h2,
+    .rhythm-copy h2,
+    .case-copy h2,
+    .pricing-copy h2,
+    .origin-copy h2,
+    .boundary h2,
+    .brief-need-hook > p,
+    .landing-cta h2,
+    .brief-copy h2,
+    .final-copy h2,
+    .final-cta .final-copy h2,
+    .direction-brief-cta h2,
+    .build-final h2,
+    .bdf-final h2,
+    .bdf-final__copy h2,
+    .cta-copy h2,
+    .final-cta .cta-copy h2,
+    .edit-cta .cta-copy h2,
+    .contact .slide-title,
+    .slide:not(.hero):not(.contact) .slide-title,
+    .proof-head .slide-title,
+    .needed .slide-title,
+    .role-slide .slide-title,
+    .service-slide .slide-title,
+    .process-slide .slide-title,
+    .statement h2,
+    .capabilities h2,
+    .feed-intro h2,
+    .archive h2,
+    .ad-section .ad-card h2{
+      font-size:var(--lnh-about-headline-mobile)!important;
+      font-weight:400!important;
+      line-height:1.68!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-section-content-hierarchy-sync">
+  :root{
+    --lnh-subhead-desktop:24px;
+    --lnh-subhead-mobile:21px;
+    --lnh-detail-desktop:15px;
+    --lnh-detail-mobile:14px;
+    --lnh-emphasis-detail-desktop:20px;
+    --lnh-emphasis-detail-mobile:17px;
+  }
+  @media(min-width:681px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-desktop)!important;
+      font-weight:400!important;
+      line-height:1.48!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-desktop)!important;
+      font-weight:400!important;
+      line-height:1.78!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-desktop)!important;
+      font-weight:300!important;
+      line-height:1.92!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .crisis-item strong,
+    .brief-work-item h3,
+    .step-title,
+    .evidence-item h3,
+    .category-card h3,
+    .scope-card h3,
+    .boundary h3,
+    .process-row h3,
+    .pricing-card h3,
+    .origin-row h3,
+    .process-step h3,
+    .service-name,
+    .direction-list-row h3,
+    .compare-column h3,
+    .process-item h3,
+    .completion-row p,
+    .report-page h3{
+      font-size:var(--lnh-subhead-mobile)!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    .question-row h3,
+    .question-closing p,
+    .brief-need-hook span,
+    .need-row p,
+    .role-copy,
+    .boundary p.statement{
+      font-size:var(--lnh-emphasis-detail-mobile)!important;
+      font-weight:400!important;
+      line-height:1.84!important;
+      letter-spacing:0!important;
+    }
+    .crisis-copy p:not(.eyebrow),
+    .crisis-item p,
+    .check-copy p:not(.eyebrow),
+    .check-item span,
+    .process-copy p:not(.eyebrow),
+    .step p,
+    .video-copy p:not(.eyebrow),
+    .video-copy .video-lead,
+    .video-copy .video-advisor-note,
+    .reassurance-copy p,
+    .deliverable-copy > p,
+    .brief-work-item p,
+    .scope-compact-note,
+    .price-copy p,
+    .sample-copy p,
+    .sample-report-subtitle,
+    .faq details p,
+    .section-lead,
+    .lead,
+    .item-desc,
+    .category-items,
+    .category-card > p:last-child,
+    .scope-card > p,
+    .scope-card li,
+    .scope-result,
+    .process-row p,
+    .timing-copy p,
+    .aftercare-copy p:not(.eyebrow),
+    .report-copy p:not(.eyebrow),
+    .rhythm-copy p:not(.eyebrow),
+    .case-copy p:not(.eyebrow),
+    .pricing-copy p:not(.eyebrow),
+    .origin-copy p:not(.eyebrow),
+    .boundary p,
+    .cta-copy p:not(.eyebrow),
+    .final-copy p:not(.eyebrow),
+    .contact p,
+    .statement-copy p,
+    .archive p,
+    .capabilities p,
+    .project-copy p,
+    .direction-list-row p,
+    .compare-kicker,
+    .compare-column li,
+    .process-item p,
+    .process-scope,
+    .direction-manifesto p,
+    .completion-note,
+    .completion-row p,
+    .feed-intro p{
+      font-size:var(--lnh-detail-mobile)!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-price-info-scale-sync">
+  @media(min-width:681px){
+    .price-amount b{
+      font-size:44px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:24px!important;
+      line-height:1.18!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:12px!important;
+      line-height:1.55!important;
+    }
+  }
+  @media(max-width:680px){
+    .price-amount b{
+      font-size:40px!important;
+      line-height:1.12!important;
+      letter-spacing:0!important;
+    }
+    .price-meta b,
+    .pricing-price b,
+    .pricing-price strong{
+      font-size:22px!important;
+      line-height:1.2!important;
+      letter-spacing:0!important;
+    }
+    .price-amount span,
+    .price-meta span,
+    .pricing-price span,
+    .price-amount small{
+      font-size:11px!important;
+      line-height:1.55!important;
+    }
+  }
+</style>
+
+<style id="lnh-global-section-hierarchy-final-sync">
+  @media(min-width:681px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:24px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:15px!important;
+      font-weight:300!important;
+      line-height:1.9!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:12px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:44px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+  @media(max-width:680px){
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .service-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .item-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .journey-route-name,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .story-preview-title,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-meta b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .completion-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .method-card h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-item h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row h3,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column h3{
+      font-size:21px!important;
+      font-weight:400!important;
+      line-height:1.52!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) p:not(.eyebrow):not(.footer-intelligence):not(.footer-legal),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) li,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) dd,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) summary,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) small:not(.eyebrow),
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .section-lead,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-copy,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-work-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-process-step p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .direction-list-row p,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .compare-column li{
+      font-size:14px!important;
+      font-weight:300!important;
+      line-height:1.88!important;
+      letter-spacing:0!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-eyebrow,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .bdf-section-label,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .process-number,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .step-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .output-num,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .build-index{
+      font-size:11px!important;
+      font-weight:400!important;
+      line-height:1.5!important;
+      letter-spacing:.04em!important;
+    }
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .price-amount b,
+    main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) .pricing-price strong{
+      font-size:40px!important;
+      line-height:1.12!important;
+      font-weight:400!important;
+      letter-spacing:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-dark-section-spacing-sync">
+  @media(min-width:681px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:72px!important;
+      padding-bottom:72px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+  @media(max-width:680px){
+    .bdf-dark-statement,
+    #build-main-clean .bdf-dark-statement,
+    .build-dark-statement,
+    .direction-manifesto,
+    .direction-brief-cta,
+    .landing-cta{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .reassurance-copy,
+    .contact-copy{
+      min-height:auto!important;
+      padding-top:64px!important;
+      padding-bottom:64px!important;
+    }
+    .bdf-dark-statement h2,
+    #build-main-clean .bdf-dark-statement h2,
+    .build-dark-statement h2,
+    .direction-manifesto h2,
+    .direction-brief-cta h2,
+    .landing-cta h2,
+    .reassurance-copy h2,
+    .contact .slide-title{
+      margin-top:0!important;
+    }
+  }
+</style>
+
+<style id="lnh-section-eyebrow-size-sync">
+  @media(min-width:681px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:14px!important;
+      line-height:1.5!important;
+    }
+  }
+  @media(max-width:680px){
+    body main section:not(.hero):not(.direction-hero):not(.build-direction-hero):not(.landing-hero) :is(.eyebrow,.build-eyebrow,.bdf-eyebrow,.bdf-section-label,.slide-label,.kicker,.compare-kicker,.scope-tag,.process-num,.rhythm-entry-kicker,.scope-card-kicker,.pricing-label,.report-sheet-label,.overview-label,.process-number,.step-num,.output-num,.build-index):not(.lnh-hero-tag),
+    body main article :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag),
+    body main header :is(.eyebrow,.kicker,.slide-label):not(.lnh-hero-tag){
+      font-size:12px!important;
+      line-height:1.5!important;
+    }
+  }
+</style>
+
 <style id="lnh-brief-question-reading-sync">
   @media(min-width:681px){
     .first-judgment .question-row{
@@ -1948,6 +2881,212 @@
     }
   }
 </style>
+<style id="lnh-nav-uniform-body-final-sync">
+  .site-header{height:82px!important;padding-inline:clamp(24px,4.5vw,72px)!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;justify-content:initial!important}
+  .site-header.scrolled{height:66px!important}
+  .site-header .brand{grid-column:1!important;grid-row:1!important;justify-self:start!important;display:inline-flex!important;align-items:center!important;width:auto!important;line-height:1!important;letter-spacing:0!important;z-index:2!important}
+  .site-header .brand img{width:auto!important;height:24px!important;object-fit:contain!important}
+  .site-header .desktop-nav{grid-column:1 / -1!important;grid-row:1!important;justify-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:clamp(9px,.8vw,14px)!important;font-family:var(--sans)!important;font-size:12.5px!important;font-weight:300!important;line-height:1!important;letter-spacing:0!important;white-space:nowrap!important;z-index:1!important}
+  .site-header .nav-group{display:flex!important;align-items:center!important;gap:clamp(9px,.8vw,14px)!important}
+  .site-header .nav-divider{flex:0 0 1px!important;width:1px!important;height:14px!important;margin-inline:2px!important;background:rgba(33,30,25,.38)!important}
+  .site-header .desktop-nav a:not(.nav-cta)::after{bottom:-6px!important}
+  .site-header .desktop-nav>.nav-group,.site-header .desktop-nav>.nav-divider{position:relative!important}
+  .site-header .desktop-nav>.nav-cta,.site-header .desktop-nav>.nav-action-icons{position:absolute!important;right:clamp(24px,4.5vw,72px)!important;top:50%!important;transform:translateY(-50%)!important;margin-left:0!important;z-index:2!important}
+  .site-header .desktop-nav .nav-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:40px!important;padding:0 14px!important;border:1px solid #143758!important;background:#143758!important;color:#f5f5f2!important;font-family:var(--sans)!important;font-size:13px!important;font-weight:400!important;line-height:1!important;letter-spacing:0!important;text-decoration:none!important;border-bottom:1px solid #143758!important;white-space:nowrap!important}
+  .site-header .desktop-nav .nav-cta::after,.site-header .desktop-nav .nav-cta:hover::after{content:none!important;display:none!important}
+  @media(max-width:1120px){.site-header{height:64px!important;padding-inline:22px!important;display:flex!important;justify-content:space-between!important}.site-header.scrolled{height:58px!important}.site-header .desktop-nav{display:none!important}.site-header .brand img{height:24px!important}}
+</style>
+
+<style id="lnh-ad-cta-center-second-release">
+  :is(.ad-section .ad-card,
+      .direction-brief-cta,
+      .landing-cta .landing-cta-inner,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .final-copy,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .cta-copy){
+    align-items:center!important;
+    justify-items:center!important;
+    text-align:center!important;
+  }
+  :is(.ad-section .ad-card,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .final-copy,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .cta-copy)>div{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  :is(.ad-section .ad-card small,
+      .ad-section .ad-card h2,
+      .ad-section .ad-card p,
+      .ad-section .ad-label,
+      .direction-brief-cta .eyebrow,
+      .direction-brief-cta h2,
+      .direction-brief-cta p,
+      .landing-cta h2,
+      .landing-cta p,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) .eyebrow,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) h2,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) p){
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  :is(.ad-section .ad-link,
+      .direction-brief-cta a,
+      .landing-cta .landing-cta-actions,
+      .final-cta:not(:has(.final-image)):not(:has(.cta-image)) a){
+    align-self:center!important;
+    justify-self:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  :is(.final-cta:has(.final-image) .final-copy,
+      .final-cta:has(.cta-image) .cta-copy,
+      .edit-cta:has(.cta-image) .cta-copy,
+      .curation-ad:has(.cta-image) .cta-copy){
+    align-items:flex-start!important;
+    justify-items:start!important;
+    text-align:left!important;
+  }
+  :is(.final-cta:has(.final-image) .final-copy,
+      .final-cta:has(.cta-image) .cta-copy,
+      .edit-cta:has(.cta-image) .cta-copy,
+      .curation-ad:has(.cta-image) .cta-copy)>div{
+    margin-left:0!important;
+    margin-right:auto!important;
+    text-align:left!important;
+  }
+  :is(.final-cta:has(.final-image) .eyebrow,
+      .final-cta:has(.final-image) h2,
+      .final-cta:has(.final-image) p,
+      .final-cta:has(.cta-image) .eyebrow,
+      .final-cta:has(.cta-image) h2,
+      .final-cta:has(.cta-image) p,
+      .edit-cta:has(.cta-image) .eyebrow,
+      .edit-cta:has(.cta-image) h2,
+      .edit-cta:has(.cta-image) p,
+      .curation-ad:has(.cta-image) .eyebrow,
+      .curation-ad:has(.cta-image) h2,
+      .curation-ad:has(.cta-image) p){
+    margin-left:0!important;
+    margin-right:auto!important;
+    text-align:left!important;
+  }
+  :is(.final-cta:has(.final-image) a,
+      .final-cta:has(.cta-image) a,
+      .edit-cta:has(.cta-image) a,
+      .curation-ad:has(.cta-image) a){
+    align-self:flex-start!important;
+    justify-self:start!important;
+    margin-left:0!important;
+    margin-right:auto!important;
+  }
+  .landing-cta .landing-cta-actions{justify-content:center!important;}
+</style>
+
+<style id="lnh-contact-ad-center-second-release">
+  .contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])){
+    align-items:center!important;
+    justify-items:center!important;
+    text-align:center!important;
+  }
+  .contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])) .contact-copy{
+    align-items:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  .contact:not(:has(figure)):not(:has(img)):not(:has([role="img"])) :is(.slide-label,.slide-title,.slide-copy,p,h2,a){
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+</style>
+
+<style id="lnh-dark-statement-center-second-release">
+  :is(.brief-need-hook,
+      .reassurance,
+      .direction-manifesto,
+      .bdf-dark-statement,
+      #build-main-clean .bdf-dark-statement,
+      .build-dark-statement){
+    text-align:center!important;
+  }
+  :is(.brief-need-hook,
+      .reassurance,
+      .direction-manifesto,
+      .bdf-dark-statement,
+      #build-main-clean .bdf-dark-statement,
+      .build-dark-statement) :is(h2,p,span){
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  .reassurance-copy,
+  .bdf-dark-statement .bdf-shell,
+  #build-main-clean .bdf-dark-statement .bdf-shell,
+  .build-dark-statement>*{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+</style>
+
+<style id="lnh-dark-statement-width-center-second-release">
+  .brief-need-hook h2{width:min(100%,980px)!important;}
+  .brief-need-hook h2 span{display:block!important;width:100%!important;}
+  .reassurance-copy h2{width:min(100%,1240px)!important;}
+  .reassurance-copy p{width:min(100%,780px)!important;}
+  .direction-manifesto h2{width:min(100%,880px)!important;}
+  .direction-manifesto p{width:min(100%,720px)!important;}
+  .bdf-dark-statement h2,
+  #build-main-clean .bdf-dark-statement h2,
+  .build-dark-statement h2{width:min(100%,980px)!important;}
+  .bdf-dark-statement p,
+  #build-main-clean .bdf-dark-statement p,
+  .build-dark-statement p{width:min(100%,720px)!important;}
+</style>
+
+<style id="lnh-hero-headline-54px-second-release">
+  @media (min-width:681px){
+    body main :is(
+      .landing-hero h1,
+      .hero h1,
+      .hero-title,
+      .about-hero h1,
+      .direction-hero h1,
+      .build-direction-hero h1,
+      #build-main-clean .build-direction-hero h1,
+      .story-hero h1,
+      .stories-hero h1,
+      .edit-hero h1,
+      .partnership-hero h1,
+      .slide.hero h1,
+      section.hero h1
+    ){
+      font-size:54px!important;
+      font-weight:400!important;
+    }
+    body main :is(
+      .landing-hero h1,
+      .hero h1,
+      .hero-title,
+      .about-hero h1,
+      .direction-hero h1,
+      .build-direction-hero h1,
+      #build-main-clean .build-direction-hero h1,
+      .story-hero h1,
+      .stories-hero h1,
+      .edit-hero h1,
+      .partnership-hero h1,
+      .slide.hero h1,
+      section.hero h1
+    ) :is(strong,b,em,span){
+      color:inherit!important;
+      font-weight:400!important;
+    }
+  }
+</style>
+
 <style id="lnh-service-hero-height-sync-second-release">
   @media (min-width: 681px) {
     body main > section.hero,
@@ -1997,6 +3136,43 @@
     }
   }
 </style>
+<style id="lnh-cta-button-font-weight-reset-second-release">
+  :is(.nav-cta,
+      .nav-brief,
+      .primary-cta,
+      .secondary-cta,
+      .primary-link,
+      .solid-link,
+      .rule-link,
+      .direction-button,
+      .build-direction-button,
+      .build-line-cta,
+      .care-button,
+      .bdf-button,
+      .landing-cta-button,
+      .cta-solid,
+      .sample-trigger,
+      .button):not(.nav-current),
+  :is(.nav-cta,
+      .nav-brief,
+      .primary-cta,
+      .secondary-cta,
+      .primary-link,
+      .solid-link,
+      .rule-link,
+      .direction-button,
+      .build-direction-button,
+      .build-line-cta,
+      .care-button,
+      .bdf-button,
+      .landing-cta-button,
+      .cta-solid,
+      .sample-trigger,
+      .button):not(.nav-current) * {
+    font-weight: 400 !important;
+  }
+</style>
+
 <style id="lnh-brief-question-hierarchy-refine">
   /* Keep the moments reflective and editorial; reserve the stronger weight for the conclusion. */
   @media (min-width:681px){
@@ -2090,8 +3266,8 @@
   #main > #check{background:#f7f6f2!important;}
   #main > .scope-section{background:#f1f0eb!important;}
   #main > .process{background:#e6e7e2!important;}
-  #main > .video-section{background:#f5f3ee!important;}
-  #main > .price-section{background:#efebe3!important;}
+  #main > .video-section{background:#f2f2f2!important;}
+  #main > .price-section{background:#e8e8e8!important;}
   #main > .faq{background:#eeefea!important;}
   /* Keep the advisor still locked to the video frame: it must never leave a blank strip below. */
   #main#main > section.video-section > figure.video-frame > img{
@@ -2147,6 +3323,9 @@
 <link rel="stylesheet" href="assets/lnh-mobile-hero-safeguard.css?v=20260901a">
 <style id="lnh-mobile-hero-framing">@media(max-width:680px){body main>section.hero:not(.edit-commerce-hero) .image-caption{color:rgba(245,245,242,.64)!important;text-shadow:none!important}}</style>
 <style id="lnh-brief-price-meta-refinement">
+  .video-title-mobile-break{display:none!important}
+  .reassurance-title-mobile-break{display:none!important}
+  .price-mobile-break{display:none!important}
   @media(min-width:681px){
     .price-meta{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important}
     .price-meta-item{align-content:start!important}
@@ -2154,6 +3333,10 @@
     .price-meta b{font-size:12px!important;line-height:1.55!important}
   }
   @media(max-width:680px){
+    .video-title-mobile-break{display:inline!important}
+    .reassurance-title-mobile-break{display:inline!important}
+    .price-mobile-break{display:inline!important}
+    #price .price-amount b{font-size:36px!important}
     .price-meta-item{align-content:start!important}
     .price-amount span,.price-meta span{font-size:13px!important;line-height:1.45!important}
     .price-meta b{font-size:11px!important;line-height:1.55!important}
@@ -2163,7 +3346,6 @@
   <script src="assets/site-analytics.js?v=20260923b" defer></script>
 <link rel="stylesheet" href="assets/lnh-responsive-type.css?v=20260928c">
 <link rel="stylesheet" href="assets/lnh-navigation.css?v=20260927a">
-  <link rel="stylesheet" href="assets/lnh-shared-release.css?v=20260929">
-<link rel="stylesheet" href="assets/lnh-impeccable-20.css?v=20260929">
+<link rel="stylesheet" href="assets/lnh-brief-sample-v2.css?v=20261006c">
 </body>
 </html>
