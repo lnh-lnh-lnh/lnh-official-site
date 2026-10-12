@@ -7,6 +7,15 @@
   const message = document.querySelector('#form-message');
   const success = document.querySelector('#application-success');
   const params = new URLSearchParams(location.search);
+  const getAttribution = () => {
+    const tracked = window.LNHAnalytics?.getAttribution?.() || window.LNHAttribution?.get?.();
+    if (tracked) return tracked;
+    try {
+      return JSON.parse(sessionStorage.getItem('lnh_attribution_v1') || 'null') || {};
+    } catch {
+      return {};
+    }
+  };
   const previewComplete = params.get('preview') === 'complete';
   const safeReferrer = (() => {
     if (!document.referrer) return '';
@@ -84,15 +93,26 @@
     message.textContent = '신청 내용을 안전하게 접수하고 있습니다.';
     const data = new FormData(form);
     const query = new URLSearchParams(location.search);
+    const attribution = getAttribution();
+    const firstTouch = attribution.first || {};
     const payload = {
       service: data.get('service'), name: data.get('name'), company: data.get('company'),
       phone: data.get('phone'), email: data.get('email'), spaceType: data.get('spaceType'),
       location: data.get('location'), buildingName: data.get('buildingName'), buildingAge: data.get('buildingAge'),
       budget: data.get('budget'), desiredStart: data.get('desiredStart'), contactTime: data.get('contactTime'), discoverySource: data.get('discoverySource'),
       concern: data.get('concern'), website: data.get('website'), consent: data.get('consent') === 'on',
-      sourcePath: safeReferrer ? new URL(safeReferrer).pathname : location.pathname, referrer: safeReferrer,
-      utmSource: query.get('utm_source') || '', utmMedium: query.get('utm_medium') || '',
-      utmCampaign: query.get('utm_campaign') || '', turnstileToken: data.get('cf-turnstile-response') || ''
+      sourcePath: firstTouch.path || (safeReferrer ? new URL(safeReferrer).pathname : location.pathname),
+      referrer: firstTouch.referrer || safeReferrer,
+      utmSource: firstTouch.utmSource || query.get('utm_source') || '',
+      utmMedium: firstTouch.utmMedium || query.get('utm_medium') || '',
+      utmCampaign: firstTouch.utmCampaign || query.get('utm_campaign') || '',
+      utmContent: firstTouch.utmContent || query.get('utm_content') || '',
+      utmTerm: firstTouch.utmTerm || query.get('utm_term') || '',
+      gclid: firstTouch.gclid || query.get('gclid') || '',
+      fbclid: firstTouch.fbclid || query.get('fbclid') || '',
+      nKeyword: firstTouch.nKeyword || query.get('n_keyword') || '',
+      attribution,
+      turnstileToken: data.get('cf-turnstile-response') || ''
     };
     try {
       const response = await fetch('/api/applications', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
@@ -105,6 +125,10 @@
       success.hidden = false;
       renderSuccess(payload.service);
       window.LNHAnalytics?.track('form_submit', { service: payload.service });
+      window.LNHAnalytics?.track('application_complete', { service: payload.service });
+      window.dispatchEvent(new CustomEvent('lnh:application-complete', {
+        detail: { service: payload.service, attribution }
+      }));
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       message.textContent = error.message;

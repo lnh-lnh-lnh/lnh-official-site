@@ -1,6 +1,6 @@
 import { clean, json, sameOrigin } from '../_lib/common.js';
 
-const EVENTS = new Set(['page_view', 'page_exit', 'cta_click', 'form_start', 'form_step', 'form_submit']);
+const EVENTS = new Set(['page_view', 'page_exit', 'cta_click', 'form_start', 'form_step', 'form_submit', 'application_complete']);
 
 export async function onRequestPost({ request, env }) {
   if (!sameOrigin(request) || !env.DB) return json({ ok: false }, 202);
@@ -15,9 +15,12 @@ export async function onRequestPost({ request, env }) {
   const path = clean(payload.path, 300);
   if (!EVENTS.has(eventName) || !sessionId || !path) return json({ ok: false }, 202);
 
-  const metadata = payload.metadata && typeof payload.metadata === 'object'
-    ? JSON.stringify(payload.metadata).slice(0, 1500)
+  const serializedMetadata = payload.metadata && typeof payload.metadata === 'object'
+    ? JSON.stringify(payload.metadata)
     : '';
+  const metadata = serializedMetadata.length <= 4000
+    ? serializedMetadata
+    : JSON.stringify({ truncated: true });
   const duration = Number.isFinite(Number(payload.durationMs))
     ? Math.max(0, Math.min(Number(payload.durationMs), 86400000))
     : null;

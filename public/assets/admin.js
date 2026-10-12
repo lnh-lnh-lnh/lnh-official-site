@@ -41,7 +41,7 @@
     selectedId = item.id;
     renderList();
     detail.innerHTML = `<h2>${escape(item.name)}</h2><small>${escape(item.reference_code)} · ${escape(formatDate(item.created_at))}</small>
-      <dl><dt>서비스</dt><dd>${escape(item.service)}</dd><dt>회사</dt><dd>${escape(item.company||'–')}</dd><dt>연락처</dt><dd>${escape(item.phone)}</dd><dt>연락 시간</dt><dd>${escape(item.contact_time||'–')}</dd><dt>이메일</dt><dd>${escape(item.email)}</dd><dt>주거 형태</dt><dd>${escape(item.space_type)}</dd><dt>지역</dt><dd>${escape(item.location||'–')}</dd><dt>건물명</dt><dd>${escape(item.building_name||'–')}</dd><dt>준공 시기</dt><dd>${escape(item.building_age||'–')}</dd><dt>예산</dt><dd>${escape(item.budget||'–')}</dd><dt>시기</dt><dd>${escape(item.desired_start||'–')}</dd><dt>LNH 유입</dt><dd>${escape(item.discovery_source||'–')}</dd><dt>고민</dt><dd>${escape(item.concern)}</dd><dt>유입</dt><dd>${escape(item.source_path||'–')}<br>${escape(item.referrer||'')}</dd></dl>
+      <dl><dt>서비스</dt><dd>${escape(item.service)}</dd><dt>회사</dt><dd>${escape(item.company||'–')}</dd><dt>연락처</dt><dd>${escape(item.phone)}</dd><dt>연락 시간</dt><dd>${escape(item.contact_time||'–')}</dd><dt>이메일</dt><dd>${escape(item.email)}</dd><dt>주거 형태</dt><dd>${escape(item.space_type)}</dd><dt>지역</dt><dd>${escape(item.location||'–')}</dd><dt>건물명</dt><dd>${escape(item.building_name||'–')}</dd><dt>준공 시기</dt><dd>${escape(item.building_age||'–')}</dd><dt>예산</dt><dd>${escape(item.budget||'–')}</dd><dt>시기</dt><dd>${escape(item.desired_start||'–')}</dd><dt>LNH 유입</dt><dd>${escape(item.discovery_source||'–')}</dd><dt>고민</dt><dd>${escape(item.concern)}</dd><dt>최초 유입</dt><dd>${escape(item.source_path||'–')}<br>${escape(item.referrer||'')}</dd><dt>광고 유입</dt><dd>${escape(item.utm_source||'–')} / ${escape(item.utm_medium||'–')}<br>${escape(item.utm_campaign||'캠페인 없음')}${item.utm_content?` · ${escape(item.utm_content)}`:''}${item.utm_term?`<br>검색어: ${escape(item.utm_term)}`:''}${item.n_keyword?`<br>네이버 키워드: ${escape(item.n_keyword)}`:''}</dd></dl>
       <label class="field-label" for="detail-status">진행 상태</label><select id="detail-status">${Object.entries(labels).map(([value,label])=>`<option value="${value}" ${item.status===value?'selected':''}>${label}</option>`).join('')}</select>
       <label class="field-label" for="detail-note">관리 메모</label><textarea id="detail-note">${escape(item.admin_note||'')}</textarea>
       <div class="admin-actions"><button type="button" id="save-application">상태와 메모 저장</button>${item.service==='brief'?'<button class="secondary" type="button" id="create-survey">Brief 설문 링크 만들기</button>':''}<button class="secondary" type="button" id="copy-contact">연락처 복사</button><button class="danger" type="button" id="delete-application">신청 기록 삭제</button></div><p class="form-message" id="detail-message"></p>`;
@@ -87,7 +87,9 @@
       ['접수일','created_at'],['접수번호','reference_code'],['서비스','service'],['상태','status'],
       ['이름','name'],['회사·기관','company'],['연락처','phone'],['이메일','email'],
       ['주거형태','space_type'],['지역','location'],['건물명','building_name'],['준공시기','building_age'],['예산','budget'],['희망시기','desired_start'],['연락시간','contact_time'],['LNH 유입','discovery_source'],
-      ['현재 고민','concern'],['관리 메모','admin_note'],['유입 페이지','source_path'],['유입 경로','referrer']
+      ['현재 고민','concern'],['관리 메모','admin_note'],['유입 페이지','source_path'],['유입 경로','referrer'],
+      ['UTM 소스','utm_source'],['UTM 매체','utm_medium'],['UTM 캠페인','utm_campaign'],['UTM 콘텐츠','utm_content'],['UTM 검색어','utm_term'],
+      ['Google 클릭 ID','gclid'],['Meta 클릭 ID','fbclid'],['네이버 키워드','n_keyword']
     ];
     const rows = [columns.map(([label])=>csvCell(label)).join(','), ...applications.map(item=>columns.map(([,key])=>csvCell(item[key])).join(','))];
     const blob = new Blob([`\ufeff${rows.join('\n')}`],{type:'text/csv;charset=utf-8'});
@@ -108,10 +110,11 @@
       const funnel=Object.fromEntries((data.funnels||[]).map(item=>[item.event_name,item.total]));
       document.querySelector('[data-metric="ctaClicks"]').textContent=funnel.cta_click||0;
       document.querySelector('[data-metric="formStarts"]').textContent=funnel.form_start||0;
-      document.querySelector('[data-metric="submits"]').textContent=funnel.form_submit||0;
+      document.querySelector('[data-metric="submits"]').textContent=funnel.application_complete||funnel.form_submit||0;
       document.querySelector('#analytics-paths').innerHTML=(data.paths||[]).map(item=>`<li>${escape(item.path)} — ${item.views}</li>`).join('')||'<li>데이터 없음</li>';
       document.querySelector('#analytics-transitions').innerHTML=(data.transitions||[]).map(item=>`<li>${escape(item.from_path)} → ${escape(item.to_path)} — ${item.moves}</li>`).join('')||'<li>데이터 없음</li>';
       document.querySelector('#analytics-referrers').innerHTML=(data.referrers||[]).map(item=>`<li>${escape(item.referrer)} — ${item.visits}</li>`).join('')||'<li>데이터 없음</li>';
+      document.querySelector('#analytics-campaigns').innerHTML=(data.campaigns||[]).map(item=>`<li>${escape(item.source)} / ${escape(item.medium)}${item.campaign?` / ${escape(item.campaign)}`:''} — ${item.visits}</li>`).join('')||'<li>데이터 없음</li>';
     } catch {}
   };
   const confirmAuthentication = async () => {

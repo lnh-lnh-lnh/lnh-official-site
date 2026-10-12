@@ -2,6 +2,22 @@ import { clean, json, sameOrigin, verifyTurnstile } from '../_lib/common.js';
 import { notifyNewApplication } from '../_lib/notify.js';
 
 const SERVICES = new Set(['brief', 'curation', 'care', 'partnership']);
+const cleanTouch = touch => {
+  if (!touch || typeof touch !== 'object') return null;
+  return {
+    path: clean(touch.path, 300),
+    referrer: clean(touch.referrer, 500),
+    capturedAt: clean(touch.capturedAt, 40),
+    utmSource: clean(touch.utmSource, 180),
+    utmMedium: clean(touch.utmMedium, 180),
+    utmCampaign: clean(touch.utmCampaign, 180),
+    utmContent: clean(touch.utmContent, 180),
+    utmTerm: clean(touch.utmTerm, 180),
+    gclid: clean(touch.gclid, 300),
+    fbclid: clean(touch.fbclid, 300),
+    nKeyword: clean(touch.nKeyword, 300)
+  };
+};
 
 export async function onRequestPost({ request, env, waitUntil }) {
   if (!sameOrigin(request)) return json({ error: '허용되지 않은 요청입니다.' }, 403);
@@ -32,6 +48,11 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const contactTime = clean(payload.contactTime, 80);
   const discoverySource = clean(payload.discoverySource, 80);
   const concern = clean(payload.concern, 2000);
+  const firstTouch = cleanTouch(payload.attribution?.first);
+  const lastTouch = cleanTouch(payload.attribution?.last);
+  const attribution = firstTouch
+    ? JSON.stringify({ first: firstTouch, ...(lastTouch ? { last: lastTouch } : {}) })
+    : '';
 
   if (!SERVICES.has(service) || !name || !phone || !email || !spaceType || !concern || payload.consent !== true) {
     return json({ error: '필수 항목과 개인정보 안내 확인 여부를 확인해 주세요.' }, 400);
@@ -47,13 +68,16 @@ export async function onRequestPost({ request, env, waitUntil }) {
     INSERT INTO applications (
       id, reference_code, service, name, company, phone, email, space_type, location, building_name,
       building_age, budget, desired_start, contact_time, discovery_source, concern, status, source_path, referrer, utm_source,
-      utm_medium, utm_campaign, consent_at, created_at, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?)
+      utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid, n_keyword, attribution_json,
+      consent_at, created_at, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     id, reference, service, name, company, phone, email, spaceType, location, buildingName,
     buildingAge, budget, desiredStart, contactTime, discoverySource, concern, clean(payload.sourcePath || url.pathname, 300),
     clean(payload.referrer, 500), clean(payload.utmSource, 180), clean(payload.utmMedium, 180),
-    clean(payload.utmCampaign, 180), now, now, now
+    clean(payload.utmCampaign, 180), clean(payload.utmContent, 180), clean(payload.utmTerm, 180),
+    clean(payload.gclid, 300), clean(payload.fbclid, 300), clean(payload.nKeyword, 300), attribution,
+    now, now, now
   ).run();
 
   const notification = notifyNewApplication(env, { reference, service, createdAt: now })

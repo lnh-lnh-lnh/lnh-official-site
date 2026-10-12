@@ -6,10 +6,10 @@ export async function onRequestGet({ request, env }) {
   if (!env.DB) return json({ error: '데이터베이스 연결이 필요합니다.' }, 503);
 
   const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
-  const [overview, paths, funnels, referrers, transitions] = await Promise.all([
+  const [overview, paths, funnels, referrers, transitions, campaigns] = await Promise.all([
     env.DB.prepare(`SELECT COUNT(DISTINCT session_id) visitors, SUM(event_name='page_view') page_views, ROUND(AVG(CASE WHEN event_name='page_exit' THEN duration_ms END)/1000) avg_seconds FROM analytics_events WHERE created_at>=?`).bind(since).first(),
     env.DB.prepare(`SELECT path, COUNT(*) views FROM analytics_events WHERE event_name='page_view' AND created_at>=? GROUP BY path ORDER BY views DESC LIMIT 12`).bind(since).all(),
-    env.DB.prepare(`SELECT event_name, COUNT(*) total FROM analytics_events WHERE event_name IN ('cta_click','form_start','form_submit') AND created_at>=? GROUP BY event_name`).bind(since).all(),
+    env.DB.prepare(`SELECT event_name, COUNT(*) total FROM analytics_events WHERE event_name IN ('cta_click','form_start','form_submit','application_complete') AND created_at>=? GROUP BY event_name`).bind(since).all(),
     env.DB.prepare(`SELECT referrer, COUNT(*) visits FROM analytics_events WHERE event_name='page_view' AND created_at>=? AND referrer<>'' GROUP BY referrer ORDER BY visits DESC LIMIT 10`).bind(since).all(),
     env.DB.prepare(`
       WITH views AS (
@@ -24,8 +24,40 @@ export async function onRequestGet({ request, env }) {
       GROUP BY previous_path, path
       ORDER BY moves DESC
       LIMIT 10
+    `).bind(since).all(),
+    env.DB.prepare(`
+      SELECT
+        COALESCE(
+          NULLIF(json_extract(metadata, '$.attribution.first.utmSource'), ''),
+          CASE
+            WHEN NULLIF(json_extract(metadata, '$.attribution.first.gclid'), '') IS NOT NULL THEN 'google'
+            WHEN NULLIF(json_extract(metadata, '$.attribution.first.fbclid'), '') IS NOT NULL THEN 'meta'
+            WHEN NULLIF(json_extract(metadata, '$.attribution.first.nKeyword'), '') IS NOT NULL THEN 'naver'
+            ELSE ''
+          END
+        ) source,
+        COALESCE(NULLIF(json_extract(metadata, '$.attribution.first.utmMedium'), ''), 'paid') medium,
+        COALESCE(json_extract(metadata, '$.attribution.first.utmCampaign'), '') campaign,
+        COUNT(DISTINCT session_id) visits
+      FROM analytics_events
+      WHERE event_name='page_view' AND created_at>=? AND (
+        NULLIF(json_extract(metadata, '$.attribution.first.utmSource'), '') IS NOT NULL OR
+        NULLIF(json_extract(metadata, '$.attribution.first.gclid'), '') IS NOT NULL OR
+        NULLIF(json_extract(metadata, '$.attribution.first.fbclid'), '') IS NOT NULL OR
+        NULLIF(json_extract(metadata, '$.attribution.first.nKeyword'), '') IS NOT NULL
+      )
+      GROUP BY source, medium, campaign
+      ORDER BY visits DESC
+      LIMIT 12
     `).bind(since).all()
   ]);
   await recordAdminActivity(env, admin, 'analytics_view');
-  return json({ overview, paths: paths.results, funnels: funnels.results, referrers: referrers.results, transitions: transitions.results });
+  return json({
+    overview,
+    paths: paths.results,
+    funnels: funnels.results,
+    referrers: referrers.results,
+    transitions: transitions.results,
+    campaigns: campaigns.results
+  });
 }
