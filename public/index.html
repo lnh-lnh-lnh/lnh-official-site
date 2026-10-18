@@ -2319,5 +2319,25 @@
     .landing-cta-mobile-break{display:inline!important}
   }
 </style>
+<style id="lnh-residential-path-active-handoff">
+  @media(min-width:681px) and (hover:hover){
+    #main .residential-path-list:has(li:not(.is-start)>a:hover) li.is-start>a{
+      background:transparent;
+      color:var(--ink);
+    }
+    #main .residential-path-list:has(li:not(.is-start)>a:hover) li.is-start :is(.residential-path-num,p){
+      color:var(--muted)!important;
+    }
+  }
+  @media(min-width:681px){
+    #main .residential-path-list:has(li:not(.is-start)>a:focus-visible) li.is-start>a{
+      background:transparent;
+      color:var(--ink);
+    }
+    #main .residential-path-list:has(li:not(.is-start)>a:focus-visible) li.is-start :is(.residential-path-num,p){
+      color:var(--muted)!important;
+    }
+  }
+</style>
 </body>
 </html>
