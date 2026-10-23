@@ -1,4 +1,4 @@
-import { clean, hashToken, json, randomToken, recordAdminActivity, requireAdmin, sameOrigin } from '../../_lib/common.js';
+import { clean, hashToken, json, randomToken, readJson, recordAdminActivity, requireAdmin, sameOrigin } from '../../_lib/common.js';
 
 const STATUSES = new Set(['new', 'contacted', 'consultation', 'survey_sent', 'survey_completed', 'proposal', 'contracted', 'closed']);
 
@@ -29,7 +29,7 @@ export async function onRequestPatch({ request, env }) {
   const admin = await requireAdmin(request, env);
   if (!admin) return json({ error: '관리자 인증이 필요합니다.' }, 401);
   let payload;
-  try { payload = await request.json(); } catch { return json({ error: '요청을 확인해 주세요.' }, 400); }
+  try { payload = await readJson(request, 8192); } catch (error) { return json({ error: error.message || '요청을 확인해 주세요.' }, error.status || 400); }
   const id = clean(payload.id, 80);
   const status = clean(payload.status, 30);
   const note = clean(payload.adminNote, 4000);
@@ -45,7 +45,7 @@ export async function onRequestPost({ request, env }) {
   const admin = await requireAdmin(request, env);
   if (!admin) return json({ error: '관리자 인증이 필요합니다.' }, 401);
   let payload;
-  try { payload = await request.json(); } catch { return json({ error: '요청을 확인해 주세요.' }, 400); }
+  try { payload = await readJson(request, 4096); } catch (error) { return json({ error: error.message || '요청을 확인해 주세요.' }, error.status || 400); }
   if (payload.action !== 'create_brief_survey') return json({ error: '지원하지 않는 작업입니다.' }, 400);
   const id = clean(payload.id, 80);
   const application = await env.DB.prepare('SELECT id, service FROM applications WHERE id=?').bind(id).first();
@@ -67,7 +67,7 @@ export async function onRequestDelete({ request, env }) {
   if (!admin) return json({ error: '관리자 인증이 필요합니다.' }, 401);
   if (!env.DB) return json({ error: '데이터베이스 연결이 필요합니다.' }, 503);
   let payload;
-  try { payload = await request.json(); } catch { return json({ error: '요청을 확인해 주세요.' }, 400); }
+  try { payload = await readJson(request, 2048); } catch (error) { return json({ error: error.message || '요청을 확인해 주세요.' }, error.status || 400); }
   const id = clean(payload.id, 80);
   if (!id) return json({ error: '삭제할 신청을 확인해 주세요.' }, 400);
   const result = await env.DB.prepare('DELETE FROM applications WHERE id=?').bind(id).run();

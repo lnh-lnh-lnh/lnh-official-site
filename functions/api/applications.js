@@ -1,4 +1,4 @@
-import { clean, json, sameOrigin, verifyTurnstile } from '../_lib/common.js';
+import { clean, json, readJson, sameOrigin, verifyTurnstile } from '../_lib/common.js';
 import { notifyNewApplication } from '../_lib/notify.js';
 
 const SERVICES = new Set(['brief', 'curation', 'care', 'partnership']);
@@ -25,9 +25,9 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   let payload;
   try {
-    payload = await request.json();
-  } catch {
-    return json({ error: '신청 내용을 확인해 주세요.' }, 400);
+    payload = await readJson(request, 32768);
+  } catch (error) {
+    return json({ error: error.message || '신청 내용을 확인해 주세요.' }, error.status || 400);
   }
 
   if (clean(payload.website, 100)) return json({ ok: true });

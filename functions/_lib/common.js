@@ -3,7 +3,12 @@ export const json = (data, status = 200) => new Response(JSON.stringify(data), {
   headers: {
     'content-type': 'application/json; charset=utf-8',
     'cache-control': 'no-store',
-    'x-content-type-options': 'nosniff'
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    'permissions-policy': 'camera=(), microphone=(), geolocation=()',
+    'referrer-policy': 'no-referrer',
+    'strict-transport-security': 'max-age=31536000',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'DENY'
   }
 });
 
@@ -11,6 +16,44 @@ export const clean = (value, max = 500) => String(value ?? '').trim().slice(0, m
 
 const encoder = new TextEncoder();
 const hex = bytes => [...new Uint8Array(bytes)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+export const readJson = async (request, maxBytes = 32768) => {
+  const contentType = (request.headers.get('content-type') || '').split(';', 1)[0].trim().toLowerCase();
+  if (contentType !== 'application/json') {
+    const error = new Error('JSON 요청만 허용됩니다.');
+    error.status = 415;
+    throw error;
+  }
+
+  const declaredLength = Number(request.headers.get('content-length'));
+  if (Number.isFinite(declaredLength) && declaredLength > maxBytes) {
+    const error = new Error('요청 내용이 너무 큽니다.');
+    error.status = 413;
+    throw error;
+  }
+
+  const raw = await request.text();
+  if (encoder.encode(raw).byteLength > maxBytes) {
+    const error = new Error('요청 내용이 너무 큽니다.');
+    error.status = 413;
+    throw error;
+  }
+
+  let value;
+  try {
+    value = JSON.parse(raw);
+  } catch {
+    const error = new Error('JSON 형식을 확인해 주세요.');
+    error.status = 400;
+    throw error;
+  }
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    const error = new Error('요청 형식을 확인해 주세요.');
+    error.status = 400;
+    throw error;
+  }
+  return value;
+};
 
 export const getCookie = (request, name) => {
   const value = request.headers.get('cookie') || '';
@@ -20,12 +63,14 @@ export const getCookie = (request, name) => {
 
 export const sameOrigin = request => {
   const origin = request.headers.get('origin');
-  if (!origin) return true;
-  try {
-    return new URL(origin).host === new URL(request.url).host;
-  } catch {
-    return false;
+  if (origin) {
+    try {
+      return new URL(origin).origin === new URL(request.url).origin;
+    } catch {
+      return false;
+    }
   }
+  return request.headers.get('sec-fetch-site') === 'same-origin';
 };
 const accessIdentity = (request, env) => {
   const email = clean(request.headers.get('Cf-Access-Authenticated-User-Email'), 254).toLowerCase();
@@ -53,9 +98,9 @@ export const hashToken = async token => {
   return hex(digest);
 };
 
-export const derivePasswordHash = async (password, salt) => {
+export const derivePasswordHash = async (password, salt, iterations = 100000) => {
   const material = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
-  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: encoder.encode(salt), iterations: 100000 }, material, 256);
+  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: encoder.encode(salt), iterations }, material, 256);
   return hex(bits);
 };
 
@@ -80,10 +125,13 @@ export const recordAdminActivity = async (env, admin, eventName, targetId = '') 
 };
 
 export const verifyTurnstile = async (request, env, token) => {
-  if (!env.TURNSTILE_SECRET_KEY) return true;
+  const siteKey = clean(env.TURNSTILE_SITE_KEY, 200);
+  const secretKey = clean(env.TURNSTILE_SECRET_KEY, 500);
+  if (!siteKey && !secretKey) return true;
+  if (!siteKey || !secretKey) return false;
   if (!token) return false;
   const body = new FormData();
-  body.append('secret', env.TURNSTILE_SECRET_KEY);
+  body.append('secret', secretKey);
   body.append('response', token);
   const ip = request.headers.get('CF-Connecting-IP');
   if (ip) body.append('remoteip', ip);

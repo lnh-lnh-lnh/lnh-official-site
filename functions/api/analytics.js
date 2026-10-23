@@ -1,4 +1,4 @@
-import { clean, json, sameOrigin } from '../_lib/common.js';
+import { clean, json, readJson, sameOrigin } from '../_lib/common.js';
 
 const EVENTS = new Set(['page_view', 'page_exit', 'cta_click', 'form_start', 'form_step', 'form_submit', 'application_complete']);
 
@@ -6,7 +6,7 @@ export async function onRequestPost({ request, env }) {
   if (!sameOrigin(request) || !env.DB) return json({ ok: false }, 202);
   let payload;
   try {
-    payload = await request.json();
+    payload = await readJson(request, 8192);
   } catch {
     return json({ ok: false }, 202);
   }

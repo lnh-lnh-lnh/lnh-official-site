@@ -1,4 +1,4 @@
-import { clean, hashToken, json, sameOrigin } from '../_lib/common.js';
+import { clean, hashToken, json, readJson, sameOrigin } from '../_lib/common.js';
 
 async function getApplication(env, token) {
   if (!token || !env.DB) return null;
@@ -23,9 +23,9 @@ export async function onRequestPost({ request, env }) {
 
   let payload;
   try {
-    payload = await request.json();
-  } catch {
-    return json({ error: '설문 내용을 확인해 주세요.' }, 400);
+    payload = await readJson(request, 32768);
+  } catch (error) {
+    return json({ error: error.message || '설문 내용을 확인해 주세요.' }, error.status || 400);
   }
 
   const token = clean(payload.token, 128);

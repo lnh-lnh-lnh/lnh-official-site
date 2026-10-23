@@ -7,6 +7,51 @@
   const message = document.querySelector('#form-message');
   const success = document.querySelector('#application-success');
   const params = new URLSearchParams(location.search);
+  let turnstileEnabled = false;
+  let turnstileToken = '';
+  let turnstileWidgetId = null;
+  const loadTurnstileScript = () => new Promise((resolve, reject) => {
+    if (window.turnstile) return resolve();
+    const existing = document.querySelector('script[data-lnh-turnstile]');
+    if (existing) {
+      existing.addEventListener('load', resolve, { once: true });
+      existing.addEventListener('error', reject, { once: true });
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.defer = true;
+    script.dataset.lnhTurnstile = '';
+    script.addEventListener('load', resolve, { once: true });
+    script.addEventListener('error', reject, { once: true });
+    document.head.append(script);
+  });
+  const initializeTurnstile = async () => {
+    const response = await fetch('/api/security-config', { credentials: 'same-origin' });
+    if (!response.ok) return;
+    const config = await response.json();
+    const sitekey = typeof config.turnstileSiteKey === 'string' ? config.turnstileSiteKey.trim() : '';
+    if (!sitekey) return;
+    turnstileEnabled = true;
+    await loadTurnstileScript();
+    const container = document.createElement('div');
+    container.className = 'turnstile-field';
+    container.setAttribute('aria-label', '자동 제출 방지 확인');
+    steps.at(-1).querySelector('.form-actions').before(container);
+    turnstileWidgetId = window.turnstile.render(container, {
+      sitekey,
+      appearance: 'interaction-only',
+      size: 'flexible',
+      theme: 'light',
+      callback: token => { turnstileToken = token; },
+      'expired-callback': () => { turnstileToken = ''; },
+      'error-callback': () => { turnstileToken = ''; }
+    });
+  };
+  const turnstileReady = initializeTurnstile().catch(() => {
+    turnstileEnabled = true;
+  });
   const getAttribution = () => {
     const tracked = window.LNHAnalytics?.getAttribution?.() || window.LNHAttribution?.get?.();
     if (tracked) return tracked;
@@ -90,6 +135,12 @@
     if (!validateStep(step)) return;
     const submit = form.querySelector('[type="submit"]');
     submit.disabled = true;
+    await turnstileReady;
+    if (turnstileEnabled && !turnstileToken) {
+      message.textContent = '자동 제출 방지 확인을 완료해 주세요.';
+      submit.disabled = false;
+      return;
+    }
     message.textContent = '신청 내용을 안전하게 접수하고 있습니다.';
     const data = new FormData(form);
     const query = new URLSearchParams(location.search);
@@ -112,7 +163,7 @@
       fbclid: firstTouch.fbclid || query.get('fbclid') || '',
       nKeyword: firstTouch.nKeyword || query.get('n_keyword') || '',
       attribution,
-      turnstileToken: data.get('cf-turnstile-response') || ''
+      turnstileToken
     };
     try {
       const response = await fetch('/api/applications', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
@@ -132,6 +183,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       message.textContent = error.message;
+      if (turnstileWidgetId !== null && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId);
+        turnstileToken = '';
+      }
       submit.disabled = false;
     }
   });

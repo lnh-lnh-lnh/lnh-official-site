@@ -86,6 +86,7 @@ button{cursor:pointer}
 .form-step .form-actions [data-next]{border-color:var(--navy);background:var(--navy)}
 .form-button:disabled{opacity:.45;cursor:not-allowed}
 .form-message{min-height:24px;margin:18px 0 0;color:#a13e31;font-size:12px}
+.turnstile-field{width:100%;margin-top:24px}
 .success-panel{width:min(680px,100%);margin:clamp(78px,12vw,160px) auto 0;padding:0}
 .success-block{padding:clamp(32px,5vw,56px);border:1px solid var(--line);background:rgba(255,255,255,.42);text-align:left}
 .success-panel .application-kicker{margin-bottom:20px;color:var(--navy)}

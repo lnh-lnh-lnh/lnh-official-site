@@ -1,9 +1,13 @@
-import { clean, constantTimeEqual, derivePasswordHash, getCookie, hashToken, json, randomToken, recordAdminActivity, requireAdmin, sameOrigin } from '../../_lib/common.js';
+import { clean, constantTimeEqual, derivePasswordHash, getCookie, hashToken, json, randomToken, readJson, recordAdminActivity, requireAdmin, sameOrigin } from '../../_lib/common.js';
 
 const SESSION_COOKIE = 'LNH_ADMIN_SESSION';
 const MAX_FAILURES = 5;
 const LOCK_WINDOW_MS = 15 * 60 * 1000;
-const SESSION_MS = 8 * 60 * 60 * 1000;
+const SESSION_MS = 4 * 60 * 60 * 1000;
+const passwordIterations = env => {
+  const configured = Number(env.ADMIN_PASSWORD_ITERATIONS || 100000);
+  return Number.isSafeInteger(configured) && configured >= 100000 && configured <= 2000000 ? configured : 100000;
+};
 
 const ensureAdminTables = async env => {
   const statements = [
@@ -49,7 +53,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   let payload;
-  try { payload = await request.json(); } catch { return json({ error: '로그인 정보를 확인해 주세요.' }, 400); }
+  try { payload = await readJson(request, 2048); } catch (error) { return json({ error: error.message || '로그인 정보를 확인해 주세요.' }, error.status || 400); }
   const password = typeof payload.password === 'string' ? payload.password : '';
   if (!password || password.length > 512) return json({ error: '로그인 정보를 확인해 주세요.' }, 400);
 
@@ -69,7 +73,7 @@ export async function onRequestPost({ request, env }) {
     }
 
     stage = '비밀번호 확인';
-    const derived = await derivePasswordHash(password, env.ADMIN_PASSWORD_SALT);
+    const derived = await derivePasswordHash(password, env.ADMIN_PASSWORD_SALT, passwordIterations(env));
     if (!constantTimeEqual(derived, env.ADMIN_PASSWORD_HASH)) {
       await logAttempt(env, key, 'failed');
       return json({ error: '비밀번호를 확인해 주세요.' }, 401);
@@ -89,7 +93,7 @@ export async function onRequestPost({ request, env }) {
     return response;
   } catch (error) {
     console.error('Admin login error', stage, error);
-    return json({ error: `관리자 로그인 처리 중 문제가 생겼습니다: ${stage}.`, issue: clean(error?.name || 'unknown', 64) }, 503);
+    return json({ error: '관리자 로그인 처리 중 문제가 생겼습니다.' }, 503);
   }
 }
 
