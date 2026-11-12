@@ -10,6 +10,7 @@
     new:'신규', contacted:'연락 완료', consultation:'상담 예정', survey_sent:'설문 발송',
     survey_completed:'설문 완료', proposal:'제안', contracted:'계약', closed:'종료'
   };
+  const number = new Intl.NumberFormat('ko-KR');
   let applications = [];
   let selectedId = '';
   const escape = value => String(value ?? '').replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
@@ -100,13 +101,22 @@
     URL.revokeObjectURL(link.href);
   };
   const loadAnalytics = async () => {
+    const timelineStatus = document.querySelector('#analytics-timeline-status');
     try {
       const response = await fetch('/api/admin/analytics');
       const data = await response.json();
-      if(!response.ok)return;
-      document.querySelector('[data-metric="visitors"]').textContent=data.overview?.visitors||0;
-      document.querySelector('[data-metric="pageViews"]').textContent=data.overview?.page_views||0;
+      if(!response.ok)throw new Error(data.error||'분석 데이터를 불러오지 못했습니다.');
+      document.querySelector('[data-metric="visitSessions"]').textContent=number.format(data.overview?.visit_sessions||0);
+      document.querySelector('[data-metric="pageViews"]').textContent=number.format(data.overview?.page_views||0);
       document.querySelector('[data-metric="avgSeconds"]').textContent=`${data.overview?.avg_seconds||0}s`;
+      document.querySelector('[data-metric="todaySessions"]').textContent=number.format(data.today?.visit_sessions||0);
+      document.querySelector('[data-metric="todayPageViews"]').textContent=number.format(data.today?.page_views||0);
+      const context=data.timeContext||{};
+      const serverTime=context.serverNow?new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).format(new Date(context.serverNow)):'–';
+      document.querySelector('#analytics-time-context').textContent=`서버 기준 ${serverTime} KST · 집계 경계 00:00 (${escape(context.utcOffset||'+09:00')})`;
+      document.querySelector('#analytics-hourly').innerHTML=renderHourlyTable(data.hourly||[]);
+      document.querySelector('#analytics-daily').innerHTML=renderDailyRows(data.daily||[]);
+      timelineStatus.textContent=`${escape(context.startDate||'')}–${escape(context.endDate||'')} 집계 · 방문 세션은 KST 날짜별 첫 페이지뷰 시각에 한 번만 배정됩니다.`;
       const funnel=Object.fromEntries((data.funnels||[]).map(item=>[item.event_name,item.total]));
       document.querySelector('[data-metric="ctaClicks"]').textContent=funnel.cta_click||0;
       document.querySelector('[data-metric="formStarts"]').textContent=funnel.form_start||0;
@@ -115,7 +125,20 @@
       document.querySelector('#analytics-transitions').innerHTML=(data.transitions||[]).map(item=>`<li>${escape(item.from_path)} → ${escape(item.to_path)} — ${item.moves}</li>`).join('')||'<li>데이터 없음</li>';
       document.querySelector('#analytics-referrers').innerHTML=(data.referrers||[]).map(item=>`<li>${escape(item.referrer)} — ${item.visits}</li>`).join('')||'<li>데이터 없음</li>';
       document.querySelector('#analytics-campaigns').innerHTML=(data.campaigns||[]).map(item=>`<li>${escape(item.source)} / ${escape(item.medium)}${item.campaign?` / ${escape(item.campaign)}`:''} — ${item.visits}</li>`).join('')||'<li>데이터 없음</li>';
-    } catch {}
+    } catch (error) {
+      timelineStatus.textContent=error.message||'분석 데이터를 불러오지 못했습니다.';
+    }
+  };
+  const renderHourlyTable = items => {
+    const hours=Array.from({length:24},(_,hour)=>items.find(item=>Number(item.hour)===hour)||{hour,label:String(hour).padStart(2,'0'),visit_sessions:0,page_views:0,provisional:false});
+    const headings=hours.map(item=>`<th scope="col" class="${item.provisional?'is-provisional':''}"><span>${escape(item.label)}</span>${item.provisional?'<small>잠정</small>':''}</th>`).join('');
+    const sessionCells=hours.map(item=>`<td class="${item.provisional?'is-provisional':''}">${number.format(item.visit_sessions||0)}</td>`).join('');
+    const pageViewCells=hours.map(item=>`<td class="${item.provisional?'is-provisional':''}">${number.format(item.page_views||0)}</td>`).join('');
+    return `<table class="analytics-data-table analytics-hourly-table"><thead><tr><th scope="col">구분</th>${headings}</tr></thead><tbody><tr><th scope="row">방문 세션</th>${sessionCells}</tr><tr><th scope="row">페이지뷰</th>${pageViewCells}</tr></tbody></table>`;
+  };
+  const renderDailyRows = items => {
+    if(!items.length)return '<tr><td colspan="4">데이터 없음</td></tr>';
+    return [...items].reverse().map(item=>`<tr class="${item.provisional?'is-provisional':''}"><th scope="row">${escape(item.date)}</th><td>${number.format(item.visit_sessions||0)}</td><td>${number.format(item.page_views||0)}</td><td>${item.provisional?'<span class="provisional-label">잠정</span>':'확정'}</td></tr>`).join('');
   };
   const confirmAuthentication = async () => {
     try {

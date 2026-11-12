@@ -123,6 +123,36 @@ button{cursor:pointer}
 .admin-login-card input:focus{border-color:var(--ink)}
 .admin-login-card .form-button{margin-top:10px}
 .admin-shell{width:min(1500px,calc(100% - 40px));margin:0 auto;padding:38px 0 80px}
+.analytics-timeline{margin-bottom:18px;padding:24px;background:#fff;border:1px solid #dededb}
+.analytics-timeline-header{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;padding-bottom:20px;border-bottom:1px solid #e3e3df}
+.analytics-eyebrow{margin:0 0 7px;color:var(--navy);font-size:11px;font-weight:500}
+.analytics-timeline-header h1{margin:0;font-family:var(--serif);font-size:31px;font-weight:400}
+.analytics-time-context{margin:0;color:var(--muted);font-size:11px;text-align:right}
+.analytics-today{display:grid;grid-template-columns:170px 170px 1fr;gap:12px;align-items:stretch;padding:20px 0}
+.analytics-today article{padding:16px 18px;background:#f3f3f0;border:1px solid #e5e5e1}
+.analytics-today article span{display:block;color:var(--muted);font-size:11px}
+.analytics-today article strong{display:block;margin-top:7px;font-family:var(--latin);font-size:30px;font-weight:400;font-variant-numeric:tabular-nums}
+.analytics-today>p{align-self:center;margin:0;color:var(--muted);font-size:11px;text-align:right}
+.provisional-dot{display:inline-block;width:7px;height:7px;margin-right:6px;background:#a66c27;border-radius:50%}
+.analytics-timeline-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(330px,.45fr);gap:14px}
+.analytics-data-panel{min-width:0;border:1px solid #e3e3df}
+.analytics-data-heading{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid #e3e3df}
+.analytics-data-heading h2{margin:0;font-size:13px;font-weight:500}
+.analytics-data-heading span{color:var(--muted);font-size:10px}
+.analytics-table-scroll,.analytics-daily-scroll{overflow:auto}
+.analytics-table-scroll p{margin:0;padding:18px;color:var(--muted);font-size:12px}
+.analytics-daily-scroll{max-height:232px}
+.analytics-data-table{width:100%;border-collapse:collapse;font-size:11px;font-variant-numeric:tabular-nums}
+.analytics-data-table th,.analytics-data-table td{padding:9px 10px;border-bottom:1px solid #ecece9;text-align:right;white-space:nowrap}
+.analytics-data-table th{color:var(--muted);font-weight:500}
+.analytics-data-table th:first-child,.analytics-data-table td:first-child{text-align:left}
+.analytics-hourly-table{min-width:1190px}
+.analytics-hourly-table th,.analytics-hourly-table td{min-width:45px;text-align:center}
+.analytics-hourly-table th:first-child{position:sticky;left:0;z-index:1;min-width:80px;background:#fff;text-align:left}
+.analytics-hourly-table .is-provisional,.analytics-daily-table tr.is-provisional>*{background:#fbf5eb;color:#714b1d}
+.analytics-hourly-table th small{display:block;margin-top:2px;font-size:8px;font-weight:400}
+.provisional-label{display:inline-block;padding:2px 5px;background:#efe1cd;color:#714b1d;font-size:9px}
+.analytics-status{min-height:16px;margin:12px 0 0;color:var(--muted);font-size:10px}
 .admin-overview{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:30px}
 .metric-card{padding:20px;background:#fff;border:1px solid #dededb}
 .metric-card span{display:block;color:var(--muted);font-size:11px}
@@ -163,6 +193,7 @@ button{cursor:pointer}
   .application-step-layout{grid-template-columns:1fr;gap:4px;padding:0}.form-step-copy{min-height:0;padding:20px 0 30px}.form-step-copy h1{font-size:43px}.form-step-copy>div{margin-top:28px;font-size:13px;line-height:1.85}.form-step-fields{padding:0 0 24px}
   .service-options,.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
   .service-option span{min-height:88px;padding:19px}.service-option strong{font-size:24px}
+  .analytics-timeline{padding:18px}.analytics-timeline-header{display:block}.analytics-time-context{margin-top:10px;text-align:left;line-height:1.6}.analytics-today{grid-template-columns:1fr 1fr}.analytics-today>p{grid-column:1/-1;text-align:left}.analytics-timeline-grid{grid-template-columns:1fr}.analytics-daily-scroll{max-height:280px}
   .admin-overview{grid-template-columns:repeat(2,1fr)}.admin-grid{grid-template-columns:1fr}.admin-detail{position:static}
   .admin-toolbar{display:grid;grid-template-columns:1fr 1fr}.admin-toolbar input{grid-column:1/-1}.admin-toolbar .lnh-select{min-width:0}.admin-export{grid-column:1/-1}
   .application-list th:nth-child(3),.application-list td:nth-child(3),.application-list th:nth-child(5),.application-list td:nth-child(5){display:none}

@@ -5,7 +5,7 @@
   <meta name="robots" content="noindex,nofollow"><title>LNH Applications</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/application-system.css?v=20260924b">
+  <link rel="stylesheet" href="../assets/application-system.css?v=20261112a">
   <link rel="stylesheet" href="../assets/lnh-navigation.css?v=20260927a">
 </head>
 <body class="admin-body admin-pending-auth impeccable-20">
@@ -20,8 +20,38 @@
     <p>Lifestyle Advisor · Since 2001</p>
   </aside>
   <main class="admin-shell">
+    <section class="analytics-timeline" aria-labelledby="analytics-timeline-title">
+      <header class="analytics-timeline-header">
+        <div>
+          <p class="analytics-eyebrow">오늘 · Asia/Seoul</p>
+          <h1 id="analytics-timeline-title">방문 흐름</h1>
+        </div>
+        <p class="analytics-time-context" id="analytics-time-context">서버 기준 시간을 확인하는 중입니다.</p>
+      </header>
+      <div class="analytics-today" aria-label="오늘 집계">
+        <article><span>방문 세션</span><strong data-metric="todaySessions">–</strong></article>
+        <article><span>페이지뷰</span><strong data-metric="todayPageViews">–</strong></article>
+        <p><span class="provisional-dot" aria-hidden="true"></span>현재 시간대와 오늘 합계는 잠정 집계입니다.</p>
+      </div>
+      <div class="analytics-timeline-grid">
+        <section class="analytics-data-panel" aria-labelledby="hourly-title">
+          <div class="analytics-data-heading"><h2 id="hourly-title">시간대별</h2><span>00–23시</span></div>
+          <div class="analytics-table-scroll" id="analytics-hourly"><p>시간대별 데이터를 불러오는 중입니다.</p></div>
+        </section>
+        <section class="analytics-data-panel" aria-labelledby="daily-title">
+          <div class="analytics-data-heading"><h2 id="daily-title">최근 30일</h2><span>한국 표준시</span></div>
+          <div class="analytics-daily-scroll">
+            <table class="analytics-data-table analytics-daily-table">
+              <thead><tr><th scope="col">날짜</th><th scope="col">방문 세션</th><th scope="col">페이지뷰</th><th scope="col">상태</th></tr></thead>
+              <tbody id="analytics-daily"><tr><td colspan="4">일별 데이터를 불러오는 중입니다.</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+      <p class="analytics-status" id="analytics-timeline-status" role="status" aria-live="polite"></p>
+    </section>
     <section class="admin-overview" aria-label="최근 30일 요약">
-      <article class="metric-card"><span>방문자</span><strong data-metric="visitors">–</strong></article>
+      <article class="metric-card"><span>방문 세션</span><strong data-metric="visitSessions">–</strong></article>
       <article class="metric-card"><span>페이지뷰</span><strong data-metric="pageViews">–</strong></article>
       <article class="metric-card"><span>평균 체류</span><strong data-metric="avgSeconds">–</strong></article>
       <article class="metric-card"><span>CTA 클릭</span><strong data-metric="ctaClicks">–</strong></article>
@@ -44,7 +74,7 @@
     </section>
   </main>
   <script src="../assets/lnh-select.js?v=20260924a" defer></script>
-  <script src="../assets/admin.js?v=20261012a" defer></script>
+  <script src="../assets/admin.js?v=20261112a" defer></script>
   <script src="../assets/site-menu.js?v=20260927a" defer></script>
   <link rel="stylesheet" href="../assets/lnh-impeccable-20.css?v=20260929">
 </body>
