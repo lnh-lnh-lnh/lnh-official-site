@@ -77,7 +77,7 @@ const percentChange = (current, previous) => previous > 0
   ? Math.round(((current - previous) / previous) * 1000) / 10
   : null;
 
-const buildInsights = ({ overview, previous, geography, risk, funnels }) => {
+const buildInsights = ({ overview, previous, geography, networks, risk, funnels }) => {
   const topRegion = geography[0];
   const totalSessions = Number(overview.visit_sessions) || 0;
   const flaggedSessions = Number(risk?.flagged_sessions) || 0;
@@ -106,8 +106,8 @@ const buildInsights = ({ overview, previous, geography, risk, funnels }) => {
     level: flaggedSessions > 0 ? 'watch' : 'stable',
     title: '자동화 위험',
     body: flaggedSessions > 0
-      ? `검토가 필요한 세션 ${flaggedSessions}건이 탐지됐습니다. 위험 신호는 확정 판정이 아닙니다.`
-      : '현재 선택 기간에는 검토 우선 위험 세션이 없습니다.'
+      ? `검토 세션 ${flaggedSessions}건, 반복 네트워크 ${networks.repeat_networks || 0}개가 탐지됐습니다. 위험 신호는 확정 판정이 아닙니다.`
+      : `검토 우선 위험 세션은 없으며, 반복 네트워크는 ${networks.repeat_networks || 0}개입니다.`
   });
   return insights.slice(0, 4);
 };
@@ -124,7 +124,7 @@ export async function onRequestGet({ request, env }) {
   const until = timeContext.endUtc;
   const previousEnd = since;
   const previousStart = new Date(Date.parse(previousEnd) - period.days * 24 * 60 * 60 * 1000).toISOString();
-  const [engagement, paths, funnels, referrers, transitions, campaigns, hourlyRows, dailyRows, previousRows, geographyRows, riskSummary, anomalyRows] = await Promise.all([
+  const [engagement, paths, funnels, referrers, transitions, previousGeographyRows, networkSummary, asnRows, campaigns, hourlyRows, dailyRows, previousRows, geographyRows, riskSummary, anomalyRows] = await Promise.all([
     env.DB.prepare(`SELECT ROUND(AVG(duration_ms)/1000) avg_seconds FROM analytics_events WHERE event_name='page_exit' AND created_at>=? AND created_at<?`).bind(since, until).first(),
     env.DB.prepare(`SELECT path, COUNT(*) views FROM analytics_events WHERE event_name='page_view' AND created_at>=? AND created_at<? GROUP BY path ORDER BY views DESC LIMIT 12`).bind(since, until).all(),
     env.DB.prepare(`SELECT event_name, COUNT(*) total FROM analytics_events WHERE event_name IN ('cta_click','form_start','form_submit','application_complete') AND created_at>=? AND created_at<? GROUP BY event_name`).bind(since, until).all(),
@@ -142,6 +142,65 @@ export async function onRequestGet({ request, env }) {
       GROUP BY previous_path, path
       ORDER BY moves DESC
       LIMIT 10
+    `).bind(since, until).all(),
+    env.DB.prepare(`
+      WITH first_views AS (
+        SELECT country, region, city, session_id,
+          date(datetime(created_at, '+9 hours')) kst_date,
+          ROW_NUMBER() OVER (
+            PARTITION BY date(datetime(created_at, '+9 hours')), session_id
+            ORDER BY created_at, id
+          ) row_number
+        FROM analytics_events
+        WHERE event_name='page_view' AND created_at>=? AND created_at<?
+      )
+      SELECT COALESCE(NULLIF(country, ''), 'XX') country,
+        COALESCE(NULLIF(region, ''), '지역 미상') region,
+        COALESCE(NULLIF(city, ''), '도시 미상') city,
+        COUNT(*) visit_sessions
+      FROM first_views
+      WHERE row_number=1
+      GROUP BY country, region, city
+    `).bind(previousStart, previousEnd).all(),
+    env.DB.prepare(`
+      WITH network_sessions AS (
+        SELECT visitor_key,
+          COUNT(DISTINCT session_id) sessions,
+          COUNT(DISTINCT date(datetime(created_at, '+9 hours'))) active_days
+        FROM analytics_events
+        WHERE event_name='page_view' AND visitor_key<>'' AND created_at>=? AND created_at<?
+        GROUP BY visitor_key
+      )
+      SELECT COUNT(*) observed_networks,
+        SUM(CASE WHEN sessions>=2 THEN 1 ELSE 0 END) repeat_networks,
+        SUM(CASE WHEN active_days>=2 THEN 1 ELSE 0 END) returning_networks,
+        MAX(sessions) max_sessions_per_network
+      FROM network_sessions
+    `).bind(since, until).first(),
+    env.DB.prepare(`
+      WITH first_views AS (
+        SELECT asn, as_organization, visitor_key, session_id, risk_score,
+          date(datetime(created_at, '+9 hours')) kst_date,
+          ROW_NUMBER() OVER (
+            PARTITION BY date(datetime(created_at, '+9 hours')), session_id
+            ORDER BY created_at, id
+          ) row_number
+        FROM analytics_events
+        WHERE event_name='page_view' AND created_at>=? AND created_at<?
+      )
+      SELECT asn,
+        COALESCE(NULLIF(as_organization, ''), '네트워크 사업자 미상') as_organization,
+        COUNT(*) visit_sessions,
+        COUNT(DISTINCT NULLIF(visitor_key, '')) network_keys,
+        SUM(CASE WHEN risk_score>=40 THEN 1 ELSE 0 END) flagged_sessions,
+        MAX(risk_score) max_risk,
+        MIN(kst_date) first_seen,
+        MAX(kst_date) last_seen
+      FROM first_views
+      WHERE row_number=1 AND asn IS NOT NULL
+      GROUP BY asn, as_organization
+      ORDER BY visit_sessions DESC, flagged_sessions DESC
+      LIMIT 8
     `).bind(since, until).all(),
     env.DB.prepare(`
       SELECT
@@ -237,7 +296,34 @@ export async function onRequestGet({ request, env }) {
     session_change: percentChange(overviewTotals.visit_sessions, previousTotals.visit_sessions),
     page_view_change: percentChange(overviewTotals.page_views, previousTotals.page_views)
   };
-  const geography = geographyRows.results || [];
+  const previousGeography = new Map((previousGeographyRows.results || []).map(item => [
+    [item.country, item.region, item.city].join('|'), Number(item.visit_sessions) || 0
+  ]));
+  const geography = (geographyRows.results || []).map(item => {
+    const previousSessions = previousGeography.get([item.country, item.region, item.city].join('|')) || 0;
+    return {
+      ...item,
+      visit_sessions: Number(item.visit_sessions) || 0,
+      previous_sessions: previousSessions,
+      session_change: percentChange(Number(item.visit_sessions) || 0, previousSessions)
+    };
+  });
+  const networks = {
+    observed_networks: Number(networkSummary?.observed_networks) || 0,
+    repeat_networks: Number(networkSummary?.repeat_networks) || 0,
+    returning_networks: Number(networkSummary?.returning_networks) || 0,
+    max_sessions_per_network: Number(networkSummary?.max_sessions_per_network) || 0,
+    asns: (asnRows.results || []).map(item => ({
+      asn: Number(item.asn) || null,
+      as_organization: item.as_organization || '네트워크 사업자 미상',
+      visit_sessions: Number(item.visit_sessions) || 0,
+      network_keys: Number(item.network_keys) || 0,
+      flagged_sessions: Number(item.flagged_sessions) || 0,
+      max_risk: Number(item.max_risk) || 0,
+      first_seen: item.first_seen,
+      last_seen: item.last_seen
+    }))
+  };
   const risk = {
     total_sessions: Number(riskSummary?.total_sessions) || 0,
     flagged_sessions: Number(riskSummary?.flagged_sessions) || 0,
@@ -280,8 +366,9 @@ export async function onRequestGet({ request, env }) {
     series: period.key === 'today' ? timeline.hourly : timeline.daily,
     previous: previousTotals,
     geography,
+    networks,
     risk,
-    insights: buildInsights({ overview, previous: previousTotals, geography, risk, funnels: funnels.results || [] }),
+    insights: buildInsights({ overview, previous: previousTotals, geography, networks, risk, funnels: funnels.results || [] }),
     paths: paths.results,
     funnels: funnels.results,
     referrers: referrers.results,

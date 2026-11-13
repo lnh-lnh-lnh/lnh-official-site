@@ -124,7 +124,13 @@
   const renderGeography = items => {
     if(!items.length)return '<p>아직 지역 데이터가 없습니다. 새 방문부터 집계됩니다.</p>';
     const max=Math.max(...items.map(item=>Number(item.visit_sessions)||0),1);
-    return items.map(item=>`<article><div><strong>${escape(item.city&&item.city!=='도시 미상'?item.city:(item.region||item.country||'지역 미상'))}</strong><span>${escape([item.region,item.country].filter(Boolean).join(' · ')||'XX')} · 추정</span><b>${number.format(item.visit_sessions||0)}</b></div><div class="geo-track"><i style="--geo-width:${Math.max(2,Math.round((Number(item.visit_sessions)||0)/max*100))}%"></i></div></article>`).join('');
+    return items.map(item=>`<article><div><strong>${escape(item.city&&item.city!=='도시 미상'?item.city:(item.region||item.country||'지역 미상'))}</strong><span>${escape([item.region,item.country].filter(Boolean).join(' · ')||'XX')} · ${item.session_change===null||item.session_change===undefined?'비교 없음':`${item.session_change>0?'+':''}${number.format(item.session_change)}%`}</span><b>${number.format(item.visit_sessions||0)}</b></div><div class="geo-track"><i style="--geo-width:${Math.max(2,Math.round((Number(item.visit_sessions)||0)/max*100))}%"></i></div></article>`).join('');
+  };
+  const renderNetworks = network => {
+    document.querySelector('#analytics-network-summary').innerHTML=`<article><span>관측 네트워크</span><strong>${number.format(network.observed_networks||0)}</strong></article><article><span>2회 이상 세션</span><strong>${number.format(network.repeat_networks||0)}</strong></article><article><span>여러 날 재방문</span><strong>${number.format(network.returning_networks||0)}</strong></article>`;
+    const items=network.asns||[];
+    const max=Math.max(...items.map(item=>Number(item.visit_sessions)||0),1);
+    document.querySelector('#analytics-networks').innerHTML=items.length?items.map(item=>`<article><div><strong>${escape(item.as_organization)}</strong><span>ASN ${escape(item.asn||'미상')}</span><b>${number.format(item.visit_sessions||0)}</b></div><div class="network-meta"><span>접속망 ${number.format(item.network_keys||0)}</span><span>검토 ${number.format(item.flagged_sessions||0)}</span><span>최고 위험 ${number.format(item.max_risk||0)}</span></div><div class="network-track"><i style="--network-width:${Math.max(2,Math.round((Number(item.visit_sessions)||0)/max*100))}%"></i></div></article>`).join(''):'<p>선택 기간에 ASN 데이터가 없습니다.</p>';
   };
   const renderRisk = risk => {
     document.querySelector('#analytics-risk-summary').innerHTML=`<article><span>평균 위험도</span><strong>${number.format(risk.average_risk||0)}</strong></article><article><span>고위험 세션</span><strong>${number.format(risk.high_risk_sessions||0)}</strong></article><article><span>검증된 봇</span><strong>${number.format(risk.verified_bot_sessions||0)}</strong></article>`;
@@ -153,6 +159,7 @@
       document.querySelector('#analytics-time-context').textContent=`${escape(data.period?.label||'오늘')} · ${serverTime} KST · 60초 자동 갱신`;
       document.querySelector('#analytics-chart').innerHTML=renderTrendChart(data.series||[],data.period?.key||period);
       document.querySelector('#analytics-geography').innerHTML=renderGeography(data.geography||[]);
+      renderNetworks(data.networks||{});
       renderInsights(data.insights||[]);
       renderRisk(data.risk||{});
       timelineStatus.textContent=`${escape(context.startDate||'')}–${escape(context.endDate||'')} · KST 00:00 경계 · 방문 세션은 날짜별 첫 페이지뷰에 1회 배정 · 위험 신호는 확정 판정이 아닙니다.`;

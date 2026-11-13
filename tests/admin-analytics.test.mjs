@@ -167,10 +167,15 @@ const fakeDatabase = () => ({
   prepare(sql) {
     return {
       bind() { return this; },
-      async first() { return { avg_seconds: 21 }; },
+      async first() {
+        if (sql.includes('FROM network_sessions')) return { observed_networks: 3, repeat_networks: 1, returning_networks: 1, max_sessions_per_network: 4 };
+        if (sql.includes('FROM session_risk')) return { total_sessions: 2, flagged_sessions: 0, high_risk_sessions: 0, verified_bot_sessions: 0, average_risk: 0 };
+        return { avg_seconds: 21 };
+      },
       async all() {
         if (sql === HOURLY_TIMELINE_SQL) return { results: [{ hour: 12, visit_sessions: 1, page_views: 2 }] };
         if (sql === DAILY_TIMELINE_SQL) return { results: [{ date: getKstWindow().kstDate, visit_sessions: 1, page_views: 2 }] };
+        if (sql.includes('GROUP BY asn, as_organization')) return { results: [{ asn: 64500, as_organization: 'Example Network', visit_sessions: 2, network_keys: 1, flagged_sessions: 0, max_risk: 0 }] };
         return { results: [] };
       },
       async run() { return { success: true }; }
@@ -199,6 +204,9 @@ test('허용된 관리자에게 집계값만 반환하고 세션 ID는 노출하
   assert.equal(response.status, 200);
   assert.equal(body.hourly.length, 24);
   assert.equal(body.daily.length, 30);
+  assert.equal(body.networks.observed_networks, 3);
+  assert.equal(body.networks.repeat_networks, 1);
+  assert.equal(body.networks.asns[0].as_organization, 'Example Network');
   assert.equal(JSON.stringify(body).includes('session_id'), false);
   assert.equal(JSON.stringify(body).includes('visitor_key'), false);
 });

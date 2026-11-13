@@ -5,7 +5,7 @@
   <meta name="robots" content="noindex,nofollow"><title>LNH Applications</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/application-system.css?v=20261112c">
+  <link rel="stylesheet" href="../assets/application-system.css?v=20261113b">
   <link rel="stylesheet" href="../assets/lnh-navigation.css?v=20260927a">
 </head>
 <body class="admin-body admin-pending-auth impeccable-20">
@@ -57,8 +57,13 @@
 
       <div class="intelligence-secondary-grid">
         <section class="command-panel geography-panel" aria-labelledby="geography-title">
-          <div class="command-panel-heading"><div><p>Geo Signal</p><h2 id="geography-title">유입 지역</h2></div><span>IP 원문 미저장</span></div>
+          <div class="command-panel-heading"><div><p>Geo Signal</p><h2 id="geography-title">도시 유입 변화</h2></div><span>IP 원문 미저장</span></div>
           <div id="analytics-geography" class="geography-list"><p>지역 데이터를 불러오는 중입니다.</p></div>
+        </section>
+        <section class="command-panel network-panel" aria-labelledby="network-title">
+          <div class="command-panel-heading"><div><p>Network Pattern</p><h2 id="network-title">반복 네트워크·ASN</h2></div><span>지문은 비식별 처리</span></div>
+          <div class="network-summary" id="analytics-network-summary"></div>
+          <div id="analytics-networks" class="network-list"><p>네트워크 패턴을 계산하는 중입니다.</p></div>
         </section>
         <section class="command-panel risk-panel" aria-labelledby="risk-title">
           <div class="command-panel-heading"><div><p>Threat Observatory</p><h2 id="risk-title">자동화·부정 이용 관제</h2></div><span>검토 우선순위</span></div>
@@ -86,7 +91,7 @@
     </section>
   </main>
   <script src="../assets/lnh-select.js?v=20260924a" defer></script>
-  <script src="../assets/admin.js?v=20261113a" defer></script>
+  <script src="../assets/admin.js?v=20261113b" defer></script>
   <script src="../assets/site-menu.js?v=20260927a" defer></script>
   <link rel="stylesheet" href="../assets/lnh-impeccable-20.css?v=20260929">
 </body>
