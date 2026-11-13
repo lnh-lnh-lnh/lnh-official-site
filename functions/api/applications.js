@@ -1,4 +1,5 @@
 import { clean, json, readJson, sameOrigin, verifyTurnstile } from '../_lib/common.js';
+import { getRequestIntelligence } from '../_lib/analytics-risk.js';
 import { notifyNewApplication } from '../_lib/notify.js';
 
 const SERVICES = new Set(['brief', 'curation', 'care', 'partnership']);
@@ -58,6 +59,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     return json({ error: '필수 항목과 개인정보 안내 확인 여부를 확인해 주세요.' }, 400);
   }
   if (!/^\S+@\S+\.\S+$/.test(email)) return json({ error: '이메일 형식을 확인해 주세요.' }, 400);
+  const intelligence = await getRequestIntelligence(request, env);
 
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
@@ -69,14 +71,24 @@ export async function onRequestPost({ request, env, waitUntil }) {
       id, reference_code, service, name, company, phone, email, space_type, location, building_name,
       building_age, budget, desired_start, contact_time, discovery_source, concern, status, source_path, referrer, utm_source,
       utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid, n_keyword, attribution_json,
+      network_country, network_region, network_asn, network_organization, automation_risk_score, automation_risk_reasons,
       consent_at, created_at, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (
+      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+      'new',
+      ?, ?, ?, ?, ?,
+      ?, ?, ?, ?, ?,
+      ?, ?, ?, ?, ?,
+      ?, ?, ?, ?, ?
+    )
   `).bind(
     id, reference, service, name, company, phone, email, spaceType, location, buildingName,
     buildingAge, budget, desiredStart, contactTime, discoverySource, concern, clean(payload.sourcePath || url.pathname, 300),
     clean(payload.referrer, 500), clean(payload.utmSource, 180), clean(payload.utmMedium, 180),
     clean(payload.utmCampaign, 180), clean(payload.utmContent, 180), clean(payload.utmTerm, 180),
     clean(payload.gclid, 300), clean(payload.fbclid, 300), clean(payload.nKeyword, 300), attribution,
+    intelligence.country, intelligence.region, intelligence.asn, intelligence.asOrganization,
+    intelligence.riskScore, intelligence.riskReasons,
     now, now, now
   ).run();
 

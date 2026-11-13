@@ -1,4 +1,5 @@
 import { clean, json, readJson, sameOrigin } from '../_lib/common.js';
+import { getRequestIntelligence } from '../_lib/analytics-risk.js';
 
 const EVENTS = new Set(['page_view', 'page_exit', 'cta_click', 'form_start', 'form_step', 'form_submit', 'application_complete']);
 
@@ -24,13 +25,21 @@ export async function onRequestPost({ request, env }) {
   const duration = Number.isFinite(Number(payload.durationMs))
     ? Math.max(0, Math.min(Number(payload.durationMs), 86400000))
     : null;
+  const intelligence = await getRequestIntelligence(request, env);
 
   await env.DB.prepare(`
-    INSERT INTO analytics_events (id, session_id, event_name, path, referrer, duration_ms, metadata, created_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO analytics_events (
+      id, session_id, event_name, path, referrer, duration_ms, metadata, created_at,
+      visitor_key, country, region, asn, as_organization, bot_score, verified_bot,
+      risk_score, risk_reasons
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     crypto.randomUUID(), sessionId, eventName, path, clean(payload.referrer, 500),
-    duration, metadata, new Date().toISOString()
+    duration, metadata, new Date().toISOString(), intelligence.visitorKey,
+    intelligence.country, intelligence.region, intelligence.asn,
+    intelligence.asOrganization, intelligence.botScore, intelligence.verifiedBot,
+    intelligence.riskScore, intelligence.riskReasons
   ).run();
   return json({ ok: true }, 202);
 }

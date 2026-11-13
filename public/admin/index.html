@@ -5,7 +5,7 @@
   <meta name="robots" content="noindex,nofollow"><title>LNH Applications</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/application-system.css?v=20261112a">
+  <link rel="stylesheet" href="../assets/application-system.css?v=20261112c">
   <link rel="stylesheet" href="../assets/lnh-navigation.css?v=20260927a">
 </head>
 <body class="admin-body admin-pending-auth impeccable-20">
@@ -20,44 +20,56 @@
     <p>Lifestyle Advisor · Since 2001</p>
   </aside>
   <main class="admin-shell">
-    <section class="analytics-timeline" aria-labelledby="analytics-timeline-title">
-      <header class="analytics-timeline-header">
+    <section class="intelligence-command" aria-labelledby="intelligence-title">
+      <header class="intelligence-header">
         <div>
-          <p class="analytics-eyebrow">오늘 · Asia/Seoul</p>
-          <h1 id="analytics-timeline-title">방문 흐름</h1>
+          <p class="intelligence-kicker"><span class="live-pulse" aria-hidden="true"></span> LNH Intelligence · Live</p>
+          <h1 id="intelligence-title">Strategy Command Center</h1>
+          <p id="analytics-time-context">서버 기준 시간을 확인하는 중입니다.</p>
         </div>
-        <p class="analytics-time-context" id="analytics-time-context">서버 기준 시간을 확인하는 중입니다.</p>
+        <div class="period-control" aria-label="분석 기간">
+          <button type="button" data-period="today" class="is-active">오늘</button>
+          <button type="button" data-period="7d">7일</button>
+          <button type="button" data-period="30d">30일</button>
+          <button type="button" data-period="quarter">분기</button>
+          <button type="button" data-period="year">1년</button>
+        </div>
       </header>
-      <div class="analytics-today" aria-label="오늘 집계">
-        <article><span>방문 세션</span><strong data-metric="todaySessions">–</strong></article>
-        <article><span>페이지뷰</span><strong data-metric="todayPageViews">–</strong></article>
-        <p><span class="provisional-dot" aria-hidden="true"></span>현재 시간대와 오늘 합계는 잠정 집계입니다.</p>
+
+      <div class="intelligence-metrics" aria-label="핵심 지표">
+        <article><span>방문 세션</span><strong data-metric="visitSessions">–</strong><small data-change="sessions">이전 기간 비교</small></article>
+        <article><span>페이지뷰</span><strong data-metric="pageViews">–</strong><small data-change="pageViews">이전 기간 비교</small></article>
+        <article><span>평균 체류</span><strong data-metric="avgSeconds">–</strong><small>페이지 이탈 기준</small></article>
+        <article><span>신청 전환</span><strong data-metric="submits">–</strong><small data-metric="conversionRate">세션 대비 –</small></article>
+        <article class="risk-metric"><span>검토 필요</span><strong data-metric="flaggedSessions">–</strong><small>자동화 위험 신호</small></article>
       </div>
-      <div class="analytics-timeline-grid">
-        <section class="analytics-data-panel" aria-labelledby="hourly-title">
-          <div class="analytics-data-heading"><h2 id="hourly-title">시간대별</h2><span>00–23시</span></div>
-          <div class="analytics-table-scroll" id="analytics-hourly"><p>시간대별 데이터를 불러오는 중입니다.</p></div>
+
+      <div class="intelligence-primary-grid">
+        <section class="command-panel trend-panel" aria-labelledby="trend-title">
+          <div class="command-panel-heading"><div><p>Traffic Intelligence</p><h2 id="trend-title">방문 흐름</h2></div><div class="chart-legend"><span class="session-key">방문 세션</span><span class="view-key">페이지뷰</span></div></div>
+          <div class="trend-chart" id="analytics-chart"><p>추이 데이터를 불러오는 중입니다.</p></div>
         </section>
-        <section class="analytics-data-panel" aria-labelledby="daily-title">
-          <div class="analytics-data-heading"><h2 id="daily-title">최근 30일</h2><span>한국 표준시</span></div>
-          <div class="analytics-daily-scroll">
-            <table class="analytics-data-table analytics-daily-table">
-              <thead><tr><th scope="col">날짜</th><th scope="col">방문 세션</th><th scope="col">페이지뷰</th><th scope="col">상태</th></tr></thead>
-              <tbody id="analytics-daily"><tr><td colspan="4">일별 데이터를 불러오는 중입니다.</td></tr></tbody>
-            </table>
-          </div>
+        <aside class="command-panel insight-panel" aria-labelledby="insight-title">
+          <div class="command-panel-heading"><div><p>Machine Readout</p><h2 id="insight-title">자동 분석</h2></div></div>
+          <div id="analytics-insights" class="insight-list"><p>분석 신호를 계산하는 중입니다.</p></div>
+        </aside>
+      </div>
+
+      <div class="intelligence-secondary-grid">
+        <section class="command-panel geography-panel" aria-labelledby="geography-title">
+          <div class="command-panel-heading"><div><p>Geo Signal</p><h2 id="geography-title">유입 지역</h2></div><span>IP 원문 미저장</span></div>
+          <div id="analytics-geography" class="geography-list"><p>지역 데이터를 불러오는 중입니다.</p></div>
+        </section>
+        <section class="command-panel risk-panel" aria-labelledby="risk-title">
+          <div class="command-panel-heading"><div><p>Threat Observatory</p><h2 id="risk-title">자동화·부정 이용 관제</h2></div><span>검토 우선순위</span></div>
+          <div class="risk-summary" id="analytics-risk-summary"></div>
+          <div id="analytics-anomalies" class="anomaly-list"><p>위험 신호를 불러오는 중입니다.</p></div>
         </section>
       </div>
       <p class="analytics-status" id="analytics-timeline-status" role="status" aria-live="polite"></p>
     </section>
-    <section class="admin-overview" aria-label="최근 30일 요약">
-      <article class="metric-card"><span>방문 세션</span><strong data-metric="visitSessions">–</strong></article>
-      <article class="metric-card"><span>페이지뷰</span><strong data-metric="pageViews">–</strong></article>
-      <article class="metric-card"><span>평균 체류</span><strong data-metric="avgSeconds">–</strong></article>
-      <article class="metric-card"><span>CTA 클릭</span><strong data-metric="ctaClicks">–</strong></article>
-      <article class="metric-card"><span>신청 시작</span><strong data-metric="formStarts">–</strong></article>
-      <article class="metric-card"><span>신청 제출</span><strong data-metric="submits">–</strong></article>
-    </section>
+
+    <div class="admin-section-heading"><p>Operations</p><h2>신청자 관리</h2></div>
     <div class="admin-toolbar">
       <input id="admin-search" type="search" placeholder="이름·연락처·회사·접수번호 검색">
       <select id="admin-service"><option value="">모든 서비스</option><option value="brief">Brief</option><option value="curation">Curation</option><option value="care">Care</option><option value="partnership">Partnership</option></select>
@@ -74,7 +86,7 @@
     </section>
   </main>
   <script src="../assets/lnh-select.js?v=20260924a" defer></script>
-  <script src="../assets/admin.js?v=20261112a" defer></script>
+  <script src="../assets/admin.js?v=20261112c" defer></script>
   <script src="../assets/site-menu.js?v=20260927a" defer></script>
   <link rel="stylesheet" href="../assets/lnh-impeccable-20.css?v=20260929">
 </body>

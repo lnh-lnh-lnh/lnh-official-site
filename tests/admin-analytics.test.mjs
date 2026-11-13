@@ -2,7 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import { buildTimeline, getKstWindow } from '../functions/_lib/analytics-timeline.js';
+import { createVisitorKey, getRequestIntelligence } from '../functions/_lib/analytics-risk.js';
 import { DAILY_TIMELINE_SQL, HOURLY_TIMELINE_SQL, onRequestGet } from '../functions/api/admin/analytics.js';
+import { onRequestPost as recordAnalyticsEvent } from '../functions/api/analytics.js';
+import { onRequestPost as createApplication } from '../functions/api/applications.js';
 
 test('UTC 시간을 KST 날짜와 시간으로 변환한다', () => {
   const beforeMidnight = getKstWindow(new Date('2026-11-11T14:59:59.000Z'));
@@ -49,6 +52,114 @@ test('세션 SQL은 KST 날짜별 첫 페이지뷰만 한 번 배정한다', () 
   }
 });
 
+test('원 IP를 노출하지 않는 안정적인 HMAC 방문 지문을 만든다', async () => {
+  const request = new Request('https://example.com/api/analytics', {
+    headers: { 'CF-Connecting-IP': '203.0.113.24', 'user-agent': 'Mozilla/5.0' }
+  });
+  const env = { ANALYTICS_HASH_KEY: 'test-secret' };
+  const first = await createVisitorKey(request, env);
+  const second = await createVisitorKey(request, env);
+
+  assert.equal(first, second);
+  assert.equal(first.length, 64);
+  assert.equal(first.includes('203.0.113.24'), false);
+  assert.equal(await createVisitorKey(request, {}), '');
+});
+
+test('자동화 신호를 설명 가능한 위험 사유로 변환한다', async () => {
+  const request = new Request('https://example.com/api/analytics', {
+    headers: { 'CF-Connecting-IP': '203.0.113.24', 'user-agent': 'python-requests/2.0' }
+  });
+  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', asn: 64500, asOrganization: 'Example Cloud', botManagement: { score: 5, verifiedBot: false } } });
+  const env = {
+    ANALYTICS_HASH_KEY: 'test-secret',
+    DB: { prepare: () => ({ bind() { return this; }, async first() { return { events: 3, sessions: 1 }; } }) }
+  };
+  const result = await getRequestIntelligence(request, env);
+
+  assert.equal(result.country, 'KR');
+  assert.equal(result.region, 'Seoul');
+  assert.ok(result.riskScore >= 70);
+  assert.deepEqual(JSON.parse(result.riskReasons), ['cloudflare_bot_signal', 'automation_user_agent']);
+});
+
+test('분석 이벤트에는 원 IP 대신 HMAC 지문과 지역 신호만 저장한다', async () => {
+  let inserted = [];
+  const database = {
+    prepare(sql) {
+      return {
+        bind(...values) {
+          if (sql.includes('INSERT INTO analytics_events')) inserted = values;
+          return this;
+        },
+        async first() { return { events: 0, sessions: 0 }; },
+        async run() { return { success: true }; }
+      };
+    }
+  };
+  const request = new Request('https://example.com/api/analytics', {
+    method: 'POST',
+    headers: {
+      origin: 'https://example.com',
+      'content-type': 'application/json',
+      'CF-Connecting-IP': '203.0.113.24',
+      'user-agent': 'Mozilla/5.0'
+    },
+    body: JSON.stringify({ eventName: 'page_view', sessionId: 'session-a', path: '/brief.html' })
+  });
+  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', asn: 64500, asOrganization: 'Example Network' } });
+  const response = await recordAnalyticsEvent({ request, env: { DB: database, ANALYTICS_HASH_KEY: 'test-secret' } });
+
+  assert.equal(response.status, 202);
+  assert.equal(inserted.length, 17);
+  assert.equal(inserted[8].length, 64);
+  assert.equal(inserted[9], 'KR');
+  assert.equal(inserted[10], 'Seoul');
+  assert.equal(inserted.includes('203.0.113.24'), false);
+});
+
+test('신청 건에는 원 IP 없이 지역과 설명 가능한 위험 신호를 연결한다', async () => {
+  let insertedSql = '';
+  let inserted = [];
+  const database = {
+    prepare(sql) {
+      return {
+        bind(...values) {
+          if (sql.includes('INSERT INTO applications')) {
+            insertedSql = sql;
+            inserted = values;
+          }
+          return this;
+        },
+        async first() { return { events: 0, sessions: 0 }; },
+        async run() { return { success: true }; }
+      };
+    }
+  };
+  const request = new Request('https://example.com/api/applications', {
+    method: 'POST',
+    headers: {
+      origin: 'https://example.com',
+      'content-type': 'application/json',
+      'CF-Connecting-IP': '203.0.113.24',
+      'user-agent': 'python-requests/2.0'
+    },
+    body: JSON.stringify({
+      service: 'brief', name: '테스트', phone: '010-0000-0000', email: 'test@example.com',
+      spaceType: 'apartment', concern: '테스트 신청', consent: true
+    })
+  });
+  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', asn: 64500, asOrganization: 'Example Network' } });
+  const response = await createApplication({ request, env: { DB: database, ANALYTICS_HASH_KEY: 'test-secret' } });
+
+  assert.equal(response.status, 201);
+  assert.equal((insertedSql.match(/\?/g) || []).length, inserted.length);
+  assert.equal(inserted.includes('203.0.113.24'), false);
+  assert.equal(inserted.includes('Seoul'), true);
+  assert.ok(Number(inserted[31]) >= 35);
+  assert.match(inserted[32], /automation_user_agent/);
+});
+
 const fakeDatabase = () => ({
   prepare(sql) {
     return {
@@ -75,7 +186,7 @@ test('관리자 인증이 없으면 집계 API를 거부한다', async () => {
 
 test('허용된 관리자에게 집계값만 반환하고 세션 ID는 노출하지 않는다', async () => {
   const response = await onRequestGet({
-    request: new Request('https://example.com/api/admin/analytics', {
+    request: new Request('https://example.com/api/admin/analytics?period=30d', {
       headers: { 'Cf-Access-Authenticated-User-Email': 'admin@example.com' }
     }),
     env: { DB: fakeDatabase(), ADMIN_EMAILS: 'admin@example.com' }
@@ -86,4 +197,5 @@ test('허용된 관리자에게 집계값만 반환하고 세션 ID는 노출하
   assert.equal(body.hourly.length, 24);
   assert.equal(body.daily.length, 30);
   assert.equal(JSON.stringify(body).includes('session_id'), false);
+  assert.equal(JSON.stringify(body).includes('visitor_key'), false);
 });

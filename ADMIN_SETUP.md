@@ -37,6 +37,9 @@ Cloudflare Pages > Settings > Variables and Secrets에 다음 값을 설정합�
 - `PUBLIC_SITE_URL`: `https://www.lnh-universe.com`
 - `TURNSTILE_SITE_KEY`: Cloudflare Turnstile의 공개 사이트 키
 - `TURNSTILE_SECRET_KEY`: Cloudflare Turnstile의 비밀 키
+- `ANALYTICS_HASH_KEY`: 반복·자동화 접근을 구분할 때 원 IP 대신 HMAC 방문 지문을 만드는 32바이트 이상의 무작위 Secret
+
+`ANALYTICS_HASH_KEY`는 Production과 Preview에 각각 Secret으로 저장합니다. 값을 교체하면 이전 방문 지문과 새 방문 지문이 연결되지 않으므로, 정기 교체가 아니라 유출이 의심될 때만 교체합니다. 원문 IP는 D1에 저장하지 않습니다.
 
 관리자 로그인에는 아래 **Secret** 두 개가 필요합니다. 원문 비밀번호를 넣지 않고, 브라우저에서 생성한 PBKDF2 해시만 저장합니다.
 
