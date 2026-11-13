@@ -71,7 +71,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
       id, reference_code, service, name, company, phone, email, space_type, location, building_name,
       building_age, budget, desired_start, contact_time, discovery_source, concern, status, source_path, referrer, utm_source,
       utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid, n_keyword, attribution_json,
-      network_country, network_region, network_asn, network_organization, automation_risk_score, automation_risk_reasons,
+      network_country, network_region, network_city, network_asn, network_organization, automation_risk_score, automation_risk_reasons,
       consent_at, created_at, updated_at
     ) VALUES (
       ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
@@ -79,7 +79,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
       ?, ?, ?, ?, ?,
       ?, ?, ?, ?, ?,
       ?, ?, ?, ?, ?,
-      ?, ?, ?, ?, ?
+      ?, ?, ?, ?, ?, ?
     )
   `).bind(
     id, reference, service, name, company, phone, email, spaceType, location, buildingName,
@@ -87,7 +87,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     clean(payload.referrer, 500), clean(payload.utmSource, 180), clean(payload.utmMedium, 180),
     clean(payload.utmCampaign, 180), clean(payload.utmContent, 180), clean(payload.utmTerm, 180),
     clean(payload.gclid, 300), clean(payload.fbclid, 300), clean(payload.nKeyword, 300), attribution,
-    intelligence.country, intelligence.region, intelligence.asn, intelligence.asOrganization,
+    intelligence.country, intelligence.region, intelligence.city, intelligence.asn, intelligence.asOrganization,
     intelligence.riskScore, intelligence.riskReasons,
     now, now, now
   ).run();

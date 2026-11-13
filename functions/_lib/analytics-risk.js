@@ -71,6 +71,7 @@ export const getRequestIntelligence = async (request, env) => {
     visitorKey,
     country: clean(cf.country || request.headers.get('CF-IPCountry'), 2).toUpperCase(),
     region: clean(cf.region, 100),
+    city: clean(cf.city, 100),
     asn: numberOrNull(cf.asn),
     asOrganization: clean(cf.asOrganization, 180),
     botScore,

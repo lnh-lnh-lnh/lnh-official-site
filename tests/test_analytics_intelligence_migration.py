@@ -34,6 +34,9 @@ class AnalyticsIntelligenceMigrationTest(unittest.TestCase):
         connection.executescript(
             (ROOT / "migrations" / "0006_analytics_intelligence.sql").read_text()
         )
+        connection.executescript(
+            (ROOT / "migrations" / "0007_analytics_city.sql").read_text()
+        )
 
         columns = {
             row[1] for row in connection.execute("PRAGMA table_info(analytics_events)")
@@ -50,7 +53,7 @@ class AnalyticsIntelligenceMigrationTest(unittest.TestCase):
 
         self.assertTrue(
             {
-                "visitor_key", "country", "region", "asn", "as_organization",
+                "visitor_key", "country", "region", "city", "asn", "as_organization",
                 "bot_score", "verified_bot", "risk_score", "risk_reasons"
             }.issubset(columns)
         )
@@ -58,12 +61,13 @@ class AnalyticsIntelligenceMigrationTest(unittest.TestCase):
             {
                 "idx_analytics_visitor_created",
                 "idx_analytics_geo_created",
+                "idx_analytics_city_created",
                 "idx_analytics_risk_created"
             }.issubset(indexes)
         )
         self.assertTrue(
             {
-                "network_country", "network_region", "network_asn", "network_organization",
+                "network_country", "network_region", "network_city", "network_asn", "network_organization",
                 "automation_risk_score", "automation_risk_reasons"
             }.issubset(application_columns)
         )

@@ -70,7 +70,7 @@ test('자동화 신호를 설명 가능한 위험 사유로 변환한다', async
   const request = new Request('https://example.com/api/analytics', {
     headers: { 'CF-Connecting-IP': '203.0.113.24', 'user-agent': 'python-requests/2.0' }
   });
-  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', asn: 64500, asOrganization: 'Example Cloud', botManagement: { score: 5, verifiedBot: false } } });
+  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', city: 'Songpa-gu', asn: 64500, asOrganization: 'Example Cloud', botManagement: { score: 5, verifiedBot: false } } });
   const env = {
     ANALYTICS_HASH_KEY: 'test-secret',
     DB: { prepare: () => ({ bind() { return this; }, async first() { return { events: 3, sessions: 1 }; } }) }
@@ -79,6 +79,7 @@ test('자동화 신호를 설명 가능한 위험 사유로 변환한다', async
 
   assert.equal(result.country, 'KR');
   assert.equal(result.region, 'Seoul');
+  assert.equal(result.city, 'Songpa-gu');
   assert.ok(result.riskScore >= 70);
   assert.deepEqual(JSON.parse(result.riskReasons), ['cloudflare_bot_signal', 'automation_user_agent']);
 });
@@ -107,14 +108,15 @@ test('분석 이벤트에는 원 IP 대신 HMAC 지문과 지역 신호만 저�
     },
     body: JSON.stringify({ eventName: 'page_view', sessionId: 'session-a', path: '/brief.html' })
   });
-  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', asn: 64500, asOrganization: 'Example Network' } });
+  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', city: 'Songpa-gu', asn: 64500, asOrganization: 'Example Network' } });
   const response = await recordAnalyticsEvent({ request, env: { DB: database, ANALYTICS_HASH_KEY: 'test-secret' } });
 
   assert.equal(response.status, 202);
-  assert.equal(inserted.length, 17);
+  assert.equal(inserted.length, 18);
   assert.equal(inserted[8].length, 64);
   assert.equal(inserted[9], 'KR');
   assert.equal(inserted[10], 'Seoul');
+  assert.equal(inserted[11], 'Songpa-gu');
   assert.equal(inserted.includes('203.0.113.24'), false);
 });
 
@@ -149,15 +151,16 @@ test('신청 건에는 원 IP 없이 지역과 설명 가능한 위험 신호를
       spaceType: 'apartment', concern: '테스트 신청', consent: true
     })
   });
-  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', asn: 64500, asOrganization: 'Example Network' } });
+  Object.defineProperty(request, 'cf', { value: { country: 'KR', region: 'Seoul', city: 'Songpa-gu', asn: 64500, asOrganization: 'Example Network' } });
   const response = await createApplication({ request, env: { DB: database, ANALYTICS_HASH_KEY: 'test-secret' } });
 
   assert.equal(response.status, 201);
   assert.equal((insertedSql.match(/\?/g) || []).length, inserted.length);
   assert.equal(inserted.includes('203.0.113.24'), false);
   assert.equal(inserted.includes('Seoul'), true);
-  assert.ok(Number(inserted[31]) >= 35);
-  assert.match(inserted[32], /automation_user_agent/);
+  assert.equal(inserted[29], 'Songpa-gu');
+  assert.ok(Number(inserted[32]) >= 35);
+  assert.match(inserted[33], /automation_user_agent/);
 });
 
 const fakeDatabase = () => ({

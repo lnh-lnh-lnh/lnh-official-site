@@ -176,7 +176,7 @@ export async function onRequestGet({ request, env }) {
     env.DB.prepare(DAILY_TIMELINE_SQL).bind(previousStart, previousEnd, previousStart, previousEnd).all(),
     env.DB.prepare(`
       WITH first_views AS (
-        SELECT country, region, session_id,
+        SELECT country, region, city, session_id,
           date(datetime(created_at, '+9 hours')) kst_date,
           ROW_NUMBER() OVER (
             PARTITION BY date(datetime(created_at, '+9 hours')), session_id
@@ -187,10 +187,11 @@ export async function onRequestGet({ request, env }) {
       )
       SELECT COALESCE(NULLIF(country, ''), 'XX') country,
         COALESCE(NULLIF(region, ''), '지역 미상') region,
+        COALESCE(NULLIF(city, ''), '도시 미상') city,
         COUNT(*) visit_sessions
       FROM first_views
       WHERE row_number=1
-      GROUP BY country, region
+      GROUP BY country, region, city
       ORDER BY visit_sessions DESC
       LIMIT 12
     `).bind(since, until).all(),
@@ -210,7 +211,7 @@ export async function onRequestGet({ request, env }) {
       FROM session_risk
     `).bind(since, until).first(),
     env.DB.prepare(`
-      SELECT country, region, asn, as_organization,
+      SELECT country, region, city, asn, as_organization,
         MAX(risk_score) risk_score,
         COUNT(*) events,
         COUNT(DISTINCT session_id) sessions,
@@ -218,7 +219,7 @@ export async function onRequestGet({ request, env }) {
         MAX(risk_reasons) risk_reasons
       FROM analytics_events
       WHERE visitor_key<>'' AND risk_score>=20 AND created_at>=? AND created_at<?
-      GROUP BY visitor_key, country, region, asn, as_organization
+      GROUP BY visitor_key, country, region, city, asn, as_organization
       ORDER BY risk_score DESC, events DESC
       LIMIT 10
     `).bind(since, until).all()
@@ -246,6 +247,7 @@ export async function onRequestGet({ request, env }) {
     anomalies: (anomalyRows.results || []).map(item => ({
       country: item.country || 'XX',
       region: item.region || '지역 미상',
+      city: item.city || '도시 미상',
       asn: item.asn || null,
       as_organization: item.as_organization || '',
       risk_score: Number(item.risk_score) || 0,

@@ -30,14 +30,14 @@ export async function onRequestPost({ request, env }) {
   await env.DB.prepare(`
     INSERT INTO analytics_events (
       id, session_id, event_name, path, referrer, duration_ms, metadata, created_at,
-      visitor_key, country, region, asn, as_organization, bot_score, verified_bot,
+      visitor_key, country, region, city, asn, as_organization, bot_score, verified_bot,
       risk_score, risk_reasons
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     crypto.randomUUID(), sessionId, eventName, path, clean(payload.referrer, 500),
     duration, metadata, new Date().toISOString(), intelligence.visitorKey,
-    intelligence.country, intelligence.region, intelligence.asn,
+    intelligence.country, intelligence.region, intelligence.city, intelligence.asn,
     intelligence.asOrganization, intelligence.botScore, intelligence.verifiedBot,
     intelligence.riskScore, intelligence.riskReasons
   ).run();
