@@ -140,6 +140,40 @@
   const renderInsights = items => {
     document.querySelector('#analytics-insights').innerHTML=(items||[]).map((item,index)=>`<article data-level="${escape(item.level)}"><span>0${index+1}</span><div><strong>${escape(item.title)}</strong><p>${escape(item.body)}</p></div></article>`).join('')||'<p>분석할 데이터가 충분하지 않습니다.</p>';
   };
+  const renderGoogleAds = data => {
+    const status=document.querySelector('#google-ads-status');
+    const connection=document.querySelector('#google-ads-connection');
+    const summary=data.summary;
+    if(summary){
+      document.querySelector('[data-google-metric="spend"]').textContent=`${number.format(summary.spend||0)}원`;
+      document.querySelector('[data-google-metric="clicks"]').textContent=number.format(summary.clicks||0);
+      document.querySelector('[data-google-metric="conversions"]').textContent=number.format(summary.conversions||0);
+      document.querySelector('[data-google-metric="cpa"]').textContent=summary.cpa===null?'–':`${number.format(summary.cpa||0)}원`;
+    }
+    const requirements=data.requirements||[];
+    if(data.status==='ready_to_verify'){
+      status.textContent='연결 검증 대기';
+      status.dataset.state='pending';
+      connection.innerHTML='<strong>연결 정보가 준비됐습니다.</strong><p>다음 단계에서 Google Ads 계정 권한과 데이터 호출을 검증합니다.</p>';
+      return;
+    }
+    status.textContent='연결 전';
+    status.dataset.state='offline';
+    connection.innerHTML=`<strong>Google Ads 계정 연결이 필요합니다.</strong><p>읽기 전용 연결 후 광고비부터 Brief 신청까지 한 흐름으로 집계합니다.</p><ul>${requirements.map(item=>`<li data-ready="${item.ready?'true':'false'}"><span>${item.ready?'준비':'필요'}</span>${escape(item.label)}</li>`).join('')}</ul>`;
+  };
+  const loadGoogleAds = async period => {
+    try{
+      const response=await fetch(`/api/admin/google-ads?period=${encodeURIComponent(period)}`);
+      const data=await response.json();
+      if(!response.ok)throw new Error(data.error||'Google Ads 상태를 불러오지 못했습니다.');
+      renderGoogleAds(data);
+    }catch(error){
+      const status=document.querySelector('#google-ads-status');
+      status.textContent='확인 오류';
+      status.dataset.state='error';
+      document.querySelector('#google-ads-connection').innerHTML=`<strong>연결 상태를 확인하지 못했습니다.</strong><p>${escape(error.message)}</p>`;
+    }
+  };
   const loadAnalytics = async (period=analyticsPeriod) => {
     const timelineStatus = document.querySelector('#analytics-timeline-status');
     analyticsPeriod=period;
@@ -173,6 +207,7 @@
       document.querySelector('#analytics-transitions').innerHTML=(data.transitions||[]).map(item=>`<li>${escape(item.from_path)} → ${escape(item.to_path)} — ${item.moves}</li>`).join('')||'<li>데이터 없음</li>';
       document.querySelector('#analytics-referrers').innerHTML=(data.referrers||[]).map(item=>`<li>${escape(item.referrer)} — ${item.visits}</li>`).join('')||'<li>데이터 없음</li>';
       document.querySelector('#analytics-campaigns').innerHTML=(data.campaigns||[]).map(item=>`<li>${escape(item.source)} / ${escape(item.medium)}${item.campaign?` / ${escape(item.campaign)}`:''} — ${item.visits}</li>`).join('')||'<li>데이터 없음</li>';
+      loadGoogleAds(period);
     } catch (error) {
       timelineStatus.textContent=error.message||'분석 데이터를 불러오지 못했습니다.';
     } finally {

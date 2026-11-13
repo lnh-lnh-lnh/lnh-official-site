@@ -5,7 +5,7 @@
   <meta name="robots" content="noindex,nofollow"><title>LNH Applications</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/application-system.css?v=20261113b">
+  <link rel="stylesheet" href="../assets/application-system.css?v=20261113c">
   <link rel="stylesheet" href="../assets/lnh-navigation.css?v=20260927a">
 </head>
 <body class="admin-body admin-pending-auth impeccable-20">
@@ -55,6 +55,25 @@
         </aside>
       </div>
 
+      <section class="command-panel google-ads-panel" aria-labelledby="google-ads-title">
+        <div class="command-panel-heading">
+          <div><p>Paid Media Intelligence</p><h2 id="google-ads-title">Google Ads</h2></div>
+          <span id="google-ads-status">연결 상태 확인 중</span>
+        </div>
+        <div class="google-ads-content" id="google-ads-content" aria-live="polite">
+          <div class="google-ads-metrics" aria-label="Google Ads 핵심 지표">
+            <article><span>광고비</span><strong data-google-metric="spend">–</strong></article>
+            <article><span>클릭</span><strong data-google-metric="clicks">–</strong></article>
+            <article><span>신청 완료</span><strong data-google-metric="conversions">–</strong></article>
+            <article><span>신청당 비용</span><strong data-google-metric="cpa">–</strong></article>
+          </div>
+          <div class="google-ads-connection" id="google-ads-connection">
+            <strong>Google Ads 연결 정보를 확인하고 있습니다.</strong>
+            <p>연결 후 캠페인과 구별 성과를 같은 기간 기준으로 비교합니다.</p>
+          </div>
+        </div>
+      </section>
+
       <div class="intelligence-secondary-grid">
         <section class="command-panel geography-panel" aria-labelledby="geography-title">
           <div class="command-panel-heading"><div><p>Geo Signal</p><h2 id="geography-title">도시 유입 변화</h2></div><span>IP 원문 미저장</span></div>
@@ -91,7 +110,7 @@
     </section>
   </main>
   <script src="../assets/lnh-select.js?v=20260924a" defer></script>
-  <script src="../assets/admin.js?v=20261113b" defer></script>
+  <script src="../assets/admin.js?v=20261113c" defer></script>
   <script src="../assets/site-menu.js?v=20260927a" defer></script>
   <link rel="stylesheet" href="../assets/lnh-impeccable-20.css?v=20260929">
 </body>
