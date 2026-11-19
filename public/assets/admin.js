@@ -192,7 +192,11 @@
   const loadAnalytics = async (period=analyticsPeriod) => {
     const timelineStatus = document.querySelector('#analytics-timeline-status');
     analyticsPeriod=period;
-    document.querySelectorAll('[data-period]').forEach(button=>button.classList.toggle('is-active',button.dataset.period===period));
+    document.querySelectorAll('[data-period]').forEach(button=>{
+      const active=button.dataset.period===period;
+      button.classList.toggle('is-active',active);
+      button.setAttribute('aria-pressed',String(active));
+    });
     document.querySelector('.intelligence-command').classList.add('is-refreshing');
     try {
       const response = await fetch(`/api/admin/analytics?period=${encodeURIComponent(period)}`);

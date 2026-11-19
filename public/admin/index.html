@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow"><title>LNH Applications</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/application-system.css?v=20261119a">
+  <link rel="stylesheet" href="../assets/application-system.css?v=20261119b">
   <link rel="stylesheet" href="../assets/lnh-navigation.css?v=20260927a">
 </head>
 <body class="admin-body admin-pending-auth impeccable-20">
@@ -28,11 +26,11 @@
           <p id="analytics-time-context">서버 기준 시간을 확인하는 중입니다.</p>
         </div>
         <div class="period-control" aria-label="분석 기간">
-          <button type="button" data-period="today" class="is-active">오늘</button>
-          <button type="button" data-period="7d">7일</button>
-          <button type="button" data-period="30d">30일</button>
-          <button type="button" data-period="quarter">분기</button>
-          <button type="button" data-period="year">1년</button>
+          <button type="button" data-period="today" class="is-active" aria-pressed="true">오늘</button>
+          <button type="button" data-period="7d" aria-pressed="false">7일</button>
+          <button type="button" data-period="30d" aria-pressed="false">30일</button>
+          <button type="button" data-period="quarter" aria-pressed="false">분기</button>
+          <button type="button" data-period="year" aria-pressed="false">1년</button>
         </div>
       </header>
 
@@ -64,8 +62,8 @@
           <div class="google-ads-metrics" aria-label="Google Ads 핵심 지표">
             <article><span>광고비</span><strong data-google-metric="spend">–</strong></article>
             <article><span>클릭</span><strong data-google-metric="clicks">–</strong></article>
-            <article><span>신청 완료</span><strong data-google-metric="conversions">–</strong></article>
-            <article><span>신청당 비용</span><strong data-google-metric="cpa">–</strong></article>
+            <article><span>광고 전환</span><strong data-google-metric="conversions">–</strong></article>
+            <article><span>전환당 비용</span><strong data-google-metric="cpa">–</strong></article>
           </div>
           <div class="google-ads-connection" id="google-ads-connection">
             <strong>Google Ads 연결 정보를 확인하고 있습니다.</strong>
@@ -76,7 +74,7 @@
 
       <div class="intelligence-secondary-grid">
         <section class="command-panel geography-panel" aria-labelledby="geography-title">
-          <div class="command-panel-heading"><div><p>Geo Signal</p><h2 id="geography-title">도시 유입 변화</h2></div><span>IP 원문 미저장</span></div>
+          <div class="command-panel-heading"><div><p>Geo Signal</p><h2 id="geography-title">접속 추정 지역</h2></div><span>IP 기반 · 자동화 포함</span></div>
           <div id="analytics-geography" class="geography-list"><p>지역 데이터를 불러오는 중입니다.</p></div>
         </section>
         <section class="command-panel network-panel" aria-labelledby="network-title">
@@ -95,9 +93,9 @@
 
     <div class="admin-section-heading"><p>Operations</p><h2>신청자 관리</h2></div>
     <div class="admin-toolbar">
-      <input id="admin-search" type="search" placeholder="이름·연락처·회사·접수번호 검색">
-      <select id="admin-service"><option value="">모든 서비스</option><option value="brief">Brief</option><option value="curation">Curation</option><option value="care">Care</option><option value="partnership">Partnership</option></select>
-      <select id="admin-status"><option value="">모든 상태</option><option value="new">신규</option><option value="contacted">연락 완료</option><option value="consultation">상담 예정</option><option value="survey_sent">설문 발송</option><option value="survey_completed">설문 완료</option><option value="proposal">제안</option><option value="contracted">계약</option><option value="closed">종료</option></select>
+      <input id="admin-search" type="search" aria-label="신청자 검색" placeholder="이름·연락처·회사·접수번호 검색">
+      <select id="admin-service" aria-label="서비스 필터"><option value="">모든 서비스</option><option value="brief">Brief</option><option value="curation">Curation</option><option value="care">Care</option><option value="partnership">Partnership</option></select>
+      <select id="admin-status" aria-label="신청 상태 필터"><option value="">모든 상태</option><option value="new">신규</option><option value="contacted">연락 완료</option><option value="consultation">상담 예정</option><option value="survey_sent">설문 발송</option><option value="survey_completed">설문 완료</option><option value="proposal">제안</option><option value="contracted">계약</option><option value="closed">종료</option></select>
       <button class="admin-export" id="export-applications" type="button">CSV 내보내기</button>
     </div>
     <section class="admin-grid">
@@ -110,7 +108,7 @@
     </section>
   </main>
   <script src="../assets/lnh-select.js?v=20260924a" defer></script>
-  <script src="../assets/admin.js?v=20261119a" defer></script>
+  <script src="../assets/admin.js?v=20261119b" defer></script>
   <script src="../assets/site-menu.js?v=20260927a" defer></script>
   <link rel="stylesheet" href="../assets/lnh-impeccable-20.css?v=20260929">
 </body>
