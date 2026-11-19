@@ -67,6 +67,7 @@ test('OAuth 승인 정보로 Google Ads 실적과 캠페인을 읽는다', async
     assert.equal(calls.length, 3);
     assert.match(calls[1].url, /v26\/customers\/1234567890\/googleAds:search/);
     assert.equal(calls[1].options.headers.authorization, 'Bearer access-token');
+    assert.equal(Object.hasOwn(JSON.parse(calls[1].options.body), 'pageSize'), false);
     assert.equal(JSON.stringify(body).includes('client-secret'), false);
     assert.equal(JSON.stringify(body).includes('refresh-token'), false);
     assert.equal(JSON.stringify(body).includes('access-token'), false);

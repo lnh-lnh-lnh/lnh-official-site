@@ -50,7 +50,7 @@ const searchGoogleAds = async (env, accessToken, query) => {
   const response = await fetch(`https://googleads.googleapis.com/${apiVersion(env)}/customers/${customerId}/googleAds:search`, {
     method: 'POST',
     headers,
-    body: JSON.stringify({ query, pageSize: 1000 })
+    body: JSON.stringify({ query })
   });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
