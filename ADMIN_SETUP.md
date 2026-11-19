@@ -108,3 +108,17 @@ Cloudflare Email Service의 발신 도메인이 확인되지 않으면 이메일
 6. 분석 화면에서 페이지뷰와 신청 제출 수가 집계되는지 확인
 7. 개인정보 처리방침의 초안 문구를 제거하고 실제 운영 정보로 교체
 8. 광고 픽셀을 사용할 경우 Meta Pixel ID, Naver 전환 ID, Google Tag ID와 동의·거부 방식을 Legal 검토 후 설정
+
+## 8. Google Ads 관리자 연결
+
+`/admin/`의 Google Ads 패널은 Google Ads API의 읽기 전용 실적을 현재 분석 기간과 같은 범위로 불러옵니다. Google Cloud 프로젝트에서 Google Ads API를 활성화하고 `https://www.googleapis.com/auth/adwords` 범위로 OAuth 승인을 받은 뒤, Cloudflare Pages Production에 아래 값을 Secret으로 저장합니다.
+
+- `GOOGLE_ADS_CUSTOMER_ID`: 광고주 고객 ID 10자리, 하이픈 제외
+- `GOOGLE_ADS_CLIENT_ID`: OAuth 웹 또는 데스크톱 클라이언트 ID
+- `GOOGLE_ADS_CLIENT_SECRET`: OAuth 클라이언트 Secret
+- `GOOGLE_ADS_REFRESH_TOKEN`: Google Ads 접근을 승인한 장기 갱신 토큰
+- `GOOGLE_ADS_LOGIN_CUSTOMER_ID`: 관리자 계정 MCC를 통해 접근할 때만 입력, 하이픈 제외
+- `GOOGLE_ADS_DEVELOPER_TOKEN`: 기존 프로젝트에서 요구할 때만 입력
+- `GOOGLE_ADS_API_VERSION`: 선택 사항. 기본값은 `v26`
+
+Secret 원문은 저장소, 관리자 응답, 로그에 남기지 않습니다. 연결 후 패널에서 계정명, 광고비, 클릭, 전환, 신청당 비용과 상위 캠페인을 확인합니다. Google Ads 전환 수치는 Google Ads 계정의 전환 액션 설정을 따르며, LNH 자체 신청 완료 수와 별도로 비교합니다.

@@ -12,6 +12,7 @@
   };
   const riskReasonLabels={cloudflare_bot_signal:'Cloudflare 봇 신호',automation_user_agent:'자동화 도구 식별',missing_user_agent:'브라우저 정보 없음',high_event_velocity:'비정상 고속 이벤트',elevated_event_velocity:'높은 이벤트 속도',session_churn:'반복 세션 생성',verified_bot:'검증된 봇'};
   const number = new Intl.NumberFormat('ko-KR');
+  const currency = code => new Intl.NumberFormat('ko-KR',{style:'currency',currency:code||'KRW',maximumFractionDigits:0});
   let applications = [];
   let selectedId = '';
   const escape = value => String(value ?? '').replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
@@ -145,16 +146,30 @@
     const connection=document.querySelector('#google-ads-connection');
     const summary=data.summary;
     if(summary){
-      document.querySelector('[data-google-metric="spend"]').textContent=`${number.format(summary.spend||0)}원`;
+      const money=currency(data.account?.currencyCode);
+      document.querySelector('[data-google-metric="spend"]').textContent=money.format(summary.spend||0);
       document.querySelector('[data-google-metric="clicks"]').textContent=number.format(summary.clicks||0);
       document.querySelector('[data-google-metric="conversions"]').textContent=number.format(summary.conversions||0);
-      document.querySelector('[data-google-metric="cpa"]').textContent=summary.cpa===null?'–':`${number.format(summary.cpa||0)}원`;
+      document.querySelector('[data-google-metric="cpa"]').textContent=summary.cpa===null?'–':money.format(summary.cpa||0);
     }
     const requirements=data.requirements||[];
+    if(data.status==='connected'){
+      status.textContent='연결됨';
+      status.dataset.state='online';
+      const campaigns=(data.campaigns||[]).slice(0,3);
+      connection.innerHTML=`<strong>${escape(data.account?.name||'Google Ads')} 계정 연결됨</strong><p>${escape(data.account?.id||'')} · ${escape(data.account?.currencyCode||'KRW')} · 선택 기간 실적</p>${campaigns.length?`<ul>${campaigns.map(item=>`<li data-ready="true"><span>${escape(item.status==='ENABLED'?'운영':'상태')}</span>${escape(item.name)}</li>`).join('')}</ul>`:'<p>선택 기간에 집행된 캠페인이 없습니다.</p>'}`;
+      return;
+    }
     if(data.status==='ready_to_verify'){
       status.textContent='연결 검증 대기';
       status.dataset.state='pending';
       connection.innerHTML='<strong>연결 정보가 준비됐습니다.</strong><p>다음 단계에서 Google Ads 계정 권한과 데이터 호출을 검증합니다.</p>';
+      return;
+    }
+    if(data.status==='connection_error'){
+      status.textContent='연결 오류';
+      status.dataset.state='error';
+      connection.innerHTML=`<strong>Google Ads 연결을 확인해 주세요.</strong><p>${escape(data.error||'OAuth 권한 또는 고객 ID를 확인해 주세요.')}${data.requestId?`<br>요청 ID ${escape(data.requestId)}`:''}</p>`;
       return;
     }
     status.textContent='연결 전';
@@ -165,7 +180,7 @@
     try{
       const response=await fetch(`/api/admin/google-ads?period=${encodeURIComponent(period)}`);
       const data=await response.json();
-      if(!response.ok)throw new Error(data.error||'Google Ads 상태를 불러오지 못했습니다.');
+      if(!response.ok&&data.status!=='connection_error')throw new Error(data.error||'Google Ads 상태를 불러오지 못했습니다.');
       renderGoogleAds(data);
     }catch(error){
       const status=document.querySelector('#google-ads-status');
